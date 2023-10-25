@@ -61,7 +61,7 @@ img {
       <stop offset="80%" style="stop-color: rgb(123, 145, 83)"/>
     </linearGradient>
     <linearGradient id="lightblue_darkblue" gradientTransform="rotate(0)">
-      <stop offset="00%" style="stop-color: rgb(30, 105, 190)"/>
+      <stop offset="0%" style="stop-color: rgb(30, 105, 190)"/>
       <stop offset="50%" style="stop-color: rgb(14, 37, 105)"/>
     </linearGradient>
     <!-- <linearGradient id="green_black_white" gradientTransform="rotate(0)">
@@ -69,12 +69,21 @@ img {
       <stop offset="50%" style="stop-color: rgb(6, 18, 16)"/>
       <stop offset="100%" style="stop-color: rgb(212, 194, 184)"/>
     </linearGradient> -->
+    <linearGradient id="orange_fade" gradientTransform="rotate(0)">
+      <stop offset="0%" style="stop-color: rgb(198,51,16)" stop-opacity="0"/>
+      <stop offset="100%" style="stop-color: rgb(198,51,16)"/>
+    </linearGradient>
+
+
   </defs>
 <!-- gradientTransform="rotate(90)" -->
 
   <path id="black_block_left" d="M 0 450 v240 L 70 650 v-75 L 190 490 v-40 h-20 L 70 515 v-15" fill="rgb(10, 15, 13)" />
 
   <path id="beige_arc_small" d="M 20 740 A 75 75 0 0 1 127 670 v90" fill="rgb(191, 178, 127)" />
+
+  <path id="orange_fade_block" d="M 120 545 L 130 755 A 80 80 0 0 0 60 725 L 70 585 Q 100 570 120 545" style="fill: url(#orange_fade);" />
+
 
 
   <path id="orange_block" d="M 180 490 L 175 510 170 585 135 605 195 720 195 625 185 525 Z" fill="rgb(252, 63, 14)" />
