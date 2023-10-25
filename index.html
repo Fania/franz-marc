@@ -71,7 +71,11 @@ img {
     </linearGradient> -->
     <linearGradient id="orange_fade" gradientTransform="rotate(0)">
       <stop offset="0%" style="stop-color: rgb(198,51,16)" stop-opacity="0"/>
-      <stop offset="100%" style="stop-color: rgb(198,51,16)"/>
+      <stop offset="20%" style="stop-color: rgb(198,51,16)" stop-opacity="0.3"/>
+      <stop offset="40%" style="stop-color: rgb(198,51,16)" stop-opacity="0.6"/>
+      <stop offset="70%" style="stop-color: rgb(198,51,16)" stop-opacity="0.8"/>
+      <stop offset="90%" style="stop-color: rgb(198,51,16)" stop-opacity="1"/>
+      <stop offset="100%" style="stop-color: rgb(198,51,16)" stop-opacity="1"/>
     </linearGradient>
     <radialGradient id="teal_lozenge_drop" gradientTransform="translate(-0.10 -0.20) scale(1.68, 1.53)">
       <stop offset="0%" style="stop-color:rgb(10, 28, 30)"/>
@@ -79,13 +83,17 @@ img {
       <stop offset="50%" stop-color="#143e3b"/>
       <stop offset="100%" style="stop-color:rgb(26, 143, 120)"/>
     </radialGradient>
-
+    <linearGradient id="darkgreen_lightgreen" gradientTransform="rotate(-20)">
+      <stop offset="0%" style="stop-color: rgb(21, 35, 36)"/>
+      <stop offset="80%" style="stop-color: rgb(61, 133, 106)"/>
+    </linearGradient>
   </defs>
 <!-- gradientTransform="rotate(90)" -->
 
   <path id="black_block_left" d="M 0 450 v240 L 70 650 v-75 L 190 490 v-40 h-20 L 70 515 v-15" fill="rgb(10, 15, 13)" />
   <path id="green_back_block" d="M 0 690 L 130 620 130 670 A 75 75 0 0 0 20 740 L 0 750" fill="rgb(23, 43, 40)" />
   <path id="beige_arc_small" d="M 20 740 A 75 75 0 0 1 127 670 v90" fill="rgb(191, 178, 127)" />
+  <path id="darkgreen_lightgreen_block" d="M 73 574 L 200 480 200 620 h-60 L 68 652" style="fill: url(#darkgreen_lightgreen);" />
   <path id="orange_fade_block" d="M 125 545 L 130 755 A 80 80 0 0 0 60 725 L 70 585 Q 100 570 120 545" style="fill: url(#orange_fade);" />
   <path id="orange_block" d="M 180 490 L 175 510 170 585 135 605 195 720 195 625 185 525 Z" fill="rgb(252, 63, 14)" />
   <path id="beige_vertical_block" d="M 190 380 L 190 540 200 540 220 540 220 380 Z" fill="rgb(251, 249, 175)" />
