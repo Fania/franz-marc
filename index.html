@@ -28,13 +28,11 @@ img {
 <!-- <h1>heelllo</h1> -->
 
 
-<!-- <img src="imgs/marc.png" alt="Franz Marc - Reh im Klostergarten 1912"> -->
+<img src="imgs/marc.png" alt="Franz Marc - Reh im Klostergarten 1912">
 
 <svg id="marc" viewBox="0 0 1500 1062" width="1500" height="1062">
 
-
-
-  <defs>
+  <defs> <!-- gradients -->
     <linearGradient id="two_greens">
       <stop offset="0%" style="stop-color: rgb(7, 70, 31)"/>
       <stop offset="100%" style="stop-color: rgb(22, 126, 32)"/>
@@ -138,51 +136,62 @@ img {
       <stop offset="70%" style="stop-color: rgb(10, 20, 19)" stop-opacity="1"/>
       <stop offset="100%" style="stop-color: rgb(10, 20, 19)" stop-opacity="1"/>
     </linearGradient>
+    <linearGradient id="green_transparent" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="20%" style="stop-color: rgb(140, 156, 73)" stop-opacity="0"/>
+      <stop offset="30%" style="stop-color: rgb(140, 156, 73)" stop-opacity="0.5"/>
+      <stop offset="70%" style="stop-color: rgb(140, 156, 73)" stop-opacity="1"/>
+    </linearGradient>
 
 
   </defs>
 
+  <g> <!-- backgrounds -->
+    <path id="moon_blue_back_filler" d="M 0 0 L 200 0 210 480 0 480 Z" style="fill: rgb(14, 36, 52)"/>
+  </g>
 
-  <path id="moon_blue_back_filler" d="M 0 0 L 200 0 210 480 0 480 Z" style="fill: rgb(14, 36, 52)" />
-
-
-
-  <path id="black_green_white_diagonal" d="M 0 470 L 225 300 225 350 0 530" style="fill: url(#black_green_white)" />
-  <path id="black_green_white_diagonal2" d="M 50 485 L 190 379 v70 h-5 L 50 526" style="fill: url(#black_green_white2)" />
-  <path id="black_block_left" d="M 0 450 v240 L 70 650 v-75 L 190 490 v-40 h-20 L 70 515 v-15" fill="rgb(10, 15, 13)" />
-  <path id="green_back_block" d="M 0 690 L 130 620 130 670 A 75 75 0 0 0 20 740 L 0 750" fill="rgb(23, 43, 40)" />
-  <path id="beige_arc_small" d="M 20 740 A 75 75 0 0 1 127 670 v90" fill="rgb(191, 178, 127)" />
-  <path id="darkgreen_lightgreen_block" d="M 73 574 L 200 480 200 620 h-60 L 68 652" style="fill: url(#darkgreen_lightgreen);" />
-  <path id="orange_fade_block" d="M 125 545 L 130 755 A 80 80 0 0 0 60 725 L 70 585 Q 100 570 120 545" style="fill: url(#orange_fade);" />
-  <path id="orange_block" d="M 180 490 L 175 510 170 585 135 605 195 720 195 625 185 525 Z" fill="rgb(252, 63, 14)" />
-  <path id="yellow_green_block" d="M 200 525 h40 v108 L 215 650 v-30 h-15" style="fill: url(#yellow_green);" />
-  <path id="beige_vertical_block" d="M 190 380 L 190 540 200 540 220 540 220 380 Z" fill="rgb(251, 249, 175)" />
-  <path id="yellow_vertical_block" d="M 240 525 L 240 350 200 350 200 380 220 380 220 525 Z" fill="rgb(243, 202, 39)" />
-  <path id="bright_yellow_block" d="M 0 900 L 135 780 v-25 h-15 L 0 860 Z" fill="rgb(252, 219, 8)" />
-  <path id="green_gradient_block" d="M 0 900 L 135 780 v200 L 0 1050 Z" style="fill: url(#two_greens);" />
-  <path id="bright_blue_block" d="M 50 1023 L 260 915 v150 h-200 Z" style="fill: url(#black_blue_white);" />
-  <path id="peach_arc_corner" d="M 0 1062 h150 Q 10 1042 0 900 Z" fill="rgb(227, 133, 103)" />
-  <path id="pink_red_gradient_block" d="M 0 0 v90 Q 75 125 130 180 L 180 155 Q 150 50 50 0" style="fill: url(#pink_red);" />
-  <path id="moon" d="M 60 125 A 165 165 0 0 0 110 385 L 250 280 Z" fill="rgb(250, 251, 255)" />
-  <path id="moon_overlay" d="M 20 200 A 130 130 0 0 1 195 250 L 195 300 A 130 130 0 0 0 18 250" style="fill: url(#white_lightblue);" />
-  <path id="blue_yellow_gradient_block" d="M 175 155 L 130 180 195 250 Q 190 160 175 155" style="fill: url(#blue_yellow);" />
-  <path id="dark_blue_block" d="M 135 615 v360 L 190 950 190 720 Z" fill="rgb(12, 26, 62)" />
-  <path id="orange_block_long" d="M 240 330 v300 L 215 660 v180 L 250 825 275 850 270 650 270 350 250 350" fill="rgb(251, 62, 14)" />
-  <path id="black_arc_small" d="M 0 860 A 75 75 0 0 1 120 755 Z" fill="rgb(10, 16, 14)" />
-  <path id="pink_red_block" d="M 270 575 L 400 490 410 500 v300 h-50 L 270 900" style="fill: url(#magenta_red);" />
-  <path id="teal_lozenge" d="M 260 1050 Q 440 1000 380 770 Q 230 900 260 1050" style="fill: url(#teal_lozenge_drop);" />
-  <path id="blue_purple_long_block" d="M 415 680 v382 h-30 v-310 Z" style="fill: url(#blue_purple);" />
-  <path id="lilac_arc_corner" d="M 405 1062 L 400 920 Q 370 1040 200 1062 Z" fill="rgb(147, 95, 167)" />
-  <path id="black_block_small" d="M 215 840 L 250 825 275 850 v50 L 265 910 215 940 Z" fill="rgb(9, 18, 15)" />
-  <path id="blue_light_green_arc" d="M 50 0 h150 Q 250 150 210 310 Q 200 80 50 0" style="fill: url(#blue_light_green);" />
-  <path id="pale_green_long_block" d="M 195 950 L 215 940 v-320 h-20 v100 h-5 v100 h5" fill="rgb(93, 99, 88)" />
-  <path id="green_white_triangle" d="M 0 360 L 85 410 0 460" style="fill: url(#green_white)" />
-  <path id="black_transparent_shadow" d="M 0 360 L 85 410 0 460" style="fill: url(#black_transparent);" />
-  <path id="blue_sky_block" d="M 0 90 L 0 360 Q 50 410 150 400 A 165 165 0 0 1 60 125" style="fill: url(#lightblue_darkblue);" />
-  <path id="black_pink_white_block" d="M 270 345 L 360 270 390 290 400 390 400 490 270 575" style="fill: url(#black_pink_white);" />
-  <path id="brown_triangle_large" d="M 360 270 L 370 370 L 290 320" style="fill: url(#brown_ochre);" />
-  <path id="black_bit" d="M 0 410 L 10 405 Q 35 420 25 450 L 0 460 Z" style="fill: rgb(11, 18, 18)" />
-
+  <g> <!-- colour blocks -->
+    <path id="black_green_white_diagonal" d="M 0 470 L 225 300 225 350 0 530" style="fill: url(#black_green_white)"/>
+    <path id="black_green_white_diagonal2" d="M 50 485 L 190 379 v70 h-5 L 50 526" style="fill: url(#black_green_white2)"/>
+    <path id="black_block_left" d="M 0 450 v240 L 70 650 v-75 L 190 490 v-40 h-20 L 70 515 v-15" fill="rgb(10, 15, 13)"/>
+    <path id="green_back_block" d="M 0 690 L 130 620 130 670 A 75 75 0 0 0 20 740 L 0 750" fill="rgb(23, 43, 40)"/>
+    <path id="beige_arc_small" d="M 20 740 A 75 75 0 0 1 127 670 v90" fill="rgb(191, 178, 127)"/>
+    <path id="green_transparent_fade" d="M 0 200 Q " style="fill: url(#green_transparent);"/>
+    <path id="lavender_finger" d="M 365 0 L 240 120 220 260 390 40 410 0" style="fill: rgb(216, 199, 220);"/>
+    <path id="pinkish_finger" d="M 200 0 Q 230 70 225 215 Q 265 70 250 0" style="fill: rgb(155, 52, 108);"/>
+    <path id="lilac_finger" d="M 250 0 Q 260 70 240 150 Q 290 65 365 0" style="fill: rgb(143, 114, 172);"/>
+    <path id="blue_line" d="M 300 0 Q 240 75 250 100 L 255 100 Q 240 75 315 0" style="fill: rgb(58, 117, 167);"/>
+    <path id="greenish_finger_shadow_moon" d="M 200 0 L 220 260 420 0" style="fill: url(#green_transparent);"/>
+    <path id="darkgreen_lightgreen_block" d="M 73 574 L 200 480 200 620 h-60 L 68 652" style="fill: url(#darkgreen_lightgreen);"/>
+    <path id="orange_fade_block" d="M 125 545 L 130 755 A 80 80 0 0 0 60 725 L 70 585 Q 100 570 120 545" style="fill: url(#orange_fade);"/>
+    <path id="orange_block" d="M 180 490 L 175 510 170 585 135 605 195 720 195 625 185 525 Z" fill="rgb(252, 63, 14)"/>
+    <path id="yellow_green_block" d="M 200 525 h40 v108 L 215 650 v-30 h-15" style="fill: url(#yellow_green);"/>
+    <path id="beige_vertical_block" d="M 190 380 L 190 540 200 540 220 540 220 380 Z" fill="rgb(251, 249, 175)"/>
+    <path id="yellow_vertical_block" d="M 240 525 L 240 350 200 350 200 380 220 380 220 525 Z" fill="rgb(243, 202, 39)"/>
+    <path id="bright_yellow_block" d="M 0 900 L 135 780 v-25 h-15 L 0 860 Z" fill="rgb(252, 219, 8)"/>
+    <path id="green_gradient_block" d="M 0 900 L 135 780 v200 L 0 1050 Z" style="fill: url(#two_greens);"/>
+    <path id="bright_blue_block" d="M 50 1023 L 260 915 v150 h-200 Z" style="fill: url(#black_blue_white);"/>
+    <path id="peach_arc_corner" d="M 0 1062 h150 Q 10 1042 0 900 Z" fill="rgb(227, 133, 103)"/>
+    <path id="pink_red_gradient_block" d="M 0 0 v90 Q 75 125 130 180 L 180 155 Q 150 50 50 0" style="fill: url(#pink_red);"/>
+    <path id="moon" d="M 60 125 A 165 165 0 0 0 110 385 L 250 280 Z" fill="rgb(250, 251, 255)"/>
+    <path id="moon_overlay" d="M 20 200 A 130 130 0 0 1 195 250 L 195 300 A 130 130 0 0 0 18 250" style="fill: url(#white_lightblue);"/>
+    <path id="blue_yellow_gradient_block" d="M 175 155 L 130 180 195 250 Q 190 160 175 155" style="fill: url(#blue_yellow);"/>
+    <path id="dark_blue_block" d="M 135 615 v360 L 190 950 190 720 Z" fill="rgb(12, 26, 62)"/>
+    <path id="orange_block_long" d="M 240 330 v300 L 215 660 v180 L 250 825 275 850 270 650 270 350 250 350" fill="rgb(251, 62, 14)"/>
+    <path id="black_arc_small" d="M 0 860 A 75 75 0 0 1 120 755 Z" fill="rgb(10, 16, 14)"/>
+    <path id="pink_red_block" d="M 270 575 L 400 490 410 500 v300 h-50 L 270 900" style="fill: url(#magenta_red);"/>
+    <path id="teal_lozenge" d="M 260 1050 Q 440 1000 380 770 Q 230 900 260 1050" style="fill: url(#teal_lozenge_drop);"/>
+    <path id="blue_purple_long_block" d="M 415 680 v382 h-30 v-310 Z" style="fill: url(#blue_purple);"/>
+    <path id="lilac_arc_corner" d="M 405 1062 L 400 920 Q 370 1040 200 1062 Z" fill="rgb(147, 95, 167)"/>
+    <path id="black_block_small" d="M 215 840 L 250 825 275 850 v50 L 265 910 215 940 Z" fill="rgb(9, 18, 15)"/>
+    <path id="blue_light_green_arc" d="M 50 0 h150 Q 250 150 210 310 Q 200 80 50 0" style="fill: url(#blue_light_green);"/>
+    <path id="pale_green_long_block" d="M 195 950 L 215 940 v-320 h-20 v100 h-5 v100 h5" fill="rgb(93, 99, 88)"/>
+    <path id="green_white_triangle" d="M 0 360 L 85 410 0 460" style="fill: url(#green_white)"/>
+    <path id="black_transparent_shadow" d="M 0 360 L 85 410 0 460" style="fill: url(#black_transparent);"/>
+    <path id="blue_sky_block" d="M 0 90 L 0 360 Q 50 410 150 400 A 165 165 0 0 1 60 125" style="fill: url(#lightblue_darkblue);"/>
+    <path id="black_pink_white_block" d="M 270 345 L 360 270 390 290 400 390 400 490 270 575" style="fill: url(#black_pink_white);"/>
+    <path id="brown_triangle_large" d="M 360 270 L 370 370 L 290 320" style="fill: url(#brown_ochre);"/>
+    <path id="black_bit" d="M 0 410 L 10 405 Q 35 420 25 450 L 0 460 Z" style="fill: rgb(11, 18, 18)"/>
+  </g>
 
 
 
@@ -224,37 +233,37 @@ img {
 
   <g id="coordinates">
     <g id="vertical">
-      <line x1="0"    y1="0" x2="0"    y2="1500" stroke="#cccccc" />
-      <line x1="50"   y1="0" x2="50"   y2="1500" stroke="#eeeeee" />
-      <line x1="100"  y1="0" x2="100"  y2="1500" stroke="#cccccc" />
-      <line x1="150"  y1="0" x2="150"  y2="1500" stroke="#eeeeee" />
-      <line x1="200"  y1="0" x2="200"  y2="1500" stroke="#cccccc" />
-      <line x1="250"  y1="0" x2="250"  y2="1500" stroke="#eeeeee" />
-      <line x1="300"  y1="0" x2="300"  y2="1500" stroke="#cccccc" />
-      <line x1="350"  y1="0" x2="350"  y2="1500" stroke="#eeeeee" />
-      <line x1="400"  y1="0" x2="400"  y2="1500" stroke="#cccccc" />
-      <line x1="450"  y1="0" x2="450"  y2="1500" stroke="#eeeeee" />
-      <line x1="500"  y1="0" x2="500"  y2="1500" stroke="#cccccc" />
-      <line x1="550"  y1="0" x2="550"  y2="1500" stroke="#eeeeee" />
-      <line x1="600"  y1="0" x2="600"  y2="1500" stroke="#cccccc" />
-      <line x1="650"  y1="0" x2="650"  y2="1500" stroke="#eeeeee" />
-      <line x1="700"  y1="0" x2="700"  y2="1500" stroke="#cccccc" />
-      <line x1="750"  y1="0" x2="750"  y2="1500" stroke="#eeeeee" />
-      <line x1="800"  y1="0" x2="800"  y2="1500" stroke="#cccccc" />
-      <line x1="850"  y1="0" x2="850"  y2="1500" stroke="#eeeeee" />
-      <line x1="900"  y1="0" x2="900"  y2="1500" stroke="#cccccc" />
-      <line x1="950"  y1="0" x2="950"  y2="1500" stroke="#eeeeee" />
-      <line x1="1000" y1="0" x2="1000" y2="1500" stroke="#cccccc" />
-      <line x1="1050" y1="0" x2="1050" y2="1500" stroke="#eeeeee" />
-      <line x1="1100" y1="0" x2="1100" y2="1500" stroke="#cccccc" />
-      <line x1="1150" y1="0" x2="1150" y2="1500" stroke="#eeeeee" />
-      <line x1="1200" y1="0" x2="1200" y2="1500" stroke="#cccccc" />
-      <line x1="1250" y1="0" x2="1250" y2="1500" stroke="#eeeeee" />
-      <line x1="1300" y1="0" x2="1300" y2="1500" stroke="#cccccc" />
-      <line x1="1350" y1="0" x2="1350" y2="1500" stroke="#eeeeee" />
-      <line x1="1400" y1="0" x2="1400" y2="1500" stroke="#cccccc" />
-      <line x1="1450" y1="0" x2="1450" y2="1500" stroke="#eeeeee" />
-      <line x1="1500" y1="0" x2="1500" y2="1500" stroke="#cccccc" />
+      <line x1="0"    y1="0" x2="0"    y2="1500" stroke="#cccccc"/>
+      <line x1="50"   y1="0" x2="50"   y2="1500" stroke="#eeeeee"/>
+      <line x1="100"  y1="0" x2="100"  y2="1500" stroke="#cccccc"/>
+      <line x1="150"  y1="0" x2="150"  y2="1500" stroke="#eeeeee"/>
+      <line x1="200"  y1="0" x2="200"  y2="1500" stroke="#cccccc"/>
+      <line x1="250"  y1="0" x2="250"  y2="1500" stroke="#eeeeee"/>
+      <line x1="300"  y1="0" x2="300"  y2="1500" stroke="#cccccc"/>
+      <line x1="350"  y1="0" x2="350"  y2="1500" stroke="#eeeeee"/>
+      <line x1="400"  y1="0" x2="400"  y2="1500" stroke="#cccccc"/>
+      <line x1="450"  y1="0" x2="450"  y2="1500" stroke="#eeeeee"/>
+      <line x1="500"  y1="0" x2="500"  y2="1500" stroke="#cccccc"/>
+      <line x1="550"  y1="0" x2="550"  y2="1500" stroke="#eeeeee"/>
+      <line x1="600"  y1="0" x2="600"  y2="1500" stroke="#cccccc"/>
+      <line x1="650"  y1="0" x2="650"  y2="1500" stroke="#eeeeee"/>
+      <line x1="700"  y1="0" x2="700"  y2="1500" stroke="#cccccc"/>
+      <line x1="750"  y1="0" x2="750"  y2="1500" stroke="#eeeeee"/>
+      <line x1="800"  y1="0" x2="800"  y2="1500" stroke="#cccccc"/>
+      <line x1="850"  y1="0" x2="850"  y2="1500" stroke="#eeeeee"/>
+      <line x1="900"  y1="0" x2="900"  y2="1500" stroke="#cccccc"/>
+      <line x1="950"  y1="0" x2="950"  y2="1500" stroke="#eeeeee"/>
+      <line x1="1000" y1="0" x2="1000" y2="1500" stroke="#cccccc"/>
+      <line x1="1050" y1="0" x2="1050" y2="1500" stroke="#eeeeee"/>
+      <line x1="1100" y1="0" x2="1100" y2="1500" stroke="#cccccc"/>
+      <line x1="1150" y1="0" x2="1150" y2="1500" stroke="#eeeeee"/>
+      <line x1="1200" y1="0" x2="1200" y2="1500" stroke="#cccccc"/>
+      <line x1="1250" y1="0" x2="1250" y2="1500" stroke="#eeeeee"/>
+      <line x1="1300" y1="0" x2="1300" y2="1500" stroke="#cccccc"/>
+      <line x1="1350" y1="0" x2="1350" y2="1500" stroke="#eeeeee"/>
+      <line x1="1400" y1="0" x2="1400" y2="1500" stroke="#cccccc"/>
+      <line x1="1450" y1="0" x2="1450" y2="1500" stroke="#eeeeee"/>
+      <line x1="1500" y1="0" x2="1500" y2="1500" stroke="#cccccc"/>
       <text x="90" y="15">100</text>
       <text x="190" y="15">200</text>
       <text x="290" y="15">300</text>
@@ -272,37 +281,37 @@ img {
       <text x="1490" y="15">1500</text>
     </g>
     <g id="horizontal">
-      <line x1="0" y1="0"    x2="1500" y2="0"    stroke="#cccccc" />
-      <line x1="0" y1="50"   x2="1500" y2="50"   stroke="#eeeeee" />
-      <line x1="0" y1="100"  x2="1500" y2="100"  stroke="#cccccc" />
-      <line x1="0" y1="150"  x2="1500" y2="150"  stroke="#eeeeee" />
-      <line x1="0" y1="200"  x2="1500" y2="200"  stroke="#cccccc" />
-      <line x1="0" y1="250"  x2="1500" y2="250"  stroke="#eeeeee" />
-      <line x1="0" y1="300"  x2="1500" y2="300"  stroke="#cccccc" />
-      <line x1="0" y1="350"  x2="1500" y2="350"  stroke="#eeeeee" />
-      <line x1="0" y1="400"  x2="1500" y2="400"  stroke="#cccccc" />
-      <line x1="0" y1="450"  x2="1500" y2="450"  stroke="#eeeeee" />
-      <line x1="0" y1="500"  x2="1500" y2="500"  stroke="#cccccc" />
-      <line x1="0" y1="550"  x2="1500" y2="550"  stroke="#eeeeee" />
-      <line x1="0" y1="600"  x2="1500" y2="600"  stroke="#cccccc" />
-      <line x1="0" y1="650"  x2="1500" y2="650"  stroke="#eeeeee" />
-      <line x1="0" y1="700"  x2="1500" y2="700"  stroke="#cccccc" />
-      <line x1="0" y1="750"  x2="1500" y2="750"  stroke="#eeeeee" />
-      <line x1="0" y1="800"  x2="1500" y2="800"  stroke="#cccccc" />
-      <line x1="0" y1="850"  x2="1500" y2="850"  stroke="#eeeeee" />
-      <line x1="0" y1="900"  x2="1500" y2="900"  stroke="#cccccc" />
-      <line x1="0" y1="950"  x2="1500" y2="950"  stroke="#eeeeee" />
-      <line x1="0" y1="1000" x2="1500" y2="1000" stroke="#cccccc" />
-      <line x1="0" y1="1050" x2="1500" y2="1050" stroke="#eeeeee" />
-      <line x1="0" y1="1100" x2="1500" y2="1100" stroke="#cccccc" />
-      <line x1="0" y1="1150" x2="1500" y2="1150" stroke="#eeeeee" />
-      <line x1="0" y1="1200" x2="1500" y2="1200" stroke="#cccccc" />
-      <line x1="0" y1="1250" x2="1500" y2="1250" stroke="#eeeeee" />
-      <line x1="0" y1="1300" x2="1500" y2="1300" stroke="#cccccc" />
-      <line x1="0" y1="1350" x2="1500" y2="1350" stroke="#eeeeee" />
-      <line x1="0" y1="1400" x2="1500" y2="1400" stroke="#cccccc" />
-      <line x1="0" y1="1450" x2="1500" y2="1450" stroke="#eeeeee" />
-      <line x1="0" y1="1500" x2="1500" y2="1500" stroke="#cccccc" />
+      <line x1="0" y1="0"    x2="1500" y2="0"    stroke="#cccccc"/>
+      <line x1="0" y1="50"   x2="1500" y2="50"   stroke="#eeeeee"/>
+      <line x1="0" y1="100"  x2="1500" y2="100"  stroke="#cccccc"/>
+      <line x1="0" y1="150"  x2="1500" y2="150"  stroke="#eeeeee"/>
+      <line x1="0" y1="200"  x2="1500" y2="200"  stroke="#cccccc"/>
+      <line x1="0" y1="250"  x2="1500" y2="250"  stroke="#eeeeee"/>
+      <line x1="0" y1="300"  x2="1500" y2="300"  stroke="#cccccc"/>
+      <line x1="0" y1="350"  x2="1500" y2="350"  stroke="#eeeeee"/>
+      <line x1="0" y1="400"  x2="1500" y2="400"  stroke="#cccccc"/>
+      <line x1="0" y1="450"  x2="1500" y2="450"  stroke="#eeeeee"/>
+      <line x1="0" y1="500"  x2="1500" y2="500"  stroke="#cccccc"/>
+      <line x1="0" y1="550"  x2="1500" y2="550"  stroke="#eeeeee"/>
+      <line x1="0" y1="600"  x2="1500" y2="600"  stroke="#cccccc"/>
+      <line x1="0" y1="650"  x2="1500" y2="650"  stroke="#eeeeee"/>
+      <line x1="0" y1="700"  x2="1500" y2="700"  stroke="#cccccc"/>
+      <line x1="0" y1="750"  x2="1500" y2="750"  stroke="#eeeeee"/>
+      <line x1="0" y1="800"  x2="1500" y2="800"  stroke="#cccccc"/>
+      <line x1="0" y1="850"  x2="1500" y2="850"  stroke="#eeeeee"/>
+      <line x1="0" y1="900"  x2="1500" y2="900"  stroke="#cccccc"/>
+      <line x1="0" y1="950"  x2="1500" y2="950"  stroke="#eeeeee"/>
+      <line x1="0" y1="1000" x2="1500" y2="1000" stroke="#cccccc"/>
+      <line x1="0" y1="1050" x2="1500" y2="1050" stroke="#eeeeee"/>
+      <line x1="0" y1="1100" x2="1500" y2="1100" stroke="#cccccc"/>
+      <line x1="0" y1="1150" x2="1500" y2="1150" stroke="#eeeeee"/>
+      <line x1="0" y1="1200" x2="1500" y2="1200" stroke="#cccccc"/>
+      <line x1="0" y1="1250" x2="1500" y2="1250" stroke="#eeeeee"/>
+      <line x1="0" y1="1300" x2="1500" y2="1300" stroke="#cccccc"/>
+      <line x1="0" y1="1350" x2="1500" y2="1350" stroke="#eeeeee"/>
+      <line x1="0" y1="1400" x2="1500" y2="1400" stroke="#cccccc"/>
+      <line x1="0" y1="1450" x2="1500" y2="1450" stroke="#eeeeee"/>
+      <line x1="0" y1="1500" x2="1500" y2="1500" stroke="#cccccc"/>
       <text y="100" x="5">100</text>
       <text y="200" x="5">200</text>
       <text y="300" x="5">300</text>
