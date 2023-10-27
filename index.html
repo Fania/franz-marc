@@ -175,10 +175,10 @@ img {
       <stop offset="70%" style="stop-color: rgb(125, 49, 115)" stop-opacity="0.5"/>
       <stop offset="90%" style="stop-color: rgb(125, 49, 115)" stop-opacity="0"/>
     </linearGradient>
-    <linearGradient id="lilac_overlay2" x1="100%" y1="20%" x2="0%" y2="80%">
+    <linearGradient id="lilac_overlay2" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="10%" style="stop-color: rgb(201, 118, 168)" stop-opacity="1"/>
-      <stop offset="20%" style="stop-color: rgb(201, 118, 168)" stop-opacity="0.7"/>
-      <stop offset="50%" style="stop-color: rgb(201, 118, 168)" stop-opacity="0.5"/>
+      <stop offset="30%" style="stop-color: rgb(201, 118, 168)" stop-opacity="0.6"/>
+      <stop offset="50%" style="stop-color: rgb(201, 118, 168)" stop-opacity="0.4"/>
       <stop offset="80%" style="stop-color: rgb(201, 118, 168)" stop-opacity="0"/>
     </linearGradient>
     <linearGradient id="lilac_line_fade" x1="48%" y1="100%" x2="52%" y2="0%">
@@ -191,6 +191,12 @@ img {
       <stop offset="40%" style="stop-color: rgb(155, 39, 107)"/>
       <stop offset="60%" style="stop-color: rgb(207, 113, 159)"/>
       <stop offset="70%" style="stop-color: rgb(133, 81, 140)"/>
+    </linearGradient>
+
+    <linearGradient id="white_fade_curve_fade" x1="60%" y1="0%" x2="30%" y2="100%">
+      <stop offset="20%" style="stop-color: rgb(255, 255, 255)" stop-opacity="1"/>
+      <stop offset="50%" style="stop-color: rgb(255, 255, 255)" stop-opacity="0.4"/>
+      <stop offset="90%" style="stop-color: rgb(255, 255, 255)" stop-opacity="0"/>
     </linearGradient>
   </defs>
 
@@ -270,12 +276,16 @@ img {
 
     <path id="big_dark_blue_white_block" d="M 700 50 L 775 90 810 200 775 250 725 260 560 155 v-90" style="fill: url(#white_darkblue)"/>
     <path id="lilac_transparent_block" d="M 540 65 L 630 15 h30 v270 L 625 325 540 300" style="fill: url(#lilac_overlay)"/>
+    <path id="white_fade_curve" d="M 800 75 Q 675 230 560 60 L 650 0 760 0" style="fill: url(#white_fade_curve_fade)"/>
     <path id="lilac_transparent_block2" d="M 540 65 L 540 150 625 200 775 75 790 0 h-140" style="fill: url(#lilac_overlay2)"/>
     <path id="lilac_line" d="M 650 295 L 670 275 660 25 650 25" style="fill: url(#lilac_line_fade)"/>
     <path id="magenta_line" d="M 760 0 L 665 125 740 105 775 75 790 0" style="fill: url(#magenta_line_fade)"/>
+
+
+
   </g>
 
-    <path id="white_fade_curve" d="M 760 0 L 665 125 740 105 775 75 790 0" style="fill: url(#white_fade_curve_fade)"/>
+
 
 
 
