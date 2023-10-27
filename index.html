@@ -164,6 +164,34 @@ img {
       <stop offset="40%" style="stop-color: rgb(7, 41, 61)" stop-opacity="1"/>
       <stop offset="60%" style="stop-color: rgb(21, 138, 166)" stop-opacity="1"/>
     </linearGradient>
+    <linearGradient id="white_darkblue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="20%" style="stop-color: rgb(100, 154, 192)" stop-opacity="1"/>
+      <stop offset="50%" style="stop-color: rgb(13, 34, 92)" stop-opacity="1"/>
+      <stop offset="90%" style="stop-color: rgb(12, 21, 35)" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="lilac_overlay" x1="50%" y1="100%" x2="50%" y2="0%">
+      <stop offset="10%" style="stop-color: rgb(125, 49, 115)" stop-opacity="1"/>
+      <stop offset="40%" style="stop-color: rgb(125, 49, 115)" stop-opacity="0.7"/>
+      <stop offset="70%" style="stop-color: rgb(125, 49, 115)" stop-opacity="0.5"/>
+      <stop offset="90%" style="stop-color: rgb(125, 49, 115)" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="lilac_overlay2" x1="100%" y1="20%" x2="0%" y2="80%">
+      <stop offset="10%" style="stop-color: rgb(201, 118, 168)" stop-opacity="1"/>
+      <stop offset="20%" style="stop-color: rgb(201, 118, 168)" stop-opacity="0.7"/>
+      <stop offset="50%" style="stop-color: rgb(201, 118, 168)" stop-opacity="0.5"/>
+      <stop offset="80%" style="stop-color: rgb(201, 118, 168)" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="lilac_line_fade" x1="48%" y1="100%" x2="52%" y2="0%">
+      <stop offset="20%" style="stop-color: rgb(81, 52, 112)"/>
+      <stop offset="30%" style="stop-color: rgb(44, 52, 122)"/>
+      <stop offset="60%" style="stop-color: rgb(132, 113, 183)"/>
+      <stop offset="90%" style="stop-color: rgb(148, 103, 173)"/>
+    </linearGradient>
+    <linearGradient id="magenta_line_fade" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="40%" style="stop-color: rgb(155, 39, 107)"/>
+      <stop offset="60%" style="stop-color: rgb(207, 113, 159)"/>
+      <stop offset="70%" style="stop-color: rgb(133, 81, 140)"/>
+    </linearGradient>
   </defs>
 
   <g> <!-- backgrounds -->
@@ -238,9 +266,16 @@ img {
     <path id="bright_lilac_block" d="M 433 55 L 540 120 539 152 433 90" style="fill: rgb(226, 178, 176)"/>
 
     <path id="teal_block" d="M 600 0 L 631 13 567 50 v-15 L 505 68 475 50 575 0" style="fill: url(#teal_fade)"/>
-    <path id="little_beigey_block" d="M 567 50 v-15 L 505 68 540 90 v-25" style="fill: rgb(193, 214, 158)"/>ß
+    <path id="little_beigey_block" d="M 567 50 v-15 L 505 68 540 90 v-25" style="fill: rgb(193, 214, 158)"/>
+
+    <path id="big_dark_blue_white_block" d="M 700 50 L 775 90 810 200 775 250 725 260 560 155 v-90" style="fill: url(#white_darkblue)"/>
+    <path id="lilac_transparent_block" d="M 540 65 L 630 15 h30 v270 L 625 325 540 300" style="fill: url(#lilac_overlay)"/>
+    <path id="lilac_transparent_block2" d="M 540 65 L 540 150 625 200 775 75 790 0 h-140" style="fill: url(#lilac_overlay2)"/>
+    <path id="lilac_line" d="M 650 295 L 670 275 660 25 650 25" style="fill: url(#lilac_line_fade)"/>
+    <path id="magenta_line" d="M 760 0 L 665 125 740 105 775 75 790 0" style="fill: url(#magenta_line_fade)"/>
   </g>
 
+    <path id="white_fade_curve" d="M 760 0 L 665 125 740 105 775 75 790 0" style="fill: url(#white_fade_curve_fade)"/>
 
 
 
