@@ -197,18 +197,23 @@ img {
       <stop offset="50%" style="stop-color: rgb(255, 255, 255)" stop-opacity="0.4"/>
       <stop offset="90%" style="stop-color: rgb(255, 255, 255)" stop-opacity="0"/>
     </linearGradient>
-
     <linearGradient id="orange_arc_fade" x1="100%" y1="100%" x2="0%" y2="100%">
       <stop offset="0%" style="stop-color: rgb(205, 170, 156)" stop-opacity="1"/>
       <stop offset="30%" style="stop-color: rgb(217, 125, 67)" stop-opacity="1"/>
       <stop offset="70%" style="stop-color: rgb(217, 125, 67)" stop-opacity="1"/>
       <stop offset="90%" style="stop-color: rgb(84, 60, 69)" stop-opacity="1"/>
     </linearGradient> 
+
+
+    <linearGradient id="black_transparent2" x1="80%" y1="100%" x2="20%" y2="0%">
+      <stop offset="0%" style="stop-color: rgb(11, 18, 18)" stop-opacity="0"/>
+      <stop offset="100%" style="stop-color: rgb(11, 18, 18)" stop-opacity="1"/>
+    </linearGradient>
   </defs>
 
   <g> <!-- backgrounds -->
     <path id="moon_blue_back_filler" d="M 0 0 L 200 0 210 480 0 480 Z" style="fill: rgb(14, 36, 52)"/>
-    <!-- <path id="top_left_filler" d="M 500 0 h350 v350 h-350" style="fill: rgb(232, 217, 210)"/> -->
+    
   </g>
 
   <g> <!-- colour blocks -->
@@ -281,7 +286,12 @@ img {
     <path id="teal_block" d="M 600 0 L 631 13 567 50 v-15 L 505 68 475 50 575 0" style="fill: url(#teal_fade)"/>
     <path id="little_beigey_block" d="M 567 50 v-15 L 505 68 540 90 v-25" style="fill: rgb(193, 214, 158)"/>
 
-    <path id="big_dark_blue_white_block" d="M 700 50 L 775 90 810 200 775 250 725 260 560 155 v-90" style="fill: url(#white_darkblue)"/>
+    <path id="white_triangle_right" d="M 810 195 L 835 240 775 240" style="fill: rgb(232, 217, 210)"/>
+    <path id="white_triangle_right_overlay" d="M 810 195 L 835 240 775 240" style="fill: url(#black_transparent2)"/>
+    <path id="white_triangle_left" d="M 668 225 L 725 255 670 280" style="fill: rgb(159, 160, 149)"/>
+    <path id="white_triangle_left" d="M 668 224 L 725 255 670 280" style="fill: url(#black_transparent2)"/>
+
+    <path id="big_dark_blue_white_block" d="M 700 50 L 775 90 812 200 775 250 725 260 560 155 v-90" style="fill: url(#white_darkblue)"/>
     <path id="lilac_transparent_block" d="M 540 65 L 630 15 h30 v270 L 625 325 540 300" style="fill: url(#lilac_overlay)"/>
     <path id="white_fade_curve" d="M 800 75 Q 675 230 560 60 L 650 0 760 0" style="fill: url(#white_fade_curve_fade)"/>
     <path id="lilac_transparent_block2" d="M 540 65 L 540 150 625 200 775 75 790 0 h-140" style="fill: url(#lilac_overlay2)"/>
