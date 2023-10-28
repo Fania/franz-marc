@@ -192,12 +192,18 @@ img {
       <stop offset="60%" style="stop-color: rgb(207, 113, 159)"/>
       <stop offset="70%" style="stop-color: rgb(133, 81, 140)"/>
     </linearGradient>
-
     <linearGradient id="white_fade_curve_fade" x1="60%" y1="0%" x2="30%" y2="100%">
       <stop offset="20%" style="stop-color: rgb(255, 255, 255)" stop-opacity="1"/>
       <stop offset="50%" style="stop-color: rgb(255, 255, 255)" stop-opacity="0.4"/>
       <stop offset="90%" style="stop-color: rgb(255, 255, 255)" stop-opacity="0"/>
     </linearGradient>
+
+    <linearGradient id="orange_arc_fade" x1="100%" y1="100%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color: rgb(205, 170, 156)" stop-opacity="1"/>
+      <stop offset="30%" style="stop-color: rgb(217, 125, 67)" stop-opacity="1"/>
+      <stop offset="70%" style="stop-color: rgb(217, 125, 67)" stop-opacity="1"/>
+      <stop offset="90%" style="stop-color: rgb(84, 60, 69)" stop-opacity="1"/>
+    </linearGradient> 
   </defs>
 
   <g> <!-- backgrounds -->
@@ -283,12 +289,15 @@ img {
     <path id="magenta_line" d="M 760 0 L 665 125 740 105 775 75 790 0" style="fill: url(#magenta_line_fade)"/>
     <path id="magenta_line" d="M 600 0 L 650 0 625 15" style="fill: rgb(161, 105, 170)"/>
 
-    <path id="orange_arc_block" d="M 790 0 Q 750 90 835 240 L 845 0" style="fill: rgb(217, 125, 67)"/>
+    <path id="orange_arc_block" d="M 790 0 Q 745 90 835 240 L 845 0" style="fill: url(#orange_arc_fade)"/>
+
 
 
   </g>
 
 
+
+    <path id="orange_arc_block" d="M 790 0 Q 745 90 835 240 L 845 0" style="fill: url(#orange_arc_fade)"/>
 
 
 
