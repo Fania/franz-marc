@@ -259,12 +259,26 @@ img {
       <stop offset="65%" style="stop-color:rgb(243, 183, 56); stop-opacity:1" />
       <stop offset="80%" style="stop-color:rgb(5, 67, 26); stop-opacity:1" />
     </radialGradient>
-
-
     <linearGradient id="mustard_green_whitish_fade" x1="0%" y1="80%" x2="100%" y2="20%">
       <stop offset="10%" style="stop-color: rgb(158, 151, 41)" stop-opacity="1"/>
       <stop offset="40%" style="stop-color: rgb(29, 102, 41)" stop-opacity="1"/>
       <stop offset="90%" style="stop-color: rgb(174, 184, 123)" stop-opacity="1"/>
+    </linearGradient>
+
+
+
+    <linearGradient id="rose_Block_bottom_right_fade" x1="10%" y1="0%" x2="90%" y2="100%">
+      <stop offset="0%" style="stop-color: rgb(210, 118, 167)" stop-opacity="1"/>
+      <stop offset="60%" style="stop-color: rgb(93, 35, 67)" stop-opacity="0.7"/>
+      <stop offset="70%" style="stop-color: rgb(114, 115, 163)" stop-opacity="0.7"/>
+      <stop offset="85%" style="stop-color: rgb(111, 105, 117)" stop-opacity="0.7"/>
+      <stop offset="98%" style="stop-color: rgb(57, 74, 92)" stop-opacity="0.5"/>
+      <stop offset="100%" style="stop-color: rgb(210, 217, 214)" stop-opacity="0.5"/>
+    </linearGradient>
+
+    <linearGradient id="lilac_overlay3" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="50%" style="stop-color: rgb(210, 118, 167)" stop-opacity="0"/>
+      <stop offset="60%" style="stop-color: rgb(210, 118, 167)" stop-opacity="0.4"/>
     </linearGradient>
 
 
@@ -392,18 +406,27 @@ img {
 
     <path id="green_leaf_right_bottom" d="M 1085 865 L 1175 775 1210 780 1210 800 1200 820 1105 920" style="fill: rgb(5, 83, 43);"/>
     <path id="dark_block_behind_white_branch" d="M 987 813 L 1180 640 1180 775 1085 865 1010 840 987 850" style="fill: url(#dark_block_behind_white_branch_fade);"/>
-    <path id="green_leaf_left_bottom" d="M 930 690 L 930 1020 C 990 1040 1020 680 930 690" style="fill: rgb(3, 115, 53);"/>
-    <path id="green_leaf_middle_bottom" d="M 1020 800 L 1025 1062 1075 1062 Q 1160 890 1020 800" style="fill: url(#green_leaf_middle_bottom_fade);"/>
-    <path id="green_leaf_right_bottom" d="M 1210 790 L 1225 1062 1290 1062 Q 1350 875 1210 790" style="fill: rgb(166, 148, 31);"/>
+
+    <path id="rose_bottom_right" d="M 1260 830 L 1310 930 1475 1062 1500 1062 v-118 L 1310 775" style="fill: url(#rose_Block_bottom_right_fade);"/>
+    <path id="rose_bottom_right_overlay" d="M 1260 830 L 1310 930 1475 1062 1500 1062 v-118 L 1310 775" style="fill: url(#lilac_overlay3);"/>
+    <path id="pinkish_bottom_right" d="M 1300 1045 L 1360 995 1445 1062 1475 1062 1310 900" style="fill: rgb(125, 38, 73);"/>
+    <path id="pinkish_bottom_far_right" d="M 1413 862 L 1500 775 v170 Z" style="fill: rgb(140, 22, 73);"/>
 
     <path id="yellow_line_left_of_mid_leaf" d="M 1075 1062 L 1095 1020 1090 1062" style="fill: rgb(212, 194, 102);"/>
     <path id="yellow_triangle_over_orange_block_between_leafs" d="M 1210 800 L 1200 820 1212 820" style="fill: rgb(212, 194, 102);"/>
 
-  </g>
-
     <path id="green_yellow_orange_block" d="M 1090 1062 L 1105 920 1200 820 1212 820 1220 960 Q 1175 1035 1090 1062" style="fill: url(#green_yellow_orange_fade);"/>
     <path id="green_under_green_yellow_orange_block" d="M 1090 1062 Q 1175 1035 1220 960 L 1225 1062" style="fill: rgb(5, 82, 39);"/>
     <path id="mustard_green_whitish" d="M 1280 1062 L 1360 995 1445 1062" style="fill: url(#mustard_green_whitish_fade);"/>
+
+    <path id="green_leaf_left_bottom" d="M 930 690 L 930 1020 C 990 1040 1020 680 930 690" style="fill: rgb(3, 115, 53);"/>
+    <path id="green_leaf_middle_bottom" d="M 1020 800 L 1025 1062 1075 1062 Q 1160 890 1020 800" style="fill: url(#green_leaf_middle_bottom_fade);"/>
+    <path id="green_leaf_right_bottom" d="M 1210 790 L 1225 1062 1290 1062 Q 1350 875 1210 790" style="fill: rgb(166, 148, 31);"/>
+
+  </g>
+
+
+
 
 
 
