@@ -294,6 +294,18 @@ img {
       <stop offset="20%" style="stop-color: rgb(132, 127, 25)" stop-opacity="1"/>
       <stop offset="80%" style="stop-color: rgb(235, 214, 10)" stop-opacity="1"/>
     </linearGradient>
+    <linearGradient id="orangy_branch_fade" x1="15%" y1="0%" x2="85%" y2="100%">
+      <stop offset="0%" style="stop-color: rgb(183, 173, 138)" stop-opacity="1"/>
+      <stop offset="10%" style="stop-color: rgb(135, 114, 84)" stop-opacity="1"/>
+      <stop offset="30%" style="stop-color: rgb(231, 175, 92)" stop-opacity="1"/>
+      <stop offset="50%" style="stop-color: rgb(204, 138, 81)" stop-opacity="1"/>
+      <stop offset="80%" style="stop-color: rgb(179, 99, 54)" stop-opacity="1"/>
+      <stop offset="98%" style="stop-color: rgb(81, 63, 58)" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="orangy_branch_overlay" x1="95%" y1="0%" x2="5%" y2="100%">
+      <stop offset="50%" style="stop-color: rgb(81, 63, 58)" stop-opacity="0"/>
+      <stop offset="60%" style="stop-color: rgb(81, 63, 58)" stop-opacity="1"/>
+    </linearGradient>
 
 
 
@@ -444,11 +456,14 @@ img {
 
   </g>
 
+    <path id="orangy_branch" d="M 1410 865 L 1430 840 1230 665 v50" style="fill: url(#orangy_branch_fade)"/>
+    <path id="orangy_branch2" d="M 1410 865 L 1430 840 1230 665 v50" style="fill: url(#orangy_branch_overlay)"/>
+
+    <path id="main_branch" d="M " style="fill: url(#main_branch_fade)"/>
+
+
     <path id="yellow_mustard_block" d="M 1180 776 L 1210 780 v10 Q 1240 810 1258 830 L 1310 775 1242 712" style="fill: url(#yellow_mustard_fade)"/>
-
     <path id="magenta_line_right" d="M 1310 775 L 1410 865 C 1410 840 1340 790 1310 775" style="fill: rgb(115, 6, 65)"/>
-
-
 
 
     
