@@ -254,6 +254,18 @@ img {
       <stop offset="40%" style="stop-color: rgb(5, 21, 25)" stop-opacity="1"/>
       <stop offset="80%" style="stop-color: rgb(7, 139, 133)" stop-opacity="1"/>
     </linearGradient>
+    <radialGradient id="green_yellow_orange_fade" cx="100%" cy="30%" r="120%">
+      <stop offset="45%" style="stop-color:rgb(244, 29, 9); stop-opacity:1" />
+      <stop offset="65%" style="stop-color:rgb(243, 183, 56); stop-opacity:1" />
+      <stop offset="80%" style="stop-color:rgb(5, 67, 26); stop-opacity:1" />
+    </radialGradient>
+
+
+    <linearGradient id="mustard_green_whitish_fade" x1="0%" y1="80%" x2="100%" y2="20%">
+      <stop offset="10%" style="stop-color: rgb(158, 151, 41)" stop-opacity="1"/>
+      <stop offset="40%" style="stop-color: rgb(29, 102, 41)" stop-opacity="1"/>
+      <stop offset="90%" style="stop-color: rgb(174, 184, 123)" stop-opacity="1"/>
+    </linearGradient>
 
 
     <!-- 
@@ -384,11 +396,16 @@ img {
     <path id="green_leaf_middle_bottom" d="M 1020 800 L 1025 1062 1075 1062 Q 1160 890 1020 800" style="fill: url(#green_leaf_middle_bottom_fade);"/>
     <path id="green_leaf_right_bottom" d="M 1210 790 L 1225 1062 1290 1062 Q 1350 875 1210 790" style="fill: rgb(166, 148, 31);"/>
 
+    <path id="yellow_line_left_of_mid_leaf" d="M 1075 1062 L 1095 1020 1090 1062" style="fill: rgb(212, 194, 102);"/>
+    <path id="yellow_triangle_over_orange_block_between_leafs" d="M 1210 800 L 1200 820 1212 820" style="fill: rgb(212, 194, 102);"/>
 
   </g>
 
-    <path id="yellow_line_left_of_mid_leaf" d="M 1075 1062 L 1095 1020 1090 1062" style="fill: rgb(212, 194, 102);"/>
-    <path id="yellow_triangle_over_orange_block_between_leafs" d="M 1210 800 L 1200 820 1212 820" style="fill: rgb(212, 194, 102);"/>
+    <path id="green_yellow_orange_block" d="M 1090 1062 L 1105 920 1200 820 1212 820 1220 960 Q 1175 1035 1090 1062" style="fill: url(#green_yellow_orange_fade);"/>
+    <path id="green_under_green_yellow_orange_block" d="M 1090 1062 Q 1175 1035 1220 960 L 1225 1062" style="fill: rgb(5, 82, 39);"/>
+    <path id="mustard_green_whitish" d="M 1280 1062 L 1360 995 1445 1062" style="fill: url(#mustard_green_whitish_fade);"/>
+
+
 
     
 
