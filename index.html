@@ -325,7 +325,38 @@ img {
     </linearGradient>
 
 
+    <linearGradient id="greenfade_beam_above_fawn_fade" x1="10%" y1="90%" x2="90%" y2="20%">
+      <stop offset="43%" style="stop-color: rgb(7, 23, 20)" stop-opacity="1"/>
+      <stop offset="48%" style="stop-color: rgb(7, 56, 48)" stop-opacity="1"/>
+      <stop offset="54%" style="stop-color: rgb(21, 145, 106)" stop-opacity="1"/>
+      <stop offset="59%" style="stop-color: rgb(116, 164, 56)" stop-opacity="1"/>
+      <stop offset="65%" style="stop-color: rgb(14, 94, 61)" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="greenfade_beam_above_fawn_fade2" x1="100%" y1="80%" x2="0%" y2="20%">
+      <stop offset="15%" style="stop-color: rgb(7, 23, 20)" stop-opacity="1"/>
+      <stop offset="35%" style="stop-color: rgb(7, 56, 48)" stop-opacity="1"/>
+      <stop offset="50%" style="stop-color: rgb(21, 145, 106)" stop-opacity="1"/>
+      <stop offset="65%" style="stop-color: rgb(116, 164, 56)" stop-opacity="1"/>
+      <stop offset="85%" style="stop-color: rgb(14, 94, 61)" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="green_beam_near_fawn_nose_fade" x1="25%" y1="90%" x2="75%" y2="20%">
+      <stop offset="35%" style="stop-color: rgb(32, 128, 73)" stop-opacity="1"/>
+      <stop offset="45%" style="stop-color: rgb(48, 164, 131)" stop-opacity="1"/>
+      <stop offset="55%" style="stop-color: rgb(3, 124, 66)" stop-opacity="1"/>
+      <stop offset="65%" style="stop-color: rgb(131, 188, 73)" stop-opacity="1"/>
+      <stop offset="70%" style="stop-color: rgb(169, 217, 95)" stop-opacity="1"/>
+    </linearGradient>
 
+    <!-- <linearGradient id="purple_areas_near_fawn_face_fade" x1="25%" y1="90%" x2="75%" y2="20%">
+      <stop offset="35%" style="stop-color: rgb(93, 27, 77)" stop-opacity="1"/>
+      <stop offset="45%" style="stop-color: rgb(17, 57, 108)" stop-opacity="1"/>
+      <stop offset="70%" style="stop-color: rgb(35, 106, 141)" stop-opacity="1"/>
+    </linearGradient> -->
+    <radialGradient id="purple_areas_near_fawn_face_fade" cx="0%" cy="50%" r="100%">
+      <stop offset="30%" style="stop-color: rgb(93, 27, 77)" stop-opacity="1"/>
+      <stop offset="60%" style="stop-color: rgb(17, 57, 108)" stop-opacity="0.9"/>
+      <stop offset="85%" style="stop-color: rgb(35, 106, 141)" stop-opacity="0.7"/>
+    </radialGradient>
 
 
     <!-- 
@@ -479,23 +510,31 @@ img {
 
 
 
+    <path id="lila_corner_top_right" d="M 1460 0 L 1500 25 1500 0" style="fill: rgb(41, 28, 128)"/>
+    <path id="lila_corner_white_line_top_right" d="M 1450 0 L 1500 35 1500 25 1460 0" style="fill: rgb(160, 183, 199)"/>
 
+    <path id="darkgreen_block_next_to_fawn" d="M 920 585 Q 1020 520 1160 660 L 1100 710 Q 1040 643 945 693 L 940 690 Q 945 615 920 585" style="fill: url(#darkgreen_block_next_to_fawn_fade)"/>
+    <path id="lightdarkgreen_block_next_to_fawn" d="M 438 440 L 695 620 650 670 570 695 440 543" style="fill: url(#lightdarkgreen_block_next_to_fawn_fade)"/>
+    <path id="midgreen_block_next_to_fawn" d="M 655 670 Q 700 605 762 590 L 785 625 Q 760 635 725 670" style="fill: rgb(22, 112, 34)"/>
+
+    <path id="darkgreen_areas_near_fawn_face" d="M 448 378 L 750 570 763 590 Q 725 595 698 622 L 450 450" style="fill: rgb(8, 30, 28)"/>
+    <path id="purple_areas_near_fawn_face" d="M 435 325 L 438 445 A 90 90 0 1 0 435 325" style="fill: url(#purple_areas_near_fawn_face_fade)"/>
+    <path id="green_filler_gap" d="M 435 315 h10 v10 h-10" style="fill: rgb(35, 118, 91)"/>
+    <path id="green_beam_near_fawn_nose" d="M 440 295 L 735 470 Q 710 475 705 500 Q 725 550 750 570 L 450 380" style="fill: url(#green_beam_near_fawn_nose_fade)"/>
+    <path id="brightgreen_beam_above_fawn" d="M 413 280 h30 v-10 L 810 475 Q 775 475 725 450 h-30" style="fill: rgb(141, 198, 31)"/>
+    <path id="greenfade_beam_above_fawn" d="M 410 250 L 540 270 540 300 945 450 865 515 810 475 443 270 v10 h-30 L 400 270" style="fill: url(#greenfade_beam_above_fawn_fade)"/>
+    <path id="greenfade_beam_above_fawn2" d="M 700 450 L 730 450 Q 775 475 810 475 L 865 515 845 535" style="fill: url(#greenfade_beam_above_fawn_fade2)"/>
+  
+    <path id="purple_areas_near_fawn_face2" d="M 555 420 L 555 510 600 540 600 450" style="fill: url(#purple_areas_near_fawn_face_fade)"/>
+    <path id="purple_areas_near_fawn_face3" d="M 665 480 L 665 570 680 580 680 490" style="fill: url(#purple_areas_near_fawn_face_fade)"/>
+  
+  
   </g>
 
 
     <!-- <path id="main_branch" d="M 1180 775 L 1230 725 1220 270 1180 300" style="fill: url(#main_branch_fade)"/> -->
 
 
-    <path id="lila_corner_top_right" d="M 1460 0 L 1500 25 1500 0" style="fill: rgb(41, 28, 128)"/>
-    <path id="lila_corner_white_line_top_right" d="M 1450 0 L 1500 35 1500 25 1460 0" style="fill: rgb(160, 183, 199)"/>
-
-
-    <path id="darkgreen_block_next_to_fawn" d="M 920 585 Q 1020 520 1160 660 L 1100 710 Q 1040 643 945 693 L 940 690 Q 945 615 920 585" style="fill: url(#darkgreen_block_next_to_fawn_fade)"/>
-    <path id="lightdarkgreen_block_next_to_fawn" d="M 438 440 L 695 620 650 670 570 695 440 543" style="fill: url(#lightdarkgreen_block_next_to_fawn_fade)"/>
-    <path id="midgreen_block_next_to_fawn" d="M 655 670 Q 700 605 762 590 L 785 625 Q 760 635 725 670" style="fill: rgb(22, 112, 34)"/>
-
-    <path id="brightgreen_beam_above_fawn" d="M 413 280 h30 v-10 L 810 475 Q 775 475 725 450 h-30" style="fill: rgb(141, 198, 31)"/>
-    
 
 
 
