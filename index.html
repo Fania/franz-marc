@@ -20,6 +20,10 @@ svg text {
 }
 img {
   width: 1500px;
+  /* display: none; */
+}
+#coordinates {
+  /* display: none; */
 }
   </style>
 </head>
@@ -372,13 +376,17 @@ img {
       <stop offset="10%" style="stop-color: rgb(254, 245, 136)" stop-opacity="0.7"/>
       <stop offset="60%" style="stop-color: rgb(245, 232, 25)" stop-opacity="1"/>
     </linearGradient>
-
-
-
     <linearGradient id="yellow_green_fade" x1="8%" y1="100%" x2="92%" y2="0%">
       <stop offset="20%" style="stop-color: rgb(97, 168, 53)" stop-opacity="1"/>
       <stop offset="60%" style="stop-color: rgb(249, 219, 3)" stop-opacity="1"/>
     </linearGradient>
+
+
+
+    <!-- <linearGradient id="yellow_green_fade" x1="8%" y1="100%" x2="92%" y2="0%">
+      <stop offset="20%" style="stop-color: rgb(97, 168, 53)" stop-opacity="1"/>
+      <stop offset="60%" style="stop-color: rgb(249, 219, 3)" stop-opacity="1"/>
+    </linearGradient> -->
 
     <!-- 
     Horizontal gradients:   y1 & y2 equal   and  x1 & x2 differ
@@ -572,6 +580,8 @@ img {
     <path id="green_yellow_fade_block" d="M 845 535 L 1065 345 1070 400 1110 370 1075 335 1130 285 1160 300 1170 365 1110 330 1110 420 1025 470 995 445 v22 h-10 L 885 555" style="fill: url(#yellow_green_fade)"/>
 
 
+    <path id="darkgreen_filler_line" d="M 880 555 L 930 515 920 535 890 560" style="fill: rgb(4, 53, 33)"/>
+    <path id="orange_filler_line" d="M 1025 470 L 1080 437 1037 480" style="fill: rgb(237, 180, 7)"/>
 
 
 
