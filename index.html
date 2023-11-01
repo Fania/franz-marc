@@ -380,9 +380,6 @@ img {
       <stop offset="20%" style="stop-color: rgb(97, 168, 53)" stop-opacity="1"/>
       <stop offset="60%" style="stop-color: rgb(249, 219, 3)" stop-opacity="1"/>
     </linearGradient>
-
-
-
     <linearGradient id="green_olive_fade" x1="0%" y1="50%" x2="100%" y2="50%">
       <stop offset="25%" style="stop-color: rgb(73, 140, 47)" stop-opacity="1"/>
       <stop offset="40%" style="stop-color: rgb(87, 119, 18)" stop-opacity="1"/>
@@ -392,6 +389,55 @@ img {
       <stop offset="100%" style="stop-color: rgb(44, 115, 24)" stop-opacity="1"/>
     </linearGradient>
 
+
+
+    <linearGradient id="black_blue_fade" x1="80%" y1="100%" x2="20%" y2="0%">
+      <stop offset="20%" style="stop-color:rgb(13, 35, 74); stop-opacity:1" />
+      <stop offset="70%" style="stop-color:rgb(8, 15, 13); stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="yellow_pink_transparent_fade" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" style="stop-color:rgb(250, 233, 51); stop-opacity:0.9" />
+      <stop offset="20%" style="stop-color:rgb(250, 233, 51); stop-opacity:0.7" />
+      <stop offset="100%" style="stop-color:rgb(244, 94, 140); stop-opacity:0.7" />    
+    </linearGradient>
+    <linearGradient id="green_yellow_transparent_fade" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" style="stop-color:rgb(13, 52, 39); stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:rgb(250, 233, 51); stop-opacity:0.7" />
+    </linearGradient>
+    <radialGradient id="gray_transparent_fade" cx="30%" cy="50%" r="120%">
+      <stop offset="0%" style="stop-color:rgb(128, 154, 147); stop-opacity:0.9" />
+      <stop offset="25%" style="stop-color:rgb(95, 108, 97); stop-opacity:0.7" />
+      <stop offset="50%" style="stop-color:rgb(75, 90, 76); stop-opacity:0.5" />
+      <stop offset="75%" style="stop-color:rgb(54, 92, 70); stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:rgb(54, 92, 70); stop-opacity:0" />
+    </radialGradient>
+    <radialGradient id="gray_transparent_fade2" cx="30%" cy="50%" r="120%">
+      <stop offset="0%" style="stop-color:rgb(128, 154, 147); stop-opacity:0.7" />
+      <stop offset="25%" style="stop-color:rgb(95, 108, 97); stop-opacity:0.6" />
+      <stop offset="50%" style="stop-color:rgb(75, 90, 76); stop-opacity:0.4" />
+      <stop offset="75%" style="stop-color:rgb(54, 92, 70); stop-opacity:0.2" />
+      <stop offset="100%" style="stop-color:rgb(54, 92, 70); stop-opacity:0" />
+    </radialGradient>
+    <linearGradient id="gray_transparent_fade3" x1="5%" y1="90%" x2="70%" y2="20%">
+      <stop offset="0%" style="stop-color:rgb(128, 154, 147); stop-opacity:0.7" />
+      <stop offset="25%" style="stop-color:rgb(95, 108, 97); stop-opacity:0.6" />
+      <stop offset="50%" style="stop-color:rgb(75, 90, 76); stop-opacity:0.4" />
+      <stop offset="75%" style="stop-color:rgb(54, 92, 70); stop-opacity:0.2" />
+      <stop offset="100%" style="stop-color:rgb(54, 92, 70); stop-opacity:0" />
+    </linearGradient>
+    <linearGradient id="gray_transparent_fade4" x1="70%" y1="90%" x2="5%" y2="20%">
+      <stop offset="0%" style="stop-color:rgb(128, 154, 147); stop-opacity:0.7" />
+      <stop offset="25%" style="stop-color:rgb(95, 108, 97); stop-opacity:0.6" />
+      <stop offset="50%" style="stop-color:rgb(75, 90, 76); stop-opacity:0.4" />
+      <stop offset="75%" style="stop-color:rgb(54, 92, 70); stop-opacity:0.2" />
+      <stop offset="100%" style="stop-color:rgb(54, 92, 70); stop-opacity:0" />
+    </linearGradient>
+
+
+    <linearGradient id="yellow_pink_fade" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="50%" style="stop-color:rgb(250, 233, 51); stop-opacity:1" />
+      <stop offset="80%" style="stop-color:rgb(244, 94, 140); stop-opacity:1" />
+    </linearGradient>
     <!-- 
     Horizontal gradients:   y1 & y2 equal   and  x1 & x2 differ
     Vertical   gradients:   x1 & x2 equal   and  y1 & y2 differ
@@ -588,10 +634,20 @@ img {
 
 
     <!-- <path id="main_branch" d="M 1180 775 L 1230 725 1220 270 1180 300" style="fill: url(#main_branch_fade)"/> -->
-    <!-- <path id="black_back_block_right" d="M 1355 380 L 1225 520 1228 670 1425 850 1500 775 1500 500" style="fill: rgb(9, 19, 19)"/> -->
+    <path id="black_back_block_right" d="M 1355 380 L 1225 520 1228 662 1432 841 1500 775 1500 500" style="fill: rgb(9, 19, 19)"/>
 
 
+    <path id="black_front_triangle_right" d="M 1229 667 L 1310 590 1226 525" style="fill: url(#black_blue_fade)"/>
+    <path id="yellow_pink_front_block_right" d="M 1295 707 L 1375 625 1500 725 1500 775 1432 843" style="fill: url(#yellow_pink_transparent_fade)"/>
+    <path id="green_yellow_front_block_right" d="M 1274 704 L 1350 625 h20 L 1295 708 1410 821" style="fill: url(#green_yellow_transparent_fade)"/>
+    <path id="gray_front_block_right" d="M 1270 490 L 1340 560 Q 1420 480 1340 410" style="fill: url(#gray_transparent_fade)"/>
+    <path id="gray_front_circle_right" d="M 1425 540 A 30 30 0 0 0 1500 540 A  30 30 0 0 0 1425 540" style="fill: url(#gray_transparent_fade2)"/>
+    <path id="gray_front_half_circle_right" d="M 1410 620 A 35 35 0 0 1 1470 670" style="fill: url(#gray_transparent_fade)"/>
+    <path id="gray_front_fade_right" d="M 1345 560 L 1410 620 1430 580 1375 535" style="fill: url(#gray_transparent_fade3)"/>
+    <path id="gray_front_line_right" d="M 1473 672 L 1440 677 1375 625 1325 575 1340 560 " style="fill: url(#gray_transparent_fade4)"/>
 
+    <path id="yellow_pink_triangle" d="M 1100 440 L 1175 490 1175 530 1200 500 1200 400 1220 380 1220 350" style="fill: url(#yellow_pink_fade)"/>
+    <path id="yellow_pink_triangle_overlay" d="M 1100 440 L 1220 350 1220 380 1200 400 " style="fill: rgb(250, 233, 51, 0.5)"/>
 
 
 
