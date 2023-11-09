@@ -552,13 +552,30 @@ img {
       <stop offset="80%" style="stop-color: rgb(252, 218, 246)" stop-opacity="1"/>
       <stop offset="100%" style="stop-color: rgb(247, 239, 241)" stop-opacity="1"/>
     </linearGradient>
-
-
-
     <linearGradient id="white_rose_area_fade3" x1="50%" y1="0%" x2="50%" y2="100%">
       <stop offset="20%" style="stop-color: rgb(216, 82, 136)" stop-opacity="1"/>
       <stop offset="100%" style="stop-color: rgb(247, 173, 160)" stop-opacity="1"/>
     </linearGradient>
+    <linearGradient id="green_brightgreen_area_fade" x1="100%" y1="50%" x2="0%" y2="50%">
+      <stop offset="20%" style="stop-color: rgb(139, 187, 47)" stop-opacity="1"/>
+      <stop offset="40%" style="stop-color: rgb(48, 171, 192)" stop-opacity="1"/>
+      <stop offset="70%" style="stop-color: rgb(4, 104, 84)" stop-opacity="1"/>
+    </linearGradient>
+
+
+
+
+    <linearGradient id="green_misch_masch_area_fade" x1="95%" y1="20%" x2="15%" y2="80%">
+      <stop offset="10%" style="stop-color: rgb(149, 127, 111)" stop-opacity="1"/>
+      <stop offset="20%" style="stop-color: rgb(149, 154, 125)" stop-opacity="1"/>
+      <stop offset="30%" style="stop-color: rgb(122, 147, 124)" stop-opacity="1"/>
+      <stop offset="40%" style="stop-color: rgb(122, 183, 147)" stop-opacity="1"/>
+      <stop offset="50%" style="stop-color: rgb(150, 185, 61)" stop-opacity="1"/>
+      <stop offset="60%" style="stop-color: rgb(107, 171, 53)" stop-opacity="1"/>
+      <stop offset="70%" style="stop-color: rgb(9, 83, 47)" stop-opacity="1"/>
+      <stop offset="80%" style="stop-color: rgb(15, 55, 36)" stop-opacity="1"/>
+    </linearGradient>
+
     <!-- 
     Horizontal gradients:   y1 & y2 equal   and  x1 & x2 differ
     Vertical   gradients:   x1 & x2 equal   and  y1 & y2 differ
@@ -801,33 +818,22 @@ img {
     <path id="red_rose_white_trio_red" d="M 1343 90 L 1180 215 1250 200 1280 180" style="fill: rgb(203, 32, 34)"/>
     <path id="red_rose_white_trio_rose" d="M 1280 180 L 1250 200 1180 215 Q 1225 225 1220 247 L 1300 200" style="fill: rgb(246, 154, 164)"/>
 
+    <path id="yellow_block_next_to_red_rose_white_trio" d="M 1050 245 L 1160 300 v10 h20 v-10 L 1220 275 1220 245 Q 1210 210 1175 215 L 1160 230 1160 210 1110 240" style="fill: rgb(255, 250, 2)"/>
+    <path id="white_green_next_to_yellow" d="M 1160 210 L 1110 240 1050 245 1040 240 1040 230 1160 195" style="fill: url(#white_green_next_to_yellow_fade)"/>
+    <path id="blue_pink_next_to_rose_area" d="M 1000 115 L 1140 200 1100 215 990 220 935 200 Q 1000 150 1000 115" style="fill: url(#blue_pink_next_to_rose_area_fade)"/>
+    <path id="white_rose_area" d="M 890 227 L 890 242 Q 1000 280 1072 337 L 1120 295 990 220 935 200" style="fill: url(#white_rose_area_fade)"/>
+    <path id="white_next_to_rose_area" d="M 1130 285 L 1040 240 1040 230 1095 215 Q 1050 210 990 220 Q 1020 250 1120 295" style="fill: rgb(241, 233, 221)"/>
+    <path id="white_rose_area2" d="M 843 80 L 840 125 845 125 Q 875 95 925 100 L 960 90 Q 1050 30 1160 10 L 1200 0 950 0 Q 900 25 843 80" style="fill: url(#white_rose_area_fade2)"/>
 
 
   </g>
 
+    <path id="green_brightgreen_area" d="M 960 90 L 980 108 1140 200 1160 200 1160 75 1095 27 Q 1050 35 960 90" style="fill: url(#green_brightgreen_area_fade)"/>
 
-
-    <path id="yellow_block_next_to_red_rose_white_trio" d="M 1050 245 L 1160 300 v10 h20 v-10 L 1220 275 1220 245 Q 1210 210 1175 215 L 1160 230 1160 210 1110 240" style="fill: rgb(255, 250, 2)"/>
-
-    <path id="white_green_next_to_yellow" d="M 1160 210 L 1110 240 1050 245 1040 240 1040 230 1160 195" style="fill: url(#white_green_next_to_yellow_fade)"/>
-
-    <path id="blue_pink_next_to_rose_area" d="M 1000 115 L 1140 200 1100 215 990 220 935 200 Q 1000 150 1000 115" style="fill: url(#blue_pink_next_to_rose_area_fade)"/>
-
-    <path id="white_rose_area" d="M 890 227 L 890 242 Q 1000 280 1072 337 L 1120 295 990 220 935 200" style="fill: url(#white_rose_area_fade)"/>
-
-    <path id="white_next_to_rose_area" d="M 1130 285 L 1040 240 1040 230 1095 215 Q 1050 210 990 220 Q 1020 250 1120 295" style="fill: rgb(241, 233, 221)"/>
-
-    <path id="white_rose_area2" d="M 843 80 L 840 125 845 125 Q 875 95 925 100 L 960 90 Q 1050 30 1160 10 L 1200 0 950 0 Q 900 25 843 80" style="fill: url(#white_rose_area_fade2)"/>
+    <path id="green_misch_masch_area" d="M 1092 27 L 1200 0 1240 0 1325 48 1325 60 1270 115 1265 140 1250 140 1092 27" style="fill: url(#green_misch_masch_area_fade)"/>
 
 
 
-
-
-    <!-- <path id="yellow_block_next_to_orange_leaf" d="M 845 125 Q 880 90 925 100 Q 910 125 890 140 L 890 160 Q 940 150 960 170 Q 925 220 865 230 v-25 L 850 200" style="fill: rgb(250, 200, 37)"/> -->
-
-<!-- 
-     
- -->
 
 
 
