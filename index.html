@@ -561,10 +561,6 @@ img {
       <stop offset="40%" style="stop-color: rgb(48, 171, 192)" stop-opacity="1"/>
       <stop offset="70%" style="stop-color: rgb(4, 104, 84)" stop-opacity="1"/>
     </linearGradient>
-
-
-
-
     <linearGradient id="green_misch_masch_area_fade" x1="95%" y1="20%" x2="15%" y2="80%">
       <stop offset="10%" style="stop-color: rgb(149, 127, 111)" stop-opacity="1"/>
       <stop offset="20%" style="stop-color: rgb(149, 154, 125)" stop-opacity="1"/>
@@ -574,6 +570,27 @@ img {
       <stop offset="60%" style="stop-color: rgb(107, 171, 53)" stop-opacity="1"/>
       <stop offset="70%" style="stop-color: rgb(9, 83, 47)" stop-opacity="1"/>
       <stop offset="80%" style="stop-color: rgb(15, 55, 36)" stop-opacity="1"/>
+    </linearGradient>
+
+
+
+
+    <linearGradient id="fawn_body_green_yellow_layer_fade" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" style="stop-color: rgb(208, 205, 74)" stop-opacity="1"/>
+      <stop offset="50%" style="stop-color: rgb(77, 145, 86)" stop-opacity="1"/>
+      <stop offset="100%" style="stop-color: rgb(17, 94, 75)" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="fawn_body_white_transparent_layer_fade" x1="50%" y1="20%" x2="50%" y2="50%">
+      <stop offset="0%" style="stop-color: rgb(231, 231, 198)" stop-opacity="0.7"/>
+      <stop offset="50%" style="stop-color: rgb(180, 180, 130)" stop-opacity="0.3"/>
+      <stop offset="60%" style="stop-color: rgb(180, 180, 130)" stop-opacity="0"/>
+      <stop offset="100%" style="stop-color: rgb(180, 180, 130)" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="fawn_body_yellow_transparent_layer_fade" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" style="stop-color: rgb(171, 147, 112)" stop-opacity="1"/>
+      <stop offset="40%" style="stop-color: rgb(171, 147, 112)" stop-opacity="0.3"/>
+      <stop offset="60%" style="stop-color: rgb(171, 147, 112)" stop-opacity="0"/>
+      <stop offset="100%" style="stop-color: rgb(171, 147, 112)" stop-opacity="0"/>
     </linearGradient>
 
     <!-- 
@@ -825,31 +842,30 @@ img {
     <path id="white_next_to_rose_area" d="M 1130 285 L 1040 240 1040 230 1095 215 Q 1050 210 990 220 Q 1020 250 1120 295" style="fill: rgb(241, 233, 221)"/>
     <path id="white_rose_area2" d="M 843 80 L 840 125 845 125 Q 875 95 925 100 L 960 90 Q 1050 30 1160 10 L 1200 0 950 0 Q 900 25 843 80" style="fill: url(#white_rose_area_fade2)"/>
 
-
-  </g>
-
     <path id="green_brightgreen_area" d="M 960 90 L 980 108 1140 200 1160 200 1160 75 1095 27 Q 1050 35 960 90" style="fill: url(#green_brightgreen_area_fade)"/>
-
     <path id="green_misch_masch_area" d="M 1092 27 L 1200 0 1240 0 1325 48 1325 60 1270 115 1265 140 1250 140 1092 27" style="fill: url(#green_misch_masch_area_fade)"/>
 
 
+  </g>
 
 
 
+    <path id="fawn_body_green_yellow_layer" d="M 570 695 Q 650 645 860 677 L 915 700 Q 880 765 825 775 Q 775 785 723 850 Q 625 770 570 695" style="fill: url(#fawn_body_green_yellow_layer_fade)"/>
+    <path id="fawn_body_brown_dots1" d="M 630 740 A 10 10 0 0 0 650 740 A 10 10 0 0 0 630 740" style="fill: rgba(112, 100, 70, 0.5)"/>
+    <path id="fawn_body_brown_dots2" d="M 620 710 A 7 7 0 0 0 640 710 A 7 7 0 0 0 620 710" style="fill: rgba(112, 100, 70, 0.5)"/>
+    <path id="fawn_body_brown_dots3" d="M 665 705 A 7 7 0 0 0 685 705 A 7 7 0 0 0 665 705" style="fill: rgba(112, 100, 70, 0.5)"/>
+    <path id="fawn_body_brown_dots4" d="M 670 735 A 10 10 0 0 0 690 735 A 10 10 0 0 0 670 735" style="fill: rgba(112, 100, 70, 0.5)"/>
 
-  <!-- <defs>
-    <filter id="blur" color-interpolation-filters="linear" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="7"/>
-    </filter>
-    <mask id="circle">
-      <circle cx="50" cy="50" r="50" fill="white"/>
-    </mask>
-  </defs>
-  <g mask="url(#circle)" filter="url(#blur)">
-    <rect x="-10" width="110" height="110" fill="blue"/>
-    <rect x="50" width="60" height="110" fill="yellow"/>
-    <polygon points="0,0, 100,0, 100,20, 50,50, 0,20" fill="red"/>
-  </g>? -->
+    <path id="fawn_body_white_transparent_layer" d="M 570 695 Q 650 645 860 677 L 915 700 Q 880 765 825 775 Q 775 785 723 850 Q 625 770 570 695" style="fill: url(#fawn_body_white_transparent_layer_fade)"/>
+    <path id="fawn_body_yellow_transparent_layer" d="M 570 695 Q 650 645 860 677 L 915 700 Q 880 765 825 775 Q 775 785 723 850 Q 625 770 570 695" style="fill: url(#fawn_body_yellow_transparent_layer_fade)"/>
+
+    <path id="fawn_body_white_corner" d="M 640 775 L 720 847 Q 780 785 825 775" style="fill: rgba(240, 240, 240, 0.9)"/>
+    <path id="fawn_body_white_spots1" d="M 670 745 h30 v20 h-25" style="fill: rgba(240, 240, 240, 0.9)"/>
+    <path id="fawn_body_white_spots2" d="M 715 745 h33 v20 h-30" style="fill: rgba(240, 240, 240, 0.9)"/>
+    <path id="fawn_body_white_spots3" d="M 775 750 h30 v20 h-25" style="fill: rgba(240, 240, 240, 0.9)"/>
+
+
+
 
 
   <g id="coordinates">
