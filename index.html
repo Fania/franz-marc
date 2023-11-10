@@ -580,11 +580,17 @@ img {
       <stop offset="50%" style="stop-color: rgb(77, 145, 86)" stop-opacity="1"/>
       <stop offset="100%" style="stop-color: rgb(17, 94, 75)" stop-opacity="1"/>
     </linearGradient>
-    <linearGradient id="fawn_body_white_transparent_layer_fade" x1="50%" y1="20%" x2="50%" y2="50%">
+    <linearGradient id="fawn_body_white_transparent_layer_fade" x1="40%" y1="20%" x2="50%" y2="50%">
       <stop offset="0%" style="stop-color: rgb(231, 231, 198)" stop-opacity="0.7"/>
       <stop offset="50%" style="stop-color: rgb(180, 180, 130)" stop-opacity="0.3"/>
       <stop offset="60%" style="stop-color: rgb(180, 180, 130)" stop-opacity="0"/>
       <stop offset="100%" style="stop-color: rgb(180, 180, 130)" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="fawn_body_white_transparent_corner_fade" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" style="stop-color: rgb(231, 231, 198)" stop-opacity="0"/>
+      <stop offset="10%" style="stop-color: rgb(231, 231, 198)" stop-opacity="0.3"/>
+      <stop offset="20%" style="stop-color: rgb(231, 231, 198)" stop-opacity="0.7"/>
+      <stop offset="100%" style="stop-color: rgb(231, 231, 198)" stop-opacity="1"/>
     </linearGradient>
     <linearGradient id="fawn_body_yellow_transparent_layer_fade" x1="0%" y1="50%" x2="100%" y2="50%">
       <stop offset="0%" style="stop-color: rgb(171, 147, 112)" stop-opacity="1"/>
@@ -592,6 +598,18 @@ img {
       <stop offset="60%" style="stop-color: rgb(171, 147, 112)" stop-opacity="0"/>
       <stop offset="100%" style="stop-color: rgb(171, 147, 112)" stop-opacity="0"/>
     </linearGradient>
+    <radialGradient id="fawn_neck_dark_left_fade" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" style="stop-color: rgb(11, 33, 28)" stop-opacity="1"/>
+      <stop offset="50%" style="stop-color: rgb(19, 81, 57)" stop-opacity="1"/>
+      <stop offset="70%" style="stop-color: rgb(29, 113, 74)" stop-opacity="1"/>
+    </radialGradient>
+    <radialGradient id="fawn_neck_dark_right_fade" cx="70%" cy="50%" r="100%">
+      <stop offset="0%" style="stop-color: rgb(11, 33, 28)" stop-opacity="1"/>
+      <stop offset="50%" style="stop-color: rgb(19, 81, 57)" stop-opacity="1"/>
+      <stop offset="70%" style="stop-color: rgb(29, 113, 74)" stop-opacity="1"/>
+    </radialGradient>
+
+
 
     <!-- 
     Horizontal gradients:   y1 & y2 equal   and  x1 & x2 differ
@@ -848,6 +866,13 @@ img {
 
   </g>
 
+    <path id="fawn_neck_dark_left" d="M 840 590 Q 850 600 840 615 Q 855 645 828 670 v5 L 860 677 Q 885 650 840 590" style="fill: url(#fawn_neck_dark_left_fade)"/>
+    <path id="fawn_neck_dark_right" d="M 920 585 L 930 690 940 690 Q 950 625 920 585" style="fill: url(#fawn_neck_dark_right_fade)"/>
+
+
+
+
+
 
 
     <path id="fawn_body_green_yellow_layer" d="M 570 695 Q 650 645 860 677 L 915 700 Q 880 765 825 775 Q 775 785 723 850 Q 625 770 570 695" style="fill: url(#fawn_body_green_yellow_layer_fade)"/>
@@ -859,10 +884,10 @@ img {
     <path id="fawn_body_white_transparent_layer" d="M 570 695 Q 650 645 860 677 L 915 700 Q 880 765 825 775 Q 775 785 723 850 Q 625 770 570 695" style="fill: url(#fawn_body_white_transparent_layer_fade)"/>
     <path id="fawn_body_yellow_transparent_layer" d="M 570 695 Q 650 645 860 677 L 915 700 Q 880 765 825 775 Q 775 785 723 850 Q 625 770 570 695" style="fill: url(#fawn_body_yellow_transparent_layer_fade)"/>
 
-    <path id="fawn_body_white_corner" d="M 640 775 L 720 847 Q 780 785 825 775" style="fill: rgba(240, 240, 240, 0.9)"/>
-    <path id="fawn_body_white_spots1" d="M 670 745 h30 v20 h-25" style="fill: rgba(240, 240, 240, 0.9)"/>
-    <path id="fawn_body_white_spots2" d="M 715 745 h33 v20 h-30" style="fill: rgba(240, 240, 240, 0.9)"/>
-    <path id="fawn_body_white_spots3" d="M 775 750 h30 v20 h-25" style="fill: rgba(240, 240, 240, 0.9)"/>
+    <path id="fawn_body_white_corner" d="M 640 775 L 720 847 Q 780 785 825 775" style="fill: url(#fawn_body_white_transparent_corner_fade)"/>
+    <path id="fawn_body_white_spots1" d="M 670 745 h30 v20 h-25" style="fill: rgba(240, 240, 240, 0.7)"/>
+    <path id="fawn_body_white_spots2" d="M 715 745 h33 v20 h-30" style="fill: rgba(240, 240, 240, 0.7)"/>
+    <path id="fawn_body_white_spots3" d="M 775 750 h30 v20 h-25" style="fill: rgba(240, 240, 240, 0.7)"/>
 
 
 
