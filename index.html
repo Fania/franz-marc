@@ -37,7 +37,7 @@ img {
 
 <svg id="marc" viewBox="0 0 1500 1062" width="1500" height="1062">
 
-  <defs> <!-- gradients -->
+  <defs id="gradients"> <!-- gradients -->
     <linearGradient id="two_greens">
       <stop offset="0%" style="stop-color: rgb(7, 70, 31)"/>
       <stop offset="100%" style="stop-color: rgb(22, 126, 32)"/>
@@ -227,13 +227,13 @@ img {
       <stop offset="100%" style="stop-color: rgb(42, 125, 74)" stop-opacity="1"/>
     </linearGradient>
     <linearGradient id="orange_fade2" x1="5%" y1="0%" x2="95%" y2="100%">
-      <stop offset="40%" style="stop-color: rgb(198,51,16)" stop-opacity="0"/>
-      <stop offset="60%" style="stop-color: rgb(198,51,16)" stop-opacity="0.6"/>
-      <stop offset="100%" style="stop-color: rgb(198,51,16)" stop-opacity="1"/>
+      <stop offset="40%" style="stop-color: rgb(198, 51, 16)" stop-opacity="0"/>
+      <stop offset="60%" style="stop-color: rgb(198, 51, 16)" stop-opacity="0.6"/>
+      <stop offset="100%" style="stop-color: rgb(198, 51, 16)" stop-opacity="1"/>
     </linearGradient>
     <linearGradient id="orange_fade3" x1="50%" y1="100%" x2="50%" y2="0%">
-      <stop offset="20%" style="stop-color: rgb(198,51,16)" stop-opacity="1"/>
-      <stop offset="50%" style="stop-color: rgb(198,51,16)" stop-opacity="0"/>
+      <stop offset="20%" style="stop-color: rgb(198, 51, 16)" stop-opacity="1"/>
+      <stop offset="50%" style="stop-color: rgb(198, 51, 16)" stop-opacity="0"/>
     </linearGradient>
     <radialGradient id="green_cone_highlight_fade">
       <stop offset="20%" style="stop-color: rgb(127, 242, 255)" stop-opacity="0.2"/>
@@ -1097,31 +1097,48 @@ img {
 </svg>
 
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.6.1/randomColor.min.js" integrity="sha512-vPeZ7JCboHcfpqSx5ZD+/jpEhS4JpXxfz9orSvAPPj0EKUVShU2tgy7XkU+oujBJKnWmu4hU7r9MMQNWPfXsYw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script>
-const marc_svg = document.getElementById('marc');
-const blocks = document.getElementById('colour_blocks');
-console.log(`There are a total of ${blocks.children.length} colour blocks.`);
+// const marc_svg = document.getElementById('marc');
+const [...blocks] = document.getElementById('colour_blocks').children;
+const [...gradients] = document.getElementById('gradients').children;
+console.log(`There are a total of ${blocks.length} colour blocks.`);
+console.log(`And there are ${gradients.length} gradients.`);
+// console.log(blocks);
+// console.log(gradients);
 
-const mainlist = []
 
-// get colour block IDs
-for (let i=0; i < blocks.children.length; i++) {
-  mainlist.push(blocks.children[i]);
-  // console.log(blocks.children[i].id);
-}
-
-console.log(mainlist);
-
-mainlist.forEach(block => {
+blocks.forEach(block => {
   block.addEventListener('mouseover', (event) => {
-    console.log(`ID: ${block.id}`, event);
+    // console.log(blocks[i].id);
+    console.log(`ID: ${block.id}`);
+    console.log(event);
     console.dir(block);
+    // console.log(`${block.attributes.style.value}`);
+    const fill_col = block.attributes.style.value;
+    console.log(`${fill_col}`);
+    const re = /rgb\(\d{2,3}, \d{2,3}, \d{2,3}\)/g;
+    const found = [...fill_col.matchAll(re)];
+    console.log(found);
+
+    const color = randomColor({
+      format: 'rgb',
+      luminosity: 'random', // bright, light, dark
+      hue: 'random', // red, orange, yellow, green, blue, purple, pink, monochrome
+    }); // a hex code
+    console.log(color);
+
+    if (found.length > 0) {
+      block.attributes.style.value = `fill: ${color}`
+    }
+
   });
 });
 
 
 </script>
+
 
 </body>
 </html>
