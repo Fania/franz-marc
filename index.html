@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Der Blaue Reiter</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Franz Marc</title>
+  <!-- <link rel="stylesheet" href="styles.css"> -->
   <style>
 body {
   background: rgb(94, 94, 60);
@@ -14,7 +14,7 @@ body {
   align-items: center;
 }
 svg#marc {
-  /* border: red 2px solid; */
+  max-height: 90vh;
 }
 svg text {
   fill: white;
@@ -527,10 +527,6 @@ img {
       <stop offset="60%" style="stop-color: rgb(189, 217, 182)" stop-opacity="1"/>
       <stop offset="100%" style="stop-color: rgb(210, 227, 206)" stop-opacity="1"/>
     </linearGradient>
-
-
-
-
     <linearGradient id="blue_pink_next_to_rose_area_fade" x1="30%" y1="0%" x2="70%" y2="100%">
       <stop offset="10%" style="stop-color: rgb(36, 38, 94)" stop-opacity="1"/>
       <stop offset="20%" style="stop-color: rgb(76, 86, 157)" stop-opacity="1"/>
@@ -572,10 +568,6 @@ img {
       <stop offset="70%" style="stop-color: rgb(9, 83, 47)" stop-opacity="1"/>
       <stop offset="80%" style="stop-color: rgb(15, 55, 36)" stop-opacity="1"/>
     </linearGradient>
-
-
-
-
     <linearGradient id="fawn_body_green_yellow_layer_fade" x1="50%" y1="0%" x2="50%" y2="100%">
       <stop offset="0%" style="stop-color: rgb(208, 205, 74)" stop-opacity="1"/>
       <stop offset="50%" style="stop-color: rgb(77, 145, 86)" stop-opacity="1"/>
@@ -647,18 +639,15 @@ img {
       <stop offset="5%" style="stop-color: rgb(133, 180, 124)" stop-opacity="0.3"/>
       <stop offset="20%" style="stop-color: rgb(133, 180, 124)" stop-opacity="1"/>
     </linearGradient>
-
     <linearGradient id="fawn_behind_ear_fade2" x1="40%" y1="0%" x2="50%" y2="100%">
       <stop offset="0%" style="stop-color: rgb(48, 85, 48)" stop-opacity="0"/>
       <stop offset="15%" style="stop-color: rgb(48, 85, 48)" stop-opacity="0.1"/>
       <stop offset="25%" style="stop-color: rgb(48, 85, 48)" stop-opacity="0.5"/>
       <stop offset="35%" style="stop-color: rgb(48, 85, 48)" stop-opacity="1"/>
     </linearGradient>
-
-
   </defs>
 
-  <g> <!-- backgrounds -->
+  <g id="backgrounds"> <!-- backgrounds -->
     <path id="moon_blue_back_filler" d="M 0 0 L 200 0 210 480 0 480 Z" style="fill: rgb(14, 36, 52)"/>
     <path id="darkgreen_black_cone_filler" d="M 400 700 v362 h125 v-350 h-125" style="fill: rgb(7, 15, 18)"/>
     <path id="darkbrown_orange_filler" d="M 525 1062 L 525 1025 690 900 Q 810 1000 925 995 L 870 1062" style="fill: rgb(41, 31, 27)"/>
@@ -677,7 +666,7 @@ img {
     <path id="reddish_filler" d="M 200 0 v100 h50" style="fill: rgb(155, 52, 108)"/>
   </g>
 
-  <g> <!-- colour blocks -->
+  <g id="colour_blocks"> <!-- colour blocks -->
     <path id="black_green_white_diagonal" d="M 0 470 L 225 300 225 350 0 530" style="fill: url(#black_green_white)"/>
     <path id="black_green_white_diagonal2" d="M 50 485 L 190 379 v70 h-5 L 50 526" style="fill: url(#black_green_white2)"/>
     <path id="black_block_left" d="M 0 450 v240 L 70 650 v-75 L 190 490 v-40 h-20 L 70 515 v-15" fill="rgb(10, 15, 13)"/>
@@ -749,7 +738,7 @@ img {
     <path id="white_triangle_right" d="M 810 195 L 835 240 775 240" style="fill: rgb(232, 217, 210)"/>
     <path id="white_triangle_right_overlay" d="M 810 195 L 835 240 775 240" style="fill: url(#black_transparent2)"/>
     <path id="white_triangle_left" d="M 668 225 L 725 255 670 280" style="fill: rgb(159, 160, 149)"/>
-    <path id="white_triangle_left" d="M 668 224 L 725 255 670 280" style="fill: url(#black_transparent2)"/>
+    <path id="white_triangle_left_underlay" d="M 668 224 L 725 255 670 280" style="fill: url(#black_transparent2)"/>
 
     <path id="big_dark_blue_white_block" d="M 700 50 L 775 90 812 200 775 250 725 260 560 155 v-90" style="fill: url(#white_darkblue)"/>
     <path id="lilac_transparent_block" d="M 540 65 L 630 15 h30 v270 L 625 325 540 300" style="fill: url(#lilac_overlay)"/>
@@ -758,7 +747,7 @@ img {
     <path id="pink_black_overlay_block" d="M 650 210 L 550 150 v153 L 625 325 650 300" style="fill: url(#black_transparent3)"/>
     <path id="lilac_line" d="M 650 295 L 670 275 660 25 650 25" style="fill: url(#lilac_line_fade)"/>
     <path id="magenta_line" d="M 760 0 L 665 125 740 105 775 75 790 0" style="fill: url(#magenta_line_fade)"/>
-    <path id="magenta_line" d="M 600 0 L 650 0 625 15" style="fill: rgb(161, 105, 170)"/>
+    <path id="magenta_line_filler" d="M 600 0 L 650 0 625 15" style="fill: rgb(161, 105, 170)"/>
 
     <path id="orange_arc_block" d="M 790 0 Q 745 90 835 240 L 845 0" style="fill: url(#orange_arc_fade)"/>
     <path id="tiny_filler_black_block" d="M 776 74 L 777 96 764 84" style="fill: rgb(65, 46, 53)"/>
@@ -953,12 +942,6 @@ img {
   </g>
 
 
-
-
-
-
-
-
     <!-- 
     Horizontal gradients:   y1 & y2 equal   and  x1 & x2 differ
     Vertical   gradients:   x1 & x2 equal   and  y1 & y2 differ
@@ -1113,6 +1096,31 @@ img {
   </g>
 </svg>
 
+
+
+<script>
+const marc_svg = document.getElementById('marc');
+const blocks = document.getElementById('colour_blocks');
+console.log(`There are a total of ${blocks.children.length} colour blocks.`);
+
+const mainlist = []
+
+// get colour block IDs
+for (let i=0; i < blocks.children.length; i++) {
+  mainlist.push(blocks.children[i]);
+  // console.log(blocks.children[i].id);
+}
+
+console.log(mainlist);
+
+mainlist.forEach(block => {
+  block.addEventListener('mouseover', (event) => {
+    console.log(`ID: ${block.id}`, event);
+  });
+});
+
+
+</script>
 
 </body>
 </html>
