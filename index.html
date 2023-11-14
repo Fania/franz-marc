@@ -1113,24 +1113,54 @@ blocks.forEach(block => {
   block.addEventListener('mouseover', (event) => {
     // console.log(blocks[i].id);
     console.log(`ID: ${block.id}`);
-    console.log(event);
-    console.dir(block);
+    // console.log(event);
+    // console.dir(block);
     // console.log(`${block.attributes.style.value}`);
     const fill_col = block.attributes.style.value;
-    console.log(`${fill_col}`);
-    const re = /rgb\(\d{2,3}, \d{2,3}, \d{2,3}\)/g;
-    const found = [...fill_col.matchAll(re)];
-    console.log(found);
+    // console.log(`${fill_col}`);
+    // console.log(found);
+    // console.log('found.length',found.length);
 
-    const color = randomColor({
+    const rcolour = randomColor({
       format: 'rgb',
       luminosity: 'random', // bright, light, dark
       hue: 'random', // red, orange, yellow, green, blue, purple, pink, monochrome
     }); // a hex code
-    console.log(color);
 
-    if (found.length > 0) {
-      block.attributes.style.value = `fill: ${color}`
+    const re = /rgb\(\d{2,3}, \d{2,3}, \d{2,3}\)/g;
+    const found = [...fill_col.matchAll(re)];
+    // console.log('random colour', rcolour);
+    // console.log('actual colour', found[0][0]);
+
+    if (found.length > 0) { // RGB
+      console.log('RGB CASE');
+      block.attributes.style.value = `fill: ${rcolour}`
+    } else { // GRADIENTS
+      console.log('GRADIENT CASE');
+      const reID = /url\(#(\w+)\)/g;
+      const foundID = [...fill_col.matchAll(reID)];
+      // console.log('foundID',foundID);
+      let result = '';
+      if(foundID.length > 0) {
+        result = foundID[0][1];
+
+        const grad = gradients.find((gr) => gr.id == result);
+        console.log(grad);
+        console.dir(grad);
+        const [...toddlers] = grad.children;
+        toddlers.forEach(ch => {
+          console.log(ch.attributes.style.value);
+          ch.attributes.style.value = `stop-color: ${rcolour}`
+        })
+        // stop-color: rgb(123, 145, 83)
+        // const reStop = /rgb\(\d{2,3}, \d{2,3}, \d{2,3}\)/g;
+        // const foundStop = [...fill_col.matchAll(reStop)];
+
+      } else { // RGB
+        block.attributes.style.value = `fill: ${rcolour}`
+      }
+      console.log('result',result);
+      // fill: url(#gray_transparent_fade3)
     }
 
   });
