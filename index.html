@@ -10,11 +10,14 @@ body {
   background: rgb(94, 94, 60);
   height: 98vh;
   display: flex;
+  gap: 20px; 
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 svg#marc {
   max-height: 90vh;
+  /* max-width: 95vw; */
   overflow: hidden;
 }
 svg text {
@@ -26,6 +29,20 @@ img {
 }
 #coordinates {
   display: none;
+}
+#buttons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
+}
+#buttons div {
+  background: rgba(0,0,0,0.2);
+  padding: 10px;
+  border-radius: 15px;
+}
+#buttons div:hover {
+  background: rgba(255,255,255,0.2);
 }
   </style>
 </head>
@@ -1096,11 +1113,18 @@ img {
   </g>
 </svg>
 
+<div id="buttons">
+  <div id="original">Original</div>
+  <div id="solids">Solids</div>
+  <div id="gradients">Gradients</div>
+  <div id="automatic">Automatic</div>
+</div>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.6.1/randomColor.min.js" integrity="sha512-vPeZ7JCboHcfpqSx5ZD+/jpEhS4JpXxfz9orSvAPPj0EKUVShU2tgy7XkU+oujBJKnWmu4hU7r9MMQNWPfXsYw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script>
-// const marc_svg = document.getElementById('marc');
+const marc_svg = document.getElementById('marc');
 const [...blocks] = document.getElementById('colour_blocks').children;
 const [...gradients] = document.getElementById('gradients').children;
 console.log(`There are a total of ${blocks.length} colour blocks.`);
@@ -1109,43 +1133,89 @@ console.log(`And there are ${gradients.length} gradients.`);
 // console.log(gradients);
 
 
-blocks.forEach(block => {
-  block.addEventListener('mouseover', (event) => {
-    const fill_col = block.attributes.style.value;
-    const rcolour = randomColor({
-      format: 'rgb',
-      luminosity: 'random', // bright, light, dark
-      hue: 'random', // red, orange, yellow, green, blue, purple, pink, monochrome
-    }); // a hex code
-    const re = /rgb\(\d{2,3}, \d{2,3}, \d{2,3}\)/g;
-    const found = [...fill_col.matchAll(re)];
-    if (found.length > 0) { // RGB
-      console.log(`RGB ${block.id}`);
-      block.attributes.style.value = `fill: ${rcolour}`
-    } else { // GRADIENTS
-      console.log(`GRADIENT ${block.id}`);
-      const reID = /url\(#(\w+)\)/g;
-      const foundID = [...fill_col.matchAll(reID)];
-      let result = '';
-      if(foundID.length > 0) {
-        result = foundID[0][1];
-        const grad = gradients.find((gr) => gr.id == result);
-        const [...toddlers] = grad.children;
-        toddlers.forEach(ch => {
-          console.log(ch.attributes.style.value);
-          const newcolour = randomColor({
-            format: 'rgb',
-            luminosity: 'random', // bright, light, dark
-            hue: 'random', // red, orange, yellow, green, blue, purple, pink, monochrome
-          }); // a hex code
-          ch.attributes.style.value = `stop-color: ${newcolour}`
-        })
-      } else { // RGB
-        block.attributes.style.value = `fill: ${rcolour}`
-      }
+const [...buttons] = document.getElementById('buttons').children;
+// console.log(buttons);
+
+buttons.forEach(butt => {
+  butt.addEventListener('click', (event) => {
+    console.log('you touched my', butt.id);
+    switch (butt.id) {
+      case 'solids':
+        gradientsRemoveListeners();
+        break;
+      case 'gradients':
+        gradientsAddListeners();
+        break;
+      case 'automatic':
+        gradientsRemoveListeners();
+        break;
+      default:
+        gradientsRemoveListeners();
+        break;
     }
+
   });
 });
+
+
+
+// GRADIENTS
+function gradientsAddListeners() {
+  console.log('adding Listeners');
+  blocks.forEach(block => {
+    block.addEventListener('mouseover', handleGradients(block));
+  });
+}
+function gradientsRemoveListeners() {
+  console.log('removing Listeners');
+  blocks.forEach(block => {
+    const clone = block.cloneNode(true);
+    // marc_svg.replaceChild(clone, block);
+    // block.parentNode.replaceChild(clone, block);
+    block.replaceWith(clone);
+  });
+}
+
+
+function handleGradients(block) {
+  console.log('inside handleGradients');
+  console.log(block);
+  const fill_col = block.attributes.style.value;
+  const rcolour = randomColor({
+    format: 'rgb',
+    luminosity: 'random', // bright, light, dark
+    hue: 'random', // red, orange, yellow, green, blue, purple, pink, monochrome
+  }); // a hex code
+  const re = /rgb\(\d{2,3}, \d{2,3}, \d{2,3}\)/g;
+  const found = [...fill_col.matchAll(re)];
+  if (found.length > 0) { // RGB
+    console.log(`RGB ${block.id}`);
+    block.attributes.style.value = `fill: ${rcolour}`
+  } else { // GRADIENTS
+    console.log(`GRADIENT ${block.id}`);
+    const reID = /url\(#(\w+)\)/g;
+    const foundID = [...fill_col.matchAll(reID)];
+    let result = '';
+    if(foundID.length > 0) {
+      result = foundID[0][1];
+      const grad = gradients.find((gr) => gr.id == result);
+      const [...toddlers] = grad.children;
+      toddlers.forEach(ch => {
+        console.log('old', ch.attributes.style.value);
+        const newcolour = randomColor({
+          format: 'rgb',
+          luminosity: 'random', // bright, light, dark
+          hue: 'random', // red, orange, yellow, green, blue, purple, pink, monochrome
+        }); // a hex code
+        ch.attributes.style.value = `stop-color: ${newcolour}`
+      })
+    } else { // RGB
+      block.attributes.style.value = `fill: ${rcolour}`
+    }
+  }
+}
+
+
 
 
 </script>
