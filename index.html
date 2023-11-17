@@ -1160,60 +1160,51 @@ buttons.forEach(butt => {
 
 
 // GRADIENTS
-function gradientsAddListeners() {
-  console.log('adding Listeners');
-  blocks.forEach(block => {
-    block.addEventListener('mouseover', handleGradients(block));
-  });
-}
-function gradientsRemoveListeners() {
-  console.log('removing Listeners');
-  blocks.forEach(block => {
-    const clone = block.cloneNode(true);
-    // marc_svg.replaceChild(clone, block);
-    // block.parentNode.replaceChild(clone, block);
-    block.replaceWith(clone);
-  });
-}
 
-
-function handleGradients(block) {
-  console.log('inside handleGradients');
-  console.log(block);
-  const fill_col = block.attributes.style.value;
-  const rcolour = randomColor({
-    format: 'rgb',
-    luminosity: 'random', // bright, light, dark
-    hue: 'random', // red, orange, yellow, green, blue, purple, pink, monochrome
-  }); // a hex code
-  const re = /rgb\(\d{2,3}, \d{2,3}, \d{2,3}\)/g;
-  const found = [...fill_col.matchAll(re)];
-  if (found.length > 0) { // RGB
-    console.log(`RGB ${block.id}`);
-    block.attributes.style.value = `fill: ${rcolour}`
-  } else { // GRADIENTS
-    console.log(`GRADIENT ${block.id}`);
-    const reID = /url\(#(\w+)\)/g;
-    const foundID = [...fill_col.matchAll(reID)];
-    let result = '';
-    if(foundID.length > 0) {
-      result = foundID[0][1];
-      const grad = gradients.find((gr) => gr.id == result);
-      const [...toddlers] = grad.children;
-      toddlers.forEach(ch => {
-        console.log('old', ch.attributes.style.value);
-        const newcolour = randomColor({
-          format: 'rgb',
-          luminosity: 'random', // bright, light, dark
-          hue: 'random', // red, orange, yellow, green, blue, purple, pink, monochrome
-        }); // a hex code
-        ch.attributes.style.value = `stop-color: ${newcolour}`
-      })
-    } else { // RGB
+blocks.forEach(block => {
+  block.addEventListener('mouseover', () => {
+  
+    console.log(block);
+    const fill_col = block.attributes.style.value;
+    const rcolour = randomColor({
+      format: 'rgb',
+      luminosity: 'random', // bright, light, dark
+      hue: 'random', // red, orange, yellow, green, blue, purple, pink, monochrome
+    }); // a hex code
+    const re = /rgb\(\d{2,3}, \d{2,3}, \d{2,3}\)/g;
+    const found = [...fill_col.matchAll(re)];
+    if (found.length > 0) { // RGB
+      console.log(`RGB ${block.id}`);
       block.attributes.style.value = `fill: ${rcolour}`
+    } else { // GRADIENTS
+      console.log(`GRADIENT ${block.id}`);
+      const reID = /url\(#(\w+)\)/g;
+      const foundID = [...fill_col.matchAll(reID)];
+      let result = '';
+      if(foundID.length > 0) {
+        result = foundID[0][1];
+        const grad = gradients.find((gr) => gr.id == result);
+        const [...toddlers] = grad.children;
+        toddlers.forEach(ch => {
+          // console.log('old', ch.attributes.style.value);
+          // const newcolour = randomColor({
+          //   format: 'rgb',
+          //   luminosity: 'random', // bright, light, dark
+          //   hue: 'random', // red, orange, yellow, green, blue, purple, pink, monochrome
+          // }); // a hex code
+          // ch.attributes.style.value = `stop-color: ${newcolour}`
+          ch.attributes.style.value = `stop-color: ${rcolour}`
+        })
+      } else { // RGB
+        block.attributes.style.value = `fill: ${rcolour}`
+      }
     }
-  }
-}
+  
+  });
+});
+
+
+
 
 
 
