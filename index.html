@@ -1152,6 +1152,9 @@ buttons.forEach(butt => {
   butt.addEventListener('click', (event) => {
     console.log('you touched my', butt.id);
     console.log(document.querySelector('#buttons input:checked').value);
+    if(butt.id == 'original') {
+      location.reload();
+    }
   });
 });
 
@@ -1163,36 +1166,35 @@ blocks.forEach(block => {
   block.addEventListener('mouseover', () => {
   
     console.log(block);
-    const fill_col = block.attributes.style.value;
+    const block_val = block.attributes.style.value;
     const rcolour = randomColor({
       format: 'rgb',
       luminosity: 'random', // bright, light, dark
       hue: 'random', // red, orange, yellow, green, blue, purple, pink, monochrome
-    }); // a hex code
+    });
     const re = /rgb\(\d{2,3}, \d{2,3}, \d{2,3}\)/g;
-    const found = [...fill_col.matchAll(re)];
+    const found = [...block_val.matchAll(re)];
+    let old_RGB = '';
+    let old_URL = '';
     if (found.length > 0) { // RGB
       console.log(`RGB ${block.id}`);
+      old_RGB = block.attributes.style.value;
+      console.log('old_RGB',old_RGB);
       block.attributes.style.value = `fill: ${rcolour}`;
     } else { // GRADIENTS
       console.log(`GRADIENT ${block.id}`);
       const reID = /url\(#(\w+)\)/g;
-      const foundID = [...fill_col.matchAll(reID)];
+      const foundID = [...block_val.matchAll(reID)];
       let result = '';
       if(foundID.length > 0) {
         result = foundID[0][1];
         const grad = gradients.find((gr) => gr.id == result);
         const [...toddlers] = grad.children;
         toddlers.forEach(ch => {
-          const originalStopCol = ch.attributes.style.value;
-          console.log('originalStopCol',originalStopCol);
+          old_URL = ch.attributes.style.value;
+          console.log('old_URL',old_URL);
 
           const buttState = document.querySelector('#buttons input:checked');
-          if(buttState.value == 'original') {
-            
-            ch.attributes.style.value = originalStopCol;
-
-          }
           if(buttState.value == 'solids') {
             ch.attributes.style.value = `stop-color: ${rcolour}`
           }
