@@ -36,12 +36,18 @@ img {
   align-items: center;
   gap: 10px;
 }
-#buttons div {
+#buttons label {
   background: rgba(0,0,0,0.2);
   padding: 10px;
   border-radius: 15px;
 }
-#buttons div:hover {
+#buttons input {
+  display: none;
+}
+#buttons input:checked + label  {
+  background: rgba(255,255,255,0.2);
+}
+#buttons label:hover {
   background: rgba(255,255,255,0.2);
 }
   </style>
@@ -1113,11 +1119,22 @@ img {
   </g>
 </svg>
 
-<div id="buttons">
+<!-- <div id="buttons">
   <div id="original">Original</div>
   <div id="solids">Solids</div>
   <div id="gradients">Gradients</div>
   <div id="automatic">Automatic</div>
+</div> -->
+
+<div id="buttons">
+  <input type="radio" id="original" name="buttons" value="original" checked />
+  <label for="original">Original</label>
+  <input type="radio" id="solids" name="buttons" value="solids" />
+  <label for="solids">Solids</label>
+  <input type="radio" id="gradientsR" name="buttons" value="gradients" />
+  <label for="gradientsR">Gradients</label>
+  <input type="radio" id="automatic" name="buttons" value="automatic" />
+  <label for="automatic">Automatic</label>
 </div>
 
 
@@ -1127,33 +1144,14 @@ img {
 const marc_svg = document.getElementById('marc');
 const [...blocks] = document.getElementById('colour_blocks').children;
 const [...gradients] = document.getElementById('gradients').children;
+const [...buttons] = document.getElementsByName('buttons');
 console.log(`There are a total of ${blocks.length} colour blocks.`);
 console.log(`And there are ${gradients.length} gradients.`);
-// console.log(blocks);
-// console.log(gradients);
-
-
-const [...buttons] = document.getElementById('buttons').children;
-// console.log(buttons);
 
 buttons.forEach(butt => {
   butt.addEventListener('click', (event) => {
     console.log('you touched my', butt.id);
-    switch (butt.id) {
-      case 'solids':
-        gradientsRemoveListeners();
-        break;
-      case 'gradients':
-        gradientsAddListeners();
-        break;
-      case 'automatic':
-        gradientsRemoveListeners();
-        break;
-      default:
-        gradientsRemoveListeners();
-        break;
-    }
-
+    console.log(document.querySelector('#buttons input:checked').value);
   });
 });
 
@@ -1175,7 +1173,7 @@ blocks.forEach(block => {
     const found = [...fill_col.matchAll(re)];
     if (found.length > 0) { // RGB
       console.log(`RGB ${block.id}`);
-      block.attributes.style.value = `fill: ${rcolour}`
+      block.attributes.style.value = `fill: ${rcolour}`;
     } else { // GRADIENTS
       console.log(`GRADIENT ${block.id}`);
       const reID = /url\(#(\w+)\)/g;
@@ -1186,16 +1184,29 @@ blocks.forEach(block => {
         const grad = gradients.find((gr) => gr.id == result);
         const [...toddlers] = grad.children;
         toddlers.forEach(ch => {
-          // console.log('old', ch.attributes.style.value);
-          // const newcolour = randomColor({
-          //   format: 'rgb',
-          //   luminosity: 'random', // bright, light, dark
-          //   hue: 'random', // red, orange, yellow, green, blue, purple, pink, monochrome
-          // }); // a hex code
-          // ch.attributes.style.value = `stop-color: ${newcolour}`
-          ch.attributes.style.value = `stop-color: ${rcolour}`
+          const buttState = document.querySelector('#buttons input:checked');
+          if(buttState.value == 'original') {
+            
+            ch.attributes.style.value = fill_col;
+
+          }
+          if(buttState.value == 'solids') {
+            ch.attributes.style.value = `stop-color: ${rcolour}`
+          }
+          if(buttState.value == 'gradients') {
+            const newcolour = randomColor({
+              format: 'rgb',
+              luminosity: 'random', // bright, light, dark
+              hue: 'random', // red, orange, yellow, green, blue, purple, pink, monochrome
+            }); // a hex code
+            ch.attributes.style.value = `stop-color: ${newcolour}`
+          }
+          if(buttState.value == 'automatic') {
+            // ch.attributes.style.value = 
+          }
         })
-      } else { // RGB
+      } 
+      else { // RGB
         block.attributes.style.value = `fill: ${rcolour}`
       }
     }
