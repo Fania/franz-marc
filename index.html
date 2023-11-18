@@ -1392,34 +1392,6 @@ localStorage.setItem("franzmarcColours", coloursString);
 // }
 
 
-blocks.forEach(block => {
-  const block_val = block.attributes.style.value;
-  const re = /rgb\(\d{2,3}, \d{2,3}, \d{2,3}\)/g;
-  const found = [...block_val.matchAll(re)];
-  if (found.length > 0) { // RGB
-    console.log(`'${block.id}': '${block.attributes.style.value}'`);
-  } else { // GRADIENTS
-      const reID = /url\(#(\w+)\)/g;
-      const foundID = [...block_val.matchAll(reID)];
-      let result = '';
-      if(foundID.length > 0) {
-        result = foundID[0][1];
-        // console.log(result);
-        const grad = gradients.find((gr) => gr.id == result);
-        // console.log(grad);
-        const [...toddlers] = grad.children;
-        toddlers.forEach(ch => {
-          console.log(`'${ch.parentElement.id}': '${ch.attributes.style.value}'`);
-        });
-      } else {
-        console.log(`'${block.id}': '${block.attributes.style.value}'`);
-      }
-  }
-});
-
-
-
-// GRADIENTS
 
 blocks.forEach(block => {
   block.addEventListener('mouseover', () => {
@@ -1498,7 +1470,31 @@ blocks.forEach(block => {
   });
 });
 
-
+// used to generate helper console logs for localStorage stuff
+// blocks.forEach(block => {
+//   const block_val = block.attributes.style.value;
+//   const re = /rgb\(\d{2,3}, \d{2,3}, \d{2,3}\)/g;
+//   const found = [...block_val.matchAll(re)];
+//   if (found.length > 0) { // RGB
+//     console.log(`'${block.id}': '${block.attributes.style.value}'`);
+//   } else { // GRADIENTS
+//       const reID = /url\(#(\w+)\)/g;
+//       const foundID = [...block_val.matchAll(reID)];
+//       let result = '';
+//       if(foundID.length > 0) {
+//         result = foundID[0][1];
+//         // console.log(result);
+//         const grad = gradients.find((gr) => gr.id == result);
+//         // console.log(grad);
+//         const [...toddlers] = grad.children;
+//         toddlers.forEach(ch => {
+//           console.log(`'${ch.parentElement.id}': '${ch.attributes.style.value}'`);
+//         });
+//       } else {
+//         console.log(`'${block.id}': '${block.attributes.style.value}'`);
+//       }
+//   }
+// });
 </script>
 
 
