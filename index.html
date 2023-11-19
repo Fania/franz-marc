@@ -1138,6 +1138,7 @@ img {
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.6.1/randomColor.min.js" integrity="sha512-vPeZ7JCboHcfpqSx5ZD+/jpEhS4JpXxfz9orSvAPPj0EKUVShU2tgy7XkU+oujBJKnWmu4hU7r9MMQNWPfXsYw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="hammer.min.js"></script>
 
 <script>
 const marc_svg = document.getElementById('marc');
@@ -1368,6 +1369,7 @@ buttons.forEach(butt => {
 
 
 
+
 // localStorage.setItem("myCat", "Tom");
 // const cat = localStorage.getItem("myCat");
 
@@ -1469,6 +1471,15 @@ blocks.forEach(block => {
   
   });
 });
+
+
+// HAMMERTIME
+const mc = new Hammer.Manager(marc_svg);
+mc.add( new Hammer.Pan({ direction: Hammer.DIRECTION_ALL, threshold: 0 }) );
+mc.on("pan", handlePan);
+function handlePan(event) {
+  console.log(event);
+}
 
 // used to generate helper console logs for localStorage stuff
 // blocks.forEach(block => {
