@@ -1119,12 +1119,6 @@ img {
   </g>
 </svg>
 
-<!-- <div id="buttons">
-  <div id="original">Original</div>
-  <div id="solids">Solids</div>
-  <div id="gradients">Gradients</div>
-  <div id="automatic">Automatic</div>
-</div> -->
 
 <div id="buttons">
   <input type="radio" id="original" name="buttons" value="original" checked />
@@ -1147,10 +1141,10 @@ const [...blocks] = document.getElementById('colour_blocks').children;
 const [...gradients] = document.getElementById('gradients').children;
 const [...buttons] = document.getElementsByName('buttons');
 console.log(`There are a total of ${blocks.length} colour blocks.`);
-console.log(`And there are ${gradients.length} gradients.`);
+console.log(`And there are ${gradients.length} unique gradients.`);
 
 
-const coloursJSON = {
+const defaults = {
   'black_green_white': ['stop-color: rgb(182, 185, 179)','stop-color: rgb(94, 126, 128)','stop-color: rgb(25, 65, 60)','stop-color: rgb(10, 20, 19)','stop-color: rgb(10, 20, 19)'],
   'black_green_white2': ['stop-color: rgb(182, 185, 179)','stop-color: rgb(94, 126, 128)','stop-color: rgb(25, 65, 60)','stop-color: rgb(10, 20, 19)','stop-color: rgb(10, 20, 19)'],
   'black_block_left': 'fill: rgb(10, 15, 13)',
@@ -1354,57 +1348,178 @@ const coloursJSON = {
 };
 
 
+const relations = {
+  "black_green_white_diagonal": "black_green_white",
+  "black_green_white_diagonal2": "black_green_white2",
+  "moon_overlay": "white_lightblue",
+  "green_transparent_beam3": "green_transparent4",
+  "greenish_finger_shadow_moon": "green_transparent",
+  "darkgreen_lightgreen_block": "darkgreen_lightgreen",
+  "orange_fade_block": "orange_fade",
+  "yellow_green_block": "yellow_green",
+  "green_gradient_block": "two_greens",
+  "bright_blue_block": "black_blue_white",
+  "pink_red_gradient_block": "pink_red",
+  "blue_yellow_gradient_block": "blue_yellow",
+  "pink_red_block": "magenta_red",
+  "teal_lozenge": "teal_lozenge_drop",
+  "blue_purple_long_block": "blue_purple",
+  "blue_light_green_arc": "blue_light_green",
+  "green_white_triangle": "green_white",
+  "black_transparent_shadow": "black_transparent",
+  "blue_sky_block": "lightblue_darkblue",
+  "black_pink_white_block": "black_pink_white",
+  "green_transparent_beam2": "green_transparent3",
+  "green_transparent_beam": "green_transparent2",
+  "brown_triangle_large": "brown_ochre",
+  "lilac_black_block": "lilac_black",
+  "teal_block": "teal_fade",
+  "white_triangle_right_overlay": "black_transparent2",
+  "white_triangle_left_underlay": "black_transparent2",
+  "big_dark_blue_white_block": "white_darkblue",
+  "lilac_transparent_block": "lilac_overlay",
+  "white_fade_curve": "white_fade_curve_fade",
+  "lilac_transparent_block2": "lilac_overlay2",
+  "pink_black_overlay_block": "black_transparent3",
+  "lilac_line": "lilac_line_fade",
+  "magenta_line": "magenta_line_fade",
+  "orange_arc_block": "orange_arc_fade",
+  "green_lightgreen_vertical_beam": "green_lightgreen_vertical_beam_fade",
+  "darkgreen_black_cone2": "darkgreen_black_cone_fade",
+  "darkgreen_black_cone3": "darkgreen_black_cone_fade",
+  "darkgreen_black_cone4": "darkgreen_black_cone_fade",
+  "black_cone5": "black_transparent",
+  "green_cone_highlight": "green_cone_highlight_fade",
+  "green_cone_highlight2": "green_cone_highlight_fade",
+  "orange_fade_block2": "orange_fade2",
+  "orange_fade_block3": "orange_fade3",
+  "green_fade_bottom_block": "dark_black_blue_center_green_arc_top_block_fade",
+  "dark_black_blue_center_block": "dark_black_blue_center_block_fade",
+  "dark_black_blue_center_green_arc_top_block": "dark_black_blue_center_green_arc_top_block_fade",
+  "dark_block_behind_white_branch": "dark_block_behind_white_branch_fade",
+  "orangy_branch": "orangy_branch_fade",
+  "orangy_branch2": "orangy_branch_overlay",
+  "rose_bottom_right": "rose_Block_bottom_right_fade",
+  "rose_bottom_right_overlay": "lilac_overlay3",
+  "green_yellow_orange_block": "green_yellow_orange_fade",
+  "mustard_green_whitish": "mustard_green_whitish_fade",
+  "teal_block_under_fawn": "teal_brightteal_fade",
+  "teal_block_under_fawn2": "teal_brightteal_fade2",
+  "green_leaf_middle_bottom": "green_leaf_middle_bottom_fade",
+  "yellow_mustard_block": "yellow_mustard_fade",
+  "darkgreen_block_next_to_fawn": "darkgreen_block_next_to_fawn_fade",
+  "lightdarkgreen_block_next_to_fawn": "lightdarkgreen_block_next_to_fawn_fade",
+  "purple_areas_near_fawn_face": "purple_areas_near_fawn_face_fade",
+  "green_beam_near_fawn_nose": "green_beam_near_fawn_nose_fade",
+  "greenfade_beam_above_fawn": "greenfade_beam_above_fawn_fade",
+  "greenfade_beam_above_fawn2": "greenfade_beam_above_fawn_fade2",
+  "purple_areas_near_fawn_face2": "purple_areas_near_fawn_face_fade",
+  "purple_areas_near_fawn_face3": "purple_areas_near_fawn_face_fade",
+  "dark_mountain": "dark_mountain_fade",
+  "olive_transparent_next_to_pine": "olive_transparent_fade",
+  "white_yellow_orange_block": "white_yellow_orange_fade",
+  "white_rose_area3": "white_rose_area_fade3",
+  "mustard_triangle_white_line": "white_yellow_fade",
+  "green_yellow_fade_block": "yellow_green_fade",
+  "green_olive_fade_block": "green_olive_fade",
+  "black_front_triangle_right": "black_blue_fade",
+  "yellow_pink_front_block_right": "yellow_pink_transparent_fade",
+  "green_yellow_front_block_right": "green_yellow_transparent_fade",
+  "gray_front_block_right": "gray_transparent_fade",
+  "gray_front_circle_right": "gray_transparent_fade2",
+  "gray_front_outer_circle_right": "gray_transparent_fade5",
+  "gray_front_half_circle_right": "gray_transparent_fade",
+  "gray_front_fade_right": "gray_transparent_fade3",
+  "gray_front_line_right": "gray_transparent_fade4",
+  "main_branch": "main_branch_fade",
+  "yellow_pink_triangle": "yellow_pink_fade",
+  "green_triangle_block": "green_triangle_fade",
+  "green_triangle_block2": "green_triangle_fade2",
+  "green_yellow_next_to_tree_block": "green_yellow_next_to_tree_block_fade",
+  "yellow_mint_far_right": "yellow_mint_far_right_fade",
+  "yellow_lightgreen_block": "yellow_lightgreen_block_fade",
+  "green_triangle_line": "green_triangle_fade2",
+  "light_brown_block": "light_brown_block_fade",
+  "yellow_midgreen_block": "yellow_midgreen_block_fade",
+  "green_block_next_to_tree_right": "green_block_next_to_tree_right_fade",
+  "white_yellow_white_orange": "white_yellow_white_orange_fade",
+  "yellow_green_back_fade_block": "yellow_green_back_fade_block_fade",
+  "brown_white_green_corner": "brown_white_green_corner_fade",
+  "lightgreen_top_right": "lightgreen_top_right_fade",
+  "brightyellow_white_triangle_right": "brightyellow_white_triangle_right_fade",
+  "red_rose_white_trio_white": "red_rose_white_trio_white_fade",
+  "white_green_next_to_yellow": "white_green_next_to_yellow_fade",
+  "blue_pink_next_to_rose_area": "blue_pink_next_to_rose_area_fade",
+  "white_rose_area": "white_rose_area_fade",
+  "white_rose_area2": "white_rose_area_fade2",
+  "green_brightgreen_area": "green_brightgreen_area_fade",
+  "green_misch_masch_area": "green_misch_masch_area_fade",
+  "fawn_head": "fawn_head_fade",
+  "fawn_neck": "fawn_neck_fade",
+  "fawn_behind_ear": "fawn_behind_ear_fade",
+  "fawn_behind_ear2": "fawn_behind_ear_fade2",
+  "fawn_face_side_white": "fawn_face_side_white_fade",
+  "fawn_nose_white_highlight": "fawn_nose_white_highlight_fade",
+  "fawn_eyelid": "fawn_eyelid_fade",
+  "fawn_neck_dark_left": "fawn_neck_dark_left_fade",
+  "fawn_neck_dark_right": "fawn_neck_dark_right_fade",
+  "fawn_body_green_yellow_layer": "fawn_body_green_yellow_layer_fade",
+  "fawn_body_white_transparent_layer": "fawn_body_white_transparent_layer_fade",
+  "fawn_body_yellow_transparent_layer": "fawn_body_yellow_transparent_layer_fade",
+  "fawn_body_white_corner": "fawn_body_white_transparent_corner_fade"
+}
+
+
+console.log(`Together there are ${Object.keys(relations).length} blocks with gradients.`);
+// console.log(relations);
+// console.log(Object.keys(relations).length);
 
 
 buttons.forEach(butt => {
   butt.addEventListener('click', (event) => {
-    console.log('you touched my', butt.id);
-    console.log(document.querySelector('#buttons input:checked').value);
+    // console.log('you touched my', butt.id);
+    // console.log(document.querySelector('#buttons input:checked').value);
+    // manageButtons();
     if(butt.id == 'original') {
-      location.reload();
+      location.reload(); 
+      // simply reload the page when clicking the original button
+      // TODO should I be resetting the localstorage colours?
     }
   });
 });
+// manageButtons();
 
 
 
+saveColours(defaults);
 
 
-
-// localStorage.setItem("myCat", "Tom");
-// const cat = localStorage.getItem("myCat");
-
-const coloursString = JSON.stringify(coloursJSON);
-localStorage.setItem("franzmarcColours", coloursString);
-// const settingsString = localStorage.getItem("magicSettings");
-// let settingsJSON = {};
-// settingsJSON = JSON.parse(settingsString);
 
 function getColours() {
   // console.log('getColours');
   const coloursString = localStorage.getItem("franzmarcColours");
-  let mycoloursJSON = {};
+  let coloursJSON = {};
   if (coloursString === null) {
-    mycoloursJSON = coloursJSON; // defaults
-    saveColours(mycoloursJSON);
+    coloursJSON = defaults;
+    saveColours(coloursJSON);
     console.log("first-time setup");
   } else {
-    mycoloursJSON = JSON.parse(coloursString);
+    coloursJSON = JSON.parse(coloursString);
   }
-  return mycoloursJSON;
+  return coloursJSON;
 }
 
 
-function saveColours(mycoloursJSON) {
+function saveColours(coloursJSON) {
   // console.log('saveColours to localStorage');
-  const coloursString = JSON.stringify(mycoloursJSON);
+  const coloursString = JSON.stringify(coloursJSON);
   localStorage.setItem("franzmarcColours", coloursString);
 }
 
 
 function updateColour(id, newColour) {
   let coloursJSON = getColours();
-  const oldColour = coloursJSON[id];
+  const oldColour = defaults[id];
   coloursJSON[id] = newColour;
   console.log(`updating ${id} from ${oldColour} to ${newColour}`);
   saveColours(coloursJSON);
@@ -1414,28 +1529,28 @@ function updateColour(id, newColour) {
 
 
 
+
+
+
+// function manageButtons() {
 blocks.forEach(block => {
   block.addEventListener('mouseover', () => {
-    const buttState = document.querySelector('#buttons input:checked');
-    if(buttState.value == 'original') {
-      // ch.attributes.style.value = `stop-color: ${rgba(0,0,0,1)}`;
-      // handleBlocks(block);
-      // block.attributes.style.value = `fill: ${rcolour}`;
+    const buttState = document.querySelector('#buttons input:checked').value;
+    // console.log(buttState);
+    if(buttState == 'original') {
     }
-    if(buttState.value == 'solids') {
-      handleSolids(block);
+    if(buttState == 'solids') {
+        handleSolids(block);
     }
-    if(buttState.value == 'gradients') {
-      handleGradients(block);
+    if(buttState == 'gradients') {
+        handleGradients(block);
     }
-    if(buttState.value == 'automatic') {
-      // ch.attributes.style.value = 
-      // handleBlocks(block);
+    if(buttState == 'automatic') {
     }
-
-
   });
 });
+// }
+
 
 
 
@@ -1461,7 +1576,13 @@ function handleSolids(block) {
 
 
 function handleGradients(block) {
-    console.log(`GRADIENT '${block.id}': '${block.attributes.style.value}'`);
+    console.log(`GRADIENT '${block.id}': '${relations[block.id]}'`);
+
+    const originalColour = defaults[relations[block.id]];
+    // console.log('originalColour',originalColour);
+    updateColour(relations[block.id], originalColour);
+
+
     // style="fill: url(#black_black_black)"
     const block_val = block.attributes.style.value;
     const rcolour = randomColor({
@@ -1471,7 +1592,7 @@ function handleGradients(block) {
     });
     const re = /rgb\(\d{2,3}, \d{2,3}, \d{2,3}\)/g;
     const found = [...block_val.matchAll(re)];
-    console.log('found',found);
+    // console.log('found',found);
     let old_RGB = '';
     let old_URL = '';
     if (found.length == 0) { // GRADIENTS
@@ -1480,12 +1601,14 @@ function handleGradients(block) {
       let result = '';
       if(foundID.length > 0) {
         result = foundID[0][1];
+        // console.log('result',result);
         const grad = gradients.find((gr) => gr.id == result);
         const [...toddlers] = grad.children;
         let coloursList = [];
-        let myColoursJSON = getColours();
-        const currentColour = myColoursJSON[result];
-        const originalColour = coloursJSON[result];
+        let ColoursJSON = getColours();
+        const currentColour = ColoursJSON[result];
+        const originalColour = defaults[result];
+        updateColour(block.id, originalColour);
         // console.log('currentColour',currentColour);
         console.log('originalColour',originalColour);
 
@@ -1502,7 +1625,6 @@ function handleGradients(block) {
           coloursList.push(`stop-color: ${newcolour}`);
         })
         console.log(originalColour,coloursList);
-        updateColour(block.id, originalColour);
         updateColour(block.id, coloursList);
       } 
       else { // RGB
