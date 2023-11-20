@@ -1380,19 +1380,37 @@ localStorage.setItem("franzmarcColours", coloursString);
 // let settingsJSON = {};
 // settingsJSON = JSON.parse(settingsString);
 
-// function getSettings() {
-//   // console.log('getSettings');
-//   const settingsString = localStorage.getItem("magicSettings");
-//   let settingsJSON = {};
-//   if (settingsString === null) {
-//     settingsJSON = defaults;
-//     saveSettings(settingsJSON);
-//     console.log("first-time setup");
-//   } else {
-//     settingsJSON = JSON.parse(settingsString);
-//   }
-//   return settingsJSON;
-// }
+function getColours() {
+  // console.log('getColours');
+  const coloursString = localStorage.getItem("franzmarcColours");
+  let mycoloursJSON = {};
+  if (coloursString === null) {
+    mycoloursJSON = coloursJSON; // defaults
+    saveColours(mycoloursJSON);
+    console.log("first-time setup");
+  } else {
+    mycoloursJSON = JSON.parse(coloursString);
+  }
+  return mycoloursJSON;
+}
+
+
+function saveColours(mycoloursJSON) {
+  // console.log('saveColours to localStorage');
+  const coloursString = JSON.stringify(mycoloursJSON);
+  localStorage.setItem("franzmarcColours", coloursString);
+}
+
+
+function updateColour(id, newColour) {
+  let coloursJSON = getColours();
+  const oldColour = coloursJSON[id];
+  coloursJSON[id] = newColour;
+  console.log(`updating ${id} from ${oldColour} to ${newColour}`);
+  saveColours(coloursJSON);
+}
+
+
 
 
 
@@ -1405,14 +1423,10 @@ blocks.forEach(block => {
       // block.attributes.style.value = `fill: ${rcolour}`;
     }
     if(buttState.value == 'solids') {
-      // ch.attributes.style.value = `stop-color: ${rcolour}`;
       handleSolids(block);
-      // block.attributes.style.value = `fill: ${rcolour}`;
     }
     if(buttState.value == 'gradients') {
-      // ch.attributes.style.value = `stop-color: ${newcolour}`;
       handleGradients(block);
-      // block.attributes.style.value = `fill: ${rcolour}`;
     }
     if(buttState.value == 'automatic') {
       // ch.attributes.style.value = 
@@ -1426,8 +1440,8 @@ blocks.forEach(block => {
 
 
 function handleSolids(block) {
-    console.log(block);
-    // console.log(`'${block.id}': '${block.attributes.style.value}'`);
+    console.log(`RGB '${block.id}': '${block.attributes.style.value}'`);
+    // style="fill: rgb(0, 0, 0)"
     const block_val = block.attributes.style.value;
     const rcolour = randomColor({
       format: 'rgb',
@@ -1438,18 +1452,17 @@ function handleSolids(block) {
     const found = [...block_val.matchAll(re)];
     let old_RGB = '';
     let old_URL = '';
-    console.log(`RGB ${block.id}`);
     old_RGB = block.attributes.style.value;
-    console.log('old_RGB',old_RGB);
     const buttState = document.querySelector('#buttons input:checked');
     block.attributes.style.value = `fill: ${rcolour}`;
+    updateColour(block.id, `fill: ${rcolour}`);
 }
 
 
 
 function handleGradients(block) {
-    console.log(block);
-    // console.log(`'${block.id}': '${block.attributes.style.value}'`);
+    console.log(`GRADIENT '${block.id}': '${block.attributes.style.value}'`);
+    // style="fill: url(#black_black_black)"
     const block_val = block.attributes.style.value;
     const rcolour = randomColor({
       format: 'rgb',
@@ -1458,10 +1471,10 @@ function handleGradients(block) {
     });
     const re = /rgb\(\d{2,3}, \d{2,3}, \d{2,3}\)/g;
     const found = [...block_val.matchAll(re)];
+    console.log('found',found);
     let old_RGB = '';
     let old_URL = '';
     if (found.length == 0) { // GRADIENTS
-      console.log(`GRADIENT ${block.id}`);
       const reID = /url\(#(\w+)\)/g;
       const foundID = [...block_val.matchAll(reID)];
       let result = '';
@@ -1469,9 +1482,16 @@ function handleGradients(block) {
         result = foundID[0][1];
         const grad = gradients.find((gr) => gr.id == result);
         const [...toddlers] = grad.children;
+        let coloursList = [];
+        let myColoursJSON = getColours();
+        const currentColour = myColoursJSON[result];
+        const originalColour = coloursJSON[result];
+        // console.log('currentColour',currentColour);
+        console.log('originalColour',originalColour);
+
+
         toddlers.forEach(ch => {
           old_URL = ch.attributes.style.value;
-          console.log('old_URL',old_URL);
           const buttState = document.querySelector('#buttons input:checked');
           const newcolour = randomColor({
             format: 'rgb',
@@ -1479,12 +1499,21 @@ function handleGradients(block) {
             hue: 'random', // red, orange, yellow, green, blue, purple, pink, monochrome
           });
           ch.attributes.style.value = `stop-color: ${newcolour}`;
+          coloursList.push(`stop-color: ${newcolour}`);
         })
+        console.log(originalColour,coloursList);
+        updateColour(block.id, originalColour);
+        updateColour(block.id, coloursList);
       } 
       else { // RGB
-        // handleSolids(block);
+        console.log('rgb inside gradient else');
         block.attributes.style.value = `fill: ${rcolour}`;
+        updateColour(block.id, `fill: ${rcolour}`);
       }
+    } else { // RGB
+      console.log('rgb inside gradient else else');
+      block.attributes.style.value = `fill: ${rcolour}`;
+      updateColour(block.id, `fill: ${rcolour}`);
     }
 }
 
