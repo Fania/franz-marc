@@ -1146,8 +1146,8 @@ const marc_svg = document.getElementById('marc');
 const [...blocks] = document.getElementById('colour_blocks').children;
 const [...gradients] = document.getElementById('gradients').children;
 const [...buttons] = document.getElementsByName('buttons');
-console.log(`There are a total of ${blocks.length} colour blocks.`);
-console.log(`And there are ${gradients.length} unique gradients.`);
+// console.log(`There are a total of ${blocks.length} colour blocks.`);
+// console.log(`And there are ${gradients.length} unique gradients.`);
 
 
 const defaults = {
@@ -1594,16 +1594,10 @@ const relations = {
 }
 
 
-console.log(`Together there are ${Object.keys(relations).length} blocks with gradients.`);
-// console.log(relations);
-// console.log(Object.keys(relations).length);
 
 
 buttons.forEach(butt => {
   butt.addEventListener('click', (event) => {
-    // console.log('you touched my', butt.id);
-    // console.log(document.querySelector('#buttons input:checked').value);
-    // manageButtons();
     if(butt.id == 'original') {
       location.reload(); 
       // simply reload the page when clicking the original button
@@ -1611,7 +1605,7 @@ buttons.forEach(butt => {
     }
   });
 });
-// manageButtons();
+
 
 
 
@@ -1645,7 +1639,7 @@ function updateColour(id, newColour) {
   let coloursJSON = getColours();
   const oldColour = defaults[id];
   coloursJSON[id] = newColour;
-  console.log(`updating ${id} from ${oldColour} to ${newColour}`);
+  // console.log(`updating ${id} from ${oldColour} to ${newColour}`);
   saveColours(coloursJSON);
 }
 
@@ -1656,7 +1650,7 @@ function updateColour(id, newColour) {
 
 
 
-// function manageButtons() {
+
 blocks.forEach(block => {
   block.addEventListener('mouseover', () => {
     const buttState = document.querySelector('#buttons input:checked').value;
@@ -1673,14 +1667,13 @@ blocks.forEach(block => {
     }
   });
 });
-// }
+
 
 
 
 
 function handleSolids(block) {
-    console.log(`RGB '${block.id}': '${block.attributes.style.value}'`);
-    // style="fill: rgb(0, 0, 0)"
+    // console.log(`RGB '${block.id}': '${block.attributes.style.value}'`);
     const block_val = block.attributes.style.value;
     const rcolour = randomColor({
       format: 'rgb',
@@ -1700,12 +1693,10 @@ function handleSolids(block) {
 
 function handleGradients(block) {
     const relID = relations[block.id] ? relations[block.id] : 'RGB';
-    console.log(`GRADIENT '${block.id}': '${relID}'`);
+    // console.log(`GRADIENT '${block.id}': '${relID}'`);
     if(relID !== 'RGB') {
       // hovering over a gradient, so children (i.e. stop-colours) exist
       const grad = gradients.find((gr) => gr.id == relID);
-      console.dir(grad);
-      console.log('grad has children',grad.children.length > 0);
       const [...toddlers] = grad.children;
       let coloursList = [];
       // reset gradient colours
