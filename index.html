@@ -1772,43 +1772,57 @@ function handleGradients(block) {
 
 
 // HAMMERTIME
-const mc = new Hammer.Manager(marc_svg);
-mc.add( new Hammer.Pan({ direction: Hammer.DIRECTION_ALL, threshold: 0 }) );
-blocks.forEach(block => {
-  mc.on("pan", handlePan(block));
-});
+const mc = new Hammer(marc_svg);
+mc.get('pan').set({ 
+  direction: Hammer.DIRECTION_ALL, 
+  threshold: 0 
+}); 
 
-function handlePan(block) {
-  // block.addEventListener('mouseover', () => {
-    // handleBlocks(block);
-  // });
+mc.on("pan", handleDrag);
+
+let lastPosX = 0;
+let lastPosY = 0;
+let isDragging = false;
+
+function handleDrag(ev) {
+  const buttState = document.querySelector('#buttons input:checked').value;
+  let elem = ev.target;
+  let currElem;
+  isDragging = true;
+  if ( isDragging ) {
+    lastPosX = ev.center['x'];
+    lastPosY = ev.center['y'];
+    currElem = document.elementFromPoint(lastPosX,lastPosY);
+    if(buttState == 'original') {
+    }
+    if(buttState == 'solids') {
+      handleSolids(currElem);
+    }
+    if(buttState == 'gradients') {
+      handleGradients(currElem);
+    }
+    if(buttState == 'automatic') {
+    }
+  }
+  if (ev.isFinal) {
+    lastPosX = ev.center['x'];
+    lastPosY = ev.center['y'];
+    currElem = document.elementFromPoint(lastPosX,lastPosY);
+    isDragging = false;
+    if(buttState == 'original') {
+    }
+    if(buttState == 'solids') {
+      handleSolids(currElem);
+    }
+    if(buttState == 'gradients') {
+      handleGradients(currElem);
+    }
+    if(buttState == 'automatic') {
+    }
+  }
 }
 
-// used to generate helper console logs for localStorage stuff
-// blocks.forEach(block => {
-//   const block_val = block.attributes.style.value;
-//   const re = /rgb\(\d{2,3}, \d{2,3}, \d{2,3}\)/g;
-//   const found = [...block_val.matchAll(re)];
-//   if (found.length > 0) { // RGB
-//     console.log(`'${block.id}': '${block.attributes.style.value}'`);
-//   } else { // GRADIENTS
-//       const reID = /url\(#(\w+)\)/g;
-//       const foundID = [...block_val.matchAll(reID)];
-//       let result = '';
-//       if(foundID.length > 0) {
-//         result = foundID[0][1];
-//         // console.log(result);
-//         const grad = gradients.find((gr) => gr.id == result);
-//         // console.log(grad);
-//         const [...toddlers] = grad.children;
-//         toddlers.forEach(ch => {
-//           console.log(`'${ch.parentElement.id}': '${ch.attributes.style.value}'`);
-//         });
-//       } else {
-//         console.log(`'${block.id}': '${block.attributes.style.value}'`);
-//       }
-//   }
-// });
+
 </script>
 
 
