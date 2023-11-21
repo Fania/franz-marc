@@ -16,7 +16,7 @@ body {
   background: rgb(94, 94, 60);
   height: 98vh;
   display: flex;
-  gap: 20px; 
+  gap: 10px; 
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -102,7 +102,7 @@ img {
       <stop offset="20%" style="stop-color: rgb(52, 116, 100)"/>
       <stop offset="70%" style="stop-color: rgb(212, 194, 184)"/>
     </linearGradient>
-    <linearGradient id="orange_fade_fade">
+    <linearGradient id="orange_fade">
       <stop offset="0%" style="stop-color: rgb(198,51,16)" stop-opacity="0"/>
       <stop offset="20%" style="stop-color: rgb(198,51,16)" stop-opacity="0.3"/>
       <stop offset="40%" style="stop-color: rgb(198,51,16)" stop-opacity="0.6"/>
@@ -1151,6 +1151,7 @@ const [...buttons] = document.getElementsByName('buttons');
 
 
 const defaults = {
+  'a_button_state': 'original',
   'beige_arc_small': 'fill: rgb(191, 178, 127)',
   'beige_beam_diagonal': 'fill: rgb(247, 247, 219)',
   'beige_filler_right': 'fill: rgb(247, 248, 149)',
@@ -1400,8 +1401,9 @@ const defaults = {
   'purple_areas_near_fawn_face2': 'fill: url(#purple_areas_near_fawn_face_fade)',
   'purple_areas_near_fawn_face3': 'fill: url(#purple_areas_near_fawn_face_fade)',
   'purple_triangle': 'fill: rgb(137, 52, 81)',
-  'red_rose_white_trio_red_fade': ['fill: rgb(203, 32, 34)','fill: rgb(246, 154, 164)'],
+  'red_rose_white_trio_red': 'fill: rgb(203, 32, 34)',
   'red_rose_white_trio_white': 'fill: url(#red_rose_white_trio_white_fade)',
+  'red_rose_white_trio_rose': 'fill: rgb(246, 154, 164)',
   'red_rose_white_trio_white_fade': ['stop-color: rgb(242, 232, 141)','stop-color: rgb(252, 243, 207)','stop-color: rgb(244, 228, 223)'],
   'rose_Block_bottom_right_fade': ['stop-color: rgb(210, 118, 167)','stop-color: rgb(93, 35, 67)','stop-color: rgb(114, 115, 163)','stop-color: rgb(111, 105, 117)','stop-color: rgb(57, 74, 92)','stop-color: rgb(210, 217, 214)'],
   'rose_bottom_right': 'fill: url(#rose_Block_bottom_right_fade)',
@@ -1600,8 +1602,19 @@ buttons.forEach(butt => {
   butt.addEventListener('click', (event) => {
     if(butt.id == 'original') {
       location.reload(); 
+      localStorage.clear();
+      saveColours(defaults);
       // simply reload the page when clicking the original button
       // TODO should I be resetting the localstorage colours?
+    }
+    if(butt.id == 'solids') {
+      updateColour('a_button_state', 'solids');
+    }
+    if(butt.id == 'gradientsR') {
+      updateColour('a_button_state', 'gradientsR');
+    }
+    if(butt.id == 'automatic') {
+      updateColour('a_button_state', 'automatic');
     }
   });
 });
@@ -1609,7 +1622,7 @@ buttons.forEach(butt => {
 
 
 
-saveColours(defaults);
+// saveColours(defaults);
 
 
 
@@ -1644,7 +1657,43 @@ function updateColour(id, newColour) {
 }
 
 
-
+loadColours();
+function loadColours() {
+  let coloursJSON = getColours();
+  blocks.forEach(block => {
+    const bloID = block.id;
+    const relID = relations[block.id] ? relations[block.id] : 'RGB';
+    if(relID !== 'RGB') {
+      const grad = gradients.find((gr) => gr.id == relID);
+      const [...toddlers] = grad.children;
+      const newcolour = coloursJSON[relID];
+      for(let n=0; n<toddlers.length; n++) {
+        const currElem = toddlers[n];
+        currElem.attributes.style.value = `${newcolour[n]}`;
+      }
+      block.attributes.style.value = `fill: url(#${relID})`;
+    } else {
+      const rcolour = coloursJSON[bloID];
+      block.attributes.style.value = `${rcolour}`;
+    }
+  });
+  if(coloursJSON['a_button_state'] == 'original') {
+    const butt = buttons.find((br) => br.id == 'original');
+    butt.checked = true;
+  }
+  if(coloursJSON['a_button_state'] == 'solids') {
+    const butt = buttons.find((br) => br.id == 'solids');
+    butt.checked = true;
+  }
+  if(coloursJSON['a_button_state'] == 'gradientsR') {
+    const butt = buttons.find((br) => br.id == 'gradientsR');
+    butt.checked = true;
+  }
+  if(coloursJSON['a_button_state'] == 'automatic') {
+    const butt = buttons.find((br) => br.id == 'automatic');
+    butt.checked = true;
+  }
+}
 
 
 
@@ -1674,17 +1723,11 @@ blocks.forEach(block => {
 
 function handleSolids(block) {
     // console.log(`RGB '${block.id}': '${block.attributes.style.value}'`);
-    const block_val = block.attributes.style.value;
     const rcolour = randomColor({
       format: 'rgb',
       luminosity: 'random', // bright, light, dark
       hue: 'random', // red, orange, yellow, green, blue, purple, pink, monochrome
     });
-    const re = /rgb\(\d{2,3}, \d{2,3}, \d{2,3}\)/g;
-    const found = [...block_val.matchAll(re)];
-    let old_RGB = '';
-    old_RGB = block.attributes.style.value;
-    const buttState = document.querySelector('#buttons input:checked');
     block.attributes.style.value = `fill: ${rcolour}`;
     updateColour(block.id, `fill: ${rcolour}`);
 }
@@ -1711,8 +1754,8 @@ function handleGradients(block) {
         ch.attributes.style.value = `stop-color: ${newcolour}`;
         coloursList.push(`stop-color: ${newcolour}`);
       })
-      updateColour(relID, coloursList);
       block.attributes.style.value = `fill: url(#${relID})`;
+      updateColour(relID, coloursList);
     } else {
     // hovering over a solid RGB colour, so no children exist
       const rcolour = randomColor({
