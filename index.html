@@ -1701,33 +1701,17 @@ function handleSolids(block) {
 function handleGradients(block) {
     const relID = relations[block.id] ? relations[block.id] : 'RGB';
     console.log(`GRADIENT '${block.id}': '${relID}'`);
-    // style="fill: url(#black_black_black)"
-
     if(relID !== 'RGB') {
       // hovering over a gradient, so children (i.e. stop-colours) exist
-      // if(grad.hasChildNodes()) {
-
       const grad = gradients.find((gr) => gr.id == relID);
-      // console.log('grad',grad);
       console.dir(grad);
-      // console.log('grad has children',grad.hasChildNodes());
       console.log('grad has children',grad.children.length > 0);
-
       const [...toddlers] = grad.children;
-
       let coloursList = [];
-      let ColoursJSON = getColours();
-
-
       // reset gradient colours
       const originalGradientColours = defaults[relID];
-      // console.log('originalGradientColours',originalGradientColours);
       updateColour(relations[block.id], originalGradientColours);
-
-
       toddlers.forEach(ch => {
-        // let old_URL = ch.attributes.style.value;
-        // const buttState = document.querySelector('#buttons input:checked');
         const newcolour = randomColor({
           format: 'rgb',
           luminosity: 'random', // bright, light, dark
@@ -1736,10 +1720,8 @@ function handleGradients(block) {
         ch.attributes.style.value = `stop-color: ${newcolour}`;
         coloursList.push(`stop-color: ${newcolour}`);
       })
-      // console.log(originalColour,coloursList);
-      // updateColour(block.id, coloursList);
       updateColour(relID, coloursList);
-
+      block.attributes.style.value = `fill: url(#${relID})`;
     } else {
     // hovering over a solid RGB colour, so no children exist
       const rcolour = randomColor({
@@ -1751,6 +1733,8 @@ function handleGradients(block) {
       updateColour(block.id, `fill: ${rcolour}`);
     }
 }
+
+
 
 
 // HAMMERTIME
