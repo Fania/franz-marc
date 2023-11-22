@@ -5,12 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="light"/>
   <title>Franz Marc</title>
+  <meta name="keywords" content="svg, art, colours, 'der blaue reiter'">
+  <meta name="author" content="Fania Raczinski, Franz Marc">
+  <meta name="description" content="A digital version of Franz Marc's 'Reh im Klostergarten' from 1912. Turned into an SVG, the image becomes an artful explosion of colour - interactive or meditative on a random colour loop.">
   <!-- <link rel="stylesheet" href="styles.css"> -->
 
   <link rel="apple-touch-icon" sizes="180x180" href="imgs/favicons/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="imgs/favicons/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="imgs/favicons/favicon-16x16.png">
   <link rel="manifest" href="site.webmanifest">
+
+  <meta property="og:title" content="Franz Marc" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://fania.github.io/blaue-reiter" />
+  <meta property="og:image" content="https://raw.githubusercontent.com/Fania/blaue-reiter/main/franz-marc.jpeg" />
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Franz Marc">
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/Fania/blaue-reiter/main/franz-marc.jpeg">
 
   <style>
 body {
@@ -1728,7 +1740,7 @@ function loadColours() {
 
 
 function handleSolids(block) {
-  console.log(`RGB '${block.id}': '${block.attributes.style.value}'`);
+  // console.log(`RGB '${block.id}': '${block.attributes.style.value}'`);
   const rcolour = randomColor({
     format: 'rgb',
     luminosity: 'random', // bright, light, dark
@@ -1769,7 +1781,7 @@ function handleAutomatic() {
 
 function handleGradients(block) {
   const relID = relations[block.id] ? relations[block.id] : 'RGB';
-  console.log(`GRADIENT '${block.id}': '${relID}'`);
+  // console.log(`GRADIENT '${block.id}': '${relID}'`);
   if(relID !== 'RGB') {
     // hovering over a gradient, so children (i.e. stop-colours) exist
     const grad = gradients.find((gr) => gr.id == relID);

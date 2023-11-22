@@ -6,6 +6,7 @@ Franc Marc - Reh im Klostergarten (1912)
 
 ## Todos
 
+- [ ] why are solids only generating once?
 - [ ] fine tune blocks and get rid of "background" areas
 - [x] deal with mobile "mouseover" touch
 - [x] add automatic version
