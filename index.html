@@ -1608,14 +1608,16 @@ buttons.forEach(butt => {
   butt.addEventListener('click', (event) => {
     stopAutoColours();
     if(butt.id == 'original') {
-      location.reload(); 
       localStorage.clear();
       saveColours(defaults);
+      location.reload(); 
     }
     if(butt.id == 'solids') {
+      mouseOverListeners(handleSolids);
       updateColour('a_button_state', 'solids');
     }
     if(butt.id == 'gradientsR') {
+      mouseOverListeners(handleGradients);
       updateColour('a_button_state', 'gradientsR');
     }
     if(butt.id == 'automatic') {
@@ -1624,6 +1626,26 @@ buttons.forEach(butt => {
     }
   });
 });
+
+
+function mouseOverListeners(method) {
+  const buttState = document.querySelector('#buttons input:checked').value;
+  blocks.forEach(block => {
+    block.addEventListener('mouseover', () => {
+      method(block);
+      const marc_path = document.querySelector('#marc path');
+      marc_path.attributes.style.value = 'transition: none;';
+      // const [...paths] = document.querySelectorAll('#marc path');
+      // paths.forEach(ps => {
+      //   // console.log(ps);
+      //   ps.attributes.style.value = 'transition: none;';
+      // });
+    });
+  });
+}
+
+
+
 
 
 
@@ -1704,27 +1726,9 @@ function loadColours() {
 
 
 
-const buttState = document.querySelector('#buttons input:checked').value;
-// if(buttState == 'solids' || buttState == 'gradients') {
-  blocks.forEach(block => {
-    block.addEventListener('mouseover', () => {
-      if(buttState == 'solids') {
-        handleSolids(block);
-      }
-      if(buttState == 'gradients') {
-        handleGradients(block);
-      }
-    });
-  });
-// }
-
-
-
-
-
 
 function handleSolids(block) {
-  // console.log(`RGB '${block.id}': '${block.attributes.style.value}'`);
+  console.log(`RGB '${block.id}': '${block.attributes.style.value}'`);
   const rcolour = randomColor({
     format: 'rgb',
     luminosity: 'random', // bright, light, dark
@@ -1765,7 +1769,7 @@ function handleAutomatic() {
 
 function handleGradients(block) {
   const relID = relations[block.id] ? relations[block.id] : 'RGB';
-  // console.log(`GRADIENT '${block.id}': '${relID}'`);
+  console.log(`GRADIENT '${block.id}': '${relID}'`);
   if(relID !== 'RGB') {
     // hovering over a gradient, so children (i.e. stop-colours) exist
     const grad = gradients.find((gr) => gr.id == relID);
