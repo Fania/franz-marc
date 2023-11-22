@@ -1724,14 +1724,14 @@ const buttState = document.querySelector('#buttons input:checked').value;
 
 
 function handleSolids(block) {
-    // console.log(`RGB '${block.id}': '${block.attributes.style.value}'`);
-    const rcolour = randomColor({
-      format: 'rgb',
-      luminosity: 'random', // bright, light, dark
-      hue: 'random', // red, orange, yellow, green, blue, purple, pink, monochrome
-    });
-    block.attributes.style.value = `fill: ${rcolour}`;
-    updateColour(block.id, `fill: ${rcolour}`);
+  // console.log(`RGB '${block.id}': '${block.attributes.style.value}'`);
+  const rcolour = randomColor({
+    format: 'rgb',
+    luminosity: 'random', // bright, light, dark
+    hue: 'random', // red, orange, yellow, green, blue, purple, pink, monochrome
+  });
+  block.attributes.style.value = `fill: ${rcolour}`;
+  updateColour(block.id, `fill: ${rcolour}`);
 }
 
 
@@ -1748,7 +1748,6 @@ function stopAutoColours() {
   clearInterval(intervalID);
   intervalID = null;
 }
-
 function handleAutomatic() {
     // console.log(`AUTOMATIC`);
     blocks.forEach(block => {
@@ -1765,73 +1764,73 @@ function handleAutomatic() {
 
 
 function handleGradients(block) {
-    const relID = relations[block.id] ? relations[block.id] : 'RGB';
-    // console.log(`GRADIENT '${block.id}': '${relID}'`);
-    if(relID !== 'RGB') {
-      // hovering over a gradient, so children (i.e. stop-colours) exist
-      const grad = gradients.find((gr) => gr.id == relID);
-      const [...toddlers] = grad.children;
-      let coloursList = [];
-      // reset gradient colours
-      const originalGradientColours = defaults[relID];
-      updateColour(relations[block.id], originalGradientColours);
-      toddlers.forEach(ch => {
-        const newcolour = randomColor({
-          format: 'rgb',
-          luminosity: 'random', // bright, light, dark
-          hue: 'random', // red, orange, yellow, green, blue, purple, pink, monochrome
-        });
-        ch.attributes.style.value = `stop-color: ${newcolour}`;
-        coloursList.push(`stop-color: ${newcolour}`);
-      })
-      block.attributes.style.value = `fill: url(#${relID})`;
-      updateColour(relID, coloursList);
-    } else {
-    // hovering over a solid RGB colour, so no children exist
-      const rcolour = randomColor({
+  const relID = relations[block.id] ? relations[block.id] : 'RGB';
+  // console.log(`GRADIENT '${block.id}': '${relID}'`);
+  if(relID !== 'RGB') {
+    // hovering over a gradient, so children (i.e. stop-colours) exist
+    const grad = gradients.find((gr) => gr.id == relID);
+    const [...toddlers] = grad.children;
+    let coloursList = [];
+    // reset gradient colours
+    const originalGradientColours = defaults[relID];
+    updateColour(relations[block.id], originalGradientColours);
+    toddlers.forEach(ch => {
+      const newcolour = randomColor({
         format: 'rgb',
         luminosity: 'random', // bright, light, dark
         hue: 'random', // red, orange, yellow, green, blue, purple, pink, monochrome
       });
-      block.attributes.style.value = `fill: ${rcolour}`;
-      updateColour(block.id, `fill: ${rcolour}`);
-    }
+      ch.attributes.style.value = `stop-color: ${newcolour}`;
+      coloursList.push(`stop-color: ${newcolour}`);
+    })
+    block.attributes.style.value = `fill: url(#${relID})`;
+    updateColour(relID, coloursList);
+  } else {
+  // hovering over a solid RGB colour, so no children exist
+    const rcolour = randomColor({
+      format: 'rgb',
+      luminosity: 'random', // bright, light, dark
+      hue: 'random', // red, orange, yellow, green, blue, purple, pink, monochrome
+    });
+    block.attributes.style.value = `fill: ${rcolour}`;
+    updateColour(block.id, `fill: ${rcolour}`);
+  }
 }
 
 
 
 
 // HAMMERTIME
-const mc = new Hammer(marc_svg);
-mc.get('pan').set({ 
+const mc = new Hammer.Manager(marc_svg);
+mc.add(new Hammer.Pan({ 
   direction: Hammer.DIRECTION_ALL, 
   threshold: 0 
-}); 
-
+})); 
+mc.add(new Hammer.Tap({ 
+  event: 'singletap', 
+  taps: 1
+})); 
 mc.on("pan", handleDrag);
+mc.on("singletap", handleTap);
 
 let lastPosX = 0;
 let lastPosY = 0;
 let isDragging = false;
 
 function handleDrag(ev) {
+  // console.log('drag',ev);
   const buttState = document.querySelector('#buttons input:checked').value;
-  let elem = ev.target;
   let currElem;
   isDragging = true;
   if ( isDragging ) {
     lastPosX = ev.center['x'];
     lastPosY = ev.center['y'];
     currElem = document.elementFromPoint(lastPosX,lastPosY);
-    if(buttState == 'original') {
-    }
     if(buttState == 'solids') {
       handleSolids(currElem);
     }
     if(buttState == 'gradients') {
       handleGradients(currElem);
-    }
-    if(buttState == 'automatic') {
     }
   }
   if (ev.isFinal) {
@@ -1839,19 +1838,31 @@ function handleDrag(ev) {
     lastPosY = ev.center['y'];
     currElem = document.elementFromPoint(lastPosX,lastPosY);
     isDragging = false;
-    if(buttState == 'original') {
-    }
     if(buttState == 'solids') {
       handleSolids(currElem);
     }
     if(buttState == 'gradients') {
       handleGradients(currElem);
     }
-    if(buttState == 'automatic') {
-    }
   }
 }
 
+function handleTap(ev) {
+  // console.log('tap',ev);
+  const buttState = document.querySelector('#buttons input:checked').value;
+  let currElem;
+  if (ev.isFinal) {
+    lastPosX = ev.center['x'];
+    lastPosY = ev.center['y'];
+    currElem = document.elementFromPoint(lastPosX,lastPosY);
+    if(buttState == 'solids') {
+      handleSolids(currElem);
+    }
+    if(buttState == 'gradients') {
+      handleGradients(currElem);
+    }
+  }
+}
 
 </script>
 
