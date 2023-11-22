@@ -29,6 +29,9 @@ svg#marc {
   width: 95%;
   overflow: hidden;
 }
+svg#marc path {
+  transition: fill 20s ease;
+}
 svg text {
   fill: white;
 }
@@ -1144,6 +1147,7 @@ img {
 <script src="hammer.min.js"></script>
 
 <script>
+let intervalID;
 const marc_svg = document.getElementById('marc');
 const [...blocks] = document.getElementById('colour_blocks').children;
 const [...gradients] = document.getElementById('gradients').children;
@@ -1602,12 +1606,11 @@ const relations = {
 
 buttons.forEach(butt => {
   butt.addEventListener('click', (event) => {
+    stopAutoColours();
     if(butt.id == 'original') {
       location.reload(); 
       localStorage.clear();
       saveColours(defaults);
-      // simply reload the page when clicking the original button
-      // TODO should I be resetting the localstorage colours?
     }
     if(butt.id == 'solids') {
       updateColour('a_button_state', 'solids');
@@ -1616,6 +1619,7 @@ buttons.forEach(butt => {
       updateColour('a_button_state', 'gradientsR');
     }
     if(butt.id == 'automatic') {
+      startAutoColours();
       updateColour('a_button_state', 'automatic');
     }
   });
@@ -1700,24 +1704,20 @@ function loadColours() {
 
 
 
-
-
-blocks.forEach(block => {
-  block.addEventListener('mouseover', () => {
-    const buttState = document.querySelector('#buttons input:checked').value;
-    // console.log(buttState);
-    if(buttState == 'original') {
-    }
-    if(buttState == 'solids') {
+const buttState = document.querySelector('#buttons input:checked').value;
+// if(buttState == 'solids' || buttState == 'gradients') {
+  blocks.forEach(block => {
+    block.addEventListener('mouseover', () => {
+      if(buttState == 'solids') {
         handleSolids(block);
-    }
-    if(buttState == 'gradients') {
+      }
+      if(buttState == 'gradients') {
         handleGradients(block);
-    }
-    if(buttState == 'automatic') {
-    }
+      }
+    });
   });
-});
+// }
+
 
 
 
@@ -1732,6 +1732,34 @@ function handleSolids(block) {
     });
     block.attributes.style.value = `fill: ${rcolour}`;
     updateColour(block.id, `fill: ${rcolour}`);
+}
+
+
+
+
+
+function startAutoColours() {
+  if (!intervalID) {
+    handleAutomatic();
+    intervalID = setInterval(handleAutomatic, 20000);
+  }
+}
+function stopAutoColours() {
+  clearInterval(intervalID);
+  intervalID = null;
+}
+
+function handleAutomatic() {
+    // console.log(`AUTOMATIC`);
+    blocks.forEach(block => {
+      const rcolour = randomColor({
+        format: 'rgb',
+        luminosity: 'random', // bright, light, dark
+        hue: 'random', // red, orange, yellow, green, blue, purple, pink, monochrome
+      });
+      block.attributes.style.value = `fill: ${rcolour}`;
+      // updateColour(block.id, `fill: ${rcolour}`);
+    });
 }
 
 
