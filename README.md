@@ -6,8 +6,8 @@ Franc Marc - Reh im Klostergarten (1912)
 
 ## Todos
 
-- [x] deal with mobile "mouseover" touch
-- [ ] add automatic version
 - [ ] fine tune blocks and get rid of "background" areas
+- [x] deal with mobile "mouseover" touch
+- [x] add automatic version
 - [x] finish localstorage stuff
 - [x] work on gradients
