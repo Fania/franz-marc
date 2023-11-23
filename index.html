@@ -43,14 +43,9 @@ body {
   align-items: center;
 }
 svg#marc {
-  /* max-height: 90vh; */
-  /* max-width: 95vw; */
   height: auto;
   width: 95%;
   overflow: hidden;
-}
-svg#marc path {
-  /* transition: fill 2s ease; */
 }
 svg text {
   fill: white;
@@ -62,18 +57,27 @@ img {
 #coordinates {
   display: none;
 }
+#menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
 #buttons {
+  position: relative;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  gap: 10px;
+  width: 90%;
+  margin: 20px 0;
 }
 #buttons label {
   background: rgba(0,0,0,0.2);
   padding: 10px;
   border-radius: 15px;
 }
-#buttons input {
+#buttons input[type='radio'] {
   display: none;
 }
 #buttons input:checked + label  {
@@ -82,6 +86,16 @@ img {
 #buttons label:hover {
   background: rgba(255,255,255,0.2);
 }
+#auto_range {
+  display: none;
+}
+#buttons input[id='automatic']:checked ~ #auto_range {
+  position: absolute;
+  display: block;
+  width: 90%;
+  bottom: -50px;
+}
+
   </style>
 </head>
 <body>
@@ -1150,18 +1164,19 @@ img {
   </g>
 </svg>
 
-
-<div id="buttons">
-  <input type="radio" id="original" name="buttons" value="original" checked />
-  <label for="original">Original</label>
-  <input type="radio" id="solids" name="buttons" value="solids" />
-  <label for="solids">Solids</label>
-  <input type="radio" id="gradientsR" name="buttons" value="gradients" />
-  <label for="gradientsR">Gradients</label>
-  <input type="radio" id="automatic" name="buttons" value="automatic" />
-  <label for="automatic">Automatic</label>
+<div id="menu">
+  <div id="buttons">
+    <input type="radio" id="original" name="buttons" value="original" checked />
+    <label for="original">Original</label>
+    <input type="radio" id="solids" name="buttons" value="solids" />
+    <label for="solids">Solids</label>
+    <input type="radio" id="gradientsR" name="buttons" value="gradients" />
+    <label for="gradientsR">Gradients</label>
+    <input type="radio" id="automatic" name="buttons" value="automatic" />
+    <label for="automatic">Automatic</label>
+    <input id="auto_range" type="range" min="1" max="100" value="50">
+  </div>
 </div>
-
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.6.1/randomColor.min.js" integrity="sha512-vPeZ7JCboHcfpqSx5ZD+/jpEhS4JpXxfz9orSvAPPj0EKUVShU2tgy7XkU+oujBJKnWmu4hU7r9MMQNWPfXsYw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="hammer.min.js"></script>
@@ -1172,6 +1187,7 @@ const marc_svg = document.getElementById('marc');
 const [...blocks] = document.getElementById('colour_blocks').children;
 const [...gradients] = document.getElementById('gradients').children;
 const [...buttons] = document.getElementsByName('buttons');
+const rangeButt = document.getElementById('auto_range');
 // console.log(`There are a total of ${blocks.length} colour blocks.`);
 // console.log(`And there are ${gradients.length} unique gradients.`);
 
@@ -1655,13 +1671,6 @@ function mouseOverListeners(method) {
   blocks.forEach(block => {
     block.addEventListener('mouseover', () => {
       method(block);
-      // const marc_path = document.querySelector('#marc path');
-      // marc_path.attributes.style.value = 'transition: none;';
-      // const [...paths] = document.querySelectorAll('#marc path');
-      // paths.forEach(ps => {
-      //   // console.log(ps);
-      //   ps.attributes.style.value = 'transition: none;';
-      // });
     });
   });
 }
@@ -1702,7 +1711,7 @@ function updateColour(id, newColour) {
   let coloursJSON = getColours();
   const oldColour = defaults[id];
   coloursJSON[id] = newColour;
-  console.log(`updating ${id} from ${oldColour} to ${newColour}`);
+  // console.log(`updating ${id} from ${oldColour} to ${newColour}`);
   saveColours(coloursJSON);
 }
 
@@ -1768,19 +1777,29 @@ function handleSolids(block) {
 
 function startAutoColours() {
   if (!intervalID) {
-    handleAutomatic();
-    intervalID = setInterval(handleAutomatic, 2000);
+    const spd = rangeButt.value / 10;
+    const spd2000 = rangeButt.value / 10 * 1000;
+    console.log(spd,spd2000);
+    handleAutomatic(spd);
+    intervalID = setInterval(handleAutomatic(spd), spd2000);
   }
 }
 function stopAutoColours() {
   clearInterval(intervalID);
   intervalID = null;
 }
-function handleAutomatic() {
+function handleAutomatic(speed = 5) {
+  console.log(`handling automation with speed: ${speed}`);
   const sheet = document.styleSheets[0];
+  const [...rules] = sheet.cssRules;
+  const marcRuleIndex = rules.findIndex(rule => rule.selectorText === "svg#marc path");
+  // console.log(marcRuleIndex);
+  if(marcRuleIndex > -1) {
+    sheet.deleteRule(marcRuleIndex);
+  }
   const marc_path = `
   svg#marc path {
-    transition: fill 2s ease;
+    transition: fill ${speed}s ease;
   }
   `;
   sheet.insertRule(marc_path, sheet.cssRules.length);
@@ -1794,6 +1813,17 @@ function handleAutomatic() {
     // updateColour(block.id, `fill: ${rcolour}`);
   });
 }
+
+rangeButt.addEventListener('input', () => {
+  // console.log(rangeButt.value);
+  startAutoColours();
+});
+
+
+
+
+
+
 
 
 
