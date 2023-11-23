@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="light"/>
   <title>Franz Marc</title>
-  <meta name="keywords" content="svg, art, colours, 'der blaue reiter'">
+  <meta name="keywords" content="svg, art, colours, 'der Blaue Reiter'">
   <meta name="author" content="Fania Raczinski, Franz Marc">
-  <meta name="description" content="A digital version of Franz Marc's 'Reh im Klostergarten' from 1912. Turned into an SVG, the image becomes an artful explosion of colour - interactive or meditative on a random colour loop.">
+  <meta name="description" content="Franz Marc's 'Reh im Klostergarten' from 1912 - in digital form. The hand-crafted scalable vector graphics allow for an artful explosion of colour and can be experienced interactively or meditatively.">
   <!-- <link rel="stylesheet" href="styles.css"> -->
 
   <link rel="apple-touch-icon" sizes="180x180" href="imgs/favicons/apple-touch-icon.png">
@@ -50,7 +50,7 @@ svg#marc {
   overflow: hidden;
 }
 svg#marc path {
-  transition: fill 20s ease;
+  /* transition: fill 2s ease; */
 }
 svg text {
   fill: white;
@@ -1650,11 +1650,13 @@ buttons.forEach(butt => {
 
 function mouseOverListeners(method) {
   const buttState = document.querySelector('#buttons input:checked').value;
+  const marc_path = document.querySelector('#marc path');
+  marc_path.attributes.style.value = 'transition: fill 20s ease;';
   blocks.forEach(block => {
     block.addEventListener('mouseover', () => {
       method(block);
-      const marc_path = document.querySelector('#marc path');
-      marc_path.attributes.style.value = 'transition: none;';
+      // const marc_path = document.querySelector('#marc path');
+      // marc_path.attributes.style.value = 'transition: none;';
       // const [...paths] = document.querySelectorAll('#marc path');
       // paths.forEach(ps => {
       //   // console.log(ps);
@@ -1700,7 +1702,7 @@ function updateColour(id, newColour) {
   let coloursJSON = getColours();
   const oldColour = defaults[id];
   coloursJSON[id] = newColour;
-  // console.log(`updating ${id} from ${oldColour} to ${newColour}`);
+  console.log(`updating ${id} from ${oldColour} to ${newColour}`);
   saveColours(coloursJSON);
 }
 
@@ -1740,6 +1742,8 @@ function loadColours() {
   if(coloursJSON['a_button_state'] == 'automatic') {
     const butt = buttons.find((br) => br.id == 'automatic');
     butt.checked = true;
+    const marc_path = document.querySelector('#marc path');
+    marc_path.attributes.style.value = 'transition: fill 20s ease;';
   }
 }
 
@@ -1765,7 +1769,7 @@ function handleSolids(block) {
 function startAutoColours() {
   if (!intervalID) {
     handleAutomatic();
-    intervalID = setInterval(handleAutomatic, 20000);
+    intervalID = setInterval(handleAutomatic, 2000);
   }
 }
 function stopAutoColours() {
@@ -1773,16 +1777,22 @@ function stopAutoColours() {
   intervalID = null;
 }
 function handleAutomatic() {
-    // console.log(`AUTOMATIC`);
-    blocks.forEach(block => {
-      const rcolour = randomColor({
-        format: 'rgb',
-        luminosity: 'random', // bright, light, dark
-        hue: 'random', // red, orange, yellow, green, blue, purple, pink, monochrome
-      });
-      block.attributes.style.value = `fill: ${rcolour}`;
-      // updateColour(block.id, `fill: ${rcolour}`);
+  const sheet = document.styleSheets[0];
+  const marc_path = `
+  svg#marc path {
+    transition: fill 2s ease;
+  }
+  `;
+  sheet.insertRule(marc_path, sheet.cssRules.length);
+  blocks.forEach(block => {
+    const rcolour = randomColor({
+      format: 'rgb',
+      luminosity: 'random', // bright, light, dark
+      hue: 'random', // red, orange, yellow, green, blue, purple, pink, monochrome
     });
+    block.attributes.style.value = `fill: ${rcolour}`;
+    // updateColour(block.id, `fill: ${rcolour}`);
+  });
 }
 
 
