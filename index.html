@@ -41,6 +41,9 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: white;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
 }
 svg#marc {
   height: auto;
@@ -74,11 +77,15 @@ img {
 }
 #buttons label {
   background: rgba(0,0,0,0.2);
-  padding: 10px;
+  padding: 10px 15px 12px;
   border-radius: 15px;
 }
 #buttons input[type='radio'] {
   display: none;
+}
+#buttons input[type='radio'] + label  {
+  color: white;
+  font-variant: all-small-caps;
 }
 #buttons input:checked + label  {
   background: rgba(255,255,255,0.2);
@@ -88,6 +95,19 @@ img {
 }
 #auto_range {
   display: none;
+}
+#auto_range + label {
+  display: none;
+}
+#buttons input[id='automatic']:checked ~ #auto_range + label {
+  display: block;
+  position: absolute;
+  bottom: -80px;
+  background: none;
+  font-variant: all-small-caps;
+}
+#auto_range + label:hover {
+  background: none;
 }
 #buttons input[id='automatic']:checked ~ #auto_range {
   position: absolute;
@@ -1175,6 +1195,7 @@ img {
     <input type="radio" id="automatic" name="buttons" value="automatic" />
     <label for="automatic">Automatic</label>
     <input id="auto_range" type="range" min="10" max="100" value="55">
+    <label for="auto_range">Speed</label>
   </div>
 </div>
 
@@ -1182,7 +1203,7 @@ img {
 <script src="hammer.min.js"></script>
 
 <script>
-let intervalID;
+let auto_running = false;
 const marc_svg = document.getElementById('marc');
 const [...blocks] = document.getElementById('colour_blocks').children;
 const [...gradients] = document.getElementById('gradients').children;
@@ -1642,21 +1663,25 @@ const relations = {
 
 buttons.forEach(butt => {
   butt.addEventListener('click', (event) => {
-    stopAutoColours();
+    auto_running = false;
     if(butt.id == 'original') {
       localStorage.clear();
       saveColours(defaults);
       location.reload(); 
+      auto_running = false;
     }
     if(butt.id == 'solids') {
+      auto_running = false;
       mouseOverListeners(handleSolids);
       updateColour('a_button_state', 'solids');
     }
     if(butt.id == 'gradientsR') {
+      auto_running = false;
       mouseOverListeners(handleGradients);
       updateColour('a_button_state', 'gradientsR');
     }
     if(butt.id == 'automatic') {
+      auto_running = true;
       startAutoColours();
       updateColour('a_button_state', 'automatic');
     }
@@ -1773,24 +1798,19 @@ function handleSolids(block) {
 
 
 
-const intervalIDs = [];
-
+let iID;
 function startAutoColours() {
   const spd = rangeButt.value / 10;
   const spd1000 = rangeButt.value / 10 * 500;
   handleAutomatic(spd);
-  iID = setInterval(handleAutomatic(spd), spd1000);
-  intervalIDs.push(iID);
-  console.log(iID,spd,spd1000);
+  clearInterval(iID);
+  iID = setInterval(() => {handleAutomatic(spd,iID)}, spd1000);
+  // console.log(iID,spd,spd1000);
 }
-function stopAutoColours() {
-  console.log('stopping/cancelling auto colours/ids');
-  intervalIDs.forEach(i => {
-    clearInterval(i);
-  })
-}
-function handleAutomatic(speed) {
-  console.log(`handling automation with speed: ${speed}`);
+
+
+function handleAutomatic(speed,iID) {
+  // console.log(`handling automation with speed: ${speed}`);
   const sheet = document.styleSheets[0];
   const [...rules] = sheet.cssRules;
   const marcRuleIndex = rules.findIndex(rule => rule.selectorText === "svg#marc path");
@@ -1816,6 +1836,7 @@ function handleAutomatic(speed) {
 }
 
 rangeButt.addEventListener('change', () => {
+  auto_running = true;
   startAutoColours();
 });
 
