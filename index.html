@@ -1174,7 +1174,7 @@ img {
     <label for="gradientsR">Gradients</label>
     <input type="radio" id="automatic" name="buttons" value="automatic" />
     <label for="automatic">Automatic</label>
-    <input id="auto_range" type="range" min="1" max="100" value="50">
+    <input id="auto_range" type="range" min="10" max="100" value="55">
   </div>
 </div>
 
@@ -1773,22 +1773,23 @@ function handleSolids(block) {
 
 
 
-
+const intervalIDs = [];
 
 function startAutoColours() {
-  if (!intervalID) {
-    const spd = rangeButt.value / 10;
-    const spd2000 = rangeButt.value / 10 * 1000;
-    console.log(spd,spd2000);
-    handleAutomatic(spd);
-    intervalID = setInterval(handleAutomatic(spd), spd2000);
-  }
+  const spd = rangeButt.value / 10;
+  const spd1000 = rangeButt.value / 10 * 500;
+  handleAutomatic(spd);
+  iID = setInterval(handleAutomatic(spd), spd1000);
+  intervalIDs.push(iID);
+  console.log(iID,spd,spd1000);
 }
 function stopAutoColours() {
-  clearInterval(intervalID);
-  intervalID = null;
+  console.log('stopping/cancelling auto colours/ids');
+  intervalIDs.forEach(i => {
+    clearInterval(i);
+  })
 }
-function handleAutomatic(speed = 5) {
+function handleAutomatic(speed) {
   console.log(`handling automation with speed: ${speed}`);
   const sheet = document.styleSheets[0];
   const [...rules] = sheet.cssRules;
@@ -1814,8 +1815,7 @@ function handleAutomatic(speed = 5) {
   });
 }
 
-rangeButt.addEventListener('input', () => {
-  // console.log(rangeButt.value);
+rangeButt.addEventListener('change', () => {
   startAutoColours();
 });
 
