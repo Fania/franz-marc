@@ -64,6 +64,7 @@ img {
 #menu {
   position: relative;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -72,11 +73,12 @@ img {
 #buttons {
   position: relative;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   width: 90%;
   margin: 20px 0;
-  gap: 40px;
+  gap: 30px;
 }
 #buttons label {
   background: rgba(0,0,0,0.2);
@@ -105,7 +107,7 @@ img {
 #buttons input[id='automatic']:checked ~ #auto_range + label {
   display: block;
   position: absolute;
-  bottom: -80px;
+  bottom: -100px;
   left: calc((100vw - 450px) /2)px;
   background: none;
   font-variant: all-small-caps;
@@ -116,8 +118,8 @@ img {
 #buttons input[id='automatic']:checked ~ #auto_range {
   display: block;
   position: absolute;
-  width: 450px;
-  bottom: -50px;
+  width: 90%;
+  bottom: -60px;
   left: calc((100vw - 450px) /2)px;
 }
 
@@ -130,7 +132,7 @@ img {
 #buttons input[id='paint']:checked ~ #col_picker + label {
   display: block;
   position: absolute;
-  bottom: -95px;
+  bottom: -130px;
   left: calc((100vw - 450px) /2)px;
   background: none;
   font-variant: all-small-caps;
@@ -140,7 +142,7 @@ img {
   position: absolute;
   width: 60px;
   height: 35px;
-  bottom: -60px;
+  bottom: -80px;
   left: calc((100vw - 450px) /2)px;
 }
 
@@ -149,7 +151,7 @@ img {
     height: 70vh;
   }
 }
-@media (min-width: 1700px) {
+@media (min-width: 1700px) or screen and (orientation:landscape) {
   svg#marc {
     height: 90vh;
   }
@@ -183,9 +185,41 @@ img {
     top: calc(40vh / 2);
     left: calc(100vw - 120px);
   }
+}
 
-
-
+@media screen and (orientation:landscape) {
+  body {
+    height: 95vh;
+  }
+  #menu {
+    position: absolute;
+    left: 0;
+    top: calc((100vh - 375px) / 2);
+    width: 150px;
+  }
+  #buttons input[id='automatic']:checked ~ #auto_range + label {
+    top: calc((153vh - 300px) / 2);
+    left: calc(100vw - 100px);
+    height: 10px;
+  }
+  #buttons input[id='automatic']:checked ~ #auto_range {
+    transform: rotate(-90deg);
+    width: 300px;
+    height: 50px;
+    top: calc((150vh - 300px) / 2);
+    right: calc(-88vw);
+  }
+  #buttons input[id='paint']:checked ~ #col_picker + label {
+    top: calc(85vh / 2);
+    left: calc(100vw - 120px);
+    height: 10px;
+  }
+  #buttons input[id='paint']:checked ~ #col_picker {
+    width: 80px;
+    height: 50px;
+    top: calc(60vh / 2);
+    left: calc(100vw - 120px);
+  }
 }
   </style>
 </head>
@@ -1878,19 +1912,46 @@ function loadColours() {
 
 function clearCanvas() {
   blocks.forEach(block => {
-    block.attributes.style.value = `
-      fill: rgb(255,255,255); 
-      stroke: rgb(0,0,0);
-    `;
-    updateColour(block.id, `fill:rgb(255,255,255);stroke:rgb(0,0,0);`);
+    const bloID = block.id;
+    const relID = relations[bloID] ? relations[bloID] : 'RGB';
+    if(relID !== 'RGB') {
+      const grad = gradients.find((gr) => gr.id == relID);
+      const [...toddlers] = grad.children;
+      let coloursList = [];
+      for(let n=0; n<toddlers.length; n++) {
+        const currElem = toddlers[n];
+        currElem.attributes.style.value = `stop-color:${hexTorgb('#FFFFFF')}`;
+        coloursList.push(`stop-color:${hexTorgb('#FFFFFF')}`);
+      }
+      block.attributes.style.value = `fill: url(#${relID});stroke:${hexTorgb('#000000')};stroke-width:2;`;
+      updateColour(relID, coloursList);
+    } else {
+      block.attributes.style.value = `fill:${hexTorgb('#FFFFFF')};stroke: ${hexTorgb('#000000')};stroke-width:2;`;
+      updateColour(bloID, `fill:${hexTorgb('#FFFFFF')};stroke:${hexTorgb('#000000')};stroke-width:2;`);
+    }
   });
 }
 
 function handlePaint(block) {
-  console.log(`COLOURING-IN '${block.id}''`);
+  // console.log(`COLOURING-IN '${block.id}''`);
   const currColour = picker.value;
-  block.attributes.style.value = `fill: ${hexTorgb(currColour)}`;
-  updateColour(block.id, `fill: ${hexTorgb(currColour)}`);
+  const bloID = block.id;
+  const relID = relations[bloID] ? relations[bloID] : 'RGB';
+  if(relID !== 'RGB') {
+    const grad = gradients.find((gr) => gr.id == relID);
+    const [...toddlers] = grad.children;
+    let coloursList = [];
+    for(let n=0; n<toddlers.length; n++) {
+      const currElem = toddlers[n];
+      currElem.attributes.style.value = `stop-color:${hexTorgb(currColour)}`;
+      coloursList.push(`stop-color:${hexTorgb(currColour)}`);
+    }
+    block.attributes.style.value = `fill: url(#${relID})`;
+    updateColour(relID, coloursList);
+  } else {
+    block.attributes.style.value = `fill: ${hexTorgb(currColour)}`;
+    updateColour(bloID, `fill: ${hexTorgb(currColour)}`);
+  }
 }
 function hexTorgb(hex) {
   return `rgb(${'0x' + hex[1] + hex[2] | 0}, ${'0x' + hex[3] + hex[4] | 0}, ${'0x' + hex[5] + hex[6] | 0})`;
