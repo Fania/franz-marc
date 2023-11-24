@@ -6,6 +6,7 @@ Franc Marc - Reh im Klostergarten (1912)
 
 ## Todos
 
+- [ ] option with white blocks/black outline and colour picker
 - [ ] fine tune blocks and get rid of "background" areas
 - [x] autoslider problem
 - [x] why are solids only generating once?
