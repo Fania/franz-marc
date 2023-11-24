@@ -6,9 +6,9 @@ Franc Marc - Reh im Klostergarten (1912)
 
 ## Todos
 
-- [ ] move options menu for mobile widescreen sizes next to img
 - [ ] option with white blocks/black outline and colour picker
 - [ ] fine tune blocks and get rid of "background" areas
+- [x] move options menu for mobile widescreen sizes next to img
 - [x] autoslider problem
 - [x] why are solids only generating once?
 - [x] deal with mobile "mouseover" touch

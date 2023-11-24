@@ -114,10 +114,33 @@ img {
   background: none;
 }
 #buttons input[id='automatic']:checked ~ #auto_range {
-  position: absolute;
   display: block;
+  position: absolute;
   width: 450px;
   bottom: -50px;
+  left: calc((100vw - 450px) /2)px;
+}
+
+#col_picker {
+  display: none;
+}
+#col_picker + label {
+  display: none;
+}
+#buttons input[id='paint']:checked ~ #col_picker + label {
+  display: block;
+  position: absolute;
+  bottom: -95px;
+  left: calc((100vw - 450px) /2)px;
+  background: none;
+  font-variant: all-small-caps;
+}
+#buttons input[id='paint']:checked ~ #col_picker {
+  display: block;
+  position: absolute;
+  width: 60px;
+  height: 35px;
+  bottom: -60px;
   left: calc((100vw - 450px) /2)px;
 }
 
@@ -140,18 +163,29 @@ img {
     flex-direction: column;
   }
   #buttons input[id='automatic']:checked ~ #auto_range + label {
-    position: absolute;
     top: calc((115vh - 450px) / 2);
     left: calc(100vw - 120px);
   }
   #buttons input[id='automatic']:checked ~ #auto_range {
-    position: absolute;
     transform: rotate(-90deg);
     width: 450px;
     height: 50px;
     top: calc((65vh - 450px) / 2);
     right: calc(-100vw);
   }
+  #buttons input[id='paint']:checked ~ #col_picker + label {
+    top: calc(50vh / 2);
+    left: calc(100vw - 120px);
+  }
+  #buttons input[id='paint']:checked ~ #col_picker {
+    width: 80px;
+    height: 50px;
+    top: calc(40vh / 2);
+    left: calc(100vw - 120px);
+  }
+
+
+
 }
   </style>
 </head>
@@ -1225,14 +1259,24 @@ img {
   <div id="buttons">
     <input type="radio" id="original" name="buttons" value="original" checked />
     <label for="original">Original</label>
+
+    <input type="radio" id="paint" name="buttons" value="paint" />
+    <label for="paint">Paint</label>
+
     <input type="radio" id="solids" name="buttons" value="solids" />
     <label for="solids">Solids</label>
+
     <input type="radio" id="gradientsR" name="buttons" value="gradients" />
     <label for="gradientsR">Gradients</label>
+
     <input type="radio" id="automatic" name="buttons" value="automatic" />
     <label for="automatic">Automatic</label>
+
     <input id="auto_range" type="range" min="10" max="100" value="55">
     <label for="auto_range">Speed</label>
+
+    <input id="col_picker" type="color" name="buttons" value="#fffa02" />
+    <label for="col_picker">Colours</label>
   </div>
 </div>
 
@@ -1246,6 +1290,7 @@ const [...blocks] = document.getElementById('colour_blocks').children;
 const [...gradients] = document.getElementById('gradients').children;
 const [...buttons] = document.getElementsByName('buttons');
 const rangeButt = document.getElementById('auto_range');
+const picker = document.getElementById('col_picker');
 // console.log(`There are a total of ${blocks.length} colour blocks.`);
 // console.log(`And there are ${gradients.length} unique gradients.`);
 
@@ -1700,25 +1745,29 @@ const relations = {
 
 buttons.forEach(butt => {
   butt.addEventListener('click', (event) => {
-    auto_running = false;
     if(butt.id == 'original') {
+      stopAutoColours();
       localStorage.clear();
       saveColours(defaults);
       location.reload(); 
-      auto_running = false;
+    }
+    if(butt.id == 'paint') {
+      stopAutoColours();
+      clearCanvas();
+      clickListeners(handlePaint);
+      updateColour('a_button_state', 'paint');
     }
     if(butt.id == 'solids') {
-      auto_running = false;
+      stopAutoColours();
       mouseOverListeners(handleSolids);
       updateColour('a_button_state', 'solids');
     }
     if(butt.id == 'gradientsR') {
-      auto_running = false;
+      stopAutoColours();
       mouseOverListeners(handleGradients);
       updateColour('a_button_state', 'gradientsR');
     }
     if(butt.id == 'automatic') {
-      auto_running = true;
       startAutoColours();
       updateColour('a_button_state', 'automatic');
     }
@@ -1728,15 +1777,20 @@ buttons.forEach(butt => {
 
 function mouseOverListeners(method) {
   const buttState = document.querySelector('#buttons input:checked').value;
-  const marc_path = document.querySelector('#marc path');
-  marc_path.attributes.style.value = 'transition: fill 20s ease;';
   blocks.forEach(block => {
     block.addEventListener('mouseover', () => {
       method(block);
     });
   });
 }
-
+function clickListeners(method) {
+  const buttState = document.querySelector('#buttons input:checked').value;
+  blocks.forEach(block => {
+    block.addEventListener('click', () => {
+      method(block);
+    });
+  });
+}
 
 
 
@@ -1802,6 +1856,10 @@ function loadColours() {
     const butt = buttons.find((br) => br.id == 'original');
     butt.checked = true;
   }
+  if(coloursJSON['a_button_state'] == 'paint') {
+    const butt = buttons.find((br) => br.id == 'paint');
+    butt.checked = true;
+  }
   if(coloursJSON['a_button_state'] == 'solids') {
     const butt = buttons.find((br) => br.id == 'solids');
     butt.checked = true;
@@ -1813,12 +1871,30 @@ function loadColours() {
   if(coloursJSON['a_button_state'] == 'automatic') {
     const butt = buttons.find((br) => br.id == 'automatic');
     butt.checked = true;
-    const marc_path = document.querySelector('#marc path');
-    marc_path.attributes.style.value = 'transition: fill 20s ease;';
   }
 }
 
 
+
+function clearCanvas() {
+  blocks.forEach(block => {
+    block.attributes.style.value = `
+      fill: rgb(255,255,255); 
+      stroke: rgb(0,0,0);
+    `;
+    updateColour(block.id, `fill:rgb(255,255,255);stroke:rgb(0,0,0);`);
+  });
+}
+
+function handlePaint(block) {
+  console.log(`COLOURING-IN '${block.id}''`);
+  const currColour = picker.value;
+  block.attributes.style.value = `fill: ${hexTorgb(currColour)}`;
+  updateColour(block.id, `fill: ${hexTorgb(currColour)}`);
+}
+function hexTorgb(hex) {
+  return `rgb(${'0x' + hex[1] + hex[2] | 0}, ${'0x' + hex[3] + hex[4] | 0}, ${'0x' + hex[5] + hex[6] | 0})`;
+}
 
 
 
@@ -1844,7 +1920,15 @@ function startAutoColours() {
   iID = setInterval(() => {handleAutomatic(spd,iID)}, spd1000);
   // console.log(iID,spd,spd1000);
 }
-
+function stopAutoColours() {
+  clearInterval(iID);
+  const sheet = document.styleSheets[0];
+  const [...rules] = sheet.cssRules;
+  const marcRuleIndex = rules.findIndex(rule => rule.selectorText === "svg#marc path");
+  if(marcRuleIndex > -1) {
+    sheet.deleteRule(marcRuleIndex);
+  }
+}
 
 function handleAutomatic(speed,iID) {
   // console.log(`handling automation with speed: ${speed}`);
@@ -1873,7 +1957,6 @@ function handleAutomatic(speed,iID) {
 }
 
 rangeButt.addEventListener('change', () => {
-  auto_running = true;
   startAutoColours();
 });
 
