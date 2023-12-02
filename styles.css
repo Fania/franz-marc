@@ -1,0 +1,196 @@
+:root {
+  color-scheme: only light;
+}
+@media screen {
+  :root {
+    color-scheme: only light;
+  }
+}
+body {
+  position: relative;
+  background: rgb(94, 94, 60);
+  height: 98vh;
+  display: flex;
+  gap: 10px; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+svg#marc {
+  height: auto;
+  width: 95%;
+  overflow: hidden;
+}
+svg text {
+  fill: white;
+}
+img {
+  width: 1500px;
+  /* display: none; */
+}
+#coordinates {
+  display: none;
+}
+#menu {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+#buttons {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  margin: 20px 0;
+  gap: 30px;
+}
+#buttons label {
+  background: rgba(0,0,0,0.2);
+  padding: 10px 15px 12px;
+  border-radius: 15px;
+}
+#buttons input[type='radio'] {
+  display: none;
+}
+#buttons input[type='radio'] + label  {
+  color: white;
+  font-variant: all-small-caps;
+}
+#buttons input:checked + label  {
+  background: rgba(255,255,255,0.2);
+}
+#buttons label:hover {
+  background: rgba(255,255,255,0.2);
+}
+#auto_range {
+  display: none;
+}
+#auto_range + label {
+  display: none;
+}
+#buttons input[id='automatic']:checked ~ #auto_range + label {
+  display: block;
+  position: absolute;
+  bottom: -100px;
+  left: calc((100vw - 450px) /2)px;
+  background: none;
+  font-variant: all-small-caps;
+}
+#auto_range + label:hover {
+  background: none;
+}
+#buttons input[id='automatic']:checked ~ #auto_range {
+  display: block;
+  position: absolute;
+  width: 90%;
+  bottom: -60px;
+  left: calc((100vw - 450px) /2)px;
+}
+
+#col_picker {
+  display: none;
+}
+#col_picker + label {
+  display: none;
+}
+#buttons input[id='paint']:checked ~ #col_picker + label {
+  display: block;
+  position: absolute;
+  bottom: -130px;
+  left: calc((100vw - 450px) /2)px;
+  background: none;
+  font-variant: all-small-caps;
+}
+#buttons input[id='paint']:checked ~ #col_picker {
+  display: block;
+  position: absolute;
+  width: 60px;
+  height: 35px;
+  bottom: -80px;
+  left: calc((100vw - 450px) /2)px;
+}
+
+@media (min-width: 1200px) {
+  svg#marc {
+    height: 70vh;
+  }
+}
+@media (min-width: 1700px) or screen and (orientation:landscape) {
+  svg#marc {
+    height: 90vh;
+  }
+  #menu {
+    position: absolute;
+    left: 0;
+    top: calc((100vh - 450px) / 2);
+    width: 150px;
+  }
+  #buttons {
+    flex-direction: column;
+  }
+  #buttons input[id='automatic']:checked ~ #auto_range + label {
+    top: calc((115vh - 450px) / 2);
+    left: calc(100vw - 120px);
+  }
+  #buttons input[id='automatic']:checked ~ #auto_range {
+    transform: rotate(-90deg);
+    width: 450px;
+    height: 50px;
+    top: calc((65vh - 450px) / 2);
+    right: calc(-100vw);
+  }
+  #buttons input[id='paint']:checked ~ #col_picker + label {
+    top: calc(50vh / 2);
+    left: calc(100vw - 120px);
+  }
+  #buttons input[id='paint']:checked ~ #col_picker {
+    width: 80px;
+    height: 50px;
+    top: calc(40vh / 2);
+    left: calc(100vw - 120px);
+  }
+}
+
+@media screen and (orientation:landscape) {
+  body {
+    height: 95vh;
+  }
+  #menu {
+    position: absolute;
+    left: 0;
+    top: calc((100vh - 375px) / 2);
+    width: 150px;
+  }
+  #buttons input[id='automatic']:checked ~ #auto_range + label {
+    top: calc((153vh - 300px) / 2);
+    left: calc(100vw - 100px);
+    height: 10px;
+  }
+  #buttons input[id='automatic']:checked ~ #auto_range {
+    transform: rotate(-90deg);
+    width: 300px;
+    height: 50px;
+    top: calc((150vh - 300px) / 2);
+    right: calc(-88vw);
+  }
+  #buttons input[id='paint']:checked ~ #col_picker + label {
+    top: calc(85vh / 2);
+    left: calc(100vw - 120px);
+    height: 10px;
+  }
+  #buttons input[id='paint']:checked ~ #col_picker {
+    width: 80px;
+    height: 50px;
+    top: calc(60vh / 2);
+    left: calc(100vw - 120px);
+  }
+}
