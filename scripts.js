@@ -1,10 +1,11 @@
 'use strict';
 
-let auto_running = false;
+let bodyCont = document.getElementsByTagName('body')[0];
 const marc_svg = document.getElementById('marc');
 const [...blocks] = document.getElementById('colour_blocks').children;
 const [...gradients] = document.getElementById('gradients').children;
 const [...buttons] = document.getElementsByName('buttons');
+const menuElem = document.getElementById('menu');
 const rangeButt = document.getElementById('auto_range');
 const picker = document.getElementById('col_picker');
 // console.log(`There are a total of ${blocks.length} colour blocks.`);
@@ -811,3 +812,35 @@ function handleTap(ev) {
     }
   }
 }
+
+
+
+
+
+function handleShowcase() {
+  const params = location.search;
+  const keyValueStrings = (params.slice(1)).split('&');
+  keyValueStrings.forEach(x => {
+    const pair = x.split('=');
+    if (pair[0] === 'showcase' && pair[1] === 'true') {
+      console.log('starting showcase');
+      menu.classList.add('hide');
+      const min1200 = window.matchMedia("(min-width: 1200px)").matches;
+      if (min1200) {
+        marc_svg.attributes.style.value = 'height: unset';
+      }
+      const medScreenLandscape = window.matchMedia("screen and (orientation: landscape)").matches;
+      if (medScreenLandscape) {
+        bodyCont.style.height = '98vh';
+      }
+      rangeButt.value = 100;
+      startAutoColours();
+    }
+    if (pair[0] === 'showcase' && pair[1] === 'false') {
+      console.log('stopping showcase');
+      menu.classList.remove('hide');
+      stopAutoColours();
+    }
+  })
+}
+handleShowcase();
