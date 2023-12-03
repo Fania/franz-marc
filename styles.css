@@ -94,6 +94,7 @@ img {
 #buttons input[id='automatic']:checked ~ #auto_range {
   display: block;
   position: absolute;
+  z-index: 99;
   width: 90%;
   bottom: -60px;
   left: calc((100vw - 450px) /2)px;
@@ -127,7 +128,7 @@ img {
     height: 70vh;
   }
 }
-@media (min-width: 1700px) or screen and (orientation:landscape) {
+@media (min-width: 1700px) {
   svg#marc {
     height: 90vh;
   }
@@ -163,37 +164,39 @@ img {
   }
 }
 
-@media screen and (orientation:landscape) {
+/* landscape mobiles */
+@media (min-resolution: 2dppx) and (orientation:landscape) {
+/* @media screen and (orientation:landscape) { */
   body {
     height: 95vh;
   }
   #menu {
     position: absolute;
-    left: 0;
+    left: -10px;
     top: calc((100vh - 375px) / 2);
     width: 150px;
   }
   #buttons input[id='automatic']:checked ~ #auto_range + label {
-    top: calc((153vh - 300px) / 2);
-    left: calc(100vw - 100px);
+    top: calc(40% + 5px);
+    left: calc(100vw - 110px);
     height: 10px;
   }
   #buttons input[id='automatic']:checked ~ #auto_range {
     transform: rotate(-90deg);
     width: 300px;
     height: 50px;
-    top: calc((150vh - 300px) / 2);
-    right: calc(-88vw);
+    top: 40%;
+    right: calc(-96vw);
   }
   #buttons input[id='paint']:checked ~ #col_picker + label {
-    top: calc(85vh / 2);
+    top: calc(40% + 50px);
     left: calc(100vw - 120px);
     height: 10px;
   }
   #buttons input[id='paint']:checked ~ #col_picker {
     width: 80px;
     height: 50px;
-    top: calc(60vh / 2);
+    top: 40%;
     left: calc(100vw - 120px);
   }
 }
