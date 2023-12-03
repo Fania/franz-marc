@@ -824,6 +824,7 @@ function handleShowcase() {
   keyValueStrings.forEach(x => {
     const pair = x.split('=');
     if (pair[0] === 'showcase' && pair[1] === 'true') {
+      bodyCont.style.cursor = 'none';
       console.log('starting showcase');
       menu.classList.add('hide');
       const min1200 = window.matchMedia("(min-width: 1200px)").matches;
@@ -838,6 +839,7 @@ function handleShowcase() {
       startAutoColours();
     }
     if (pair[0] === 'showcase' && pair[1] === 'false') {
+      bodyCont.style.cursor = 'default';
       console.log('stopping showcase');
       menu.classList.remove('hide');
       stopAutoColours();
