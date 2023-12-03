@@ -844,3 +844,94 @@ function handleShowcase() {
   })
 }
 handleShowcase();
+
+
+
+
+
+
+
+// SHORTCUT OPTIONS
+// for live display screens
+document.addEventListener("keydown", event => {
+  if (event.key === "o") {
+    console.log('o pressed: reset to original');
+    stopAutoColours();
+    localStorage.clear();
+    saveColours(defaults);
+    location.reload();
+    document.querySelector(`#buttons input[id='original']`).checked = true;
+    updateColour('a_button_state', 'original');
+  }
+  if (event.key === "p") {
+    console.log('p pressed: paint mode started');
+    stopAutoColours();
+    clearCanvas();
+    clickListeners(handlePaint);
+    document.querySelector(`#buttons input[id='paint']`).checked = true;
+    updateColour('a_button_state', 'paint');
+  }
+  if (event.key === "s") {
+    console.log('s pressed: solid mode started');
+    stopAutoColours();
+    mouseOverListeners(handleSolids);
+    document.querySelector(`#buttons input[id='solids']`).checked = true;
+    updateColour('a_button_state', 'solids');
+  }
+  if (event.key === "g") {
+    // console.log('o pressed');
+    console.log('g pressed: gradient mode started');
+    stopAutoColours();
+    mouseOverListeners(handleGradients);
+    document.querySelector(`#buttons input[id='gradientsR']`).checked = true;
+    updateColour('a_button_state', 'gradientsR');
+  }
+  if (event.key === "a") {
+    console.log('a pressed: showcase mode started');
+    rangeButt.value = 50;
+    startAutoColours();
+    // handleShowcase();
+    document.querySelector(`#buttons input[id='automatic']`).checked = true;
+    updateColour('a_button_state', 'automatic');
+  }
+  if (event.key === "r") {
+    console.log('r pressed: reset to original');
+    stopAutoColours();
+    localStorage.clear();
+    saveColours(defaults);
+    location.reload(); 
+  }
+  if (event.key === "Escape") {
+    console.log('escape pressed: reset to original');
+    stopAutoColours();
+    localStorage.clear();
+    saveColours(defaults);
+    location.reload(); 
+  }
+  if (event.key === "ArrowUp") { // UP ARROW
+    console.log('up pressed: sped up showcase speed');
+    incSpeed();
+    startAutoColours();
+  }
+  if (event.key === "ArrowDown") { // DOWN ARROW
+    console.log('down pressed: slowed down showcase speed');
+    decSpeed();
+    startAutoColours();
+  }
+});
+
+function incSpeed() {
+  if(parseInt(rangeButt.value) <= 90) {
+    rangeButt.value = parseInt(rangeButt.value) + 10;
+  } else {
+    rangeButt.value = 100;
+  }
+}
+
+function decSpeed() {
+  if(parseInt(rangeButt.value) >= 10) {
+    rangeButt.value = parseInt(rangeButt.value) - 10;
+  } else {
+    rangeButt.value = 10;
+  }
+}
