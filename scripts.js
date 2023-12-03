@@ -8,6 +8,7 @@ const [...buttons] = document.getElementsByName('buttons');
 const menuElem = document.getElementById('menu');
 const rangeButt = document.getElementById('auto_range');
 const picker = document.getElementById('col_picker');
+const urlParams = new URLSearchParams(window.location.search);
 // console.log(`There are a total of ${blocks.length} colour blocks.`);
 // console.log(`And there are ${gradients.length} unique gradients.`);
 
@@ -829,7 +830,7 @@ function handleShowcase() {
       if (min1200) {
         marc_svg.attributes.style.value = 'height: unset';
       }
-      const medScreenLandscape = window.matchMedia("screen and (orientation: landscape)").matches;
+      const medScreenLandscape = window.matchMedia("(min-resolution: 2dppx) and (orientation:landscape)").matches;
       if (medScreenLandscape) {
         bodyCont.style.height = '98vh';
       }
@@ -860,6 +861,8 @@ document.addEventListener("keydown", event => {
     localStorage.clear();
     saveColours(defaults);
     location.reload();
+    urlParams.set('showcase', false);
+    window.location.search = urlParams;
     document.querySelector(`#buttons input[id='original']`).checked = true;
     updateColour('a_button_state', 'original');
   }
@@ -879,7 +882,6 @@ document.addEventListener("keydown", event => {
     updateColour('a_button_state', 'solids');
   }
   if (event.key === "g") {
-    // console.log('o pressed');
     console.log('g pressed: gradient mode started');
     stopAutoColours();
     mouseOverListeners(handleGradients);
@@ -888,9 +890,9 @@ document.addEventListener("keydown", event => {
   }
   if (event.key === "a") {
     console.log('a pressed: showcase mode started');
-    rangeButt.value = 50;
-    startAutoColours();
-    // handleShowcase();
+    rangeButt.value = 100;
+    urlParams.set('showcase', true);
+    window.location.search = urlParams;
     document.querySelector(`#buttons input[id='automatic']`).checked = true;
     updateColour('a_button_state', 'automatic');
   }
@@ -899,7 +901,9 @@ document.addEventListener("keydown", event => {
     stopAutoColours();
     localStorage.clear();
     saveColours(defaults);
-    location.reload(); 
+    location.reload();
+    urlParams.set('showcase', false);
+    window.location.search = urlParams;
   }
   if (event.key === "Escape") {
     console.log('escape pressed: reset to original');
@@ -907,6 +911,8 @@ document.addEventListener("keydown", event => {
     localStorage.clear();
     saveColours(defaults);
     location.reload(); 
+    urlParams.set('showcase', false);
+    window.location.search = urlParams;
   }
   if (event.key === "ArrowUp") { // UP ARROW
     console.log('up pressed: sped up showcase speed');
