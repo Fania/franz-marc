@@ -12,7 +12,7 @@ This runs the automatic mode on slow only. Turn on fullscreen (check your browse
 
 ## Keyboard Shortcuts
 
-|
+| Shortcut  | Description          |
 |-----------|----------------------|
 | o         | Original             |
 | p         | Paint                |
