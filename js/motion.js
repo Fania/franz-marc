@@ -25,21 +25,9 @@ var MotionDetector = (function() {
   var canvasFinal = document.getElementById('canvasFinal');
   var video = document.getElementById('camStream');
 
-  document.addEventListener("DOMContentLoaded", ()=>{
-    var vidStyleData = video.getBoundingClientRect();
-    console.log(vidStyleData);
-    canvas.style.width = vidStyleData.width + "px";
-    canvas.style.height = vidStyleData.height + "px";
-    canvas.style.left = vidStyleData.left + "px";
-    canvas.style.top = vidStyleData.top + "px";
-    canvasFinal.style.width = vidStyleData.width + "px";
-    canvasFinal.style.height = vidStyleData.height + "px";
-    canvasFinal.style.left = vidStyleData.left + "px";
-    canvasFinal.style.top = vidStyleData.top + "px";
-  });
-
   var ctx = canvas.getContext('2d');
   var ctxFinal = canvasFinal.getContext('2d');
+
   var localStream = null;
   var imgData = null;
   var imgDataPrev = [];
@@ -65,10 +53,11 @@ var MotionDetector = (function() {
       canvasFinal.width = video.offsetWidth;
       canvasFinal.height = video.offsetHeight;
 
-      ctx.drawImage(video, 0, 0);
+      ctx.drawImage(video, 0, 0, ctx.canvas.width, ctx.canvas.height);
+      // ctx.drawImage(video, 0, 0);
 
       // Must capture image data in new instance as it is a live reference.
-      // Use alternative live referneces to prevent messed up data.
+      // Use alternative live references to prevent messed up data.
       imgDataPrev[version] = ctx.getImageData(0, 0, canvas.width, canvas.height);
       version = (version == 0) ? 1 : 0;
 

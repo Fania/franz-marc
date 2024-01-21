@@ -17,27 +17,28 @@ body {
   align-items: center;
   color: white;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-
 }
 
 #camStream {
-  position: fixed;
+  position: absolute;
   top: auto;
-  left: 2.5%;
+  left: 4vw;
   visibility: hidden;
+  width: 1500px;
+  max-width: 90vw;
+  max-height: 90vh;
+  aspect-ratio: 1500 / 1062;
 }
 #canvas {
-  position: fixed;
+  position: absolute;
   top: auto;
-  left: 2.5%;
+  left: 4vw;
   visibility: hidden;
 }
 #canvasFinal {
-  position: fixed;
+  position: absolute;
   top: auto;
-  left: 2.5%;
-  /* width: 95%;
-  height: auto; */
+  left: 4vw;
 }
 
 p {
@@ -56,7 +57,7 @@ p#selected-color {
   display: none;
 }
 svg#marc {
-  position: fixed;
+  position: absolute;
   top: auto;
   left: 2.5%;
   height: auto;
