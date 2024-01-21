@@ -30,16 +30,14 @@ body {
   position: fixed;
   top: auto;
   left: 2.5%;
-  width: 1500px;
-  height: 1062px;
   visibility: hidden;
 }
 #canvasFinal {
   position: fixed;
   top: auto;
   left: 2.5%;
-  width: 95%;
-  height: auto;
+  /* width: 95%;
+  height: auto; */
 }
 
 p {

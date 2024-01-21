@@ -24,6 +24,20 @@ var MotionDetector = (function() {
   var canvas = document.getElementById('canvas');
   var canvasFinal = document.getElementById('canvasFinal');
   var video = document.getElementById('camStream');
+
+  document.addEventListener("DOMContentLoaded", ()=>{
+    var vidStyleData = video.getBoundingClientRect();
+    console.log(vidStyleData);
+    canvas.style.width = vidStyleData.width + "px";
+    canvas.style.height = vidStyleData.height + "px";
+    canvas.style.left = vidStyleData.left + "px";
+    canvas.style.top = vidStyleData.top + "px";
+    canvasFinal.style.width = vidStyleData.width + "px";
+    canvasFinal.style.height = vidStyleData.height + "px";
+    canvasFinal.style.left = vidStyleData.left + "px";
+    canvasFinal.style.top = vidStyleData.top + "px";
+  });
+
   var ctx = canvas.getContext('2d');
   var ctxFinal = canvasFinal.getContext('2d');
   var localStream = null;
@@ -101,23 +115,26 @@ var MotionDetector = (function() {
     const bounding = canvas.getBoundingClientRect();
     const x = event.clientX - bounding.left;
     const y = event.clientY - bounding.top;
-    const pixel = ctx.getImageData(x, y, 1, 1);
+    const pixel = ctxFinal.getImageData(x, y, 1, 1);
     const data = pixel.data;
     const rgbColor = `rgb(${data[0]} ${data[1]} ${data[2]} / ${data[3] / 255})`;
     destination.style.background = rgbColor;
     destination.textContent = rgbColor;
+
+    if(rgbColor === 'rgb(128 128 128 / 1)' || 
+       rgbColor === 'rgb(0 0 0 / 0)'){
+      console.log('gray');
+    } else {
+      console.log('movement',x,y);
+    }
     return rgbColor;
   }
-
-
 
   const hoveredColor = document.getElementById("hovered-color");
   const selectedColor = document.getElementById("selected-color");
   const svgElem = document.getElementById("marc");
 
-
   canvasFinal.addEventListener("mousemove", (event) => pickColour(event, hoveredColor));
-  canvasFinal.addEventListener("click", (event) => pickColour(event, selectedColor));
 
 
 
