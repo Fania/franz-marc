@@ -41,3 +41,9 @@ This runs the automatic mode on slow only. Turn on fullscreen (check your browse
 - [x] add automatic version
 - [x] finish localstorage stuff
 - [x] work on gradients
+
+
+
+
+https://github.com/jasonmayes/JS-Motion-Detection
+https://trackingjs.com/docs.html#trackers

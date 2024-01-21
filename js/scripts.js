@@ -461,37 +461,6 @@ const relations = {
 
 
 
-buttons.forEach(butt => {
-  butt.addEventListener('click', (event) => {
-    if(butt.id == 'original') {
-      stopAutoColours();
-      localStorage.clear();
-      saveColours(defaults);
-      location.reload(); 
-    }
-    if(butt.id == 'paint') {
-      stopAutoColours();
-      clearCanvas();
-      clickListeners(handlePaint);
-      updateColour('a_button_state', 'paint');
-    }
-    if(butt.id == 'solids') {
-      stopAutoColours();
-      mouseOverListeners(handleSolids);
-      updateColour('a_button_state', 'solids');
-    }
-    if(butt.id == 'gradientsR') {
-      stopAutoColours();
-      mouseOverListeners(handleGradients);
-      updateColour('a_button_state', 'gradientsR');
-    }
-    if(butt.id == 'automatic') {
-      startAutoColours();
-      updateColour('a_button_state', 'automatic');
-    }
-  });
-});
-
 
 function mouseOverListeners(method) {
   const buttState = document.querySelector('#buttons input:checked').value;
