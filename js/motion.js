@@ -64,26 +64,63 @@ var MotionDetector = (function() {
       var x = 0;
       while (x < length) {
         if (!greyScale) {
+          // see https://developer.mozilla.org/en-US/docs/Web/API/ImageData/data
           // Alpha blending formula: out = (alpha * new) + (1 - alpha) * old.
+          // R value
           imgData.data[x] = alpha * (255 - imgData.data[x]) + ((1-alpha) * imgDataPrev[version].data[x]);
+          // G value
           imgData.data[x + 1] = alpha * (255 - imgData.data[x+1]) + ((1-alpha) * imgDataPrev[version].data[x + 1]);
+          // B value
           imgData.data[x + 2] = alpha * (255 - imgData.data[x+2]) + ((1-alpha) * imgDataPrev[version].data[x + 2]);
+          // A value
           imgData.data[x + 3] = 255;
         } else {
           // GreyScale.
           var av = (imgData.data[x] + imgData.data[x + 1] + imgData.data[x + 2]) / 3;
           var av2 = (imgDataPrev[version].data[x] + imgDataPrev[version].data[x + 1] + imgDataPrev[version].data[x + 2]) / 3;
           var blended = alpha * (255 - av) + ((1-alpha) * av2);
+          // R value
           imgData.data[x] = blended;
+          // G value
           imgData.data[x + 1] = blended;
+          // B value
           imgData.data[x + 2] = blended;
+          // A value
           imgData.data[x + 3] = 255;
+
+          // console.log('inside gray image');
         }
         x += 4; 
       }
       ctxFinal.putImageData(imgData, 0, 0);
     }
   }
+
+
+  function pickColour(event, destination) {
+    const bounding = canvas.getBoundingClientRect();
+    const x = event.clientX - bounding.left;
+    const y = event.clientY - bounding.top;
+    const pixel = ctx.getImageData(x, y, 1, 1);
+    const data = pixel.data;
+    const rgbColor = `rgb(${data[0]} ${data[1]} ${data[2]} / ${data[3] / 255})`;
+    destination.style.background = rgbColor;
+    destination.textContent = rgbColor;
+    return rgbColor;
+  }
+
+
+
+  const hoveredColor = document.getElementById("hovered-color");
+  const selectedColor = document.getElementById("selected-color");
+  const svgElem = document.getElementById("marc");
+
+
+  canvasFinal.addEventListener("mousemove", (event) => pickColour(event, hoveredColor));
+  canvasFinal.addEventListener("click", (event) => pickColour(event, selectedColor));
+
+
+
 
   
   function init_() {
@@ -101,3 +138,8 @@ var MotionDetector = (function() {
 })();
 
 MotionDetector.init();
+
+
+
+
+

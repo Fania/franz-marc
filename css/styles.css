@@ -42,6 +42,18 @@ body {
   height: auto;
 }
 
+p {
+  position: fixed;
+  bottom: 0;
+  left: 0; right: 0;
+}
+p#hovered-color {
+  left: 0; right: 50%;
+}
+p#selected-color {
+  left: 50%; right: 0;
+}
+
 #menu.hide {
   display: none;
 }
