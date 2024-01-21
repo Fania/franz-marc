@@ -32,7 +32,11 @@ var MotionDetector = (function() {
   var imgData = null;
   var imgDataPrev = [];
 
- 
+  const [...blocks] = document.getElementById('colour_blocks').children;
+  const hoveredColor = document.getElementById("hovered-color");
+  const selectedColor = document.getElementById("selected-color");
+  const svgElem = document.getElementById("marc");
+
   function success(stream) {
     localStream = stream;
     // Create a new object URL to use as the video's source.
@@ -115,13 +119,27 @@ var MotionDetector = (function() {
       console.log('gray');
     } else {
       console.log('movement',x,y);
+
+      // console.log(event);
+      // let lastPosX = event.center['x'];
+      // let lastPosY = event.center['y'];
+      // let currElem = document.elementFromPoint(lastPosX,lastPosY);
+      // let currSVGElem = svgElem.elementFromPoint(lastPosX,lastPosY);
+
+      // console.log(currElem);
+      // console.log(currSVGElem);
+
+      // blocks.forEach(block => {
+      //   block.addEventListener('mouseover', () => {
+      //     handleGradients(block);
+      //   });
+      // });
+
     }
     return rgbColor;
   }
 
-  const hoveredColor = document.getElementById("hovered-color");
-  const selectedColor = document.getElementById("selected-color");
-  const svgElem = document.getElementById("marc");
+  
 
   canvasFinal.addEventListener("mousemove", (event) => pickColour(event, hoveredColor));
 
