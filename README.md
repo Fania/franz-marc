@@ -45,5 +45,8 @@ This runs the automatic mode on slow only. Turn on fullscreen (check your browse
 
 
 
+https://www.smashingmagazine.com/2022/10/motion-controls-browser/
+
+
 https://github.com/jasonmayes/JS-Motion-Detection
 https://trackingjs.com/docs.html#trackers
