@@ -44,9 +44,12 @@ This runs the automatic mode on slow only. Turn on fullscreen (check your browse
 
 
 
+![](/imgs/hand-landmarks.png)
+
+
+
+https://developers.google.com/mediapipe/solutions/vision/hand_landmarker
 
 https://www.smashingmagazine.com/2022/10/motion-controls-browser/
-
-
 https://github.com/jasonmayes/JS-Motion-Detection
 https://trackingjs.com/docs.html#trackers

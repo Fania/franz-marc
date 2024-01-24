@@ -23,11 +23,11 @@ body {
   position: absolute;
   top: auto;
   left: 4vw;
-  visibility: hidden;
   width: 1500px;
   max-width: 90vw;
   max-height: 90vh;
   aspect-ratio: 1500 / 1062;
+  visibility: hidden;
 }
 
 #canvas {
@@ -38,6 +38,9 @@ body {
   max-width: 90vw;
   max-height: 90vh;
   aspect-ratio: 1500 / 1062;
+  /* opacity: 0.5; */
+  /* z-index: 999; */
+  /* visibility: hidden; */
 }
 
 p {
@@ -58,11 +61,17 @@ p#selected-color {
 svg#marc {
   position: absolute;
   top: auto;
-  left: 2.5%;
-  height: auto;
-  width: 95%;
+  left: 4vw;
+  width: 1500px;
+  max-width: 90vw;
+  max-height: 90vh;
+  aspect-ratio: 1500 / 1062;
   overflow: hidden;
-  visibility: hidden;
+  opacity: 0.5;
+  /* visibility: hidden; */
+}
+svg#marc path {
+  z-index: 999;
 }
 svg text {
   fill: white;
