@@ -14,6 +14,8 @@ function onResults(handData) {
 function drawHandPositions(canvas, ctx, handData) {
   canvas.width = stream.offsetWidth;
   canvas.height = stream.offsetHeight;
+  // ctx.translate(ctx.canvas.width, 0); //
+  // ctx.scale(-1, 1); //
   ctx.save();
   ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
   ctx.drawImage(
@@ -35,6 +37,11 @@ function drawHandPositions(canvas, ctx, handData) {
   }
   ctx.restore();
 }
+
+stream.addEventListener('loadedmetadata', function() {
+  ctx.translate(stream.videoWidth, 0);
+  ctx.scale(-1, 1);
+});
 
 const hands = new Hands({locateFile: (file) => {
   return `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`;

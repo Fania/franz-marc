@@ -462,22 +462,22 @@ const relations = {
 
 
 
-function mouseOverListeners(method) {
-  const buttState = document.querySelector('#buttons input:checked').value;
-  blocks.forEach(block => {
-    block.addEventListener('mouseover', () => {
-      method(block);
-    });
-  });
-}
-function clickListeners(method) {
-  const buttState = document.querySelector('#buttons input:checked').value;
-  blocks.forEach(block => {
-    block.addEventListener('click', () => {
-      method(block);
-    });
-  });
-}
+// function mouseOverListeners(method) {
+//   const buttState = document.querySelector('#buttons input:checked').value;
+//   blocks.forEach(block => {
+//     block.addEventListener('mouseover', () => {
+//       method(block);
+//     });
+//   });
+// }
+// function clickListeners(method) {
+//   const buttState = document.querySelector('#buttons input:checked').value;
+//   blocks.forEach(block => {
+//     block.addEventListener('click', () => {
+//       method(block);
+//     });
+//   });
+// }
 
 
 
@@ -539,73 +539,73 @@ function loadColours() {
       block.attributes.style.value = `${rcolour}`;
     }
   });
-  if(coloursJSON['a_button_state'] == 'original') {
-    const butt = buttons.find((br) => br.id == 'original');
-    butt.checked = true;
-  }
-  if(coloursJSON['a_button_state'] == 'paint') {
-    const butt = buttons.find((br) => br.id == 'paint');
-    butt.checked = true;
-  }
-  if(coloursJSON['a_button_state'] == 'solids') {
-    const butt = buttons.find((br) => br.id == 'solids');
-    butt.checked = true;
-  }
-  if(coloursJSON['a_button_state'] == 'gradientsR') {
-    const butt = buttons.find((br) => br.id == 'gradientsR');
-    butt.checked = true;
-  }
-  if(coloursJSON['a_button_state'] == 'automatic') {
-    const butt = buttons.find((br) => br.id == 'automatic');
-    butt.checked = true;
-  }
+  // if(coloursJSON['a_button_state'] == 'original') {
+  //   const butt = buttons.find((br) => br.id == 'original');
+  //   butt.checked = true;
+  // }
+  // if(coloursJSON['a_button_state'] == 'paint') {
+  //   const butt = buttons.find((br) => br.id == 'paint');
+  //   butt.checked = true;
+  // }
+  // if(coloursJSON['a_button_state'] == 'solids') {
+  //   const butt = buttons.find((br) => br.id == 'solids');
+  //   butt.checked = true;
+  // }
+  // if(coloursJSON['a_button_state'] == 'gradientsR') {
+  //   const butt = buttons.find((br) => br.id == 'gradientsR');
+  //   butt.checked = true;
+  // }
+  // if(coloursJSON['a_button_state'] == 'automatic') {
+  //   const butt = buttons.find((br) => br.id == 'automatic');
+  //   butt.checked = true;
+  // }
 }
 
 
 
-function clearCanvas() {
-  blocks.forEach(block => {
-    const bloID = block.id;
-    const relID = relations[bloID] ? relations[bloID] : 'RGB';
-    if(relID !== 'RGB') {
-      const grad = gradients.find((gr) => gr.id == relID);
-      const [...toddlers] = grad.children;
-      let coloursList = [];
-      for(let n=0; n<toddlers.length; n++) {
-        const currElem = toddlers[n];
-        currElem.attributes.style.value = `stop-color:${hexTorgb('#FFFFFF')}`;
-        coloursList.push(`stop-color:${hexTorgb('#FFFFFF')}`);
-      }
-      block.attributes.style.value = `fill: url(#${relID});stroke:${hexTorgb('#000000')};stroke-width:2;`;
-      updateColour(relID, coloursList);
-    } else {
-      block.attributes.style.value = `fill:${hexTorgb('#FFFFFF')};stroke: ${hexTorgb('#000000')};stroke-width:2;`;
-      updateColour(bloID, `fill:${hexTorgb('#FFFFFF')};stroke:${hexTorgb('#000000')};stroke-width:2;`);
-    }
-  });
-}
+// function clearCanvas() {
+//   blocks.forEach(block => {
+//     const bloID = block.id;
+//     const relID = relations[bloID] ? relations[bloID] : 'RGB';
+//     if(relID !== 'RGB') {
+//       const grad = gradients.find((gr) => gr.id == relID);
+//       const [...toddlers] = grad.children;
+//       let coloursList = [];
+//       for(let n=0; n<toddlers.length; n++) {
+//         const currElem = toddlers[n];
+//         currElem.attributes.style.value = `stop-color:${hexTorgb('#FFFFFF')}`;
+//         coloursList.push(`stop-color:${hexTorgb('#FFFFFF')}`);
+//       }
+//       block.attributes.style.value = `fill: url(#${relID});stroke:${hexTorgb('#000000')};stroke-width:2;`;
+//       updateColour(relID, coloursList);
+//     } else {
+//       block.attributes.style.value = `fill:${hexTorgb('#FFFFFF')};stroke: ${hexTorgb('#000000')};stroke-width:2;`;
+//       updateColour(bloID, `fill:${hexTorgb('#FFFFFF')};stroke:${hexTorgb('#000000')};stroke-width:2;`);
+//     }
+//   });
+// }
 
-function handlePaint(block) {
-  // console.log(`COLOURING-IN '${block.id}''`);
-  const currColour = picker.value;
-  const bloID = block.id;
-  const relID = relations[bloID] ? relations[bloID] : 'RGB';
-  if(relID !== 'RGB') {
-    const grad = gradients.find((gr) => gr.id == relID);
-    const [...toddlers] = grad.children;
-    let coloursList = [];
-    for(let n=0; n<toddlers.length; n++) {
-      const currElem = toddlers[n];
-      currElem.attributes.style.value = `stop-color:${hexTorgb(currColour)}`;
-      coloursList.push(`stop-color:${hexTorgb(currColour)}`);
-    }
-    block.attributes.style.value = `fill: url(#${relID})`;
-    updateColour(relID, coloursList);
-  } else {
-    block.attributes.style.value = `fill: ${hexTorgb(currColour)}`;
-    updateColour(bloID, `fill: ${hexTorgb(currColour)}`);
-  }
-}
+// function handlePaint(block) {
+//   // console.log(`COLOURING-IN '${block.id}''`);
+//   const currColour = picker.value;
+//   const bloID = block.id;
+//   const relID = relations[bloID] ? relations[bloID] : 'RGB';
+//   if(relID !== 'RGB') {
+//     const grad = gradients.find((gr) => gr.id == relID);
+//     const [...toddlers] = grad.children;
+//     let coloursList = [];
+//     for(let n=0; n<toddlers.length; n++) {
+//       const currElem = toddlers[n];
+//       currElem.attributes.style.value = `stop-color:${hexTorgb(currColour)}`;
+//       coloursList.push(`stop-color:${hexTorgb(currColour)}`);
+//     }
+//     block.attributes.style.value = `fill: url(#${relID})`;
+//     updateColour(relID, coloursList);
+//   } else {
+//     block.attributes.style.value = `fill: ${hexTorgb(currColour)}`;
+//     updateColour(bloID, `fill: ${hexTorgb(currColour)}`);
+//   }
+// }
 function hexTorgb(hex) {
   return `rgb(${'0x' + hex[1] + hex[2] | 0}, ${'0x' + hex[3] + hex[4] | 0}, ${'0x' + hex[5] + hex[6] | 0})`;
 }
@@ -625,54 +625,54 @@ function handleSolids(block) {
 
 
 
-let iID;
-function startAutoColours() {
-  const spd = rangeButt.value / 10;
-  const spd1000 = rangeButt.value / 10 * 500;
-  handleAutomatic(spd);
-  clearInterval(iID);
-  iID = setInterval(() => {handleAutomatic(spd,iID)}, spd1000);
-  // console.log(iID,spd,spd1000);
-}
-function stopAutoColours() {
-  clearInterval(iID);
-  const sheet = document.styleSheets[0];
-  const [...rules] = sheet.cssRules;
-  const marcRuleIndex = rules.findIndex(rule => rule.selectorText === "svg#marc path");
-  if(marcRuleIndex > -1) {
-    sheet.deleteRule(marcRuleIndex);
-  }
-}
+// let iID;
+// function startAutoColours() {
+//   const spd = rangeButt.value / 10;
+//   const spd1000 = rangeButt.value / 10 * 500;
+//   handleAutomatic(spd);
+//   clearInterval(iID);
+//   iID = setInterval(() => {handleAutomatic(spd,iID)}, spd1000);
+//   // console.log(iID,spd,spd1000);
+// }
+// function stopAutoColours() {
+//   clearInterval(iID);
+//   const sheet = document.styleSheets[0];
+//   const [...rules] = sheet.cssRules;
+//   const marcRuleIndex = rules.findIndex(rule => rule.selectorText === "svg#marc path");
+//   if(marcRuleIndex > -1) {
+//     sheet.deleteRule(marcRuleIndex);
+//   }
+// }
 
-function handleAutomatic(speed,iID) {
-  // console.log(`handling automation with speed: ${speed}`);
-  const sheet = document.styleSheets[0];
-  const [...rules] = sheet.cssRules;
-  const marcRuleIndex = rules.findIndex(rule => rule.selectorText === "svg#marc path");
-  // console.log(marcRuleIndex);
-  if(marcRuleIndex > -1) {
-    sheet.deleteRule(marcRuleIndex);
-  }
-  const marc_path = `
-  svg#marc path {
-    transition: fill ${speed}s ease;
-  }
-  `;
-  sheet.insertRule(marc_path, sheet.cssRules.length);
-  blocks.forEach(block => {
-    const rcolour = randomColor({
-      format: 'rgb',
-      luminosity: 'random', // bright, light, dark
-      hue: 'random', // red, orange, yellow, green, blue, purple, pink, monochrome
-    });
-    block.attributes.style.value = `fill: ${rcolour}`;
-    // updateColour(block.id, `fill: ${rcolour}`);
-  });
-}
+// function handleAutomatic(speed,iID) {
+//   // console.log(`handling automation with speed: ${speed}`);
+//   const sheet = document.styleSheets[0];
+//   const [...rules] = sheet.cssRules;
+//   const marcRuleIndex = rules.findIndex(rule => rule.selectorText === "svg#marc path");
+//   // console.log(marcRuleIndex);
+//   if(marcRuleIndex > -1) {
+//     sheet.deleteRule(marcRuleIndex);
+//   }
+//   const marc_path = `
+//   svg#marc path {
+//     transition: fill ${speed}s ease;
+//   }
+//   `;
+//   sheet.insertRule(marc_path, sheet.cssRules.length);
+//   blocks.forEach(block => {
+//     const rcolour = randomColor({
+//       format: 'rgb',
+//       luminosity: 'random', // bright, light, dark
+//       hue: 'random', // red, orange, yellow, green, blue, purple, pink, monochrome
+//     });
+//     block.attributes.style.value = `fill: ${rcolour}`;
+//     // updateColour(block.id, `fill: ${rcolour}`);
+//   });
+// }
 
-rangeButt.addEventListener('change', () => {
-  startAutoColours();
-});
+// rangeButt.addEventListener('change', () => {
+//   startAutoColours();
+// });
 
 
 
@@ -719,196 +719,196 @@ function handleGradients(block) {
 
 
 
-// HAMMERTIME
-const mc = new Hammer.Manager(marc_svg);
-mc.add(new Hammer.Pan({ 
-  direction: Hammer.DIRECTION_ALL, 
-  threshold: 0 
-})); 
-mc.add(new Hammer.Tap({ 
-  event: 'singletap', 
-  taps: 1
-})); 
-mc.on("pan", handleDrag);
-mc.on("singletap", handleTap);
+// // HAMMERTIME
+// const mc = new Hammer.Manager(marc_svg);
+// mc.add(new Hammer.Pan({ 
+//   direction: Hammer.DIRECTION_ALL, 
+//   threshold: 0 
+// })); 
+// mc.add(new Hammer.Tap({ 
+//   event: 'singletap', 
+//   taps: 1
+// })); 
+// mc.on("pan", handleDrag);
+// mc.on("singletap", handleTap);
 
-let lastPosX = 0;
-let lastPosY = 0;
-let isDragging = false;
+// let lastPosX = 0;
+// let lastPosY = 0;
+// let isDragging = false;
 
-function handleDrag(ev) {
-  // console.log('drag',ev);
-  const buttState = document.querySelector('#buttons input:checked').value;
-  let currElem;
-  isDragging = true;
-  if ( isDragging ) {
-    lastPosX = ev.center['x'];
-    lastPosY = ev.center['y'];
-    currElem = document.elementFromPoint(lastPosX,lastPosY);
-    if(buttState == 'solids') {
-      handleSolids(currElem);
-    }
-    if(buttState == 'gradients') {
-      handleGradients(currElem);
-    }
-  }
-  if (ev.isFinal) {
-    lastPosX = ev.center['x'];
-    lastPosY = ev.center['y'];
-    currElem = document.elementFromPoint(lastPosX,lastPosY);
-    isDragging = false;
-    if(buttState == 'solids') {
-      handleSolids(currElem);
-    }
-    if(buttState == 'gradients') {
-      handleGradients(currElem);
-    }
-  }
-}
+// function handleDrag(ev) {
+//   // console.log('drag',ev);
+//   const buttState = document.querySelector('#buttons input:checked').value;
+//   let currElem;
+//   isDragging = true;
+//   if ( isDragging ) {
+//     lastPosX = ev.center['x'];
+//     lastPosY = ev.center['y'];
+//     currElem = document.elementFromPoint(lastPosX,lastPosY);
+//     if(buttState == 'solids') {
+//       handleSolids(currElem);
+//     }
+//     if(buttState == 'gradients') {
+//       handleGradients(currElem);
+//     }
+//   }
+//   if (ev.isFinal) {
+//     lastPosX = ev.center['x'];
+//     lastPosY = ev.center['y'];
+//     currElem = document.elementFromPoint(lastPosX,lastPosY);
+//     isDragging = false;
+//     if(buttState == 'solids') {
+//       handleSolids(currElem);
+//     }
+//     if(buttState == 'gradients') {
+//       handleGradients(currElem);
+//     }
+//   }
+// }
 
-function handleTap(ev) {
-  // console.log('tap',ev);
-  const buttState = document.querySelector('#buttons input:checked').value;
-  let currElem;
-  if (ev.isFinal) {
-    lastPosX = ev.center['x'];
-    lastPosY = ev.center['y'];
-    currElem = document.elementFromPoint(lastPosX,lastPosY);
-    if(buttState == 'solids') {
-      handleSolids(currElem);
-    }
-    if(buttState == 'gradients') {
-      handleGradients(currElem);
-    }
-  }
-}
-
-
-
-
-
-function handleShowcase() {
-  const params = location.search;
-  const keyValueStrings = (params.slice(1)).split('&');
-  keyValueStrings.forEach(x => {
-    const pair = x.split('=');
-    if (pair[0] === 'showcase' && pair[1] === 'true') {
-      bodyCont.style.cursor = 'none';
-      console.log('starting showcase');
-      menu.classList.add('hide');
-      const min1200 = window.matchMedia("(min-width: 1200px)").matches;
-      if (min1200) {
-        marc_svg.attributes.style.value = 'height: unset';
-      }
-      const medScreenLandscape = window.matchMedia("(min-resolution: 2dppx) and (orientation:landscape)").matches;
-      if (medScreenLandscape) {
-        bodyCont.style.height = '98vh';
-      }
-      rangeButt.value = 100;
-      startAutoColours();
-    }
-    if (pair[0] === 'showcase' && pair[1] === 'false') {
-      bodyCont.style.cursor = 'default';
-      console.log('stopping showcase');
-      menu.classList.remove('hide');
-      stopAutoColours();
-    }
-  })
-}
-handleShowcase();
+// function handleTap(ev) {
+//   // console.log('tap',ev);
+//   const buttState = document.querySelector('#buttons input:checked').value;
+//   let currElem;
+//   if (ev.isFinal) {
+//     lastPosX = ev.center['x'];
+//     lastPosY = ev.center['y'];
+//     currElem = document.elementFromPoint(lastPosX,lastPosY);
+//     if(buttState == 'solids') {
+//       handleSolids(currElem);
+//     }
+//     if(buttState == 'gradients') {
+//       handleGradients(currElem);
+//     }
+//   }
+// }
 
 
 
 
 
+// function handleShowcase() {
+//   const params = location.search;
+//   const keyValueStrings = (params.slice(1)).split('&');
+//   keyValueStrings.forEach(x => {
+//     const pair = x.split('=');
+//     if (pair[0] === 'showcase' && pair[1] === 'true') {
+//       bodyCont.style.cursor = 'none';
+//       console.log('starting showcase');
+//       menu.classList.add('hide');
+//       const min1200 = window.matchMedia("(min-width: 1200px)").matches;
+//       if (min1200) {
+//         marc_svg.attributes.style.value = 'height: unset';
+//       }
+//       const medScreenLandscape = window.matchMedia("(min-resolution: 2dppx) and (orientation:landscape)").matches;
+//       if (medScreenLandscape) {
+//         bodyCont.style.height = '98vh';
+//       }
+//       rangeButt.value = 100;
+//       startAutoColours();
+//     }
+//     if (pair[0] === 'showcase' && pair[1] === 'false') {
+//       bodyCont.style.cursor = 'default';
+//       console.log('stopping showcase');
+//       menu.classList.remove('hide');
+//       stopAutoColours();
+//     }
+//   })
+// }
+// handleShowcase();
 
 
-// SHORTCUT OPTIONS
-// for live display screens
-document.addEventListener("keydown", event => {
-  if (event.key === "o") {
-    console.log('o pressed: reset to original');
-    stopAutoColours();
-    localStorage.clear();
-    saveColours(defaults);
-    location.reload();
-    urlParams.set('showcase', false);
-    window.location.search = urlParams;
-    document.querySelector(`#buttons input[id='original']`).checked = true;
-    updateColour('a_button_state', 'original');
-  }
-  if (event.key === "p") {
-    console.log('p pressed: paint mode started');
-    stopAutoColours();
-    clearCanvas();
-    clickListeners(handlePaint);
-    document.querySelector(`#buttons input[id='paint']`).checked = true;
-    updateColour('a_button_state', 'paint');
-  }
-  if (event.key === "s") {
-    console.log('s pressed: solid mode started');
-    stopAutoColours();
-    mouseOverListeners(handleSolids);
-    document.querySelector(`#buttons input[id='solids']`).checked = true;
-    updateColour('a_button_state', 'solids');
-  }
-  if (event.key === "g") {
-    console.log('g pressed: gradient mode started');
-    stopAutoColours();
-    mouseOverListeners(handleGradients);
-    document.querySelector(`#buttons input[id='gradientsR']`).checked = true;
-    updateColour('a_button_state', 'gradientsR');
-  }
-  if (event.key === "a") {
-    console.log('a pressed: showcase mode started');
-    rangeButt.value = 100;
-    urlParams.set('showcase', true);
-    window.location.search = urlParams;
-    document.querySelector(`#buttons input[id='automatic']`).checked = true;
-    updateColour('a_button_state', 'automatic');
-  }
-  if (event.key === "r") {
-    console.log('r pressed: reset to original');
-    stopAutoColours();
-    localStorage.clear();
-    saveColours(defaults);
-    location.reload();
-    urlParams.set('showcase', false);
-    window.location.search = urlParams;
-  }
-  if (event.key === "Escape") {
-    console.log('escape pressed: reset to original');
-    stopAutoColours();
-    localStorage.clear();
-    saveColours(defaults);
-    location.reload(); 
-    urlParams.set('showcase', false);
-    window.location.search = urlParams;
-  }
-  if (event.key === "ArrowUp") { // UP ARROW
-    console.log('up pressed: sped up showcase speed');
-    incSpeed();
-    startAutoColours();
-  }
-  if (event.key === "ArrowDown") { // DOWN ARROW
-    console.log('down pressed: slowed down showcase speed');
-    decSpeed();
-    startAutoColours();
-  }
-});
 
-function incSpeed() {
-  if(parseInt(rangeButt.value) <= 90) {
-    rangeButt.value = parseInt(rangeButt.value) + 10;
-  } else {
-    rangeButt.value = 100;
-  }
-}
 
-function decSpeed() {
-  if(parseInt(rangeButt.value) >= 10) {
-    rangeButt.value = parseInt(rangeButt.value) - 10;
-  } else {
-    rangeButt.value = 10;
-  }
-}
+
+
+
+// // SHORTCUT OPTIONS
+// // for live display screens
+// document.addEventListener("keydown", event => {
+//   if (event.key === "o") {
+//     console.log('o pressed: reset to original');
+//     stopAutoColours();
+//     localStorage.clear();
+//     saveColours(defaults);
+//     location.reload();
+//     urlParams.set('showcase', false);
+//     window.location.search = urlParams;
+//     document.querySelector(`#buttons input[id='original']`).checked = true;
+//     updateColour('a_button_state', 'original');
+//   }
+//   if (event.key === "p") {
+//     console.log('p pressed: paint mode started');
+//     stopAutoColours();
+//     clearCanvas();
+//     clickListeners(handlePaint);
+//     document.querySelector(`#buttons input[id='paint']`).checked = true;
+//     updateColour('a_button_state', 'paint');
+//   }
+//   if (event.key === "s") {
+//     console.log('s pressed: solid mode started');
+//     stopAutoColours();
+//     mouseOverListeners(handleSolids);
+//     document.querySelector(`#buttons input[id='solids']`).checked = true;
+//     updateColour('a_button_state', 'solids');
+//   }
+//   if (event.key === "g") {
+//     console.log('g pressed: gradient mode started');
+//     stopAutoColours();
+//     mouseOverListeners(handleGradients);
+//     document.querySelector(`#buttons input[id='gradientsR']`).checked = true;
+//     updateColour('a_button_state', 'gradientsR');
+//   }
+//   if (event.key === "a") {
+//     console.log('a pressed: showcase mode started');
+//     rangeButt.value = 100;
+//     urlParams.set('showcase', true);
+//     window.location.search = urlParams;
+//     document.querySelector(`#buttons input[id='automatic']`).checked = true;
+//     updateColour('a_button_state', 'automatic');
+//   }
+//   if (event.key === "r") {
+//     console.log('r pressed: reset to original');
+//     stopAutoColours();
+//     localStorage.clear();
+//     saveColours(defaults);
+//     location.reload();
+//     urlParams.set('showcase', false);
+//     window.location.search = urlParams;
+//   }
+//   if (event.key === "Escape") {
+//     console.log('escape pressed: reset to original');
+//     stopAutoColours();
+//     localStorage.clear();
+//     saveColours(defaults);
+//     location.reload(); 
+//     urlParams.set('showcase', false);
+//     window.location.search = urlParams;
+//   }
+//   if (event.key === "ArrowUp") { // UP ARROW
+//     console.log('up pressed: sped up showcase speed');
+//     incSpeed();
+//     startAutoColours();
+//   }
+//   if (event.key === "ArrowDown") { // DOWN ARROW
+//     console.log('down pressed: slowed down showcase speed');
+//     decSpeed();
+//     startAutoColours();
+//   }
+// });
+
+// function incSpeed() {
+//   if(parseInt(rangeButt.value) <= 90) {
+//     rangeButt.value = parseInt(rangeButt.value) + 10;
+//   } else {
+//     rangeButt.value = 100;
+//   }
+// }
+
+// function decSpeed() {
+//   if(parseInt(rangeButt.value) >= 10) {
+//     rangeButt.value = parseInt(rangeButt.value) - 10;
+//   } else {
+//     rangeButt.value = 10;
+//   }
+// }
