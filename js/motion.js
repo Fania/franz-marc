@@ -14,12 +14,12 @@ function onResults(handData) {
 function drawHandPositions(canvas, ctx, handData) {
   canvas.width = stream.offsetWidth;
   canvas.height = stream.offsetHeight;
-  // ctx.translate(ctx.canvas.width, 0); //
-  // ctx.scale(-1, 1); //
   ctx.save();
   ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
   ctx.drawImage(
       handData.image, 0, 0, ctx.canvas.width, ctx.canvas.height);
+  // ctx.setTransform(-1,0,0,1,ctx.canvas.width,0); //
+
   if (handData.multiHandLandmarks) {
     for (const landmarks of handData.multiHandLandmarks) {
       drawConnectors(ctx, landmarks, HAND_CONNECTIONS,
@@ -27,6 +27,7 @@ function drawHandPositions(canvas, ctx, handData) {
       drawLandmarks(ctx, landmarks, {color: '#FF0000', lineWidth: 1});
       lastHandPosX = landmarks[5].x * 1500;
       lastHandPosY = landmarks[5].y * 1062;
+      // console.log(lastHandPosX,lastHandPosY);
       currHandElem = document.elementFromPoint(lastHandPosX,lastHandPosY);
       if(currHandElem && currHandElem !== null) {
         if(currHandElem.tagName === 'path') {
