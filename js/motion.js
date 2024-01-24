@@ -23,27 +23,14 @@ function drawHandPositions(canvas, ctx, handData) {
       drawConnectors(ctx, landmarks, HAND_CONNECTIONS,
                     {color: '#00FF00', lineWidth: 3});
       drawLandmarks(ctx, landmarks, {color: '#FF0000', lineWidth: 1});
-      
       lastHandPosX = landmarks[5].x * 1500;
       lastHandPosY = landmarks[5].y * 1062;
       currHandElem = document.elementFromPoint(lastHandPosX,lastHandPosY);
-      // console.log(currHandElem);
-      // console.log(currHandElem === null);
-
       if(currHandElem && currHandElem !== null) {
-        console.log('test', currHandElem);
+        if(currHandElem.tagName === 'path') {
+          handleSolids(currHandElem);
+        }
       }
-
-      // console.log(currHandElem.tagName);
-      // if(currHandElem.tagName) console.log('hallo');
-      // if(currHandElem.tagName === 'path' 
-      // && currHandElem !== null) {
-      //   console.log('path element');
-      //   // handleSolids(currHandElem);
-      // } else {
-      //   console.log('not path element');
-      // }
-
     }
   }
   ctx.restore();

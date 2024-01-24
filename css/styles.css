@@ -27,6 +27,7 @@ body {
   max-width: 90vw;
   max-height: 90vh;
   aspect-ratio: 1500 / 1062;
+  transform: scaleX(-1);
   visibility: hidden;
 }
 
@@ -40,7 +41,7 @@ body {
   aspect-ratio: 1500 / 1062;
   /* opacity: 0.5; */
   /* z-index: 999; */
-  /* visibility: hidden; */
+  visibility: hidden;
 }
 
 p {
@@ -67,7 +68,7 @@ svg#marc {
   max-height: 90vh;
   aspect-ratio: 1500 / 1062;
   overflow: hidden;
-  opacity: 0.5;
+  /* opacity: 0.5; */
   /* visibility: hidden; */
 }
 svg#marc path {
