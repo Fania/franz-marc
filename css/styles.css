@@ -27,7 +27,7 @@ body {
   max-width: 95vw;
   max-height: 95vh;
   aspect-ratio: 1500 / 1062;
-  /* transform: scaleX(-1); */
+  transform: scaleX(-1);
   visibility: hidden;
   overflow: hidden;
 }
@@ -40,7 +40,7 @@ body {
   max-width: 95vw;
   max-height: 95vh;
   aspect-ratio: 1500 / 1062;
-  /* transform: scaleX(-1); */
+  transform: scaleX(-1);
   overflow: hidden;
 }
 

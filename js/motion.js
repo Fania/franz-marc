@@ -25,9 +25,14 @@ function drawHandPositions(canvas, ctx, handData) {
       drawConnectors(ctx, landmarks, HAND_CONNECTIONS,
                     {color: '#00FF00', lineWidth: 3});
       drawLandmarks(ctx, landmarks, {color: '#FF0000', lineWidth: 1});
-      lastHandPosX = landmarks[5].x * 1500;
-      lastHandPosY = landmarks[5].y * 1062;
-      // console.log(lastHandPosX,lastHandPosY);
+      // "5" is index finger mid joint point
+      // "8" is index finger tip
+      let xFlipped = Math.round(landmarks[8].x * 1500);
+      console.log('xFlipped',xFlipped);
+      lastHandPosX = 1500 % xFlipped;
+      // lastHandPosX = landmarks[8].x * 1500;
+      lastHandPosY = Math.round(landmarks[8].y * 1062);
+      console.log('x',lastHandPosX,'y',lastHandPosY);
       currHandElem = document.elementFromPoint(lastHandPosX,lastHandPosY);
       if(currHandElem && currHandElem !== null) {
         if(currHandElem.tagName === 'path') {
@@ -39,13 +44,17 @@ function drawHandPositions(canvas, ctx, handData) {
   ctx.restore();
 }
 
-stream.addEventListener('loadedmetadata', function() {
-  ctx.translate(stream.videoWidth, 0);
-  ctx.scale(-1, 1);
-});
+// 1500 = 0
+// 1400 = 100
+// 1300 = 200
+// ...
+// 200  = 1300
+// 100  = 1400
+// 0    = 1500
 
 const hands = new Hands({locateFile: (file) => {
   return `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`;
+  // return `data/${file}`;
 }});
 hands.setOptions({
   maxNumHands: 2,
