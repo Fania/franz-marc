@@ -44,6 +44,7 @@ function drawHandPositions(canvas, ctx, handData) {
 }
 
 
+
 const hands = new Hands({locateFile: (file) => {
   return `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`;
   // return `data/${file}`;
