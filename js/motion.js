@@ -28,9 +28,10 @@ function drawHandPositions(canvas, ctx, handData) {
       // "5" is index finger mid joint point
       // "8" is index finger tip
       let xFlipped = Math.round(landmarks[8].x * 1500);
-      console.log('xFlipped',xFlipped);
-      lastHandPosX = 1500 % xFlipped;
-      // lastHandPosX = landmarks[8].x * 1500;
+      let xUnFlipped = Math.abs(xFlipped - 1500);
+      // console.log('original',xFlipped);
+      // console.log('inverse', xUnFlipped);
+      lastHandPosX = xUnFlipped;
       lastHandPosY = Math.round(landmarks[8].y * 1062);
       console.log('x',lastHandPosX,'y',lastHandPosY);
       currHandElem = document.elementFromPoint(lastHandPosX,lastHandPosY);
