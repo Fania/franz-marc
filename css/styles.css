@@ -55,6 +55,7 @@ svg#marc {
 }
 svg#marc path {
   z-index: 999;
+  transition: fill .5s ease;
 }
 svg text {
   fill: white;
