@@ -18,7 +18,6 @@ function drawHandPositions(canvas, ctx, handData) {
   ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
   ctx.drawImage(
       handData.image, 0, 0, ctx.canvas.width, ctx.canvas.height);
-  // ctx.setTransform(-1,0,0,1,ctx.canvas.width,0); //
 
   if (handData.multiHandLandmarks) {
     for (const landmarks of handData.multiHandLandmarks) {
@@ -27,13 +26,12 @@ function drawHandPositions(canvas, ctx, handData) {
       drawLandmarks(ctx, landmarks, {color: '#FF0000', lineWidth: 1});
       // "5" is index finger mid joint point
       // "8" is index finger tip
-      let xFlipped = Math.round(landmarks[8].x * 1500);
-      let xUnFlipped = Math.abs(xFlipped - 1500);
-      // console.log('original',xFlipped);
-      // console.log('inverse', xUnFlipped);
+      let xFlipped = Math.round(landmarks[8].x * ctx.canvas.width);
+      let xUnFlipped = Math.abs(xFlipped - ctx.canvas.width);
       lastHandPosX = xUnFlipped;
-      lastHandPosY = Math.round(landmarks[8].y * 1062);
-      console.log('x',lastHandPosX,'y',lastHandPosY);
+      lastHandPosY = Math.round(landmarks[8].y * ctx.canvas.height);
+      // console.log('original','x',xFlipped,'y',lastHandPosY);
+      // console.log('inverse','x',lastHandPosX,'y',lastHandPosY);
       currHandElem = document.elementFromPoint(lastHandPosX,lastHandPosY);
       if(currHandElem && currHandElem !== null) {
         if(currHandElem.tagName === 'path') {
@@ -45,13 +43,6 @@ function drawHandPositions(canvas, ctx, handData) {
   ctx.restore();
 }
 
-// 1500 = 0
-// 1400 = 100
-// 1300 = 200
-// ...
-// 200  = 1300
-// 100  = 1400
-// 0    = 1500
 
 const hands = new Hands({locateFile: (file) => {
   return `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`;
