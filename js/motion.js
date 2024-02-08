@@ -21,9 +21,19 @@ function drawHandPositions(canvas, ctx, handData) {
 
   if (handData.multiHandLandmarks) {
     for (const landmarks of handData.multiHandLandmarks) {
+
+      let landCopy = landmarks;
+      let landmarksAtIndex = landCopy.at(8);
+      let landmarksWithOnlyIndex = [landmarksAtIndex];
+      // console.log('landmarks',landmarks);
+      // console.log('landmarksAtIndex',landmarksAtIndex);
+      // console.log('landmarksWithOnlyIndex',landmarksWithOnlyIndex);
+
       drawConnectors(ctx, landmarks, HAND_CONNECTIONS,
                     {color: '#00FF00', lineWidth: 3});
-      drawLandmarks(ctx, landmarks, {color: '#FF0000', lineWidth: 1});
+      drawLandmarks(ctx, landmarks, {color: '#7bf8fc', lineWidth: 1});
+      drawLandmarks(ctx, landmarksWithOnlyIndex, {color: '#FF0000', lineWidth: 1, radius: 25});
+
       // "5" is index finger mid joint point
       // "8" is index finger tip
       let xFlipped = Math.round(landmarks[8].x * ctx.canvas.width);

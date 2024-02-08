@@ -59,6 +59,7 @@ svg#marc path {
 }
 svg text {
   fill: white;
+  /* fill: #7bf8fc; */
 }
 img {
   width: 1500px;
