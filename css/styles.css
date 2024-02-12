@@ -22,7 +22,7 @@ body {
 #stream {
   position: absolute;
   top: auto;
-  width: 1500px;
+  /* width: 1500px; */
   max-width: 95vw;
   max-height: 95vh;
   aspect-ratio: 1500 / 1062;
@@ -34,7 +34,7 @@ body {
 #canvas {
   position: absolute;
   top: auto;
-  width: 1500px;
+  /* width: 1500px; */
   max-width: 95vw;
   max-height: 95vh;
   aspect-ratio: 1500 / 1062;
@@ -45,7 +45,7 @@ body {
 svg#marc {
   position: absolute;
   top: auto;
-  width: 1500px;
+  /* width: 1500px; */
   max-width: 95vw;
   max-height: 95vh;
   aspect-ratio: 1500 / 1062;
