@@ -17,18 +17,20 @@
 
   <meta property="og:title" content="Franz Marc" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://fania.github.io/blaue-reiter" />
-  <meta property="og:image" content="https://raw.githubusercontent.com/Fania/blaue-reiter/main/franz-marc.jpeg" />
+  <meta property="og:url" content="https://fania.github.io/franz-marc" />
+  <meta property="og:image" content="https://raw.githubusercontent.com/Fania/franz-marc/main/franz-marc.jpeg" />
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Franz Marc">
-  <meta name="twitter:image" content="https://raw.githubusercontent.com/Fania/blaue-reiter/main/franz-marc.jpeg">
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/Fania/franz-marc/main/franz-marc.jpeg">
 
-  <link rel="stylesheet" href="styles.css"></link>
+  <link rel="stylesheet" href="css/styles.css"></link>
 </head>
 <body>
   
 
+<video id="stream"></video>
+<canvas id="canvas"></canvas>
 <!-- <img src="imgs/marc.png" alt="Franz Marc - Reh im Klostergarten 1912"> -->
 
 <svg id="marc" viewBox="0 0 1500 1062" width="1500" height="1062">
@@ -1104,6 +1106,9 @@
     <input type="radio" id="gradientsR" name="buttons" value="gradients" />
     <label for="gradientsR">Gradients</label>
 
+    <input type="radio" id="motion" name="buttons" value="motion" />
+    <label for="motion">Motion</label>
+
     <input type="radio" id="automatic" name="buttons" value="automatic" />
     <label for="automatic">Automatic</label>
 
@@ -1115,9 +1120,17 @@
   </div>
 </div>
 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/12.3.0/math.js" integrity="sha512-TaKu3GlWLNU3fyPcvsSHSh44vX/Z43ePJDRTJr7IuUKVlUHHsHm7ODYNt5xffy75M6MOXsh7p+VyXCk5icuoxQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.6.1/randomColor.min.js" integrity="sha512-vPeZ7JCboHcfpqSx5ZD+/jpEhS4JpXxfz9orSvAPPj0EKUVShU2tgy7XkU+oujBJKnWmu4hU7r9MMQNWPfXsYw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="hammer.min.js"></script>
-<script src="scripts.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+
+<script src="js/hammer.min.js"></script>
+<script src="js/scripts.js"></script>
+<script src="js/motion.js"></script>
 
 </body>
 </html>

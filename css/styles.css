@@ -19,14 +19,55 @@ body {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
 }
+
+#stream {
+  position: absolute;
+  top: auto;
+  /* width: 1500px; */
+  max-width: 95vw;
+  max-height: 95vh;
+  aspect-ratio: 1500 / 1062;
+  transform: scaleX(-1);
+  visibility: hidden;
+  overflow: hidden;
+}
+
+#canvas {
+  position: absolute;
+  top: auto;
+  /* width: 1500px; */
+  max-width: 95vw;
+  max-height: 95vh;
+  aspect-ratio: 1500 / 1062;
+  transform: scaleX(-1);
+  overflow: hidden;
+}
+
+svg#marc {
+  position: absolute;
+  top: auto;
+  /* width: 1500px; */
+  max-width: 95vw;
+  max-height: 95vh;
+  aspect-ratio: 1500 / 1062;
+  overflow: hidden;
+  opacity: 0.7;
+  /* visibility: hidden; */
+}
+svg#marc path {
+  z-index: 999;
+  transition: fill .5s ease;
+}
+
+
 #menu.hide {
   display: none;
 }
-svg#marc {
+/* svg#marc {
   height: auto;
   width: 95%;
   overflow: hidden;
-}
+} */
 svg text {
   fill: white;
 }
@@ -173,7 +214,7 @@ img {
   #menu {
     position: absolute;
     left: -10px;
-    top: calc((100vh - 375px) / 2);
+    top: calc((100vh - 460px) / 2);
     width: 150px;
   }
   #buttons input[id='automatic']:checked ~ #auto_range + label {
