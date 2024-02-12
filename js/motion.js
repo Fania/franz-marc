@@ -32,7 +32,7 @@ function drawHandPositions(canvas, ctx, handData) {
       drawConnectors(ctx, landmarks, HAND_CONNECTIONS,
                     {color: '#00FF00', lineWidth: 3});
       drawLandmarks(ctx, landmarks, {color: '#7bf8fc', lineWidth: 1});
-      drawLandmarks(ctx, landmarksWithOnlyIndex, {color: '#FF0000', lineWidth: 1, radius: Math.abs(25 * landmarksWithOnlyIndex[0].z + 15)});
+      drawLandmarks(ctx, landmarksWithOnlyIndex, {color: '#FFFFFF', lineWidth: 1, radius: Math.abs(25 * landmarksWithOnlyIndex[0].z + 15)});
 
       // "5" is index finger mid joint point
       // "8" is index finger tip
