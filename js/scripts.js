@@ -465,28 +465,41 @@ buttons.forEach(butt => {
   butt.addEventListener('click', (event) => {
     if(butt.id == 'original') {
       stopAutoColours();
+      stopMotion();
       localStorage.clear();
       saveColours(defaults);
       location.reload(); 
     }
     if(butt.id == 'paint') {
       stopAutoColours();
+      stopMotion();
       clearCanvas();
       clickListeners(handlePaint);
       updateColour('a_button_state', 'paint');
     }
     if(butt.id == 'solids') {
       stopAutoColours();
+      stopMotion();
       mouseOverListeners(handleSolids);
       updateColour('a_button_state', 'solids');
     }
     if(butt.id == 'gradientsR') {
       stopAutoColours();
+      stopMotion();
       mouseOverListeners(handleGradients);
       updateColour('a_button_state', 'gradientsR');
     }
+    if(butt.id == 'motion') {
+      stopAutoColours();
+      localStorage.clear();
+      saveColours(defaults);
+      location.reload(); 
+      startMotion();
+      updateColour('a_button_state', 'motion');
+    }
     if(butt.id == 'automatic') {
       startAutoColours();
+      stopMotion();
       updateColour('a_button_state', 'automatic');
     }
   });
@@ -586,6 +599,10 @@ function loadColours() {
     const butt = buttons.find((br) => br.id == 'gradientsR');
     butt.checked = true;
   }
+  if(coloursJSON['a_button_state'] == 'motion') {
+    const butt = buttons.find((br) => br.id == 'motion');
+    butt.checked = true;
+  }
   if(coloursJSON['a_button_state'] == 'automatic') {
     const butt = buttons.find((br) => br.id == 'automatic');
     butt.checked = true;
@@ -652,6 +669,30 @@ function handleSolids(block) {
   });
   block.attributes.style.value = `fill: ${rcolour}`;
   updateColour(block.id, `fill: ${rcolour}`);
+}
+
+
+function startMotion() {
+  console.log(`start Motiontracking`);
+  const newVid = document.createElement("video");
+  const newCanv = document.createElement("canvas");
+  const newScri = document.createElement("script");
+  newVid.id = "stream";
+  newCanv.id = "canvas";
+  newScri.id = "mocap";
+  newScri.src = "js/motion.js";
+  document.body.insertBefore(newCanv, marc_svg);
+  document.body.insertBefore(newVid, newCanv);
+  document.body.appendChild(newScri);
+}
+function stopMotion() {
+  console.log(`stop Motiontracking`);
+  const vidElem = document.getElementById("video");
+  const canvElem = document.getElementById("canvas");
+  const scriElem = document.getElementById("mocap");
+  if(vidElem) vidElem.remove();
+  if(canvElem) canvElem.remove();
+  if(scriElem) scriElem.remove();
 }
 
 
@@ -897,6 +938,14 @@ document.addEventListener("keydown", event => {
     window.location.search = urlParams;
     document.querySelector(`#buttons input[id='automatic']`).checked = true;
     updateColour('a_button_state', 'automatic');
+  }
+  if (event.key === "m") {
+    console.log('m pressed: motiontracking mode started');
+    // urlParams.set('motion', true);
+    // window.location.search = urlParams;
+    startMotion();
+    document.querySelector(`#buttons input[id='motion']`).checked = true;
+    updateColour('a_button_state', 'motion');
   }
   if (event.key === "r") {
     console.log('r pressed: reset to original');
