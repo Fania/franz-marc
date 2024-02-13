@@ -463,6 +463,7 @@ const relations = {
 
 buttons.forEach(butt => {
   butt.addEventListener('click', (event) => {
+    // console.log(butt.id);
     if(butt.id == 'original') {
       stopAutoColours();
       stopMotion();
@@ -611,6 +612,13 @@ function loadColours() {
 
 
 
+
+
+
+
+
+
+
 function clearCanvas() {
   blocks.forEach(block => {
     const bloID = block.id;
@@ -674,25 +682,12 @@ function handleSolids(block) {
 
 function startMotion() {
   console.log(`start Motiontracking`);
-  const newVid = document.createElement("video");
-  const newCanv = document.createElement("canvas");
-  const newScri = document.createElement("script");
-  newVid.id = "stream";
-  newCanv.id = "canvas";
-  newScri.id = "mocap";
-  newScri.src = "js/motion.js";
-  document.body.insertBefore(newCanv, marc_svg);
-  document.body.insertBefore(newVid, newCanv);
-  document.body.appendChild(newScri);
+  camera.start();
+
 }
 function stopMotion() {
   console.log(`stop Motiontracking`);
-  const vidElem = document.getElementById("video");
-  const canvElem = document.getElementById("canvas");
-  const scriElem = document.getElementById("mocap");
-  if(vidElem) vidElem.remove();
-  if(canvElem) canvElem.remove();
-  if(scriElem) scriElem.remove();
+  camera.stop();
 }
 
 
