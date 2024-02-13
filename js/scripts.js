@@ -9,6 +9,7 @@ const menuElem = document.getElementById('menu');
 const rangeButt = document.getElementById('auto_range');
 const picker = document.getElementById('col_picker');
 const urlParams = new URLSearchParams(window.location.search);
+let motionState = false;
 // console.log(`There are a total of ${blocks.length} colour blocks.`);
 // console.log(`And there are ${gradients.length} unique gradients.`);
 
@@ -459,7 +460,11 @@ const relations = {
 }
 
 
-
+// if(motionState === false) {
+//   stopMotion();
+// } else {
+//   startMotion();
+// }
 
 buttons.forEach(butt => {
   butt.addEventListener('click', (event) => {
@@ -495,6 +500,7 @@ buttons.forEach(butt => {
       localStorage.clear();
       saveColours(defaults);
       location.reload(); 
+      motionState = true;
       startMotion();
       updateColour('a_button_state', 'motion');
     }
@@ -681,12 +687,11 @@ function handleSolids(block) {
 
 
 function startMotion() {
-  console.log(`start Motiontracking`);
+  console.log(`start Motiontracking ${motionState}`);
   camera.start();
-
 }
 function stopMotion() {
-  console.log(`stop Motiontracking`);
+  console.log(`stop Motiontracking ${motionState}`);
   camera.stop();
 }
 
@@ -938,6 +943,10 @@ document.addEventListener("keydown", event => {
     console.log('m pressed: motiontracking mode started');
     // urlParams.set('motion', true);
     // window.location.search = urlParams;
+    stopAutoColours();
+    localStorage.clear();
+    saveColours(defaults);
+    location.reload();
     startMotion();
     document.querySelector(`#buttons input[id='motion']`).checked = true;
     updateColour('a_button_state', 'motion');

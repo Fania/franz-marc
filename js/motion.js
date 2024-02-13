@@ -75,3 +75,30 @@ const camera = new Camera(stream, {
   height: 1062
 });
 camera.start();
+
+
+// console.log('outside',motionState);
+// if(motionState === false) {
+//   console.log('inside false',motionState);
+//   // stopMotion();
+//   camera.stop();
+// } else {
+//   console.log('inside true',motionState);
+//   // startMotion();
+//   camera.start();
+// }
+
+// const mocapButton = document.getElementById('motion');
+// mocapButton.addEventListener('change', (event) => {
+//   // console.log(mocapButton.checked === true);
+//   if(mocapButton.checked === true) {
+//     stopAutoColours();
+//     localStorage.clear();
+//     saveColours(defaults);
+//     location.reload(); 
+//     motionState = true;
+//     camera.start();
+//     // startMotion();
+//     updateColour('a_button_state', 'motion');
+//   }
+// });
