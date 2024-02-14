@@ -460,6 +460,8 @@ const relations = {
 }
 
 
+// stopMotion();
+
 // if(motionState === false) {
 //   stopMotion();
 // } else {
@@ -687,11 +689,11 @@ function handleSolids(block) {
 
 
 function startMotion() {
-  console.log(`start Motiontracking ${motionState}`);
+  console.trace(`start Motiontracking ${motionState}`);
   camera.start();
 }
 function stopMotion() {
-  console.log(`stop Motiontracking ${motionState}`);
+  console.trace(`stop Motiontracking ${motionState}`);
   camera.stop();
 }
 
@@ -840,7 +842,8 @@ function handleDrag(ev) {
 
 function handleTap(ev) {
   // console.log('tap',ev);
-  const buttState = document.querySelector('#buttons input:checked').value;
+  // const buttState = document.querySelector('#buttons input:checked').value;
+  const buttState = document.querySelector('input[name="buttons"]:checked').value;
   let currElem;
   if (ev.isFinal) {
     lastPosX = ev.center['x'];
@@ -996,3 +999,6 @@ function decSpeed() {
     rangeButt.value = 10;
   }
 }
+
+
+// stopMotion();
