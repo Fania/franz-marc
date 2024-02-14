@@ -516,7 +516,7 @@ buttons.forEach(butt => {
 
 
 function mouseOverListeners(method) {
-  const buttState = document.querySelector('#buttons input:checked').value;
+  const buttState = document.querySelector('input[name="buttons"]:checked').value;
   blocks.forEach(block => {
     block.addEventListener('mouseover', () => {
       method(block);
@@ -524,7 +524,7 @@ function mouseOverListeners(method) {
   });
 }
 function clickListeners(method) {
-  const buttState = document.querySelector('#buttons input:checked').value;
+  const buttState = document.querySelector('input[name="buttons"]:checked').value;
   blocks.forEach(block => {
     block.addEventListener('click', () => {
       method(block);
@@ -812,7 +812,7 @@ let isDragging = false;
 
 function handleDrag(ev) {
   // console.log('drag',ev);
-  const buttState = document.querySelector('#buttons input:checked').value;
+  const buttState = document.querySelector('input[name="buttons"]:checked').value;
   let currElem;
   isDragging = true;
   if ( isDragging ) {
@@ -909,7 +909,7 @@ document.addEventListener("keydown", event => {
     location.reload();
     urlParams.set('showcase', false);
     window.location.search = urlParams;
-    document.querySelector(`#buttons input[id='original']`).checked = true;
+    document.querySelector(`input[id='original']`).checked = true;
     updateColour('a_button_state', 'original');
   }
   if (event.key === "p") {
@@ -917,21 +917,21 @@ document.addEventListener("keydown", event => {
     stopAutoColours();
     clearCanvas();
     clickListeners(handlePaint);
-    document.querySelector(`#buttons input[id='paint']`).checked = true;
+    document.querySelector(`input[id='paint']`).checked = true;
     updateColour('a_button_state', 'paint');
   }
   if (event.key === "s") {
     console.log('s pressed: solid mode started');
     stopAutoColours();
     mouseOverListeners(handleSolids);
-    document.querySelector(`#buttons input[id='solids']`).checked = true;
+    document.querySelector(`input[id='solids']`).checked = true;
     updateColour('a_button_state', 'solids');
   }
   if (event.key === "g") {
     console.log('g pressed: gradient mode started');
     stopAutoColours();
     mouseOverListeners(handleGradients);
-    document.querySelector(`#buttons input[id='gradientsR']`).checked = true;
+    document.querySelector(`input[id='gradientsR']`).checked = true;
     updateColour('a_button_state', 'gradientsR');
   }
   if (event.key === "a") {
@@ -939,7 +939,7 @@ document.addEventListener("keydown", event => {
     rangeButt.value = 100;
     urlParams.set('showcase', true);
     window.location.search = urlParams;
-    document.querySelector(`#buttons input[id='automatic']`).checked = true;
+    document.querySelector(`input[id='automatic']`).checked = true;
     updateColour('a_button_state', 'automatic');
   }
   if (event.key === "m") {
@@ -951,7 +951,7 @@ document.addEventListener("keydown", event => {
     saveColours(defaults);
     location.reload();
     startMotion();
-    document.querySelector(`#buttons input[id='motion']`).checked = true;
+    document.querySelector(`input[id='motion']`).checked = true;
     updateColour('a_button_state', 'motion');
   }
   if (event.key === "r") {

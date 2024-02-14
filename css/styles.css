@@ -118,6 +118,12 @@ input[id='automatic']:checked ~ #options,
 input[id='paint']:checked ~ #options {
   display: flex;
 }
+input[id='paint']:checked ~ #options #auto_group {
+  display: none;
+}
+input[id='automatic']:checked ~ #options #col_group {
+  display: none;
+}
 
 
 @media (min-width: 800px) {
@@ -136,35 +142,8 @@ input[id='paint']:checked ~ #options {
   svg#marc {
     height: 90vh;
   }
-  #menu {
-    position: absolute;
-    left: 0;
-    top: calc((100vh - 450px) / 2);
-    width: 150px;
-  }
   #buttons {
     flex-direction: column;
-  }
-  input[id='automatic']:checked ~ #auto_range + label {
-    top: calc((115vh - 450px) / 2);
-    left: calc(100vw - 120px);
-  }
-  input[id='automatic']:checked ~ #auto_range {
-    transform: rotate(-90deg);
-    width: 450px;
-    height: 50px;
-    top: calc((65vh - 450px) / 2);
-    right: calc(-100vw);
-  }
-  input[id='paint']:checked ~ #col_picker + label {
-    top: calc(50vh / 2);
-    left: calc(100vw - 120px);
-  }
-  input[id='paint']:checked ~ #col_picker {
-    width: 80px;
-    height: 50px;
-    top: calc(40vh / 2);
-    left: calc(100vw - 120px);
   }
 }
 
