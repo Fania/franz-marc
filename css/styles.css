@@ -1,11 +1,13 @@
 :root {
   color-scheme: only light;
-  box-sizing: border-box;
 }
 @media screen {
   :root {
     color-scheme: only light;
   }
+}
+body * {
+  box-sizing: border-box;
 }
 body {
   background: rgb(94, 94, 60);
@@ -22,12 +24,18 @@ main {
   position: relative;
   aspect-ratio: 1500 / 1062;
   width: 95vw;
+  overflow: hidden;
+  max-height: 100vh;
 }
 
 #stream {
   position: absolute;
-  top: auto;
-  width: 1500px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  /* width: 1500px; */
   max-width: 95vw;
   max-height: 95vh;
   aspect-ratio: 1500 / 1062;
@@ -38,8 +46,12 @@ main {
 
 #canvas {
   position: absolute;
-  top: auto;
-  width: 1500px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  /* width: 1500px; */
   max-width: 95vw;
   max-height: 95vh;
   aspect-ratio: 1500 / 1062;
@@ -49,8 +61,12 @@ main {
 
 svg#marc {
   position: absolute;
-  top: auto;
-  width: 1500px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  /* width: 1500px; */
   max-width: 95vw;
   max-height: 95vh;
   aspect-ratio: 1500 / 1062;
@@ -78,12 +94,11 @@ nav, input, label {
   z-index: 99;
 }
 #buttons {
-  /* position: relative; */
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  width: 90%;
+  /* width: 90%; */
   margin: 20px 0;
   gap: 30px;
 }
@@ -127,23 +142,26 @@ input[id='automatic']:checked ~ #options #col_group {
 
 
 @media (min-width: 800px) {
-  #stream {
-    margin-left: 250px;
+  body {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
   }
-  #canvas {
-    margin-left: 250px;
+  #buttons {
+    flex-direction: column;
   }
-  svg#marc {
-    margin-left: 250px;
+  #auto_range {
+    transform: rotate(-90deg);
+  }
+  [for="auto_range"] {
+    transform: translate(100px);
   }
 }
 
 @media (min-width: 1700px) {
   svg#marc {
-    height: 90vh;
-  }
-  #buttons {
-    flex-direction: column;
+    /* height: 90vh; */
   }
 }
 
@@ -151,35 +169,7 @@ input[id='automatic']:checked ~ #options #col_group {
 @media (min-resolution: 2dppx) and (orientation:landscape) {
 /* @media screen and (orientation:landscape) { */
   body {
-    height: 95vh;
+    /* height: 95vh; */
   }
-  #menu {
-    position: absolute;
-    left: -10px;
-    top: calc((100vh - 460px) / 2);
-    width: 150px;
-  }
- input[id='automatic']:checked ~ #auto_range + label {
-    top: calc(40% + 5px);
-    left: calc(100vw - 110px);
-    height: 10px;
-  }
-  input[id='automatic']:checked ~ #auto_range {
-    transform: rotate(-90deg);
-    width: 300px;
-    height: 50px;
-    top: 40%;
-    right: calc(-96vw);
-  }
-  input[id='paint']:checked ~ #col_picker + label {
-    top: calc(40% + 50px);
-    left: calc(100vw - 120px);
-    height: 10px;
-  }
-  input[id='paint']:checked ~ #col_picker {
-    width: 80px;
-    height: 50px;
-    top: 40%;
-    left: calc(100vw - 120px);
-  }
+
 }
