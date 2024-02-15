@@ -114,7 +114,12 @@ input[type='radio'] + label  {
   color: white;
   font-variant: all-small-caps;
 }
-input:checked + label  {
+input[id="original"]:checked ~ #buttons label[for="original"],
+input[id="paint"]:checked ~ #buttons label[for="paint"],
+input[id="solids"]:checked ~ #buttons label[for="solids"],
+input[id="gradientsR"]:checked ~ #buttons label[for="gradientsR"],
+input[id="motion"]:checked ~ #buttons label[for="motion"],
+input[id="automatic"]:checked ~ #buttons label[for="automatic"] {
   background: rgba(255,255,255,0.2);
 }
 #buttons label:hover {
