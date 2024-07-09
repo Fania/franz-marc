@@ -7,6 +7,7 @@ Franc Marc - Reh im Klostergarten (1912)
 Start showcase mode by adding the url parameter ?showcase=true.
 This runs the automatic mode on slow only. Turn on fullscreen (check your browser settings). Exit fullscreen and then change the url parameter to ?showcase=false or simply remove the url parameter completely. 
 
+Needs live server to run
 
 [Franz Marc Sources](https://www.wikidata.org/wiki/Wikidata:WikiProject_sum_of_all_paintings/Creator/Franz_Marc)
 
@@ -27,6 +28,9 @@ This runs the automatic mode on slow only. Turn on fullscreen (check your browse
 
 ## Todos
 
+- [ ] change menu
+- [ ] add params
+- [ ] add documentation
 - [ ] fine tune blocks and get rid of "background" areas
 - [x] put explanation into readme
 - [x] gallery mode

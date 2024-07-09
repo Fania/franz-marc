@@ -460,6 +460,84 @@ const relations = {
 }
 
 
+// FIRST LOAD
+const params = location.search;
+if(params) { 
+  console.log(params);
+  handleParams(params);
+}
+else {
+  console.log('nothing to declare');
+  // clean load, possibly from memory
+  // loadSettings('fromScratch');
+}
+
+
+
+async function handleParams(params) {
+  const expr = params.slice(1);
+  switch (expr) {
+    case 'original':
+      console.log(`Original`);
+      stopAutoColours();
+      stopMotion();
+      localStorage.clear();
+      saveColours(defaults);
+      location.reload();
+      break;
+    case 'paint':
+      console.log(`Paint`);
+      stopAutoColours();
+      stopMotion();
+      clearCanvas();
+      clickListeners(handlePaint);
+      updateColour('a_button_state', 'paint');
+      break;
+    case 'solids':
+      console.log(`Solids`);
+      stopAutoColours();
+      stopMotion();
+      mouseOverListeners(handleSolids);
+      updateColour('a_button_state', 'solids');
+      break;
+    case 'gradients':
+      console.log(`Gradients`);
+      stopAutoColours();
+      stopMotion();
+      mouseOverListeners(handleGradients);
+      updateColour('a_button_state', 'gradientsR');
+      break;
+    case 'motion':
+      console.log(`Motion`);
+      stopAutoColours();
+      localStorage.clear();
+      saveColours(defaults);
+      location.reload(); 
+      motionState = true;
+      startMotion();
+      updateColour('a_button_state', 'motion');
+      break;
+    case 'automatic':
+      console.log(`Automatic`);
+      startAutoColours();
+      stopMotion();
+      updateColour('a_button_state', 'automatic');
+      break;
+    default:
+      console.log(`none - manual`);
+      stopAutoColours();
+      stopMotion();
+      localStorage.clear();
+      saveColours(defaults);
+      location.reload();
+  }
+}
+
+
+
+
+
+
 // stopMotion();
 
 // if(motionState === false) {

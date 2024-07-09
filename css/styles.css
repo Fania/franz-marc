@@ -12,20 +12,19 @@ body * {
 body {
   background: rgb(94, 94, 60);
   height: 98vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
+  margin: 0;
   color: white;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 main {
-  position: relative;
+  /* position: relative; */
   aspect-ratio: 1500 / 1062;
   width: 95vw;
   overflow: hidden;
   max-height: 100vh;
+  margin: auto auto;
+  top: -95vh;
 }
 
 #stream {
@@ -98,12 +97,9 @@ nav, input, label {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  /* width: 90%; */
-  margin: 20px 0;
   gap: 30px;
 }
 #buttons label {
-  background: rgba(0,0,0,0.2);
   padding: 10px 15px 12px;
   border-radius: 15px;
 }
@@ -132,11 +128,15 @@ input[id="automatic"]:checked ~ #buttons label[for="automatic"] {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin: 20px 0;
+  /* position: relative; */
+  left: 250px;
+  border-left: 1px solid rgba(0,0,0,0.2);
 }
 input[id='automatic']:checked ~ #options,
 input[id='paint']:checked ~ #options {
   display: flex;
+  top: -100vh;
+  transform: translateX(-210%);
 }
 input[id='paint']:checked ~ #options #auto_group {
   display: none;
@@ -146,12 +146,63 @@ input[id='automatic']:checked ~ #options #col_group {
 }
 
 
+
+
+
+label[for='hamburger'] {
+  position: absolute;
+  top: 0; 
+  right: 10px;
+  font-size: 3em;
+  display: inline-block;
+  transition: transform .5s;
+}
+#hamburger {
+  display: none;
+}
+#hamburger:checked + label {
+  transform: rotate(-90deg);
+}
+nav.hamburger_menu {
+  transform: translateX(-110%);
+  width: 250px;
+  height: 100vh;
+  transition: all .5s;
+  display: flex;
+  flex-direction: column;
+  z-index: 99;
+  position: relative;
+}
+#hamburger:checked ~ nav.hamburger_menu {
+  background-color: rgb(0 0 0 / .5);
+  transform: translateX(0%);
+}
+nav.hamburger_menu a {
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  padding: 5px;
+  margin: 5px;
+  border: 1px dashed gray;
+  border-radius: 10px;
+}
+nav.hamburger_menu a:hover {
+  border: 1px solid gray;
+}
+
+
+
+
+
+
+
+
 @media (min-width: 800px) {
   body {
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
+    /* flex-direction: row; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    /* gap: 20px; */
   }
   #buttons {
     flex-direction: column;

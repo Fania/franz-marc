@@ -36,13 +36,27 @@
 <input type="radio" id="motion" name="buttons" value="motion" />
 <input type="radio" id="automatic" name="buttons" value="automatic" />
 
-<nav id="buttons">
+<input id="hamburger" type="checkbox">
+<label for="hamburger">☰</label>
+
+<nav id="buttons" class="hamburger_menu">
   <label for="original">Original</label>
   <label for="paint">Paint</label>
   <label for="solids">Solids</label>
   <label for="gradientsR">Gradients</label>
   <label for="motion">Motion</label>
   <label for="automatic">Automatic</label>
+</nav>
+
+<nav id="options" class="hamburger_menu">
+  <div id="auto_group">
+    <input id="auto_range" type="range" min="10" max="100" value="55">
+    <label for="auto_range">Speed</label>
+  </div>
+  <div id="col_group">
+    <input id="col_picker" type="color" name="buttons" value="#fffa02" />
+    <label for="col_picker">Colours</label>
+  </div>
 </nav>
 
 <main>
@@ -1103,16 +1117,6 @@
   </svg>
 </main>
 
-<nav id="options">
-  <div id="auto_group">
-    <input id="auto_range" type="range" min="10" max="100" value="55">
-    <label for="auto_range">Speed</label>
-  </div>
-  <div id="col_group">
-    <input id="col_picker" type="color" name="buttons" value="#fffa02" />
-    <label for="col_picker">Colours</label>
-  </div>
-</nav>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/12.3.0/math.js" integrity="sha512-TaKu3GlWLNU3fyPcvsSHSh44vX/Z43ePJDRTJr7IuUKVlUHHsHm7ODYNt5xffy75M6MOXsh7p+VyXCk5icuoxQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
