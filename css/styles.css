@@ -89,6 +89,9 @@ img {
   display: none;
 }
 
+
+
+
 nav, input, label {
   z-index: 99;
 }
@@ -97,7 +100,7 @@ nav, input, label {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: 20px;
 }
 #buttons label {
   padding: 10px 15px 12px;
@@ -122,32 +125,38 @@ input[id="automatic"]:checked ~ #buttons label[for="automatic"] {
   background: rgba(255,255,255,0.2);
 }
 
-#options {
-  display: none;
-  gap: 20px;
+
+/* #hamburger:not(:checked) ~ #paint:checked ~ #options, */
+/* #hamburger:not(:checked) ~ #automatic:checked ~ #options  */
+#hamburger:not(:checked) ~ #options 
+{
+  opacity: 0;
+  display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  /* position: relative; */
-  left: 250px;
-  border-left: 1px solid rgba(0,0,0,0.2);
+  gap: 20px;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
 }
-input[id='automatic']:checked ~ #options,
-input[id='paint']:checked ~ #options {
+/* #hamburger:checked ~ #paint:checked ~ #options, */
+/* #hamburger:checked ~ #automatic:checked ~ #options  */
+#hamburger:checked ~ #options 
+{
+  top: -0vh;
+  opacity: 1;
   display: flex;
-  top: -100vh;
-  transform: translateX(-210%);
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
+
 input[id='paint']:checked ~ #options #auto_group {
   display: none;
 }
 input[id='automatic']:checked ~ #options #col_group {
   display: none;
 }
-
-
-
-
 
 label[for='hamburger'] {
   position: absolute;
@@ -156,6 +165,7 @@ label[for='hamburger'] {
   font-size: 3em;
   display: inline-block;
   transition: transform .5s;
+  z-index: 999;
 }
 #hamburger {
   display: none;
@@ -164,9 +174,9 @@ label[for='hamburger'] {
   transform: rotate(-90deg);
 }
 nav.hamburger_menu {
-  transform: translateX(-110%);
-  width: 250px;
-  height: 100vh;
+  transform: translateY(-110%);
+  width: 100vw;
+  height: 50vh;
   transition: all .5s;
   display: flex;
   flex-direction: column;
@@ -175,7 +185,8 @@ nav.hamburger_menu {
 }
 #hamburger:checked ~ nav.hamburger_menu {
   background-color: rgb(0 0 0 / .5);
-  transform: translateX(0%);
+  /* transform: translateX(0%); */
+  transform: translateY(0%);
 }
 nav.hamburger_menu a {
   color: white;
@@ -198,14 +209,9 @@ nav.hamburger_menu a:hover {
 
 
 @media (min-width: 800px) {
-  body {
-    /* flex-direction: row; */
-    /* align-items: center; */
-    /* justify-content: center; */
-    /* gap: 20px; */
-  }
   #buttons {
     flex-direction: column;
+    gap: 30px;
   }
   #auto_range {
     transform: rotate(-90deg);
@@ -213,19 +219,21 @@ nav.hamburger_menu a:hover {
   [for="auto_range"] {
     transform: translate(100px);
   }
-}
-
-@media (min-width: 1700px) {
-  svg#marc {
-    /* height: 90vh; */
+  nav.hamburger_menu {
+    transform: translateX(-110%);
+    width: 250px;
+    height: 100vh;
   }
-}
-
-/* landscape mobiles */
-@media (min-resolution: 2dppx) and (orientation:landscape) {
-/* @media screen and (orientation:landscape) { */
-  body {
-    /* height: 95vh; */
+  #hamburger:checked ~ nav.hamburger_menu {
+    transform: translateX(0%);
   }
-
+  /* #options {
+    left: 250px;
+  } */
+  #hamburger:checked ~ input[id='automatic']:checked ~ #options,
+  #hamburger:checked ~ input[id='paint']:checked ~ #options {
+    left: 250px;
+    top: -100vh;
+    transform: translateX(-210%);
+  }
 }
