@@ -476,7 +476,14 @@ else {
 
 async function handleParams(params) {
   const expr = params.slice(1);
-  switch (expr) {
+  await triggerAction(expr);
+}
+
+
+
+
+async function triggerAction(whichone) {
+  switch (whichone) {
     case 'original':
       console.log(`Original`);
       stopAutoColours();
@@ -500,7 +507,7 @@ async function handleParams(params) {
       mouseOverListeners(handleSolids);
       updateColour('a_button_state', 'solids');
       break;
-    case 'gradients':
+    case 'gradientsR':
       console.log(`Gradients`);
       stopAutoColours();
       stopMotion();
@@ -534,10 +541,6 @@ async function handleParams(params) {
 }
 
 
-
-
-
-
 // stopMotion();
 
 // if(motionState === false) {
@@ -549,46 +552,7 @@ async function handleParams(params) {
 buttons.forEach(butt => {
   butt.addEventListener('click', (event) => {
     // console.log(butt.id);
-    if(butt.id == 'original') {
-      stopAutoColours();
-      stopMotion();
-      localStorage.clear();
-      saveColours(defaults);
-      location.reload(); 
-    }
-    if(butt.id == 'paint') {
-      stopAutoColours();
-      stopMotion();
-      clearCanvas();
-      clickListeners(handlePaint);
-      updateColour('a_button_state', 'paint');
-    }
-    if(butt.id == 'solids') {
-      stopAutoColours();
-      stopMotion();
-      mouseOverListeners(handleSolids);
-      updateColour('a_button_state', 'solids');
-    }
-    if(butt.id == 'gradientsR') {
-      stopAutoColours();
-      stopMotion();
-      mouseOverListeners(handleGradients);
-      updateColour('a_button_state', 'gradientsR');
-    }
-    if(butt.id == 'motion') {
-      stopAutoColours();
-      localStorage.clear();
-      saveColours(defaults);
-      location.reload(); 
-      motionState = true;
-      startMotion();
-      updateColour('a_button_state', 'motion');
-    }
-    if(butt.id == 'automatic') {
-      startAutoColours();
-      stopMotion();
-      updateColour('a_button_state', 'automatic');
-    }
+    triggerAction(butt.id);
   });
 });
 
