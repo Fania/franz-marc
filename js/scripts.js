@@ -6,12 +6,15 @@ const [...blocks] = document.getElementById('colour_blocks').children;
 const [...gradients] = document.getElementById('gradients').children;
 const [...buttons] = document.getElementsByName('buttons');
 const menuElem = document.getElementById('menu');
+const hamburgerElem = document.querySelector('label[for="hamburger"]');
 const rangeButt = document.getElementById('auto_range');
 const picker = document.getElementById('col_picker');
 const urlParams = new URLSearchParams(window.location.search);
 let motionState = false;
 // console.log(`There are a total of ${blocks.length} colour blocks.`);
 // console.log(`And there are ${gradients.length} unique gradients.`);
+
+// console.log(hamburgerElem);
 
 
 const defaults = {
@@ -476,6 +479,8 @@ else {
 
 async function handleParams(params) {
   const expr = params.slice(1);
+  console.log(expr);
+  hamburgerElem.style.display = "none";
   await triggerAction(expr);
 }
 
