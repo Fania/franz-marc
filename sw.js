@@ -5,15 +5,16 @@ const cacheName = 'franz_marc-v1.0.0';
 
 const precacheResources = [
   '/index.html',
-  '/scripts.js',
-  '/styles.css'
+  'js/scripts.js',
+  'js/motion.js',
+  'css/styles.css'
 ];
 
 
 const staticResources = [
   '/site.webmanifest',
   '/favicon.ico',
-  '/hammer.min.js',
+  'js/hammer.min.js',
   '/franz-marc.jpeg',
   '/imgs/favicons/android-chrome-192x192.png',
   '/imgs/favicons/apple-touch-icon.png',

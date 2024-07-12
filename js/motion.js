@@ -49,6 +49,9 @@ function drawHandPositions(canvas, ctx, handData) {
         }
       }
     }
+  } else {
+    idleLoop();
+    console.log('no hand data');
   }
   ctx.restore();
 }
@@ -77,15 +80,27 @@ const camera = new Camera(stream, {
 camera.start();
 
 
+
+function idleLoop() {
+  console.log('idle loop');
+  setTimeout(() => {
+    console.log("Idle Loop Function");
+  }, 1000);
+}
+
+// idleLoop();
+
+
+
 // console.log('outside',motionState);
 // if(motionState === false) {
 //   console.log('inside false',motionState);
 //   // stopMotion();
-//   camera.stop();
+//   // camera.stop();
 // } else {
 //   console.log('inside true',motionState);
 //   // startMotion();
-//   camera.start();
+//   // camera.start();
 // }
 
 // const mocapButton = document.getElementById('motion');

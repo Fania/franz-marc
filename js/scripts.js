@@ -5,10 +5,10 @@ const marc_svg = document.getElementById('marc');
 const [...blocks] = document.getElementById('colour_blocks').children;
 const [...gradients] = document.getElementById('gradients').children;
 const [...buttons] = document.getElementsByName('buttons');
-const menuElem = document.getElementById('menu');
-const hamburgerElem = document.querySelector('label[for="hamburger"]');
-const rangeButt = document.getElementById('auto_range');
-const picker = document.getElementById('col_picker');
+// const menuElem = document.getElementById('menu');
+// const hamburgerElem = document.querySelector('label[for="hamburger"]');
+// const rangeButt = document.getElementById('auto_range');
+// const picker = document.getElementById('col_picker');
 const urlParams = new URLSearchParams(window.location.search);
 let motionState = false;
 // console.log(`There are a total of ${blocks.length} colour blocks.`);
@@ -463,103 +463,30 @@ const relations = {
 }
 
 
-// FIRST LOAD
-const params = location.search;
-if(params) { 
-  console.log(params);
-  handleParams(params);
-}
-else {
-  console.log('nothing to declare');
-  // clean load, possibly from memory
-  // loadSettings('fromScratch');
-}
 
 
-
-async function handleParams(params) {
-  const expr = params.slice(1);
-  console.log(expr);
-  hamburgerElem.style.display = "none";
-  await triggerAction(expr);
-}
+// if() {
+ // if canvas not containing hands for at least 2 minutes then start
+ // auto loop
+ // show default image for 20 seconds
+ // then go into auto transitions for 2 minutes
+ // then show default image again for 20 seconds
+ // etc
+ // until some hands appear
+// }
 
 
 
 
-async function triggerAction(whichone) {
-  switch (whichone) {
-    case 'original':
-      console.log(`Original`);
-      stopAutoColours();
-      stopMotion();
-      localStorage.clear();
-      saveColours(defaults);
-      location.reload();
-      break;
-    case 'paint':
-      console.log(`Paint`);
-      stopAutoColours();
-      stopMotion();
-      clearCanvas();
-      clickListeners(handlePaint);
-      updateColour('a_button_state', 'paint');
-      break;
-    case 'solids':
-      console.log(`Solids`);
-      stopAutoColours();
-      stopMotion();
-      mouseOverListeners(handleSolids);
-      updateColour('a_button_state', 'solids');
-      break;
-    case 'gradientsR':
-      console.log(`Gradients`);
-      stopAutoColours();
-      stopMotion();
-      mouseOverListeners(handleGradients);
-      updateColour('a_button_state', 'gradientsR');
-      break;
-    case 'motion':
-      console.log(`Motion`);
-      stopAutoColours();
-      localStorage.clear();
-      saveColours(defaults);
-      location.reload(); 
-      motionState = true;
-      startMotion();
-      updateColour('a_button_state', 'motion');
-      break;
-    case 'automatic':
-      console.log(`Automatic`);
-      startAutoColours();
-      stopMotion();
-      updateColour('a_button_state', 'automatic');
-      break;
-    default:
-      console.log(`none - manual`);
-      stopAutoColours();
-      stopMotion();
-      localStorage.clear();
-      saveColours(defaults);
-      location.reload();
-  }
-}
 
 
-// stopMotion();
+// startMotion();
 
 // if(motionState === false) {
 //   stopMotion();
 // } else {
 //   startMotion();
 // }
-
-buttons.forEach(butt => {
-  butt.addEventListener('click', (event) => {
-    // console.log(butt.id);
-    triggerAction(butt.id);
-  });
-});
 
 
 function mouseOverListeners(method) {
@@ -639,30 +566,6 @@ function loadColours() {
       block.attributes.style.value = `${rcolour}`;
     }
   });
-  if(coloursJSON['a_button_state'] == 'original') {
-    const butt = buttons.find((br) => br.id == 'original');
-    butt.checked = true;
-  }
-  if(coloursJSON['a_button_state'] == 'paint') {
-    const butt = buttons.find((br) => br.id == 'paint');
-    butt.checked = true;
-  }
-  if(coloursJSON['a_button_state'] == 'solids') {
-    const butt = buttons.find((br) => br.id == 'solids');
-    butt.checked = true;
-  }
-  if(coloursJSON['a_button_state'] == 'gradientsR') {
-    const butt = buttons.find((br) => br.id == 'gradientsR');
-    butt.checked = true;
-  }
-  if(coloursJSON['a_button_state'] == 'motion') {
-    const butt = buttons.find((br) => br.id == 'motion');
-    butt.checked = true;
-  }
-  if(coloursJSON['a_button_state'] == 'automatic') {
-    const butt = buttons.find((br) => br.id == 'automatic');
-    butt.checked = true;
-  }
 }
 
 
@@ -696,27 +599,7 @@ function clearCanvas() {
   });
 }
 
-function handlePaint(block) {
-  // console.log(`COLOURING-IN '${block.id}''`);
-  const currColour = picker.value;
-  const bloID = block.id;
-  const relID = relations[bloID] ? relations[bloID] : 'RGB';
-  if(relID !== 'RGB') {
-    const grad = gradients.find((gr) => gr.id == relID);
-    const [...toddlers] = grad.children;
-    let coloursList = [];
-    for(let n=0; n<toddlers.length; n++) {
-      const currElem = toddlers[n];
-      currElem.attributes.style.value = `stop-color:${hexTorgb(currColour)}`;
-      coloursList.push(`stop-color:${hexTorgb(currColour)}`);
-    }
-    block.attributes.style.value = `fill: url(#${relID})`;
-    updateColour(relID, coloursList);
-  } else {
-    block.attributes.style.value = `fill: ${hexTorgb(currColour)}`;
-    updateColour(bloID, `fill: ${hexTorgb(currColour)}`);
-  }
-}
+
 function hexTorgb(hex) {
   return `rgb(${'0x' + hex[1] + hex[2] | 0}, ${'0x' + hex[3] + hex[4] | 0}, ${'0x' + hex[5] + hex[6] | 0})`;
 }
@@ -791,9 +674,9 @@ function handleAutomatic(speed,iID) {
   });
 }
 
-rangeButt.addEventListener('change', () => {
-  startAutoColours();
-});
+// rangeButt.addEventListener('change', () => {
+//   startAutoColours();
+// });
 
 
 
@@ -801,41 +684,6 @@ rangeButt.addEventListener('change', () => {
 
 
 
-
-
-function handleGradients(block) {
-  const relID = relations[block.id] ? relations[block.id] : 'RGB';
-  // console.log(`GRADIENT '${block.id}': '${relID}'`);
-  if(relID !== 'RGB') {
-    // hovering over a gradient, so children (i.e. stop-colours) exist
-    const grad = gradients.find((gr) => gr.id == relID);
-    const [...toddlers] = grad.children;
-    let coloursList = [];
-    // reset gradient colours
-    const originalGradientColours = defaults[relID];
-    updateColour(relations[block.id], originalGradientColours);
-    toddlers.forEach(ch => {
-      const newcolour = randomColor({
-        format: 'rgb',
-        luminosity: 'random', // bright, light, dark
-        hue: 'random', // red, orange, yellow, green, blue, purple, pink, monochrome
-      });
-      ch.attributes.style.value = `stop-color: ${newcolour}`;
-      coloursList.push(`stop-color: ${newcolour}`);
-    })
-    block.attributes.style.value = `fill: url(#${relID})`;
-    updateColour(relID, coloursList);
-  } else {
-  // hovering over a solid RGB colour, so no children exist
-    const rcolour = randomColor({
-      format: 'rgb',
-      luminosity: 'random', // bright, light, dark
-      hue: 'random', // red, orange, yellow, green, blue, purple, pink, monochrome
-    });
-    block.attributes.style.value = `fill: ${rcolour}`;
-    updateColour(block.id, `fill: ${rcolour}`);
-  }
-}
 
 
 
@@ -909,37 +757,6 @@ function handleTap(ev) {
 
 
 
-function handleShowcase() {
-  const params = location.search;
-  const keyValueStrings = (params.slice(1)).split('&');
-  keyValueStrings.forEach(x => {
-    const pair = x.split('=');
-    if (pair[0] === 'showcase' && pair[1] === 'true') {
-      bodyCont.style.cursor = 'none';
-      console.log('starting showcase');
-      menu.classList.add('hide');
-      const min1200 = window.matchMedia("(min-width: 1200px)").matches;
-      if (min1200) {
-        marc_svg.attributes.style.value = 'height: unset';
-      }
-      const medScreenLandscape = window.matchMedia("(min-resolution: 2dppx) and (orientation:landscape)").matches;
-      if (medScreenLandscape) {
-        bodyCont.style.height = '98vh';
-      }
-      rangeButt.value = 100;
-      startAutoColours();
-    }
-    if (pair[0] === 'showcase' && pair[1] === 'false') {
-      bodyCont.style.cursor = 'default';
-      console.log('stopping showcase');
-      menu.classList.remove('hide');
-      stopAutoColours();
-    }
-  })
-}
-handleShowcase();
-
-
 
 
 
@@ -958,36 +775,6 @@ document.addEventListener("keydown", event => {
     window.location.search = urlParams;
     document.querySelector(`input[id='original']`).checked = true;
     updateColour('a_button_state', 'original');
-  }
-  if (event.key === "p") {
-    console.log('p pressed: paint mode started');
-    stopAutoColours();
-    clearCanvas();
-    clickListeners(handlePaint);
-    document.querySelector(`input[id='paint']`).checked = true;
-    updateColour('a_button_state', 'paint');
-  }
-  if (event.key === "s") {
-    console.log('s pressed: solid mode started');
-    stopAutoColours();
-    mouseOverListeners(handleSolids);
-    document.querySelector(`input[id='solids']`).checked = true;
-    updateColour('a_button_state', 'solids');
-  }
-  if (event.key === "g") {
-    console.log('g pressed: gradient mode started');
-    stopAutoColours();
-    mouseOverListeners(handleGradients);
-    document.querySelector(`input[id='gradientsR']`).checked = true;
-    updateColour('a_button_state', 'gradientsR');
-  }
-  if (event.key === "a") {
-    console.log('a pressed: showcase mode started');
-    rangeButt.value = 100;
-    urlParams.set('showcase', true);
-    window.location.search = urlParams;
-    document.querySelector(`input[id='automatic']`).checked = true;
-    updateColour('a_button_state', 'automatic');
   }
   if (event.key === "m") {
     console.log('m pressed: motiontracking mode started');
@@ -1019,33 +806,8 @@ document.addEventListener("keydown", event => {
     urlParams.set('showcase', false);
     window.location.search = urlParams;
   }
-  if (event.key === "ArrowUp") { // UP ARROW
-    console.log('up pressed: sped up showcase speed');
-    incSpeed();
-    startAutoColours();
-  }
-  if (event.key === "ArrowDown") { // DOWN ARROW
-    console.log('down pressed: slowed down showcase speed');
-    decSpeed();
-    startAutoColours();
-  }
 });
 
-function incSpeed() {
-  if(parseInt(rangeButt.value) <= 90) {
-    rangeButt.value = parseInt(rangeButt.value) + 10;
-  } else {
-    rangeButt.value = 100;
-  }
-}
-
-function decSpeed() {
-  if(parseInt(rangeButt.value) >= 10) {
-    rangeButt.value = parseInt(rangeButt.value) - 10;
-  } else {
-    rangeButt.value = 10;
-  }
-}
 
 
 // stopMotion();
