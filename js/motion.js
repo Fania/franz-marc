@@ -49,10 +49,11 @@ function drawHandPositions(canvas, ctx, handData) {
         }
       }
     }
-  } else {
-    idleLoop();
-    console.log('no hand data');
-  }
+  } 
+  // else {
+  //   idleLoop();
+  //   console.log('no hand data');
+  // }
   ctx.restore();
 }
 
@@ -81,12 +82,12 @@ camera.start();
 
 
 
-function idleLoop() {
-  console.log('idle loop');
-  setTimeout(() => {
-    console.log("Idle Loop Function");
-  }, 1000);
-}
+// function idleLoop() {
+//   console.log('idle loop');
+//   setTimeout(() => {
+//     console.log("Idle Loop Function");
+//   }, 1000);
+// }
 
 // idleLoop();
 
