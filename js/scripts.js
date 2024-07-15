@@ -619,11 +619,11 @@ function handleSolids(block) {
 
 
 function startMotion() {
-  console.trace(`start Motiontracking ${motionState}`);
+  // console.trace(`start Motiontracking ${motionState}`);
   camera.start();
 }
 function stopMotion() {
-  console.trace(`stop Motiontracking ${motionState}`);
+  // console.trace(`stop Motiontracking ${motionState}`);
   camera.stop();
 }
 
