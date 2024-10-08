@@ -1,6 +1,6 @@
 'use strict';
 
-const cacheName = 'franz_marc-v1.0.0';
+const cacheName = 'franz_marc-v1.0.1';
 
 
 const precacheResources = [
