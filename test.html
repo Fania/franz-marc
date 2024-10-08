@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light"/>
+  <title>Franz Marc</title>
+  <meta name="keywords" content="svg, art, colours, 'Der Blaue Reiter'">
+  <meta name="author" content="Fania Raczinski, Franz Marc">
+  <meta name="description" content="Franz Marc's 'Reh im Klostergarten' from 1912 - in digital form. The hand-crafted scalable vector graphics allow for an artful explosion of colour and can be experienced interactively or meditatively.">
+  <!-- <link rel="stylesheet" href="styles.css"> -->
+
+  <link rel="apple-touch-icon" sizes="180x180" href="imgs/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="imgs/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="imgs/favicons/favicon-16x16.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <meta property="og:title" content="Franz Marc" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://fania.github.io/franz-marc" />
+  <meta property="og:image" content="https://raw.githubusercontent.com/Fania/franz-marc/main/franz-marc.jpeg" />
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Franz Marc">
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/Fania/franz-marc/main/franz-marc.jpeg">
+
+  <link rel="stylesheet" href="css/styles.css"></link>
+</head>
+<body>
+  
+
+<main>
+  <video id="stream"></video>
+  <canvas id="canvas"></canvas>
+  <svg id="marc" viewBox="0 0 1500 1062">
+    <rect fill="#00FF00" width="1500" height="1062" />
+  </svg>
+</main>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/12.3.0/math.js" integrity="sha512-TaKu3GlWLNU3fyPcvsSHSh44vX/Z43ePJDRTJr7IuUKVlUHHsHm7ODYNt5xffy75M6MOXsh7p+VyXCk5icuoxQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.6.1/randomColor.min.js" integrity="sha512-vPeZ7JCboHcfpqSx5ZD+/jpEhS4JpXxfz9orSvAPPj0EKUVShU2tgy7XkU+oujBJKnWmu4hU7r9MMQNWPfXsYw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+
+<script src="js/hammer.min.js"></script>
+<script src="js/motion.js"></script>
+<script src="js/scripts.js"></script>
+
+<script defer>
+  // window.addEventListener("DOMContentLoaded", (event) => {
+  // window.onload = setTimeout(()=> {startMotion()}, 1000);
+  window.onload = startMotion();
+</script>
+
+</body>
+</html>

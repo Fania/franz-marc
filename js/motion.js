@@ -14,6 +14,11 @@ function onResults(handData) {
 function drawHandPositions(canvas, ctx, handData) {
   canvas.width = stream.offsetWidth;
   canvas.height = stream.offsetHeight;
+  // canvas.height = 1062 * stream.offsetWidth / 1500;
+  // for aspect ration 4:3 = 3 * window.innerWidth / 4
+  // 1500 / 1062
+  // canvas.height = 1062 * stream.offsetWidth / 1500;
+
   ctx.save();
   ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
   ctx.drawImage(
