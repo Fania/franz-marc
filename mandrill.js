@@ -465,8 +465,8 @@ addEventListener("click", (ev) => {
   // console.log(elem);
   console.log(`(${ev.offsetX}, ${ev.offsetY})`);
 });
-addEventListener("dblclick", (ev) => {
-  // console.log(ev);
-  const elem = document.elementFromPoint(ev.offsetX, ev.offsetY);
-  console.log(elem.id);
-});
+// addEventListener("dblclick", (ev) => {
+//   // console.log(ev);
+//   const elem = document.elementFromPoint(ev.offsetX, ev.offsetY);
+//   console.log(elem.id);
+// });
