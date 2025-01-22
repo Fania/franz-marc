@@ -455,11 +455,18 @@ const mandrill_svg = document.getElementById('mandrill');
 //   "yellow_pink_triangle": "yellow_pink_fade"
 // }
 
-addEventListener("mousemove", (ev) => {
+// addEventListener("mousemove", (ev) => {
+//   console.log(`(${ev.offsetX}, ${ev.offsetY})`);
+// });
+
+addEventListener("click", (ev) => {
   // console.log(ev);
   // const elem = document.elementFromPoint(ev.offsetX, ev.offsetY);
   // console.log(elem);
   console.log(`(${ev.offsetX}, ${ev.offsetY})`);
 });
-
-
+addEventListener("dblclick", (ev) => {
+  // console.log(ev);
+  const elem = document.elementFromPoint(ev.offsetX, ev.offsetY);
+  console.log(elem.id);
+});
