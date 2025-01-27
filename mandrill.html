@@ -32,8 +32,10 @@
 <img id="mandrill_img" src="imgs/Mandrill-1913.png" alt="Franz Marc - Mandrill 1913">
 
 <svg id="mandrill" viewBox="0 0 1280 876" width="1280" height="876">
-
   <defs id="gradients">
+    <filter id="blur">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="11"/>
+    </filter>
     <linearGradient id="shape_001_fill" gradientTransform="rotate(300 .5 .5)">
       <stop offset=".2" stop-color="rgb(42, 154, 147)"/>
       <stop offset="1" stop-color="rgb(21, 57, 63)"/>
@@ -178,22 +180,41 @@
       <stop offset="0" stop-color="rgb(163, 77, 111)"/>
       <stop offset=".4" stop-color="rgb(21, 36, 49)"/>
     </linearGradient>
-    <linearGradient id="shape_037_fill" gradientTransform="rotate(45 .5 .5)">
+    <linearGradient id="shape_038_fill" gradientTransform="rotate(45 .5 .5)">
       <stop offset="0" stop-color="rgb(13, 22, 25)"/>
       <stop offset=".5" stop-color="rgb(37, 42, 106)"/>
       <stop offset="1" stop-color="rgb(23, 74, 148)"/>
     </linearGradient>
-    <linearGradient id="shape_038_fill" gradientTransform="rotate(45 .5 .5)">
+    <linearGradient id="shape_039_fill" gradientTransform="rotate(45 .5 .5)">
       <stop offset="0" stop-color="rgb(73, 162, 160)"/>
       <stop offset=".5" stop-color="rgb(36, 82, 117)"/>
       <stop offset="1" stop-color="rgb(15, 42, 53)"/>
     </linearGradient>
-    <linearGradient id="shape_039_fill" gradientTransform="rotate(90 .5 .5)">
+    <linearGradient id="shape_040_fill" gradientTransform="rotate(90 .5 .5)">
       <stop offset="0" stop-color="rgb(37, 58, 88)"/>
       <stop offset=".3" stop-color="rgb(22, 141, 138)"/>
       <stop offset=".6" stop-color="rgb(24, 118, 96)"/>
       <stop offset=".7" stop-color="rgb(129, 115, 98)"/>
       <stop offset="1" stop-color="rgb(120, 66, 57)"/>
+    </linearGradient>
+    <linearGradient id="shape_041_fill" gradientTransform="rotate(97 .5 .5)">
+      <stop offset=".1" stop-color="rgb(65, 199, 202)"/>
+      <stop offset=".2" stop-color="rgb(32, 100, 141)"/>
+      <stop offset=".3" stop-color="rgb(234, 242, 229)"/>
+      <stop offset=".9" stop-color="rgb(234, 242, 229)"/>
+      <stop offset="1" stop-color="rgb(160, 138, 163)"/>
+    </linearGradient>
+    <linearGradient id="shape_042_fill" gradientTransform="rotate(125 .5 .5)">
+      <stop offset=".1" stop-color="rgb(39, 65, 80)"/>
+      <stop offset=".2" stop-color="rgb(32, 100, 141)"/>
+      <stop offset=".5" stop-color="rgb(234, 242, 229)"/>
+      <stop offset=".9" stop-color="rgb(234, 242, 229)"/>
+      <stop offset="1" stop-color="rgb(160, 138, 163)"/>
+    </linearGradient>
+    <linearGradient id="shape_043_fill" gradientTransform="rotate(340 .5 .5)">
+      <stop offset=".1" stop-color="rgb(231, 234, 216)"/>
+      <stop offset=".3" stop-color="rgb(224, 62, 138)"/>
+      <stop offset="1" stop-color="rgb(235, 45, 93)"/>
     </linearGradient>
   </defs>
 
@@ -234,15 +255,26 @@
     <path id="shape_034" d="M 271 269 299 291 300 224 Q 273 241 271 269" fill="url(#shape_034_fill)"/>
     <path id="shape_035" d="M 223 83 L 228 236 271 269 Q 273 241 300 224 L 300 172 318 156 Z" fill="url(#shape_035_fill)"/>
     <path id="shape_036" d="M 0 567 L 0 714 56 651 106 664 115 670 123 665 152 661 127 654 124 601 60 539 Q 30 570 0 567" fill="url(#shape_036_fill)"/>
-    <path id="shape_036" d="M 0 714 L 0 737 40 713 A 5 5 0 0 0 55 701 L 102 663 56 651 Z" fill="rgb(236, 244, 238)"/>
-    <path id="shape_037" d="M 0 737 L 0 787 95 876 174 876 Q 169 865 168 854 L 56 712 Q 48 721 40 713 Z" fill="url(#shape_037_fill)"/>
-    <path id="shape_038" d="M 0 787 L 0 876 95 876 Z" fill="url(#shape_038_fill)"/>
+    <path id="shape_037" d="M 0 714 L 0 737 40 713 A 5 5 0 0 0 55 701 L 102 663 56 651 Z" fill="rgb(236, 244, 238)"/>
+    <path id="shape_038" d="M 0 737 L 0 787 95 876 174 876 Q 169 865 168 854 L 56 712 Q 48 721 40 713 Z" fill="url(#shape_038_fill)"/>
+    <path id="shape_039" d="M 0 787 L 0 876 95 876 Z" fill="url(#shape_039_fill)"/>
+    <path id="shape_040" d="M 55 701 Q 59 706 56 712 L 167 853 Q 154 788 178 766 L 115 670 106 664 102 663 Z" fill="url(#shape_040_fill)"/>
+    <path id="shape_041" d="M 124 579 L 127 654 152 661 169 659 166 589 Z" fill="url(#shape_041_fill)"/>
+    <path id="shape_042" d="M 162 549 L 169 659 204 655 234 580 Z" fill="url(#shape_042_fill)"/>
   </g>
 
-    <path id="shape_039" d="M 55 701 Q 59 706 56 712 L 167 853 Q 154 788 178 766 L 115 670 106 664 102 663 Z" fill="url(#shape_039_fill)"/>
+    <path id="shape_043" d="M 201 449 L 162 549 234 580 255 558 303 585 457 614 327 414 Q 273 447 201 449" fill="url(#shape_043_fill)"/>
 
 /*
+202 449 Q 273 447 327 414
 
+(202, 450) 201 451
+(162, 549) 162 549
+(233, 581) 234 580
+(255, 558)
+(303, 585)
+(457, 614)
+(327, 415) 327 414
 */
     <!-- 
     A rx ry rotation large-arc-flag sweep-flag x y
