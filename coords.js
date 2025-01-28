@@ -3,8 +3,8 @@
 const mandrill = document.getElementById('mandrill');
 
 
-console.dir(mandrill);
-console.log(mandrill.clientWidth, mandrill.clientHeight);
+// console.dir(mandrill);
+// console.log(mandrill.clientWidth, mandrill.clientHeight);
 
 
 const coords_g = document.createElementNS("http://www.w3.org/2000/svg", "g");
@@ -25,7 +25,7 @@ for(let i=0; i < mandrill.clientWidth; i+=50) {
   line.setAttribute("y1", 0);
   line.setAttribute("x2", i);
   line.setAttribute("y2", mandrill.clientWidth);
-  line.setAttribute("stroke", "red");
+  line.setAttribute("stroke", "#eeeeee");
   vertical_g.appendChild(line);
 }
 
@@ -36,7 +36,7 @@ for(let i=0; i < mandrill.clientHeight; i+=50) {
   line.setAttribute("y1", i);
   line.setAttribute("x2", mandrill.clientWidth);
   line.setAttribute("y2", i);
-  line.setAttribute("stroke", "magenta");
+  line.setAttribute("stroke", "#eeeeee");
   horizontal_g.appendChild(line);
 }
 
@@ -51,9 +51,9 @@ for(let i=0; i < mandrill.clientWidth; i+=100) {
   text.setAttribute("y", 15);
   text2.setAttribute("y", mandrill.clientHeight-15);
   text3.setAttribute("y", mandrill.clientHeight/2);
-  text.setAttribute("stroke", "red");
-  text2.setAttribute("stroke", "red");
-  text3.setAttribute("stroke", "red");
+  text.setAttribute("stroke", "#eeeeee");
+  text2.setAttribute("stroke", "#eeeeee");
+  text3.setAttribute("stroke", "#eeeeee");
   text.textContent = i;
   text2.textContent = i;
   text3.textContent = i;
@@ -73,9 +73,9 @@ for(let i=0; i < mandrill.clientWidth; i+=100) {
   text.setAttribute("y", i);
   text2.setAttribute("y", i);
   text3.setAttribute("y", i);
-  text.setAttribute("stroke", "red");
-  text2.setAttribute("stroke", "red");
-  text3.setAttribute("stroke", "red");
+  text.setAttribute("stroke", "#eeeeee");
+  text2.setAttribute("stroke", "#eeeeee");
+  text3.setAttribute("stroke", "#eeeeee");
   text.textContent = i;
   text2.textContent = i;
   text3.textContent = i;
