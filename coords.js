@@ -79,7 +79,7 @@ for(let i=0; i < mandrill.clientWidth; i+=100) {
   text.textContent = i;
   text2.textContent = i;
   text3.textContent = i;
-  vertical_g.appendChild(text);
-  vertical_g.appendChild(text2);
-  vertical_g.appendChild(text3);
+  horizontal_g.appendChild(text);
+  horizontal_g.appendChild(text2);
+  horizontal_g.appendChild(text3);
 }
