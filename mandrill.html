@@ -305,6 +305,35 @@
       <stop offset=".6" stop-color="rgb(13, 100, 128)"/>
       <stop offset="1" stop-color="rgb(5, 52, 79)"/>
     </linearGradient>
+    <radialGradient id="shape_070_fill" cx=".7" cy=".9" r="1">
+      <stop offset="0" stop-color="rgb(14, 51, 55)"/>
+      <stop offset=".2" stop-color="rgb(14, 51, 55)"/>
+      <stop offset=".2" stop-color="rgb(32, 74, 88)"/>
+      <stop offset=".4" stop-color="rgb(32, 74, 88)"/>
+      <stop offset=".5" stop-color="rgb(20, 137, 96)"/>
+      <stop offset=".8" stop-color="rgb(101, 192, 76)"/>
+      <stop offset="1" stop-color="rgb(244, 242, 29)"/>
+    </radialGradient>
+    <mask id="shape_071_mask">
+      <linearGradient id="shape_071_mask_fill" gradientTransform="rotate(60 .5 .5)">
+        <stop offset="0" stop-color="rgba(255, 255, 255, 1)"/>
+        <stop offset=".3" stop-color="rgba(255, 255, 255, .5)"/>
+        <stop offset=".5" stop-color="rgba(0, 0, 0, .5)"/>
+        <stop offset="1" stop-color="rgba(0, 0, 0, 0)"/>
+      </linearGradient>
+    </mask>
+    <linearGradient id="shape_071_mask_test" gradientTransform="rotate(70 .5 .5)">
+      <stop offset="0" stop-color="rgba(255, 255, 255, 1)"/>
+      <stop offset=".3" stop-color="rgba(255, 255, 255, .5)"/>
+      <stop offset=".5" stop-color="rgba(0, 0, 0, .5)"/>
+      <stop offset="1" stop-color="rgba(0, 0, 0, 0)"/>
+    </linearGradient>
+    <linearGradient id="shape_071_fill" gradientTransform="rotate(60 .5 .5)">
+      <stop offset="0" stop-color="rgb(209, 243, 225)"/>
+      <!-- <stop offset=".3" stop-color="rgb(209, 243, 225)"/> -->
+      <!-- <stop offset=".6" stop-color="rgb(80, 193, 208)"/> -->
+      <stop offset="1" stop-color="rgb(80, 193, 208)"/>
+    </linearGradient>
   </defs>
 
   <g id="colour_blocks">
@@ -375,19 +404,35 @@
     <path id="shape_065" d="M 389 318 Q 375 375 326 414 L 373 486 387 458 Q 403 463 412 473 Q 445 368 389 318" fill="url(#shape_065_fill)"/>
     <path id="shape_066" d="M 395 286 Q 394 300 389 318 Q 445 372 412 473 Q 431 494 420 524 Q 430 510 430 494 L 430 394 436 365 Q 413 338 395 287" fill="url(#shape_066_fill)"/>
     <path id="shape_067" d="M 408 540 L 456 613 482 594 Q 425 490 430 394 C 428 490 422 530 408 540" fill="url(#shape_067_fill)"/>
-  </g>
-
     <path id="shape_068" d="M 510 0 L 521 6 Q 580 26 622 76 Q 649 57 700 57 Q 650 10 596 0 Z" fill="url(#shape_068_fill)"/>
     <path id="shape_069" d="M 521 6 Q 475 26 446 55 L 447 79 Q 521 39 607 60 Q 562 17 521 6" fill="url(#shape_069_fill)"/>
+  </g>
+
+    <!-- <path id="shape_070" d="M 446 55 C 368 105 365 295 436 365 Q 452 309 476 283 Q 485 228 523 198 Q 510 95 611 82 L 622 76 606 60 Q 521 39 447 79 Z" fill="url(#shape_070_fill)"/> -->
+    <path id="shape_071" d="M 390 201 Q 378 286 436 365 Q 438 348 460 307 Q 415 214 470 145 Q 466 111 430 131 L 404 200 L 409 261 h -5 Z"  
+    fill="url(#shape_071_fill)"
+    
+    />
 
 
 /*
-(521, 7)
-(446, 55)
-(447, 79)
-(606, 60)
+fill="url(#shape_071_fill)"
+fill="url(#shape_071_mask_test)"
+mask="url(#shape_071_mask)"
+(390, 201) x
+(436, 365) x
+(460, 307) x
+(470, 151) x
+(430, 131) x
+(404, 200)
+(409, 261)
+(389, 202)
 */
     <!-- 
+    Masks: 
+    white - fully visible
+    black - fully invisible
+    gray - semi-transparent
     A rx ry rotation large-arc-flag sweep-flag x y
     Horizontal gradients:   y1 & y2 equal   and  x1 & x2 differ
     Vertical   gradients:   x1 & x2 equal   and  y1 & y2 differ
