@@ -67,6 +67,10 @@ img#mandrill_img {
 #marc #coordinates {
   display: none;
 }
+#mandrill #coordinates.hide,
+#marc #coordinates.hide {
+  display: none;
+}
 #menu {
   position: relative;
   display: flex;

@@ -83,3 +83,13 @@ for(let i=0; i < mandrill.clientWidth; i+=100) {
   horizontal_g.appendChild(text2);
   horizontal_g.appendChild(text3);
 }
+
+
+const coordinates = document.querySelector('#coordinates');
+// console.log(coordinates);
+document.addEventListener("keydown", event => {
+  if (event.key === "c") {
+    // console.log('coordinates disabled');
+    coordinates.classList.toggle('hide');
+  }
+});
