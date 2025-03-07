@@ -45,6 +45,7 @@ svg#mandrill {
   width: 1280px;
   overflow: hidden;
   position: absolute;
+  /* display: none; */
 }
 svg text {
   fill: white;
