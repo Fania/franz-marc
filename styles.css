@@ -62,8 +62,15 @@ img#mandrill_img {
   position: absolute;
   /* display: none; */
 }
+
+#mandrill #colour_blocks path,
+#mandrill #colour_blocks line,
+#mandrill #colour_blocks circle,
+#mandrill #colour_blocks ellipse {
+  /* display: none; */
+}
 #mandrill #coordinates {
-  display: block;
+  display: none;
 }
 #marc #coordinates {
   display: none;
