@@ -13,30 +13,78 @@ console.log(`And there are ${gradients.length} unique gradients.`);
 
 
 
-
+// print coords of click
+// rotate element under click
 mandrill_svg.addEventListener("click", async (ev) => {
   // const elem = document.elementFromPoint(ev.offsetX, ev.offsetY);
   // console.dir(elem);
   console.log(`(${ev.offsetX}, ${ev.offsetY})`);
-  // moveElement(ev,elem);
-  await moveElement(ev.target);
+  await rotateElement(ev.target);
 });
 
 
+
+// print block id on double click
 blocks.forEach(block => {
   block.addEventListener("dblclick", async (ev) => {
     console.log(block.id);
-    // await moveElement(block);
-    // console.log(ev);
-    // const elem = document.elementFromPoint(ev.offsetX, ev.offsetY);
-    // console.log(elem.id);
   });
 });
 
 
 
+// rotate an element around its center
+async function rotateElement(elem) {
+  // only works with the css version of transform origin and transform box
+  elem.setAttribute('style', `transform-origin: 50% 50%; transform-box: fill-box;`);
+  // elem.setAttribute('transform-origin', `50% 50%`);
+  // elem.setAttribute('transform-box', `fill-box`);
+  const item = document.createElementNS("http://www.w3.org/2000/svg", "animateTransform");
+  item.setAttribute('attributeName', 'transform');
+  item.setAttribute('type', 'rotate');
+  item.setAttribute('from', `0`);
+  item.setAttribute('to', `360`);
+  item.setAttribute('dur', '10s');
+  item.setAttribute('repeatCount', '4');
+  item.setAttribute('additive', 'sum');
+  elem.appendChild(item);
+  getColour(elem);
+}
 
-async function moveElement(elem) {
+
+
+
+
+function getColour(elem) {
+  let fillCol = '';
+  let strokeCol = '';
+  let gradCol = '';
+  const atts = Object.values(elem.attributes);
+  atts.forEach(a => {
+    if(a.name === 'fill') {
+      fillCol = elem.attributes['fill'].value;
+    }
+    if(a.name === 'stroke') {
+      strokeCol = elem.attributes['stroke'].value;
+    }
+  });
+  console.log('fillCol',fillCol);
+  console.log('strokeCol',strokeCol);
+}
+
+
+
+
+
+// rotate all elements
+blocks.forEach(block => {
+  // rotateElement(block);
+  getColour(block);
+});
+
+
+
+
   // console.log(elem);
   // console.dir(elem);
   // const svgWidth = Math.ceil(elem.getBoundingClientRect().width);
@@ -51,23 +99,3 @@ async function moveElement(elem) {
   // const svgXcenter = svgLeft + (svgWidth / 2);
   // const svgYcenter = svgTop + (svgHeight / 2);
   // console.log(`Center: ${svgXcenter}, ${svgYcenter}`)
-
-  elem.setAttribute('style', `transform-origin: 50% 50%; transform-box: fill-box;`);
-  const item = document.createElementNS("http://www.w3.org/2000/svg", "animateTransform");
-  item.setAttribute('attributeName', 'transform');
-  item.setAttribute('type', 'rotate');
-  item.setAttribute('from', `0`);
-  item.setAttribute('to', `360`);
-  item.setAttribute('dur', '10s');
-  item.setAttribute('repeatCount', '4');
-  item.setAttribute('additive', 'sum');
-  elem.appendChild(item);
-}
-
-
-
-
-blocks.forEach(block => {
-  // console.log(block.id);
-  moveElement(block);
-});
