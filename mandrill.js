@@ -33,9 +33,24 @@ blocks.forEach(block => {
 
 
 
+
+
+
+
+// rotate all elements at once
+blocks.forEach(block => {
+  rotateElement(block);
+});
+
+
+
+
 // rotate an element around its center
 async function rotateElement(elem) {
   // only works with the css version of transform origin and transform box
+  const speed = getColourSpeed(elem);
+  console.log(speed[elem.id].speed);
+
   elem.setAttribute('style', `transform-origin: 50% 50%; transform-box: fill-box;`);
   // elem.setAttribute('transform-origin', `50% 50%`);
   // elem.setAttribute('transform-box', `fill-box`);
@@ -44,43 +59,100 @@ async function rotateElement(elem) {
   item.setAttribute('type', 'rotate');
   item.setAttribute('from', `0`);
   item.setAttribute('to', `360`);
-  item.setAttribute('dur', '10s');
+  item.setAttribute('dur', `${speed[elem.id].speed}s`);
   item.setAttribute('repeatCount', '4');
   item.setAttribute('additive', 'sum');
   elem.appendChild(item);
-  getColour(elem);
 }
 
 
 
 
 
-function getColour(elem) {
+function getColourSpeed(block) {
+  const colours = {};
+  // blocks.forEach(block => {
+    // rotateElement(block);
+    // console.dir(block.attributes);
   let fillCol = '';
   let strokeCol = '';
   let gradCol = '';
-  const atts = Object.values(elem.attributes);
+  
+  const atts = Object.values(block.attributes);
+
   atts.forEach(a => {
     if(a.name === 'fill') {
-      fillCol = elem.attributes['fill'].value;
+      if(block.attributes['fill'].value.startsWith('url')) {
+        const valIDpre = block.attributes['fill'].value;
+        const valID = valIDpre.slice(5, -1);
+        const elem = document.getElementById(valID);
+        gradCol = elem.children[0].attributes[1].value;
+      }
+      fillCol = block.attributes['fill'].value;
+      // console.log('fillCol',fillCol);
     }
     if(a.name === 'stroke') {
-      strokeCol = elem.attributes['stroke'].value;
+      strokeCol = block.attributes['stroke'].value;
+      // console.log('strokeCol',strokeCol);
     }
   });
-  console.log('fillCol',fillCol);
-  console.log('strokeCol',strokeCol);
+  
+  colours[block.id] = {
+    'fillCol': fillCol,
+    'strokeCol': strokeCol,
+    'gradCol': gradCol,
+    'speed': 0
+  };
+  console.log(colours[block.id]);
+  // }); // loop through all blocks and rotate them
+
+
+  // digitalRoot(n)
+  for (const bl in colours) {
+    if(colours[bl].fillCol !== '' && colours[bl].fillCol.startsWith('rgb')) {
+      // console.log(colours[bl].fillCol);
+      colours[bl].speed = rgbToDigitalRoot(colours[bl].fillCol);
+    }
+    if(colours[bl].strokeCol !== '' && colours[bl].strokeCol.startsWith('rgb')) {
+      // console.log(colours[bl].strokeCol);
+      colours[bl].speed = rgbToDigitalRoot(colours[bl].strokeCol);
+    }
+    if(colours[bl].gradCol !== '' && colours[bl].gradCol.startsWith('rgb')) {
+      // console.log(colours[bl].gradCol);
+      colours[bl].speed = rgbToDigitalRoot(colours[bl].gradCol);
+    }
+    // rgbToDigitalRoot(rgb);
+  }
+
+  return colours;
+}
+
+
+function rgbToDigitalRoot(rgb) {
+  // console.log(rgb);
+  let vals = rgb.replace("rgb(", "");
+  vals = vals.replace(")", "");
+  vals = vals.split(",");
+  vals = vals.map(e => e.trim());
+  vals = vals.map(e => parseInt(e));
+  const newVal = parseInt(`${digitalRoot(vals[0])}${digitalRoot(vals[1])}${digitalRoot(vals[2])}`);
+  const finalDRoot = digitalRoot(newVal);
+  console.log(finalDRoot);
+  return finalDRoot;
 }
 
 
 
 
 
-// rotate all elements
-blocks.forEach(block => {
-  // rotateElement(block);
-  getColour(block);
-});
+function digitalRoot(n) {
+  if( n < 10 ) {
+    return n;
+  } else {
+    return digitalRoot( n % 10 + Math.floor(digitalRoot( n / 10 )) );
+  }
+}
+
 
 
 
