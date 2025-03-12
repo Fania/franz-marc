@@ -20,6 +20,7 @@ mandrill_svg.addEventListener("click", async (ev) => {
   // console.dir(elem);
   console.log(`(${ev.offsetX}, ${ev.offsetY})`);
   await rotateElement(ev.target);
+  rotateAllElements();
 });
 
 
@@ -36,12 +37,18 @@ blocks.forEach(block => {
 
 
 
-  // rotate all elements at once
-  // refresh happens in the html directly in via meta tag
-  blocks.forEach(block => {
-    rotateElement(block);
-  });
+// rotate all elements at once
+// refresh happens in the svg itself
+rotateAllElements();
 
+
+
+function rotateAllElements() {
+  console.log('inside rotateAllElements');
+  blocks.forEach(block => {
+      rotateElement(block);
+  });
+}
 
 
 
@@ -49,20 +56,31 @@ blocks.forEach(block => {
 async function rotateElement(elem) {
   // only works with the css version of transform origin and transform box
   const speed = getColourSpeed(elem);
-  console.log(speed[elem.id].speed);
+  // console.log(speed[elem.id].speed);
 
   elem.setAttribute('style', `transform-origin: 50% 50%; transform-box: fill-box;`);
   // elem.setAttribute('transform-origin', `50% 50%`);
   // elem.setAttribute('transform-box', `fill-box`);
   const item = document.createElementNS("http://www.w3.org/2000/svg", "animateTransform");
+  item.setAttribute('xlink:href', `#${elem.id}`);
+  item.setAttribute('id', `${elem.id}_anim`);
   item.setAttribute('attributeName', 'transform');
   item.setAttribute('type', 'rotate');
-  item.setAttribute('from', `0`);
-  item.setAttribute('to', `360`);
-  item.setAttribute('dur', `${speed[elem.id].speed}s`);
-  item.setAttribute('repeatCount', '4');
+  item.setAttribute('dur', `40s`);
+  item.setAttribute('repeatCount', 'indefinite');
   item.setAttribute('additive', 'sum');
-  elem.appendChild(item);
+  item.setAttribute('calcMode', 'linear');
+  item.setAttribute('begin', '0');
+  item.setAttribute('keyTimes', `0; 0.${speed[elem.id].speed}; 1`);
+  item.setAttribute('values', '0; 0; 360');
+  item.setAttribute('fill', `freeze`);
+  item.setAttribute('restart', `whenNotActive`);
+
+  if(elem.hasChildNodes()) {
+    console.log('already there');
+  } else {
+    elem.appendChild(item);
+  }
 }
 
 
@@ -103,7 +121,7 @@ function getColourSpeed(block) {
     'gradCol': gradCol,
     'speed': 0
   };
-  console.log(colours[block.id]);
+  // console.log(colours[block.id]);
   // }); // loop through all blocks and rotate them
 
 
@@ -137,7 +155,7 @@ function rgbToDigitalRoot(rgb) {
   vals = vals.map(e => parseInt(e));
   const newVal = parseInt(`${digitalRoot(vals[0])}${digitalRoot(vals[1])}${digitalRoot(vals[2])}`);
   const finalDRoot = digitalRoot(newVal);
-  console.log(finalDRoot);
+  // console.log(finalDRoot);
   return finalDRoot;
 }
 
