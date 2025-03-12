@@ -36,11 +36,11 @@ blocks.forEach(block => {
 
 
 
-
-// rotate all elements at once
-blocks.forEach(block => {
-  rotateElement(block);
-});
+  // rotate all elements at once
+  // refresh happens in the html directly in via meta tag
+  blocks.forEach(block => {
+    rotateElement(block);
+  });
 
 
 
