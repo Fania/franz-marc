@@ -56,23 +56,27 @@ function rotateAllElements() {
 async function rotateElement(elem) {
   // only works with the css version of transform origin and transform box
   const speed = getColourSpeed(elem);
-  // console.log(speed[elem.id].speed);
-
   elem.setAttribute('style', `transform-origin: 50% 50%; transform-box: fill-box;`);
-  // elem.setAttribute('transform-origin', `50% 50%`);
-  // elem.setAttribute('transform-box', `fill-box`);
   const item = document.createElementNS("http://www.w3.org/2000/svg", "animateTransform");
   item.setAttribute('xlink:href', `#${elem.id}`);
   item.setAttribute('id', `${elem.id}_anim`);
   item.setAttribute('attributeName', 'transform');
   item.setAttribute('type', 'rotate');
-  item.setAttribute('dur', `40s`);
-  item.setAttribute('repeatCount', 'indefinite');
-  item.setAttribute('additive', 'sum');
-  item.setAttribute('calcMode', 'linear');
-  item.setAttribute('begin', '0');
-  item.setAttribute('keyTimes', `0; 0.${speed[elem.id].speed}; 1`);
-  item.setAttribute('values', '0; 0; 360');
+  // item.setAttribute('dur', `40s`);
+  const relTime = percentage(speed[elem.id].speed, 40) * 10;
+  const remTime = 120 - relTime;
+  console.log('relTime, remTime', relTime, remTime);
+  item.setAttribute('dur', `${relTime * 10}`);
+  item.setAttribute('repeatCount', '4');
+  // item.setAttribute('repeatCount', 'indefinite');
+  // item.setAttribute('additive', 'sum');
+  // item.setAttribute('calcMode', 'linear');
+  item.setAttribute('calcMode', 'spline');
+  item.setAttribute('keyTimes', `0;1`);
+  item.setAttribute('values', '0;360');
+  item.setAttribute('keySplines', `0.5 0 0.5 1`);
+  // item.setAttribute('begin', `0`);
+  item.setAttribute('begin', `0;${elem.id}_anim.begin+${remTime}`);
   item.setAttribute('fill', `freeze`);
   item.setAttribute('restart', `whenNotActive`);
 
@@ -84,6 +88,25 @@ async function rotateElement(elem) {
 }
 
 
+  // item.setAttribute('keyTimes', `0; 0.${speed[elem.id].speed}; 1`);
+  // item.setAttribute('values', '0; 0; 360');
+  // item.setAttribute('keyTimes', `0; ${perc0}; ${perc1}; ${perc2}; ${perc2}; 1`);
+  // item.setAttribute('keySplines', `0 0 1 1; 0 0 1 1; 0 0 1 1; 0 0 1 1; 0 0 1 1; 0 0 1 1`);
+  // item.setAttribute('values', `0; ${percA}; ${percC}; 360`);
+  // item.setAttribute('keyTimes', `0; ${perc2}; ${perc2}; 1`);
+  // item.setAttribute('keySplines', `0.5 0 0.5 1; 0.5 0 0.5 1; 0.5 0 0.5 1`);
+  // item.setAttribute('values', `0; ${percA * 10}; ${percB * 10}; ${percC * 10}; 360; 360`);
+  // item.setAttribute('keyTimes', `0; ${perc3}; 1`);
+  // item.setAttribute('values', `0; ${percD * 10}; 360`);
+  // item.setAttribute('values', '0; 90; 180; 270; 360; 360');
+  // const perc0 = percentage(speed[elem.id].speed, 0.25);
+  // const perc1 = percentage(speed[elem.id].speed, 0.50);
+  // const perc2 = percentage(speed[elem.id].speed, 0.75);
+  // const perc3 = percentage(speed[elem.id].speed, 1);
+  // const percA = percentage(speed[elem.id].speed, 90);
+  // const percB = percentage(speed[elem.id].speed, 180);
+  // const percC = percentage(speed[elem.id].speed, 270);
+  // const percD = percentage(speed[elem.id].speed, 360);
 
 
 
@@ -174,6 +197,14 @@ function digitalRoot(n) {
 
 
 
+
+function percentage(partialValue, totalValue) {
+  const val = ((partialValue/ 100) * totalValue).toFixed(3);
+  if(val === 0) {
+    return 1;
+  } else return val;
+  // return val;
+} 
 
   // console.log(elem);
   // console.dir(elem);
