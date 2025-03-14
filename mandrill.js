@@ -2,8 +2,8 @@
 
 // let bodyCont = document.getElementsByTagName('body')[0];
 const mandrill_svg = document.getElementById('mandrill');
-const [...blocks2] = document.getElementById('colour_blocks2').children;
-const [...gradients2] = document.getElementById('gradients2').children;
+const [...blocks2] = document.getElementById('colour_blocks').children;
+const [...gradients2] = document.getElementById('gradients').children;
 
 // const urlParams = new URLSearchParams(window.location.search);
 console.log(`There are a total of ${blocks2.length} colour blocks.`);
