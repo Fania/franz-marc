@@ -24,14 +24,1070 @@
   <meta name="twitter:title" content="Franz Marc">
   <meta name="twitter:image" content="https://raw.githubusercontent.com/Fania/blaue-reiter/main/franz-marc.jpeg">
 
-  <link rel="stylesheet" href="styles.css"></link>
+  <link rel="stylesheet" href="combined.css"></link>
 </head>
-<body id="mandrill_page">
+<body id="combined_page">
   
+<main>
 
-<img id="mandrill_img" src="imgs/Mandrill-1913.png" alt="Franz Marc - Mandrill 1913">
+  <!-- <svg id="marc" viewBox="0 0 1500 1062" width="1500" height="1062"> -->
+  <svg id="marc" viewBox="0 0 1500 1062" width="1280" height="876" preserveAspectRatio="xMidYMid slice">
+  <!-- width="1280" height="876" -->
+  <defs id="gradients"> <!-- gradients -->
+    <linearGradient id="two_greens_fade">
+      <stop offset="0%" style="stop-color: rgb(7, 70, 31)"/>
+      <stop offset="100%" style="stop-color: rgb(22, 126, 32)"/>
+    </linearGradient>
+    <linearGradient id="blue_yellow_fade" gradientTransform="rotate(90)">
+      <stop offset="5%" style="stop-color: rgb(121, 166, 204)"/>
+      <stop offset="80%" style="stop-color: rgb(187, 165, 67)"/>
+    </linearGradient>
+    <linearGradient id="pink_red_fade" gradientTransform="rotate(125)">
+      <stop offset="0%" style="stop-color: rgb(253, 237, 236)"/>
+      <stop offset="80%" style="stop-color: rgb(230, 73, 88)"/>
+    </linearGradient>
+    <radialGradient id="black_blue_white_fade" gradientTransform="translate(-0.13 -0.51) scale(2, 2)">
+      <stop offset="0%" style="stop-color: rgb(11, 21, 30)"/>
+      <stop offset="18%" style="stop-color: rgb(15, 30, 46)"/>
+      <stop offset="36%" style="stop-color: rgb(20, 41, 154)"/>
+      <stop offset="79%" style="stop-color: rgb(25, 97, 169)">
+      <stop offset="86%" style="stop-color: rgb(29, 144, 205)">
+      <stop offset="100%" style="stop-color: rgb(183, 238, 255)"/>
+    </radialGradient>
+    <linearGradient id="blue_light_green_fade" gradientTransform="rotate(-20)">
+      <stop offset="46%" style="stop-color: rgb(21, 45, 133)"/>
+      <stop offset="75%" style="stop-color: rgb(105, 151, 213)"/>
+      <stop offset="80%" style="stop-color: rgb(123, 145, 83)"/>
+    </linearGradient>
+    <linearGradient id="lightblue_darkblue_fade">
+      <stop offset="0%" style="stop-color: rgb(30, 105, 190)"/>
+      <stop offset="50%" style="stop-color: rgb(14, 37, 105)"/>
+    </linearGradient>
+    <linearGradient id="green_white_fade" gradientTransform="rotate(40)">
+      <stop offset="20%" style="stop-color: rgb(52, 116, 100)"/>
+      <stop offset="70%" style="stop-color: rgb(212, 194, 184)"/>
+    </linearGradient>
+    <linearGradient id="orange_fade">
+      <stop offset="0%" style="stop-color: rgb(198,51,16)" stop-opacity="0"/>
+      <stop offset="20%" style="stop-color: rgb(198,51,16)" stop-opacity="0.3"/>
+      <stop offset="40%" style="stop-color: rgb(198,51,16)" stop-opacity="0.6"/>
+      <stop offset="70%" style="stop-color: rgb(198,51,16)" stop-opacity="0.8"/>
+      <stop offset="90%" style="stop-color: rgb(198,51,16)" stop-opacity="1"/>
+      <stop offset="100%" style="stop-color: rgb(198,51,16)" stop-opacity="1"/>
+    </linearGradient>
+    <radialGradient id="teal_lozenge_drop_fade" gradientTransform="translate(-0.10 -0.20) scale(1.68, 1.53)">
+      <stop offset="0%" style="stop-color:rgb(10, 28, 30)"/>
+      <stop offset="25%" style="stop-color: rgb(16, 44, 45)"/>
+      <stop offset="50%" style="stop-color: rgb(20, 62, 59)"/>
+      <stop offset="100%" style="stop-color:rgb(26, 143, 120)"/>
+    </radialGradient>
+    <linearGradient id="darkgreen_lightgreen_fade" gradientTransform="rotate(-20)">
+      <stop offset="0%" style="stop-color: rgb(21, 35, 36)"/>
+      <stop offset="80%" style="stop-color: rgb(61, 133, 106)"/>
+    </linearGradient>
+    <linearGradient id="white_lightblue_fade" gradientTransform="rotate(-10)">
+      <stop offset="0%" style="stop-color: rgb(255, 255, 255)" stop-opacity="0"
+      />
+      <stop offset="70%" style="stop-color: rgb(151, 184, 233)" stop-opacity="0.5"/>
+      <stop offset="100%" style="stop-color: rgb(151, 184, 233)" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="yellow_green_fade">
+      <stop offset="50%" style="stop-color: rgb(251, 250, 102)"/>
+      <stop offset="100%" style="stop-color: rgb(117, 157, 103)"/>
+    </linearGradient>
+    <linearGradient id="blue_purple_fade">
+      <stop offset="0%" style="stop-color: rgb(25, 43, 135)"/>
+      <stop offset="20%" style="stop-color: rgb(92, 34, 121)"/>
+      <stop offset="50%" style="stop-color: rgb(92, 34, 121)"/>
+      <stop offset="100%" style="stop-color: rgb(25, 43, 135)"/>
+    </linearGradient>
+    <linearGradient id="magenta_red_fade" gradientTransform="rotate(50)">
+      <stop offset="40%" style="stop-color: rgb(187, 39, 50)"/>
+      <stop offset="100%" style="stop-color: rgb(168, 46, 107)"/>
+    </linearGradient>
+    <linearGradient id="black_pink_white_fade">
+      <stop offset="10%" style="stop-color: rgb(27, 18, 33)"/>
+      <stop offset="40%" style="stop-color: rgb(159, 33, 64)"/>
+      <stop offset="80%" style="stop-color: rgb(222, 128, 172)"/>
+      <stop offset="100%" style="stop-color: rgb(235, 179, 205)"/>
+    </linearGradient>
+    <radialGradient id="brown_ochre_fade" gradientTransform="translate(-0.53 -0.49) scale(2, 2)">
+      <stop offset="30%" style="stop-color: rgb(78, 29, 37)" stop-opacity="1"/>
+      <stop offset="52.5%" style="stop-color: rgb(125, 68, 44)" stop-opacity="0.7"/>
+      <stop offset="80%" style="stop-color: rgb(161, 114, 48)" stop-opacity="0.5"/>
+      <stop offset="100%" style="stop-color: rgb(161, 114, 48)" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="black_transparent_fade" gradientTransform="translate(-0.9 0.5) rotate(-55)">
+      <stop offset="40%" style="stop-color: rgb(11, 18, 18)" stop-opacity="0"/>
+      <stop offset="60%" style="stop-color: rgb(11, 18, 18)" stop-opacity="0.2"/>
+      <stop offset="80%" style="stop-color: rgb(11, 18, 18)" stop-opacity="0.4"/>
+      <stop offset="100%" style="stop-color: rgb(11, 18, 18)" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="black_green_white_fade" gradientTransform="translate(1 0) rotate(170)">
+      <stop offset="0%" style="stop-color: rgb(182, 185, 179)" stop-opacity="1"/>
+      <stop offset="40%" style="stop-color: rgb(94, 126, 128)" stop-opacity="1"/>
+      <stop offset="60%" style="stop-color: rgb(25, 65, 60)" stop-opacity="1"/>
+      <stop offset="80%" style="stop-color: rgb(10, 20, 19)" stop-opacity="1"/>
+      <stop offset="100%" style="stop-color: rgb(10, 20, 19)" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="black_green_white2_fade" x1="100%" y1="100%" x2="0%" y2="0%">
+      <stop offset="20%" style="stop-color: rgb(182, 185, 179)" stop-opacity="1"/>
+      <stop offset="30%" style="stop-color: rgb(94, 126, 128)" stop-opacity="1"/>
+      <stop offset="50%" style="stop-color: rgb(25, 65, 60)" stop-opacity="1"/>
+      <stop offset="70%" style="stop-color: rgb(10, 20, 19)" stop-opacity="1"/>
+      <stop offset="100%" style="stop-color: rgb(10, 20, 19)" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="green_transparent_fade" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="20%" style="stop-color: rgb(140, 156, 73)" stop-opacity="0"/>
+      <stop offset="30%" style="stop-color: rgb(140, 156, 73)" stop-opacity="0.5"/>
+      <stop offset="70%" style="stop-color: rgb(140, 156, 73)" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="green_transparent2_fade" x1="58%" y1="0%" x2="42%" y2="100%">
+      <stop offset="10%" style="stop-color: rgb(140, 156, 73)" stop-opacity="0"/>
+      <stop offset="40%" style="stop-color: rgb(140, 156, 73)" stop-opacity="0.1"/>
+      <stop offset="70%" style="stop-color: rgb(140, 156, 73)" stop-opacity="0.5"/>
+      <stop offset="90%" style="stop-color: rgb(140, 156, 73)" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="green_transparent3_fade" x1="100%" y1="79%" x2="0%" y2="21%">
+      <stop offset="10%" style="stop-color: rgb(140, 156, 73)" stop-opacity="0"/>
+      <stop offset="40%" style="stop-color: rgb(140, 156, 73)" stop-opacity="0.2"/>
+      <stop offset="80%" style="stop-color: rgb(140, 156, 73)" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="green_transparent4_fade" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="60%" style="stop-color: rgb(140, 156, 73)" stop-opacity="0"/>
+      <stop offset="100%" style="stop-color: rgb(140, 156, 73)" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="lilac_black_fade" x1="70%" y1="100%" x2="30%" y2="0%">
+      <stop offset="0%" style="stop-color: rgb(12, 20, 22)" stop-opacity="1"/>
+      <stop offset="70%" style="stop-color: rgb(139, 63, 133)" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="teal_fade" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="40%" style="stop-color: rgb(7, 41, 61)" stop-opacity="1"/>
+      <stop offset="60%" style="stop-color: rgb(21, 138, 166)" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="white_darkblue_fade" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="20%" style="stop-color: rgb(100, 154, 192)" stop-opacity="1"/>
+      <stop offset="50%" style="stop-color: rgb(13, 34, 92)" stop-opacity="1"/>
+      <stop offset="90%" style="stop-color: rgb(12, 21, 35)" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="lilac_overlay_fade" x1="50%" y1="100%" x2="50%" y2="0%">
+      <stop offset="10%" style="stop-color: rgb(125, 49, 115)" stop-opacity="1"/>
+      <stop offset="40%" style="stop-color: rgb(125, 49, 115)" stop-opacity="0.7"/>
+      <stop offset="70%" style="stop-color: rgb(125, 49, 115)" stop-opacity="0.5"/>
+      <stop offset="90%" style="stop-color: rgb(125, 49, 115)" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="lilac_overlay2_fade" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="10%" style="stop-color: rgb(201, 118, 168)" stop-opacity="1"/>
+      <stop offset="30%" style="stop-color: rgb(201, 118, 168)" stop-opacity="0.6"/>
+      <stop offset="50%" style="stop-color: rgb(201, 118, 168)" stop-opacity="0.4"/>
+      <stop offset="80%" style="stop-color: rgb(201, 118, 168)" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="lilac_line_fade" x1="48%" y1="100%" x2="52%" y2="0%">
+      <stop offset="20%" style="stop-color: rgb(81, 52, 112)"/>
+      <stop offset="30%" style="stop-color: rgb(44, 52, 122)"/>
+      <stop offset="60%" style="stop-color: rgb(132, 113, 183)"/>
+      <stop offset="90%" style="stop-color: rgb(148, 103, 173)"/>
+    </linearGradient>
+    <linearGradient id="magenta_line_fade" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="40%" style="stop-color: rgb(155, 39, 107)"/>
+      <stop offset="60%" style="stop-color: rgb(207, 113, 159)"/>
+      <stop offset="70%" style="stop-color: rgb(133, 81, 140)"/>
+    </linearGradient>
+    <linearGradient id="white_fade_curve_fade" x1="60%" y1="0%" x2="30%" y2="100%">
+      <stop offset="20%" style="stop-color: rgb(255, 255, 255)" stop-opacity="1"/>
+      <stop offset="50%" style="stop-color: rgb(255, 255, 255)" stop-opacity="0.4"/>
+      <stop offset="90%" style="stop-color: rgb(255, 255, 255)" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="orange_arc_fade" x1="100%" y1="100%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color: rgb(205, 170, 156)"/>
+      <stop offset="30%" style="stop-color: rgb(217, 125, 67)"/>
+      <stop offset="70%" style="stop-color: rgb(217, 125, 67)"/>
+      <stop offset="90%" style="stop-color: rgb(84, 60, 69)"/>
+    </linearGradient> 
+    <linearGradient id="black_transparent2_fade" x1="80%" y1="100%" x2="20%" y2="0%">
+      <stop offset="0%" style="stop-color: rgb(11, 18, 18)" stop-opacity="0"/>
+      <stop offset="100%" style="stop-color: rgb(11, 18, 18)" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="black_transparent3_fade" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="40%" style="stop-color: rgb(11, 18, 18)" stop-opacity="0"/>
+      <stop offset="100%" style="stop-color: rgb(11, 18, 18)" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="green_lightgreen_vertical_beam_fade" x1="100%" y1="0%" x2="0%" y2="0%">
+      <stop offset="20%" style="stop-color: rgb(127, 196, 38)"/>
+      <stop offset="60%" style="stop-color: rgb(31, 109, 51)"/>
+    </linearGradient>
+    <linearGradient id="darkgreen_black_cone_fade" x1="50%" y1="100%" x2="50%" y2="0%">
+      <stop offset="40%" style="stop-color: rgb(5, 18, 22)"/>
+      <stop offset="70%" style="stop-color: rgb(9, 51, 40)"/>
+      <stop offset="90%" style="stop-color: rgb(15, 89, 48)"/>
+      <stop offset="100%" style="stop-color: rgb(42, 125, 74)"/>
+    </linearGradient>
+    <linearGradient id="orange_fade2" x1="5%" y1="0%" x2="95%" y2="100%">
+      <stop offset="40%" style="stop-color: rgb(198, 51, 16)" stop-opacity="0"/>
+      <stop offset="60%" style="stop-color: rgb(198, 51, 16)" stop-opacity="0.6"/>
+      <stop offset="100%" style="stop-color: rgb(198, 51, 16)" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="orange_fade3" x1="50%" y1="100%" x2="50%" y2="0%">
+      <stop offset="20%" style="stop-color: rgb(198, 51, 16)" stop-opacity="1"/>
+      <stop offset="50%" style="stop-color: rgb(198, 51, 16)" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="green_cone_highlight_fade">
+      <stop offset="20%" style="stop-color: rgb(127, 242, 255)" stop-opacity="0.2"/>
+      <stop offset="90%" style="stop-color: rgb(127, 242, 255)" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="dark_black_blue_center_block_fade" cx="60%" cy="50%" r="50%" >
+      <stop offset="20%" style="stop-color:rgb(4, 26, 37)"/>
+      <stop offset="50%" style="stop-color:rgb(8, 15, 13)"/>
+    </radialGradient>
+    <linearGradient id="dark_black_blue_center_green_arc_top_block_fade" x1="50%" y1="100%" x2="50%" y2="0%">
+      <stop offset="40%" style="stop-color: rgb(11, 102, 51)"/>
+      <stop offset="100%" style="stop-color: rgb(3, 73, 66)"/>
+    </linearGradient>
+    <linearGradient id="green_leaf_middle_bottom_fade" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="10%" style="stop-color: rgb(6, 35, 29)"/>
+      <stop offset="30%" style="stop-color: rgb(13, 54, 28)"/>
+      <stop offset="60%" style="stop-color: rgb(46, 91, 48)"/>
+      <stop offset="80%" style="stop-color: rgb(71, 112, 38)"/>
+      <stop offset="100%" style="stop-color: rgb(122, 158, 75)"/>
+    </linearGradient>
+    <linearGradient id="dark_block_behind_white_branch_fade" x1="80%" y1="100%" x2="20%" y2="0%">
+      <stop offset="40%" style="stop-color: rgb(5, 21, 25)"/>
+      <stop offset="80%" style="stop-color: rgb(7, 139, 133)"/>
+    </linearGradient>
+    <radialGradient id="green_yellow_orange_fade" cx="100%" cy="30%" r="120%">
+      <stop offset="45%" style="stop-color: rgb(244, 29, 9)"/>
+      <stop offset="65%" style="stop-color: rgb(243, 183, 56)"/>
+      <stop offset="80%" style="stop-color: rgb(5, 67, 26)"/>
+    </radialGradient>
+    <linearGradient id="mustard_green_whitish_fade" x1="0%" y1="80%" x2="100%" y2="20%">
+      <stop offset="10%" style="stop-color: rgb(158, 151, 41)"/>
+      <stop offset="40%" style="stop-color: rgb(29, 102, 41)"/>
+      <stop offset="90%" style="stop-color: rgb(174, 184, 123)"/>
+    </linearGradient>
+    <linearGradient id="rose_Block_bottom_right_fade" x1="10%" y1="0%" x2="90%" y2="100%">
+      <stop offset="0%" style="stop-color: rgb(210, 118, 167)" stop-opacity="1"/>
+      <stop offset="60%" style="stop-color: rgb(93, 35, 67)" stop-opacity="0.7"/>
+      <stop offset="70%" style="stop-color: rgb(114, 115, 163)" stop-opacity="0.7"/>
+      <stop offset="85%" style="stop-color: rgb(111, 105, 117)" stop-opacity="0.7"/>
+      <stop offset="98%" style="stop-color: rgb(57, 74, 92)" stop-opacity="0.5"/>
+      <stop offset="100%" style="stop-color: rgb(210, 217, 214)" stop-opacity="0.5"/>
+    </linearGradient>
+    <linearGradient id="lilac_overlay3_fade" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="50%" style="stop-color: rgb(210, 118, 167)" stop-opacity="0"/>
+      <stop offset="60%" style="stop-color: rgb(210, 118, 167)" stop-opacity="0.4"/>
+    </linearGradient>
+    <linearGradient id="teal_brightteal_fade" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color: rgb(5, 24, 29)"/>
+      <stop offset="50%" style="stop-color: rgb(9, 36, 49)"/>
+      <stop offset="100%" style="stop-color: rgb(24, 147, 133)"/>
+    </linearGradient>
+    <linearGradient id="teal_brightteal_fade2" x1="85%" y1="70%" x2="15%" y2="20%">
+      <stop offset="20%" style="stop-color: rgb(8, 17, 34)"/>
+      <stop offset="35%" style="stop-color: rgb(9, 36, 49)"/>
+      <stop offset="50%" style="stop-color: rgb(1, 30, 82)"/>
+      <stop offset="60%" style="stop-color: rgb(2, 48, 81)"/>
+      <stop offset="100%" style="stop-color: rgb(7, 158, 146)"/>
+    </linearGradient>
+    <linearGradient id="yellow_mustard_fade" x1="85%" y1="70%" x2="15%" y2="20%">
+      <stop offset="00%" style="stop-color: rgb(142, 109, 18)"/>
+      <stop offset="10%" style="stop-color: rgb(146, 126, 24)"/>
+      <stop offset="20%" style="stop-color: rgb(132, 127, 25)"/>
+      <stop offset="80%" style="stop-color: rgb(235, 214, 10)"/>
+    </linearGradient>
+    <linearGradient id="orangy_branch_fade" x1="15%" y1="0%" x2="85%" y2="100%">
+      <stop offset="0%" style="stop-color: rgb(183, 173, 138)"/>
+      <stop offset="10%" style="stop-color: rgb(135, 114, 84)"/>
+      <stop offset="30%" style="stop-color: rgb(231, 175, 92)"/>
+      <stop offset="50%" style="stop-color: rgb(204, 138, 81)"/>
+      <stop offset="80%" style="stop-color: rgb(179, 99, 54)"/>
+      <stop offset="98%" style="stop-color: rgb(81, 63, 58)"/>
+    </linearGradient>
+    <linearGradient id="orangy_branch_overlay_fade" x1="95%" y1="0%" x2="5%" y2="100%">
+      <stop offset="50%" style="stop-color: rgb(81, 63, 58)" stop-opacity="0"/>
+      <stop offset="60%" style="stop-color: rgb(81, 63, 58)" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="main_branch_fade" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" style="stop-color: rgb(250, 250, 250)"/>
+      <stop offset="40%" style="stop-color: rgb(248, 254, 220)"/>
+      <stop offset="70%" style="stop-color: rgb(216, 198, 131)"/>
+      <stop offset="85%" style="stop-color: rgb(160, 143, 109)"/>
+      <stop offset="100%" style="stop-color: rgb(146, 130, 72)"/>
+    </linearGradient>
+    <linearGradient id="darkgreen_block_next_to_fawn_fade" x1="80%" y1="100%" x2="20%" y2="0%">
+      <stop offset="40%" style="stop-color: rgb(8, 14, 14)"/>
+      <stop offset="70%" style="stop-color: rgb(13, 61, 40)"/>
+    </linearGradient>
+    <linearGradient id="lightdarkgreen_block_next_to_fawn_fade" x1="10%" y1="100%" x2="90%" y2="0%">
+      <stop offset="20%" style="stop-color: rgb(80, 169, 35)"/>
+      <stop offset="40%" style="stop-color: rgb(15, 94, 39)"/>
+      <stop offset="50%" style="stop-color: rgb(12, 62, 41)"/>
+      <stop offset="60%" style="stop-color: rgb(14, 40, 32)"/>
+    </linearGradient>
+    <linearGradient id="greenfade_beam_above_fawn_fade" x1="10%" y1="90%" x2="90%" y2="20%">
+      <stop offset="43%" style="stop-color: rgb(7, 23, 20)"/>
+      <stop offset="48%" style="stop-color: rgb(7, 56, 48)"/>
+      <stop offset="54%" style="stop-color: rgb(21, 145, 106)"/>
+      <stop offset="59%" style="stop-color: rgb(116, 164, 56)"/>
+      <stop offset="65%" style="stop-color: rgb(14, 94, 61)"/>
+    </linearGradient>
+    <linearGradient id="greenfade_beam_above_fawn_fade2" x1="100%" y1="80%" x2="0%" y2="20%">
+      <stop offset="15%" style="stop-color: rgb(7, 23, 20)"/>
+      <stop offset="35%" style="stop-color: rgb(7, 56, 48)"/>
+      <stop offset="50%" style="stop-color: rgb(21, 145, 106)"/>
+      <stop offset="65%" style="stop-color: rgb(116, 164, 56)"/>
+      <stop offset="85%" style="stop-color: rgb(14, 94, 61)"/>
+    </linearGradient>
+    <linearGradient id="green_beam_near_fawn_nose_fade" x1="25%" y1="90%" x2="75%" y2="20%">
+      <stop offset="35%" style="stop-color: rgb(32, 128, 73)"/>
+      <stop offset="45%" style="stop-color: rgb(48, 164, 131)"/>
+      <stop offset="55%" style="stop-color: rgb(3, 124, 66)"/>
+      <stop offset="65%" style="stop-color: rgb(131, 188, 73)"/>
+      <stop offset="70%" style="stop-color: rgb(169, 217, 95)"/>
+    </linearGradient>
+    <radialGradient id="purple_areas_near_fawn_face_fade" cx="0%" cy="50%" r="100%">
+      <stop offset="30%" style="stop-color: rgb(93, 27, 77)" stop-opacity="1"/>
+      <stop offset="60%" style="stop-color: rgb(17, 57, 108)" stop-opacity="0.9"/>
+      <stop offset="85%" style="stop-color: rgb(35, 106, 141)" stop-opacity="0.7"/>
+    </radialGradient>
+    <linearGradient id="dark_mountain_fade" x1="60%" y1="100%" x2="40%" y2="0%">
+      <stop offset="0%" style="stop-color: rgb(19, 79, 85)"/>
+      <stop offset="50%" style="stop-color: rgb(6, 50, 54)"/>
+      <stop offset="100%" style="stop-color: rgb(6, 17, 13)"/>
+    </linearGradient>
+    <linearGradient id="olive_transparent_fade" x1="100%" y1="50%" x2="0%" y2="50%">
+      <stop offset="10%" style="stop-color: rgb(81, 113, 34)" stop-opacity="1"/>
+      <stop offset="70%" style="stop-color: rgb(81, 113, 34)" stop-opacity="0.5"/>
+      <stop offset="100%" style="stop-color: rgb(81, 113, 34)" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="white_yellow_orange_fade" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" style="stop-color: rgb(255, 240, 180)"/>
+      <stop offset="30%" style="stop-color: rgb(248, 215, 69)"/>
+      <stop offset="60%" style="stop-color: rgb(248, 169, 103)"/>
+      <stop offset="100%" style="stop-color: rgb(245, 127, 86)"/>
+    </linearGradient>
+    <linearGradient id="white_yellow_fade" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color: rgb(254, 245, 136)" stop-opacity="0"/>
+      <stop offset="10%" style="stop-color: rgb(254, 245, 136)" stop-opacity="0.7"/>
+      <stop offset="60%" style="stop-color: rgb(245, 232, 25)" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="yellow_green_fade" x1="8%" y1="100%" x2="92%" y2="0%">
+      <stop offset="20%" style="stop-color: rgb(97, 168, 53)"/>
+      <stop offset="60%" style="stop-color: rgb(249, 219, 3)"/>
+    </linearGradient>
+    <linearGradient id="green_olive_fade" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="25%" style="stop-color: rgb(73, 140, 47)"/>
+      <stop offset="40%" style="stop-color: rgb(87, 119, 18)"/>
+      <stop offset="80%" style="stop-color: rgb(96, 152, 31)"/>
+      <stop offset="85%" style="stop-color: rgb(69, 139, 30)"/>
+      <stop offset="95%" style="stop-color: rgb(58, 126, 33)"/>
+      <stop offset="100%" style="stop-color: rgb(44, 115, 24)"/>
+    </linearGradient>
+    <linearGradient id="black_blue_fade" x1="80%" y1="100%" x2="20%" y2="0%">
+      <stop offset="20%" style="stop-color: rgb(13, 35, 74)"/>
+      <stop offset="70%" style="stop-color: rgb(8, 15, 13)"/>
+    </linearGradient>
+    <linearGradient id="yellow_pink_transparent_fade" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" style="stop-color: rgb(250, 233, 51)" stop-opacity="0.9"/>
+      <stop offset="20%" style="stop-color: rgb(250, 233, 51)" stop-opacity="0.7"/>
+      <stop offset="100%" style="stop-color: rgb(244, 94, 140)" stop-opacity="0.7"/>    
+    </linearGradient>
+    <linearGradient id="green_yellow_transparent_fade" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" style="stop-color: rgb(13, 52, 39)" stop-opacity="0.9"/>
+      <stop offset="100%" style="stop-color: rgb(250, 233, 51)" stop-opacity="0.7"/>
+    </linearGradient>
+    <radialGradient id="gray_transparent_fade" cx="30%" cy="50%" r="120%">
+      <stop offset="0%" style="stop-color: rgb(128, 154, 147)" stop-opacity="0.9"/>
+      <stop offset="25%" style="stop-color: rgb(95, 108, 97)" stop-opacity="0.7"/>
+      <stop offset="50%" style="stop-color: rgb(75, 90, 76)" stop-opacity="0.5"/>
+      <stop offset="75%" style="stop-color: rgb(54, 92, 70)" stop-opacity="0.3"/>
+      <stop offset="100%" style="stop-color: rgb(54, 92, 70)" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="gray_transparent_fade2" cx="30%" cy="50%" r="120%">
+      <stop offset="0%" style="stop-color: rgb(128, 154, 147)" stop-opacity="0.7"/>
+      <stop offset="25%" style="stop-color: rgb(95, 108, 97)" stop-opacity="0.6"/>
+      <stop offset="50%" style="stop-color: rgb(75, 90, 76)" stop-opacity="0.4"/>
+      <stop offset="75%" style="stop-color: rgb(54, 92, 70)" stop-opacity="0.2"/>
+      <stop offset="100%" style="stop-color: rgb(54, 92, 70)" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="gray_transparent_fade3" x1="5%" y1="90%" x2="70%" y2="20%">
+      <stop offset="0%" style="stop-color: rgb(128, 154, 147)" stop-opacity="0.7"/>
+      <stop offset="25%" style="stop-color: rgb(95, 108, 97)" stop-opacity="0.6"/>
+      <stop offset="50%" style="stop-color: rgb(75, 90, 76)" stop-opacity="0.4"/>
+      <stop offset="75%" style="stop-color: rgb(54, 92, 70)" stop-opacity="0.2"/>
+      <stop offset="100%" style="stop-color: rgb(54, 92, 70)" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="gray_transparent_fade4" x1="70%" y1="90%" x2="5%" y2="20%">
+      <stop offset="0%" style="stop-color: rgb(128, 154, 147)" stop-opacity="0.7"/>
+      <stop offset="25%" style="stop-color: rgb(95, 108, 97)" stop-opacity="0.6"/>
+      <stop offset="50%" style="stop-color: rgb(75, 90, 76)" stop-opacity="0.4"/>
+      <stop offset="75%" style="stop-color: rgb(54, 92, 70)" stop-opacity="0.2"/>
+      <stop offset="100%" style="stop-color: rgb(54, 92, 70)" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="gray_transparent_fade5" cx="30%" cy="50%" r="120%">
+      <stop offset="0%" style="stop-color: rgb(128, 154, 147)" stop-opacity="0.4"/>
+      <stop offset="25%" style="stop-color: rgb(95, 108, 97)" stop-opacity="0.3"/>
+      <stop offset="50%" style="stop-color: rgb(75, 90, 76)" stop-opacity="0.2"/>
+      <stop offset="75%" style="stop-color: rgb(54, 92, 70)" stop-opacity="0.1"/>
+      <stop offset="100%" style="stop-color: rgb(54, 92, 70)" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="yellow_pink_fade" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="50%" style="stop-color: rgb(250, 233, 51)"/>
+      <stop offset="80%" style="stop-color: rgb(244, 94, 140)"/>
+    </linearGradient>
+    <linearGradient id="green_triangle_fade" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" style="stop-color: rgb(128, 159, 102)"/>
+      <stop offset="30%" style="stop-color: rgb(76, 139, 65)"/>
+      <stop offset="60%" style="stop-color: rgb(14, 65, 47)"/>
+      <stop offset="100%" style="stop-color: rgb(10, 41, 33)"/>
+    </linearGradient>
+    <linearGradient id="green_triangle_fade2" x1="20%" y1="100%" x2="80%" y2="0%">
+      <stop offset="20%" style="stop-color: rgb(128, 159, 102)"/>
+      <stop offset="40%" style="stop-color: rgb(76, 139, 65)"/>
+      <stop offset="60%" style="stop-color: rgb(14, 65, 47)"/>
+      <stop offset="100%" style="stop-color: rgb(10, 41, 33)"/>
+    </linearGradient>
+    <linearGradient id="light_brown_block_fade" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="20%" style="stop-color: rgb(176, 138, 22)"/>
+      <stop offset="40%" style="stop-color: rgb(226, 179, 88)"/>
+      <stop offset="60%" style="stop-color: rgb(235, 201, 135)"/>
+    </linearGradient>
+    <linearGradient id="green_yellow_next_to_tree_block_fade" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="40%" style="stop-color: rgb(17, 98, 50)"/>
+      <stop offset="65%" style="stop-color: rgb(226, 211, 19)"/>
+      <stop offset="100%" style="stop-color: rgb(226, 211, 19)"/>
+    </linearGradient>
+    <linearGradient id="yellow_lightgreen_block_fade" x1="8%" y1="100%" x2="92%" y2="0%">
+      <stop offset="0%" style="stop-color: rgb(233, 220, 16)"/>
+      <stop offset="70%" style="stop-color: rgb(194, 217, 104)"/>
+    </linearGradient>
+    <linearGradient id="yellow_midgreen_block_fade" x1="8%" y1="100%" x2="92%" y2="0%">
+      <stop offset="0%" style="stop-color: rgb(193, 210, 19)"/>
+      <stop offset="70%" style="stop-color: rgb(140, 173, 23)"/>
+    </linearGradient>
+    <radialGradient id="green_block_next_to_tree_right_fade" cx="70%" cy="60%" r="50%">
+      <stop offset="20%" style="stop-color: rgb(8, 29, 24)"/>
+      <stop offset="60%" style="stop-color: rgb(20, 87, 44)"/>
+      <stop offset="100%" style="stop-color: rgb(38, 158, 105)"/>
+    </radialGradient>
+    <linearGradient id="white_yellow_white_orange_fade" x1="5%" y1="0%" x2="95%" y2="100%">
+      <stop offset="40%" style="stop-color: rgb(254, 254, 131)"/>
+      <stop offset="50%" style="stop-color: rgb(249, 219, 14)"/>
+      <stop offset="55%" style="stop-color: rgb(255, 255, 176)"/>
+      <stop offset="65%" style="stop-color: rgb(255, 255, 176)"/>
+      <stop offset="70%" style="stop-color: rgb(240, 188, 58)"/>
+      <stop offset="90%" style="stop-color: rgb(210, 169, 38)"/>
+    </linearGradient>
+    <linearGradient id="yellow_mint_far_right_fade" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="20%" style="stop-color: rgb(242, 201, 15)"/>
+      <stop offset="100%" style="stop-color: rgb(168, 188, 88)"/>
+    </linearGradient>
+    <linearGradient id="yellow_green_back_fade_block_fade" x1="10%" y1="0%" x2="90%" y2="100%">
+      <stop offset="0%" style="stop-color: rgb(242, 205, 89)"/>
+      <stop offset="20%" style="stop-color: rgb(251, 242, 145)"/>
+      <stop offset="30%" style="stop-color: rgb(226, 200, 64)"/>
+      <stop offset="40%" style="stop-color: rgb(219, 226, 98)"/>
+      <stop offset="60%" style="stop-color: rgb(151, 170, 32)"/>
+      <stop offset="70%" style="stop-color: rgb(226, 231, 112)"/>
+      <stop offset="100%" style="stop-color: rgb(226, 231, 112)"/>
+    </linearGradient>
+    <linearGradient id="brown_white_green_corner_fade" x1="95%" y1="0%" x2="5%" y2="60%">
+      <stop offset="0%" style="stop-color: rgb(255, 255, 255)"/>
+      <stop offset="30%" style="stop-color: rgb(37, 88, 52)"/>
+      <stop offset="40%" style="stop-color: rgb(49, 40, 22)"/>
+      <stop offset="70%" style="stop-color: rgb(30, 45, 29)"/>
+      <stop offset="80%" style="stop-color: rgb(42, 49, 30)"/>
+      <stop offset="90%" style="stop-color: rgb(54, 55, 37)"/>
+      <stop offset="100%" style="stop-color: rgb(60, 59, 40)"/>
+    </linearGradient>
+    <radialGradient id="lightgreen_top_right_fade" cx="85%" cy="55%" r="90%">
+      <stop offset="20%" style="stop-color: rgb(95, 145, 34)"/>
+      <stop offset="35%" style="stop-color: rgb(136, 188, 41)"/>
+      <stop offset="50%" style="stop-color: rgb(153, 172, 66)"/>
+      <stop offset="75%" style="stop-color: rgb(206, 205, 19)"/>
+      <stop offset="100%" style="stop-color: rgb(226, 230, 126)"/>
+    </radialGradient>
+    <linearGradient id="brightyellow_white_triangle_right_fade" x1="100%" y1="50%" x2="0%" y2="50%">
+      <stop offset="40%" style="stop-color: rgb(236, 200, 30)"/>
+      <stop offset="60%" style="stop-color: rgb(249, 204, 9)"/>
+      <stop offset="80%" style="stop-color: rgb(248, 223, 80)"/>
+      <stop offset="95%" style="stop-color: rgb(255, 255, 241)"/>
+    </linearGradient>
+    <linearGradient id="red_rose_white_trio_white_fade" x1="100%" y1="50%" x2="0%" y2="50%">
+      <stop offset="0%" style="stop-color: rgb(242, 232, 141)"/>
+      <stop offset="50%" style="stop-color: rgb(252, 243, 207)"/>
+      <stop offset="100%" style="stop-color: rgb(244, 228, 223)"/>
+    </linearGradient>
+    <linearGradient id="white_green_next_to_yellow_fade" x1="70%" y1="90%" x2="30%" y2="10%">
+      <stop offset="0%" style="stop-color: rgb(90, 161, 95)"/>
+      <stop offset="30%" style="stop-color: rgb(147, 198, 144)"/>
+      <stop offset="60%" style="stop-color: rgb(189, 217, 182)"/>
+      <stop offset="100%" style="stop-color: rgb(210, 227, 206)"/>
+    </linearGradient>
+    <linearGradient id="blue_pink_next_to_rose_area_fade" x1="30%" y1="0%" x2="70%" y2="100%">
+      <stop offset="10%" style="stop-color: rgb(36, 38, 94)"/>
+      <stop offset="20%" style="stop-color: rgb(76, 86, 157)"/>
+      <stop offset="30%" style="stop-color: rgb(167, 45, 108)"/>
+      <stop offset="50%" style="stop-color: rgb(181, 90, 149)"/>
+      <stop offset="70%" style="stop-color: rgb(39, 123, 192)"/>
+      <stop offset="80%" style="stop-color: rgb(19, 51, 100)"/>
+      <stop offset="100%" style="stop-color: rgb(65, 112, 155)"/>
+    </linearGradient>
+    <linearGradient id="white_rose_area_fade" x1="80%" y1="0%" x2="20%" y2="80%">
+      <stop offset="40%" style="stop-color: rgb(182, 52, 112)"/>
+      <stop offset="50%" style="stop-color: rgb(220, 124, 171)"/>
+      <stop offset="60%" style="stop-color: rgb(252, 218, 246)"/>
+    </linearGradient>
+    <linearGradient id="white_rose_area_fade2" x1="10%" y1="40%" x2="60%" y2="50%">
+      <stop offset="0%" style="stop-color: rgb(162, 72, 143)"/>
+      <stop offset="20%" style="stop-color: rgb(182, 52, 112)"/>
+      <stop offset="40%" style="stop-color: rgb(220, 124, 171)"/>
+      <stop offset="60%" style="stop-color: rgb(251, 203, 170)"/>
+      <stop offset="80%" style="stop-color: rgb(252, 218, 246)"/>
+      <stop offset="100%" style="stop-color: rgb(247, 239, 241)"/>
+    </linearGradient>
+    <linearGradient id="white_rose_area_fade3" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="20%" style="stop-color: rgb(216, 82, 136)"/>
+      <stop offset="100%" style="stop-color: rgb(247, 173, 160)"/>
+    </linearGradient>
+    <linearGradient id="green_brightgreen_area_fade" x1="100%" y1="50%" x2="0%" y2="50%">
+      <stop offset="20%" style="stop-color: rgb(139, 187, 47)"/>
+      <stop offset="40%" style="stop-color: rgb(48, 171, 192)"/>
+      <stop offset="70%" style="stop-color: rgb(4, 104, 84)"/>
+    </linearGradient>
+    <linearGradient id="green_misch_masch_area_fade" x1="95%" y1="20%" x2="15%" y2="80%">
+      <stop offset="10%" style="stop-color: rgb(149, 127, 111)"/>
+      <stop offset="20%" style="stop-color: rgb(149, 154, 125)"/>
+      <stop offset="30%" style="stop-color: rgb(122, 147, 124)"/>
+      <stop offset="40%" style="stop-color: rgb(122, 183, 147)"/>
+      <stop offset="50%" style="stop-color: rgb(150, 185, 61)"/>
+      <stop offset="60%" style="stop-color: rgb(107, 171, 53)"/>
+      <stop offset="70%" style="stop-color: rgb(9, 83, 47)"/>
+      <stop offset="80%" style="stop-color: rgb(15, 55, 36)"/>
+    </linearGradient>
+    <linearGradient id="fawn_body_green_yellow_layer_fade" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" style="stop-color: rgb(208, 205, 74)"/>
+      <stop offset="50%" style="stop-color: rgb(77, 145, 86)"/>
+      <stop offset="100%" style="stop-color: rgb(17, 94, 75)"/>
+    </linearGradient>
+    <linearGradient id="fawn_body_white_transparent_layer_fade" x1="40%" y1="20%" x2="50%" y2="50%">
+      <stop offset="0%" style="stop-color: rgb(231, 231, 198)" stop-opacity="0.7"/>
+      <stop offset="50%" style="stop-color: rgb(180, 180, 130)" stop-opacity="0.3"/>
+      <stop offset="60%" style="stop-color: rgb(180, 180, 130)" stop-opacity="0"/>
+      <stop offset="100%" style="stop-color: rgb(180, 180, 130)" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="fawn_body_white_transparent_corner_fade" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" style="stop-color: rgb(231, 231, 198)" stop-opacity="0"/>
+      <stop offset="10%" style="stop-color: rgb(231, 231, 198)" stop-opacity="0.3"/>
+      <stop offset="20%" style="stop-color: rgb(229, 251, 255)" stop-opacity="0.6"/>
+      <stop offset="100%" style="stop-color: rgb(229, 251, 255)" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="fawn_body_yellow_transparent_layer_fade" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" style="stop-color: rgb(171, 147, 112)" stop-opacity="1"/>
+      <stop offset="40%" style="stop-color: rgb(171, 147, 112)" stop-opacity="0.3"/>
+      <stop offset="60%" style="stop-color: rgb(171, 147, 112)" stop-opacity="0"/>
+      <stop offset="100%" style="stop-color: rgb(171, 147, 112)" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="fawn_neck_dark_left_fade" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" style="stop-color: rgb(11, 33, 28)"/>
+      <stop offset="50%" style="stop-color: rgb(19, 81, 57)"/>
+      <stop offset="70%" style="stop-color: rgb(29, 113, 74)"/>
+    </radialGradient>
+    <radialGradient id="fawn_neck_dark_right_fade" cx="70%" cy="50%" r="100%">
+      <stop offset="0%" style="stop-color: rgb(11, 33, 28)"/>
+      <stop offset="50%" style="stop-color: rgb(19, 81, 57)"/>
+      <stop offset="70%" style="stop-color: rgb(29, 113, 74)"/>
+    </radialGradient>
+    <linearGradient id="fawn_eyelid_fade" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" style="stop-color: rgb(21, 61, 41)"/>
+      <stop offset="50%" style="stop-color: rgb(55, 128, 94)"/>
+      <stop offset="100%" style="stop-color: rgb(97, 162, 118)"/>
+    </linearGradient>
+    <linearGradient id="fawn_face_side_white_fade" x1="20%" y1="40%" x2="100%" y2="60%">
+      <stop offset="0%" style="stop-color: rgb(225, 236, 200)"/>
+      <stop offset="40%" style="stop-color: rgb(174, 211, 172)"/>
+      <stop offset="70%" style="stop-color: rgb(206, 238, 204)"/>
+      <stop offset="90%" style="stop-color: rgb(134, 206, 181)"/>
+    </linearGradient>
+    <linearGradient id="fawn_nose_white_highlight_fade" x1="20%" y1="40%" x2="100%" y2="60%">
+      <stop offset="0%" style="stop-color: rgb(216, 233, 195)"/>
+      <stop offset="100%" style="stop-color: rgb(144, 176, 126)"/>
+    </linearGradient>
+    <linearGradient id="fawn_head_fade" x1="5%" y1="80%" x2="90%" y2="10%">
+      <stop offset="25%" style="stop-color: rgb(196, 137, 49)"/>
+      <stop offset="30%" style="stop-color: rgb(179, 169, 43)"/>
+      <stop offset="33%" style="stop-color: rgb(217, 200, 40)"/>
+      <stop offset="36%" style="stop-color: rgb(139, 155, 58)"/>
+      <stop offset="39%" style="stop-color: rgb(120, 152, 69)"/>
+      <stop offset="42%" style="stop-color: rgb(95, 138, 78)"/>
+      <stop offset="46%" style="stop-color: rgb(120, 152, 69)"/>
+      <stop offset="49%" style="stop-color: rgb(139, 155, 58)"/>
+      <stop offset="52%" style="stop-color: rgb(217, 200, 40)"/>
+      <stop offset="55%" style="stop-color: rgb(179, 169, 43)"/>
+      <stop offset="59%" style="stop-color: rgb(196, 137, 49)"/>
+    </linearGradient>
+    <linearGradient id="fawn_neck_fade" x1="5%" y1="80%" x2="90%" y2="10%">
+      <stop offset="30%" style="stop-color: rgb(186, 193, 68)"/>
+      <stop offset="50%" style="stop-color: rgb(210, 219, 128)"/>
+      <stop offset="80%" style="stop-color: rgb(98, 127, 50)"/>
+    </linearGradient>
+    <linearGradient id="fawn_behind_ear_fade" x1="40%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" style="stop-color: rgb(133, 180, 124)" stop-opacity="0"/>
+      <stop offset="5%" style="stop-color: rgb(133, 180, 124)" stop-opacity="0.3"/>
+      <stop offset="20%" style="stop-color: rgb(133, 180, 124)" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="fawn_behind_ear_fade2" x1="40%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" style="stop-color: rgb(48, 85, 48)" stop-opacity="0"/>
+      <stop offset="15%" style="stop-color: rgb(48, 85, 48)" stop-opacity="0.1"/>
+      <stop offset="25%" style="stop-color: rgb(48, 85, 48)" stop-opacity="0.5"/>
+      <stop offset="35%" style="stop-color: rgb(48, 85, 48)" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+  <g id="backgrounds"> <!-- backgrounds -->
+    <path id="moon_blue_back_filler" d="M 0 0 L 200 0 210 480 0 480 Z" style="fill: rgb(14, 36, 52)"/>
+    <path id="darkgreen_black_cone_filler" d="M 400 700 v362 h125 v-350 h-125" style="fill: rgb(7, 15, 18)"/>
+    <path id="darkbrown_orange_filler" d="M 525 1062 L 525 1025 690 900 Q 810 1000 925 995 L 870 1062" style="fill: rgb(41, 31, 27)"/>
+    <path id="black_left_filler" d="M 0 500 h110 v310 h-110" style="fill: rgb(10, 15, 13)"/>
+    <path id="darkblue_filler" d="M 125 600 v400 h200 v-400" style="fill: rgb(12, 26, 62)"/>
+    <path id="mint_filler" d="M 300 1062 h100 v-120 h-100" style="fill: rgb(14, 38, 39)"/>
+    <path id="hills_filler" d="M 400 500 v220 h170 v-100" style="fill: rgb(14, 38, 39)"/>
+    <path id="green_filler" d="M 650 580 v100 h150 v-100" style="fill: rgb(22, 112, 34)"/>
+    <path id="dark_filler" d="M 700 1000 h550 v-450 h-550" style="fill: rgb(8, 15, 13)"/>
+    <path id="pink_filler" d="M 1250 1062 h250 v-300 h-250" style="fill: rgb(140, 22, 73)"/>
+    <path id="black_right_filler" d="M 1200 770 h250 v-100 h-250" style="fill: rgb(10, 15, 13)"/>
+    <path id="yellow_filler" d="M 1450 200 v350 h-600 v-350" style="fill: rgb(243, 217, 5)"/>
+    <path id="pinkish_filler" d="M 1000 50 v200 h-200 v-200" style="fill: rgb(221, 96, 140)"/>
+    <path id="lilac_filler" d="M 500 100 v250 h250 v-250" style="fill: rgb(61, 32, 61)"/>
+    <path id="light_yellow_left_filler" d="M 350 200 v150 h100 v-150" style="fill: rgb(237, 214, 48)"/>
+    <path id="reddish_filler" d="M 200 0 v100 h50" style="fill: rgb(155, 52, 108)"/>
+  </g>
+  <g id="colour_blocks"> <!-- colour blocks -->
+    <path id="black_green_white_diagonal" d="M 0 470 L 225 300 225 350 0 530" style="fill: url(#black_green_white_diagonal)"/>
+    <path id="black_green_white_diagonal2" d="M 50 485 L 190 379 v70 h-5 L 50 526" style="fill: url(#black_green_white2_fade)"/>
+    <path id="black_block_left" d="M 0 450 v240 L 70 650 v-75 L 190 490 v-40 h-20 L 70 515 v-15" style="fill: rgb(10, 15, 13)"/>
+    <path id="green_back_block" d="M 0 690 L 130 620 130 670 A 75 75 0 0 0 20 740 L 0 750" style="fill: rgb(23, 43, 40)"/>
+    <path id="beige_arc_small" d="M 20 740 A 75 75 0 0 1 127 670 v90" style="fill: rgb(191, 178, 127)"/>
+    <path id="purple_triangle" d="M 400 20 L 220 260 235 265 400 150" style="fill: rgb(137, 52, 81)"/>
 
-<svg id="mandrill" viewBox="0 0 1280 876" width="1280" height="876">
+    <path id="moon" d="M 60 125 A 165 165 0 0 0 110 385 L 250 280 Z" style="fill: rgb(250, 251, 255)"/>
+    <path id="moon_overlay" d="M 20 200 A 130 130 0 0 1 195 250 L 195 300 A 130 130 0 0 0 18 250" style="fill: url(#white_lightblue_fade);"/>
+
+    <path id="lavender_finger" d="M 365 0 L 240 120 220 260 390 40 410 0" style="fill: rgb(216, 199, 220);"/>
+    <path id="pinkish_finger" d="M 200 0 Q 230 70 225 215 Q 265 70 250 0" style="fill: rgb(155, 52, 108);"/>
+    <path id="lilac_finger" d="M 250 0 Q 260 70 240 150 Q 290 65 365 0" style="fill: rgb(143, 114, 172);"/>
+    <path id="blue_line" d="M 300 0 Q 240 75 250 100 L 255 100 Q 240 75 315 0" style="fill: rgb(58, 117, 167);"/>
+
+    <path id="beige_beam_diagonal" d="M 225 270 L 433 120 v32 L 225 300" style="fill: rgb(247, 247, 219)"/>
+    <path id="green_transparent_beam3" d="M 225 270 L 433 120 v32 L 225 300" style="fill: url(#green_transparent4_fade)"/>
+    <path id="greenish_finger_shadow_moon" d="M 200 0 L 220 300 420 0" style="fill: url(#green_transparent_fade);"/>
+
+
+    <path id="darkgreen_lightgreen_block" d="M 73 574 L 200 480 200 620 h-60 L 68 652" style="fill: url(#darkgreen_lightgreen_fade);"/>
+    <path id="orange_fade_block" d="M 125 545 L 130 755 A 80 80 0 0 0 60 725 L 70 585 Q 100 570 120 545" style="fill: url(#orange_fade);"/>
+    <path id="orange_block" d="M 180 490 L 175 510 170 585 135 605 195 720 195 625 185 525 Z" style="fill: rgb(252, 63, 14)"/>
+    <path id="yellow_green_block" d="M 200 525 h40 v108 L 215 650 v-30 h-15" style="fill: url(#yellow_green_fade);"/>
+    <path id="beige_vertical_block" d="M 190 380 L 190 540 200 540 220 540 220 380 Z" style="fill: rgb(251, 249, 175)"/>
+    <path id="yellow_vertical_block" d="M 240 525 L 240 350 200 350 200 380 220 380 220 525 Z" style="fill: rgb(243, 202, 39)"/>
+    <path id="bright_yellow_block" d="M 0 900 L 135 780 v-25 h-15 L 0 860 Z" style="fill: rgb(252, 219, 8)"/>
+    <path id="green_gradient_block" d="M 0 900 L 135 780 v200 L 0 1050 Z" style="fill: url(#two_greens_fade);"/>
+    <path id="bright_blue_block" d="M 50 1023 L 260 915 v150 h-200 Z" style="fill: url(#black_blue_white_fade);"/>
+    <path id="peach_arc_corner" d="M 0 1062 h150 Q 10 1042 0 900 Z" style="fill: rgb(227, 133, 103)"/>
+    <path id="pink_red_gradient_block" d="M 0 0 v90 Q 75 125 130 180 L 180 155 Q 150 50 50 0" style="fill: url(#pink_red_fade);"/>
+
+    <path id="blue_yellow_gradient_block" d="M 175 155 L 130 180 195 250 Q 190 160 175 155" style="fill: url(#blue_yellow_fade);"/>
+    <path id="dark_blue_block" d="M 135 615 v360 L 190 950 190 720 Z" style="fill: rgb(12, 26, 62)"/>
+    <path id="black_arc_small" d="M 0 860 L 120 755 A 75 75 0 0 0 0 760" style="fill: rgb(10, 16, 14)"/>
+    <path id="pink_red_block" d="M 270 575 L 400 490 410 500 v300 h-50 L 270 900" style="fill: url(#magenta_red_fade);"/>
+    <path id="teal_lozenge" d="M 260 1050 Q 440 1000 380 770 Q 230 900 260 1050" style="fill: url(#teal_lozenge_drop_fade);"/>
+    <path id="blue_purple_long_block" d="M 415 680 v382 h-30 v-310 Z" style="fill: url(#blue_purple_fade);"/>
+    <path id="lilac_arc_corner" d="M 405 1062 L 400 920 Q 370 1040 200 1062 Z" style="fill: rgb(147, 95, 167)"/>
+    <path id="black_block_small" d="M 215 840 L 250 825 275 850 v50 L 265 910 215 940 Z" style="fill: rgb(9, 18, 15)"/>
+    <path id="blue_light_green_arc" d="M 50 0 h150 Q 250 150 210 310 Q 200 80 50 0" style="fill: url(#blue_light_green_fade);"/>
+    <path id="pale_green_long_block" d="M 195 950 L 215 940 v-320 h-20 v100 h-5 v100 h5" style="fill: rgb(93, 99, 88)"/>
+    <path id="green_white_triangle" d="M 0 360 L 85 410 0 460" style="fill: url(#green_white_fade)"/>
+    <path id="black_transparent_shadow" d="M 0 360 L 85 410 0 460" style="fill: url(#black_transparent_fade);"/>
+    <path id="blue_sky_block" d="M 0 90 L 0 360 Q 50 410 150 400 A 165 165 0 0 1 60 125" style="fill: url(#lightblue_darkblue_fade);"/>
+    <path id="black_pink_white_block" d="M 270 345 L 360 270 390 290 400 390 400 490 270 575" style="fill: url(#black_pink_white_fade);"/>
+
+    <path id="yellow_beam_straight" d="M 225 300 L 433 150 v35 L 225 350" style="fill: rgb(254, 209, 46)"/>
+    <path id="green_transparent_beam2" d="M 225 300 L 433 150 v35 L 225 350" style="fill: url(#green_transparent3_fade)"/>
+    <path id="yellow_beam_corner" d="M 225 345 L 370 235 410 250 400 270 440 295 440 315 360 270 270 350 h-45" style="fill: rgb(244, 218, 46)"/>
+    <path id="green_transparent_beam" d="M 225 345 L 370 235 410 250 400 270 440 295 440 315 360 270 270 350 h-45" style="fill: url(#green_transparent2_fade)"/>
+
+    <path id="orange_block_long" d="M 240 330 v300 L 215 660 v180 L 250 825 275 850 270 650 270 350 250 350" style="fill: rgb(251, 62, 14)"/>
+    <path id="brown_triangle_large" d="M 360 270 L 370 370 L 290 320" style="fill: url(#brown_ochre_fade);"/>
+    <path id="black_bit" d="M 0 410 L 10 405 Q 35 420 25 450 L 0 460 Z" style="fill: rgb(11, 18, 18)"/>
+
+    <path id="greenish_triangle" d="M 370 235 L 433 185 v70" style="fill: rgb(79, 120, 81)"/>
+
+    <path id="yellow_corner_top" d="M 400 145 L 433 125 v-70 L 540 120 v-30 L 433 25 400 25" style="fill: rgb(252, 231, 103)"/>
+    <path id="lilac_corner_top" d="M 410 0 L 400 25 h35 L 475 50 575 0" style="fill: rgb(168, 116, 156)"/>
+    
+    <path id="lilac_black_block" d="M 433 90 v165 L 538 272 v-120" style="fill: url(#lilac_black_fade)"/>
+    <path id="bright_lilac_block" d="M 433 55 L 540 120 539 152 433 90" style="fill: rgb(226, 178, 176)"/>
+
+    <path id="teal_block" d="M 600 0 L 631 13 567 50 v-15 L 505 68 475 50 575 0" style="fill: url(#teal_fade)"/>
+    <path id="little_beigey_block" d="M 567 50 v-15 L 505 68 540 90 v-25" style="fill: rgb(193, 214, 158)"/>
+
+    <path id="white_triangle_right" d="M 810 195 L 835 240 775 240" style="fill: rgb(232, 217, 210)"/>
+    <path id="white_triangle_right_overlay" d="M 810 195 L 835 240 775 240" style="fill: url(#black_transparent2_fade)"/>
+    <path id="white_triangle_left" d="M 668 225 L 725 255 670 280" style="fill: rgb(159, 160, 149)"/>
+    <path id="white_triangle_left_underlay" d="M 668 224 L 725 255 670 280" style="fill: url(#black_transparent2_fade)"/>
+
+    <path id="big_dark_blue_white_block" d="M 700 50 L 775 90 812 200 775 250 725 260 560 155 v-90" style="fill: url(#white_darkblue_fade)"/>
+    <path id="lilac_transparent_block" d="M 540 65 L 630 15 h30 v270 L 625 325 540 300" style="fill: url(#lilac_overlay_fade)"/>
+    <path id="white_fade_curve" d="M 800 75 Q 675 230 560 60 L 650 0 760 0" style="fill: url(#white_fade_curve_fade)"/>
+    <path id="lilac_transparent_block2" d="M 540 65 L 540 150 625 200 775 75 790 0 h-140" style="fill: url(#lilac_overlay2_fade)"/>
+    <path id="pink_black_overlay_block" d="M 650 210 L 550 150 v153 L 625 325 650 300" style="fill: url(#black_transparent3_fade)"/>
+    <path id="lilac_line" d="M 650 295 L 670 275 660 25 650 25" style="fill: url(#lilac_line_fade)"/>
+    <path id="magenta_line" d="M 760 0 L 665 125 740 105 775 75 790 0" style="fill: url(#magenta_line_fade)"/>
+    <path id="magenta_line_filler" d="M 600 0 L 650 0 625 15" style="fill: rgb(161, 105, 170)"/>
+
+    <path id="orange_arc_block" d="M 790 0 Q 745 90 835 240 L 845 0" style="fill: url(#orange_arc_fade)"/>
+    <path id="tiny_filler_black_block" d="M 776 74 L 777 96 764 84" style="fill: rgb(65, 46, 53)"/>
+
+    <path id="green_lightgreen_vertical_beam" d="M 390 288 L 400 390 400 490 410 500 410 512 440 540 435 313" style="fill: url(#green_lightgreen_vertical_beam_fade)"/>
+    <path id="green_darkgreen_diagonal_beam" d="M 438 438 L 700 625 650 675 Q 600 670 570 697 L 440 544" style="fill: rgb(13, 33, 25)"/>
+    <path id="darkgreen_black_cone" d="M 410 510 L 410 680 490 600 420 520" style="fill: rgb(12, 67, 47)"/>
+    <path id="darkgreen_black_cone2" d="M 570 695 Q 460 670 425 850 Q 375 575 490 600" style="fill: url(#darkgreen_black_cone_fade)"/>
+    <path id="darkgreen_black_cone3" d="M 570 695 Q 400 660 450 1062 Q 475 775 645 780" style="fill: url(#darkgreen_black_cone_fade)"/>
+    <path id="darkgreen_black_cone4" d="M 645 780 Q 440 780 490 1062 L 685 903 745 940 745 870" style="fill: url(#darkgreen_black_cone_fade)"/>
+    <path id="black_cone5" d="M 475 1000 Q 550 820 745 900 Q 650 920 475 1000" style="fill: url(#black_transparent_fade)"/>
+    <path id="green_cone_highlight" d="M 570 695 Q 525 640 475 710 Q 525 687 570 690" style="fill: url(#green_cone_highlight_fade);"/>
+    <path id="green_cone_highlight2" d="M 650 780 Q 580 720 525 810 Q 580 780 650 780" style="fill: url(#green_cone_highlight_fade);"/>
+
+    <path id="orange_fade_block2" d="M 540 1062 L 550 1010 665 930 730 1062" style="fill: url(#orange_fade2);"/>
+    <path id="orange_fade_block3" d="M 680 900 L 675 950 725 1062 870 1062 925 995 Q 750 975 680 900" style="fill: url(#orange_fade3);"/>
+    <path id="orange_block_green_line" d="M 745 940 Q 845 995 930 975 v20 Q 845 1005 745 940" style="fill: rgb(20, 50, 38);"/>
+    <path id="green_fade_bottom_block" d="M 880 1062 L 1025 905 v160" style="fill: url(#dark_black_blue_center_green_arc_top_block_fade);"/>
+    <path id="orange_block_yellow_line" d="M 870 1062 L 935 985 v25 L 885 1062" style="fill: rgb(247, 228, 48);"/>
+
+    <path id="dark_black_blue_center_block" d="M 745 890 Q 830 810 930 820 v155 Q 860 995 745 940" style="fill: url(#dark_black_blue_center_block_fade);"/>
+    <path id="dark_black_blue_center_sideblock" d="M 980 825 Q 1000 880 950 995 L 1020 910 1015 850 " style="fill: rgb(7, 16, 13);"/>
+    <path id="dark_black_blue_center_green_arc_top_block" d="M 730 857 Q 800 790 930 810 L 930 820 Q 825 810 745 890 v-22" style="fill: url(#dark_black_blue_center_green_arc_top_block_fade);"/>
+
+    <path id="green_leaf_right_bottom2" d="M 1085 865 L 1175 775 1210 780 1210 800 1200 820 1105 920" style="fill: rgb(5, 83, 43);"/>
+    <path id="dark_block_behind_white_branch" d="M 987 813 L 1180 640 1180 775 1085 865 1010 840 987 850" style="fill: url(#dark_block_behind_white_branch_fade);"/>
+
+    <path id="orangy_branch" d="M 1410 865 L 1430 840 1230 665 v50" style="fill: url(#orangy_branch_fade)"/>
+    <path id="orangy_branch2" d="M 1410 865 L 1430 840 1230 665 v50" style="fill: url(#orangy_branch_overlay_fade)"/>
+
+    <path id="rose_bottom_right" d="M 1260 830 L 1310 930 1475 1062 1500 1062 v-118 L 1310 775" style="fill: url(#rose_Block_bottom_right_fade);"/>
+    <path id="rose_bottom_right_overlay" d="M 1260 830 L 1310 930 1475 1062 1500 1062 v-118 L 1310 775" style="fill: url(#lilac_overlay3_fade);"/>
+    <path id="pinkish_bottom_right" d="M 1300 1045 L 1360 995 1445 1062 1475 1062 1310 900" style="fill: rgb(125, 38, 73);"/>
+    <path id="pinkish_bottom_far_right" d="M 1413 862 L 1500 775 v170 Z" style="fill: rgb(140, 22, 73);"/>
+
+    <path id="yellow_line_left_of_mid_leaf" d="M 1075 1062 L 1095 1020 1090 1062" style="fill: rgb(212, 194, 102);"/>
+    <path id="yellow_triangle_over_orange_block_between_leafs" d="M 1210 800 L 1200 820 1212 820" style="fill: rgb(212, 194, 102);"/>
+
+    <path id="green_yellow_orange_block" d="M 1090 1062 L 1105 920 1200 820 1212 820 1220 960 Q 1175 1035 1090 1062" style="fill: url(#green_yellow_orange_fade);"/>
+    <path id="green_under_green_yellow_orange_block" d="M 1090 1062 Q 1175 1035 1220 960 L 1225 1062" style="fill: rgb(5, 82, 39);"/>
+    <path id="mustard_green_whitish" d="M 1280 1062 L 1360 995 1445 1062" style="fill: url(#mustard_green_whitish_fade);"/>
+
+    <path id="teal_block_under_fawn" d="M 720 845 Q 770 790 825 775 Q 885 765 928 675 L 930 810 Q 800 793 725 860" style="fill: url(#teal_brightteal_fade)"/>
+    <path id="teal_block_under_fawn2" d="M 950 690 Q 1040 645 1100 710 L 985 815" style="fill: url(#teal_brightteal_fade2)"/>
+
+    <path id="green_leaf_left_bottom" d="M 930 690 L 930 1020 C 990 1040 1020 680 930 690" style="fill: rgb(3, 115, 53);"/>
+    <path id="green_leaf_middle_bottom" d="M 1020 800 L 1025 1062 1075 1062 Q 1160 890 1020 800" style="fill: url(#green_leaf_middle_bottom_fade);"/>
+    <path id="green_leaf_right_bottom" d="M 1210 790 L 1225 1062 1290 1062 Q 1350 875 1210 790" style="fill: rgb(166, 148, 31);"/>
+
+    <path id="yellow_mustard_block" d="M 1180 776 L 1210 780 v10 Q 1240 810 1258 830 L 1310 775 1242 712" style="fill: url(#yellow_mustard_fade)"/>
+    <path id="magenta_line_right" d="M 1310 775 L 1410 865 C 1410 840 1340 790 1310 775" style="fill: rgb(115, 6, 65)"/>
+
+    <path id="lila_corner_top_right" d="M 1460 0 L 1500 25 1500 0" style="fill: rgb(41, 28, 128)"/>
+    <path id="lila_corner_white_line_top_right" d="M 1445 0 L 1500 35 1500 25 1460 0" style="fill: rgb(160, 183, 199)"/>
+
+    <path id="darkgreen_block_next_to_fawn" d="M 920 585 Q 1020 520 1160 660 L 1100 710 Q 1040 643 945 693 L 940 690 Q 945 615 920 585" style="fill: url(#darkgreen_block_next_to_fawn_fade)"/>
+    <path id="lightdarkgreen_block_next_to_fawn" d="M 438 440 L 695 620 650 670 570 695 440 543" style="fill: url(#lightdarkgreen_block_next_to_fawn_fade)"/>
+    <path id="midgreen_block_next_to_fawn" d="M 655 670 Q 700 605 762 590 L 785 625 Q 760 635 725 670" style="fill: rgb(22, 112, 34)"/>
+
+    <path id="darkgreen_areas_near_fawn_face" d="M 448 378 L 750 570 763 590 Q 725 595 698 622 L 450 450" style="fill: rgb(8, 30, 28)"/>
+    <path id="purple_areas_near_fawn_face" d="M 435 325 L 438 445 A 90 90 0 1 0 435 325" style="fill: url(#purple_areas_near_fawn_face_fade)"/>
+    <path id="green_filler_gap" d="M 435 315 h10 v10 h-10" style="fill: rgb(35, 118, 91)"/>
+    <path id="green_beam_near_fawn_nose" d="M 440 295 L 735 470 Q 710 475 705 500 Q 725 550 750 570 L 450 380" style="fill: url(#green_beam_near_fawn_nose_fade)"/>
+    <path id="brightgreen_beam_above_fawn" d="M 413 280 h30 v-10 L 810 475 Q 775 475 725 450 h-30" style="fill: rgb(141, 198, 31)"/>
+    <path id="greenfade_beam_above_fawn" d="M 410 250 L 540 270 540 300 945 450 865 515 810 475 443 270 v10 h-30 L 400 270" style="fill: url(#greenfade_beam_above_fawn_fade)"/>
+    <path id="greenfade_beam_above_fawn2" d="M 700 450 L 730 450 Q 775 475 810 475 L 865 515 845 535" style="fill: url(#greenfade_beam_above_fawn_fade2)"/>
+    <path id="teal_block_behind_fawn" d="M 785 623 Q 750 640 730 670 L 828 675 v-5 Q 810 655 820 660" style="fill: rgb(3, 74, 77)"/>
+  
+    <path id="purple_areas_near_fawn_face2" d="M 555 420 L 555 510 600 540 600 450" style="fill: url(#purple_areas_near_fawn_face_fade)"/>
+    <path id="purple_areas_near_fawn_face3" d="M 665 480 L 665 570 680 580 680 490" style="fill: url(#purple_areas_near_fawn_face_fade)"/>
+  
+    <path id="dark_mountain" d="M 620 330 C 730 190 930 200 1110 370 L 1070 400 L 1065 345 h-105 v95 h-60" style="fill: url(#dark_mountain_fade)"/>
+    <path id="pine_next_to_mountain" d="M 925 260 L 955 270 960 440 940 450 940 410 880 410 925 360 880 360 925 310 880 310" style="fill: rgb(100, 155, 41)"/>
+    <path id="green_triangle_next_to_pine" d="M 955 290 Q 1000 300 1050 355 L 960 440" style="fill: rgb(96, 171, 39)"/>
+    <path id="pale_green_triangle_next_to_pine" d="M 955 270 L 955 270 Q 1025 300 1065 345 L 1050 355 Q 1025 327 955 290" style="fill: rgb(191, 218, 95)"/>
+    <path id="mid_green_block_next_to_pine" d="M 925 410 h15 v40 L 925 442" style="fill: rgb(22, 107, 51)"/>
+    <path id="olive_transparent_next_to_pine" d="M 925 412 h-10 L 875 430 v50 L 925 440" style="fill: url(#olive_transparent_fade)"/>
+  
+    <path id="white_yellow_orange_block" d="M 840 0 L 845 80 Q 880 40 950 0" style="fill: url(#white_yellow_orange_fade)"/>
+    <path id="white_rose_area3" d="M 960 90 L 1000 120 Q 985 165 935 200 L 950 170 880 170 880 130 920 100 960 90" style="fill: url(#white_rose_area_fade3)"/>
+    <path id="yellow_block_next_to_orange_leaf" d="M 845 125 Q 880 90 925 100 Q 910 125 890 140 L 890 160 Q 940 150 960 170 Q 925 220 865 230 v-25 L 850 200" style="fill: rgb(250, 200, 37)"/>
+    <path id="brown_block_next_to_orange_leaf" d="M 840 125 L 845 125 847 195 865 210 865 230 Q 870 230 890 227 L 890 240 835 280" style="fill: rgb(90, 72, 88)"/>
+
+    <path id="mustard_triangle" d="M 995 445 L 998 565 1020 568 1060 535 1050 490" style="fill: rgb(144, 132, 13)"/>
+    <path id="olive_filler_block" d="M 1060 535 L 1088 510 1085 485 1053 510" style="fill: rgb(190, 165, 21)"/>
+    <path id="mustard_triangle_white_line" d="M 958 568 L 1075 495 1075 510 980 565" style="fill: url(#white_yellow_fade)"/>
+    <path id="green_yellow_fade_block" d="M 845 535 L 1065 345 1070 400 1110 370 1075 335 1130 285 1160 300 1170 365 1110 330 1110 420 1025 470 995 445 v22 h-10 L 885 555" style="fill: url(#yellow_green_fade)"/>
+
+    <path id="green_olive_fade_block" d="M 890 560 L 920 585 960 568 991 546 985 465 925 518" style="fill: url(#green_olive_fade)"/>
+    <path id="darkgreen_filler_line" d="M 880 555 L 930 515 920 535 890 560" style="fill: rgb(4, 53, 33)"/>
+    <path id="orange_filler_line" d="M 1025 470 L 1080 437 1037 480" style="fill: rgb(237, 180, 7)"/>
+    <path id="lightgreen_filler_line" d="M 985 465 h10 L 998 543 991 547" style="fill: rgb(168, 211, 62)"/>
+    <path id="lightolive_filler_triangle" d="M 975 566 L 997 565 997 555" style="fill: rgb(140, 147, 26)"/>
+    <path id="yellow_block_in_forest" d="M 1035 478 L 1050 488 1055 510 1085 485 1080 442" style="fill: rgb(251, 224, 16)"/>
+
+    <path id="black_back_block_right" d="M 1355 380 L 1225 520 1228 662 1432 841 1500 775 1500 500" style="fill: rgb(9, 19, 19)"/>
+    <path id="black_front_triangle_right" d="M 1229 667 L 1310 590 1226 525" style="fill: url(#black_blue_fade)"/>
+    <path id="yellow_pink_front_block_right" d="M 1295 707 L 1375 625 1500 725 1500 775 1432 843" style="fill: url(#yellow_pink_transparent_fade)"/>
+    <path id="green_yellow_front_block_right" d="M 1274 704 L 1350 625 h20 L 1295 708 1410 821" style="fill: url(#green_yellow_transparent_fade)"/>
+    <path id="gray_front_block_right" d="M 1270 490 L 1340 560 Q 1420 480 1340 410" style="fill: url(#gray_transparent_fade)"/>
+    <path id="gray_front_circle_right" d="M 1425 540 A 30 30 0 0 0 1500 540 A  30 30 0 0 0 1425 540" style="fill: url(#gray_transparent_fade2)"/>
+    <path id="gray_front_outer_circle_right" d="M 1405 540 A 40 40 0 0 0 1500 540 L 1500 540 A 40 40 0 0 0 1405 540" style="fill: url(#gray_transparent_fade5)"/>
+    <path id="gray_front_half_circle_right" d="M 1410 620 A 35 35 0 0 1 1470 670" style="fill: url(#gray_transparent_fade)"/>
+    <path id="gray_front_fade_right" d="M 1345 560 L 1410 620 1430 580 1375 535" style="fill: url(#gray_transparent_fade3)"/>
+    <path id="gray_front_line_right" d="M 1473 672 L 1440 677 1375 625 1325 575 1340 560 " style="fill: url(#gray_transparent_fade4)"/>
+
+    <path id="main_branch" d="M 1180 775 L 1230 725 1220 270 1180 300" style="fill: url(#main_branch_fade)"/>
+
+    <path id="yellow_pink_triangle" d="M 1100 440 L 1175 490 1175 530 1200 500 1200 400 1220 380 1220 350" style="fill: url(#yellow_pink_fade)"/>
+    <path id="yellow_pink_triangle_overlay" d="M 1100 440 L 1220 350 1220 380 1200 400 " style="fill: rgb(250, 233, 51, 0.5)"/>
+    <path id="green_triangle_block" d="M 1088 505 L 1130 477 1140 485 1145 470 1095 440 1120 422 1110 420 1080 438" style="fill: url(#green_triangle_fade)"/>
+    <path id="green_triangle_block2" d="M 1112 330 L 1110 420 1120 422 1170 387 1170 367" style="fill: url(#green_triangle_fade2)"/>
+    <path id="green_yellow_next_to_tree_block" d="M 1220 245 L 1225 520 1385 350 1300 260" style="fill: url(#green_yellow_next_to_tree_block_fade)"/>
+    <path id="yellow_mint_far_right" d="M 1500 385 L 1420 325 v15 L 1380 310 v35 L 1355 317 v-55 Q 1300 220 1300 200 L 1310 195 1500 350" style="fill: url(#yellow_mint_far_right_fade)"/>
+    <path id="yellow_lightgreen_block" d="M 1205 475 Q 1220 485 1250 465 L 1370 330 1370 320" style="fill: url(#yellow_lightgreen_block_fade)"/>
+    <path id="green_triangle_line" d="M 1170 350 L 1170 385 1245 335 1245 325 1200 350" style="fill: url(#green_triangle_fade2)"/>
+    <path id="light_brown_block" d="M 1160 310 L 1170 350 1187 350 1180 310" style="fill: url(#light_brown_block_fade)"/>
+
+    <path id="mint_filler_rightish" d="M 1145 470 L 1142 483 1165 498 1175 490" style="fill: rgb(166, 198, 141)"/>
+    <path id="yellow_orange_block_right" d="M 1355 380 L 1380 350 1420 380 Q 1430 400 1425 435" style="fill: rgb(233, 200, 14)"/>
+    <path id="beige_filler_right" d="M 1355 380 L 1365 388 A 15 15 1 0 0 1365 370" style="fill: rgb(247, 248, 149)"/>
+
+    <path id="yellow_midgreen_block" d="M 1100 605 L 1180 525 1180 560 1120 620" style="fill: url(#yellow_midgreen_block_fade)"/>
+    <path id="mintgreen_block_far_right" d="M 1380 310 L 1380 350 1422 378 1422 342" style="fill: rgb(88, 138, 86)"/>
+
+    <path id="green_block_next_to_tree_right" d="M 1120 622 L 1180 560 1180 640 1160 660" style="fill: url(#green_block_next_to_tree_right_fade)"/>
+    <path id="white_yellow_white_orange" d="M 1020 568 Q 1050 570 1100 608 L 1175 530 1175 490 1165 498 1130 477 1088 505 1088 510" style="fill: url(#white_yellow_white_orange_fade)"/>
+
+    <path id="lightmint_block_right" d="M 1425 440 L 1500 500 v-100 h-50" style="fill: rgb(28, 145, 103)"/>
+    <path id="darkmint_block_right" d="M 1420 325 L 1427 436 Q 1445 425 1450 440 Q 1460 400 1500 420 v-35" style="fill: rgb(13, 63, 48)"/>
+
+    <path id="yellow_green_back_fade_block" d="M 1225 245 L 1300 200 1355 260 1360 325 1300 260" style="fill: url(#yellow_green_back_fade_block_fade)"/>
+
+    <path id="brown_white_green_corner" d="M 1250 0 L 1445 0 Q 1475 15 1500 35 L 1500 115 Q 1400 20 1220 0" style="fill: url(#brown_white_green_corner_fade)"/>
+
+    <path id="rose_panel_right" d="M 1310 195 L 1350 160 1375 170 1500 270 1500 350" style="fill: rgb(235, 126, 188)"/>
+    <path id="rose_panel_black_top_right" d="M 1310 195 L 1330 195 1330 185 1345 190 1340 170 1400 225 1375 215 1400 240 1390 235 1440 290 1425 290" style="fill: rgb(14, 20, 24)"/>
+
+    <path id="lightgreen_top_right" d="M 1500 270 L 1500 115 A 400 400 0 0 0 1250 5 Q 1320 50 1385 70 L 1380 125 1350 125 1350 160 1375 170" style="fill: url(#lightgreen_top_right_fade)"/>
+
+    <path id="brightyellow_white_triangle_right" d="M 1160 75 L 1160 230 1350 85 1350 58 1325 47 1325 60 1270 115 1265 135 1250 140" style="fill: url(#brightyellow_white_triangle_right_fade)"/>
+
+    <path id="red_rose_white_trio_white" d="M 1350 58 L 1385 70 1380 125 h-30 v34 L 1315 190 1300 200 1280 180 1350 80" style="fill: url(#red_rose_white_trio_white_fade)"/>
+    <path id="red_rose_white_trio_red" d="M 1343 90 L 1180 215 1250 200 1280 180" style="fill: rgb(203, 32, 34)"/>
+    <path id="red_rose_white_trio_rose" d="M 1280 180 L 1250 200 1180 215 Q 1225 225 1220 247 L 1300 200" style="fill: rgb(246, 154, 164)"/>
+
+    <path id="yellow_block_next_to_red_rose_white_trio" d="M 1050 245 L 1160 300 v10 h20 v-10 L 1220 275 1220 245 Q 1210 210 1175 215 L 1160 230 1160 210 1110 240" style="fill: rgb(255, 250, 2)"/>
+    <path id="white_green_next_to_yellow" d="M 1160 210 L 1110 240 1050 245 1040 240 1040 230 1160 195" style="fill: url(#white_green_next_to_yellow_fade)"/>
+    <path id="blue_pink_next_to_rose_area" d="M 1000 115 L 1140 200 1100 215 990 220 935 200 Q 1000 150 1000 115" style="fill: url(#blue_pink_next_to_rose_area_fade)"/>
+    <path id="white_rose_area" d="M 890 227 L 890 242 Q 1000 280 1072 337 L 1120 295 990 220 935 200" style="fill: url(#white_rose_area_fade)"/>
+    <path id="white_next_to_rose_area" d="M 1130 285 L 1040 240 1040 230 1095 215 Q 1050 210 990 220 Q 1020 250 1120 295" style="fill: rgb(241, 233, 221)"/>
+    <path id="white_rose_area2" d="M 843 80 L 840 125 845 125 Q 875 95 925 100 L 960 90 Q 1050 30 1160 10 L 1200 0 950 0 Q 900 25 843 80" style="fill: url(#white_rose_area_fade2)"/>
+
+    <path id="green_brightgreen_area" d="M 960 90 L 980 108 1140 200 1160 200 1160 75 1095 27 Q 1050 35 960 90" style="fill: url(#green_brightgreen_area_fade)"/>
+    <path id="green_misch_masch_area" d="M 1092 27 L 1200 0 1240 0 1325 48 1325 60 1270 115 1265 140 1250 140 1092 27" style="fill: url(#green_misch_masch_area_fade)"/>
+
+
+    <path id="fawn_head" d="M 725 515 L 725 480 800 510 875 550 920 585 800 570" style="fill: url(#fawn_head_fade)"/>
+    <path id="fawn_neck" d="M 850 575 L 920 585 927 675 Q 920 690 915 700 L 860 680" style="fill: url(#fawn_neck_fade)"/>
+
+    <path id="fawn_behind_ear" d="M 840 615 L 855 610 Q 820 555 825 560 L 800 560 800 600" style="fill: url(#fawn_behind_ear_fade)"/>
+    <path id="fawn_behind_ear2" d="M 850 610 h4 L 845 550 822 560" style="fill: url(#fawn_behind_ear_fade2)"/>
+
+    <path id="fawn_face_side_white" d="M 705 500 Q 722 542 750 570 Q 780 625 820 655 L 815 580 770 540" style="fill: url(#fawn_face_side_white_fade)"/>
+    <path id="fawn_nose_green_bit" d="M 705 500 Q 710 475 736 470 L 825 523 730 485" style="fill: rgb(49, 96, 70)"/>
+    <path id="fawn_nose_white_highlight" d="M 725 480 Q 723 473 735 475 L 770 500 755 500" style="fill: url(#fawn_nose_white_highlight_fade)"/>
+    <path id="fawn_nose" d="M 705 500 Q 712 480 732 485 L 755 500 Q 735 493 728 505 L 725 512" style="fill: rgb(10, 29, 28)"/>
+
+    <path id="fawn_eyelid" d="M 755 535 L 775 575 Q 770 565 800 565 L 755 535" style="fill: url(#fawn_eyelid_fade)"/>
+    <path id="fawn_eyelashes" d="M 760 540 Q 755 550 775 570 L 780 570 Q 765 550 765 540" style="fill: rgb(10, 32, 29)"/>
+
+    <path id="fawn_ear_outer_green" d="M 808 595 Q 795 630 830 670 Q 855 630 825 585" style="fill: rgb(60, 146, 106)"/>
+    <path id="fawn_ear_inner_white" d="M 810 592 Q 805 630 828 665 Q 850 630 820 585" style="fill: rgb(196, 236, 197)"/>
+
+    <path id="fawn_neck_dark_left" d="M 840 590 Q 850 600 840 615 Q 845 645 828 670 v5 L 860 677 Q 885 650 840 590" style="fill: url(#fawn_neck_dark_left_fade)"/>
+    <path id="fawn_neck_dark_right" d="M 920 585 L 930 690 940 690 Q 950 625 920 585" style="fill: url(#fawn_neck_dark_right_fade)"/>
+
+    <path id="fawn_body_green_yellow_layer" d="M 570 695 Q 650 645 860 677 L 915 700 Q 880 765 825 775 Q 775 785 723 850 Q 625 770 570 695" style="fill: url(#fawn_body_green_yellow_layer_fade)"/>
+    <path id="fawn_body_brown_dots1" d="M 630 740 A 10 10 0 0 0 650 740 A 10 10 0 0 0 630 740" style="fill: rgba(112, 100, 70, 0.5)"/>
+    <path id="fawn_body_brown_dots2" d="M 620 710 A 7 7 0 0 0 640 710 A 7 7 0 0 0 620 710" style="fill: rgba(112, 100, 70, 0.5)"/>
+    <path id="fawn_body_brown_dots3" d="M 665 705 A 7 7 0 0 0 685 705 A 7 7 0 0 0 665 705" style="fill: rgba(112, 100, 70, 0.5)"/>
+    <path id="fawn_body_brown_dots4" d="M 670 735 A 10 10 0 0 0 690 735 A 10 10 0 0 0 670 735" style="fill: rgba(112, 100, 70, 0.5)"/>
+
+    <path id="fawn_body_white_transparent_layer" d="M 570 695 Q 650 645 860 677 L 915 700 Q 880 765 825 775 Q 775 785 723 850 Q 625 770 570 695" style="fill: url(#fawn_body_white_transparent_layer_fade)"/>
+    <path id="fawn_body_yellow_transparent_layer" d="M 570 695 Q 650 645 860 677 L 915 700 Q 880 765 825 775 Q 775 785 723 850 Q 625 770 570 695" style="fill: url(#fawn_body_yellow_transparent_layer_fade)"/>
+
+    <path id="fawn_body_white_corner" d="M 640 775 L 720 847 Q 780 785 825 775" style="fill: url(#fawn_body_white_transparent_corner_fade)"/>
+    <path id="fawn_body_white_spots1" d="M 670 745 h30 v20 h-25" style="fill: rgba(240, 240, 240, 0.7)"/>
+    <path id="fawn_body_white_spots2" d="M 715 745 h33 v20 h-30" style="fill: rgba(240, 240, 240, 0.7)"/>
+    <path id="fawn_body_white_spots3" d="M 775 750 h30 v20 h-25" style="fill: rgba(240, 240, 240, 0.7)"/>
+  </g>
+
+
+    <!-- 
+    Horizontal gradients:   y1 & y2 equal   and  x1 & x2 differ
+    Vertical   gradients:   x1 & x2 equal   and  y1 & y2 differ
+    Angular    gradients:   x1 & x2 differ  and  y1 & y2 differ
+    -->
+
+  <g id="coordinates">
+    <g id="vertical">
+      <line x1="0"    y1="0" x2="0"    y2="1500" stroke="#cccccc"/>
+      <line x1="50"   y1="0" x2="50"   y2="1500" stroke="#eeeeee"/>
+      <line x1="100"  y1="0" x2="100"  y2="1500" stroke="#cccccc"/>
+      <line x1="150"  y1="0" x2="150"  y2="1500" stroke="#eeeeee"/>
+      <line x1="200"  y1="0" x2="200"  y2="1500" stroke="#cccccc"/>
+      <line x1="250"  y1="0" x2="250"  y2="1500" stroke="#eeeeee"/>
+      <line x1="300"  y1="0" x2="300"  y2="1500" stroke="#cccccc"/>
+      <line x1="350"  y1="0" x2="350"  y2="1500" stroke="#eeeeee"/>
+      <line x1="400"  y1="0" x2="400"  y2="1500" stroke="#cccccc"/>
+      <line x1="450"  y1="0" x2="450"  y2="1500" stroke="#eeeeee"/>
+      <line x1="500"  y1="0" x2="500"  y2="1500" stroke="#cccccc"/>
+      <line x1="550"  y1="0" x2="550"  y2="1500" stroke="#eeeeee"/>
+      <line x1="600"  y1="0" x2="600"  y2="1500" stroke="#cccccc"/>
+      <line x1="650"  y1="0" x2="650"  y2="1500" stroke="#eeeeee"/>
+      <line x1="700"  y1="0" x2="700"  y2="1500" stroke="#cccccc"/>
+      <line x1="750"  y1="0" x2="750"  y2="1500" stroke="#eeeeee"/>
+      <line x1="800"  y1="0" x2="800"  y2="1500" stroke="#cccccc"/>
+      <line x1="850"  y1="0" x2="850"  y2="1500" stroke="#eeeeee"/>
+      <line x1="900"  y1="0" x2="900"  y2="1500" stroke="#cccccc"/>
+      <line x1="950"  y1="0" x2="950"  y2="1500" stroke="#eeeeee"/>
+      <line x1="1000" y1="0" x2="1000" y2="1500" stroke="#cccccc"/>
+      <line x1="1050" y1="0" x2="1050" y2="1500" stroke="#eeeeee"/>
+      <line x1="1100" y1="0" x2="1100" y2="1500" stroke="#cccccc"/>
+      <line x1="1150" y1="0" x2="1150" y2="1500" stroke="#eeeeee"/>
+      <line x1="1200" y1="0" x2="1200" y2="1500" stroke="#cccccc"/>
+      <line x1="1250" y1="0" x2="1250" y2="1500" stroke="#eeeeee"/>
+      <line x1="1300" y1="0" x2="1300" y2="1500" stroke="#cccccc"/>
+      <line x1="1350" y1="0" x2="1350" y2="1500" stroke="#eeeeee"/>
+      <line x1="1400" y1="0" x2="1400" y2="1500" stroke="#cccccc"/>
+      <line x1="1450" y1="0" x2="1450" y2="1500" stroke="#eeeeee"/>
+      <line x1="1500" y1="0" x2="1500" y2="1500" stroke="#cccccc"/>
+      <text x="90" y="15">100</text>
+      <text x="190" y="15">200</text>
+      <text x="290" y="15">300</text>
+      <text x="390" y="15">400</text>
+      <text x="490" y="15">500</text>
+      <text x="590" y="15">600</text>
+      <text x="690" y="15">700</text>
+      <text x="790" y="15">800</text>
+      <text x="890" y="15">900</text>
+      <text x="990" y="15">1000</text>
+      <text x="1090" y="15">1100</text>
+      <text x="1190" y="15">1200</text>
+      <text x="1290" y="15">1300</text>
+      <text x="1390" y="15">1400</text>
+      <text x="1490" y="15">1500</text>
+
+      <text x="90" y="1050">100</text>
+      <text x="190" y="1050">200</text>
+      <text x="290" y="1050">300</text>
+      <text x="390" y="1050">400</text>
+      <text x="490" y="1050">500</text>
+      <text x="590" y="1050">600</text>
+      <text x="690" y="1050">700</text>
+      <text x="790" y="1050">800</text>
+      <text x="890" y="1050">900</text>
+      <text x="990" y="1050">1000</text>
+      <text x="1090" y="1050">1100</text>
+      <text x="1190" y="1050">1200</text>
+      <text x="1290" y="1050">1300</text>
+      <text x="1390" y="1050">1400</text>
+      <text x="1490" y="1050">1500</text>
+    </g>
+    <g id="horizontal">
+      <line x1="0" y1="0"    x2="1500" y2="0"    stroke="#cccccc"/>
+      <line x1="0" y1="50"   x2="1500" y2="50"   stroke="#eeeeee"/>
+      <line x1="0" y1="100"  x2="1500" y2="100"  stroke="#cccccc"/>
+      <line x1="0" y1="150"  x2="1500" y2="150"  stroke="#eeeeee"/>
+      <line x1="0" y1="200"  x2="1500" y2="200"  stroke="#cccccc"/>
+      <line x1="0" y1="250"  x2="1500" y2="250"  stroke="#eeeeee"/>
+      <line x1="0" y1="300"  x2="1500" y2="300"  stroke="#cccccc"/>
+      <line x1="0" y1="350"  x2="1500" y2="350"  stroke="#eeeeee"/>
+      <line x1="0" y1="400"  x2="1500" y2="400"  stroke="#cccccc"/>
+      <line x1="0" y1="450"  x2="1500" y2="450"  stroke="#eeeeee"/>
+      <line x1="0" y1="500"  x2="1500" y2="500"  stroke="#cccccc"/>
+      <line x1="0" y1="550"  x2="1500" y2="550"  stroke="#eeeeee"/>
+      <line x1="0" y1="600"  x2="1500" y2="600"  stroke="#cccccc"/>
+      <line x1="0" y1="650"  x2="1500" y2="650"  stroke="#eeeeee"/>
+      <line x1="0" y1="700"  x2="1500" y2="700"  stroke="#cccccc"/>
+      <line x1="0" y1="750"  x2="1500" y2="750"  stroke="#eeeeee"/>
+      <line x1="0" y1="800"  x2="1500" y2="800"  stroke="#cccccc"/>
+      <line x1="0" y1="850"  x2="1500" y2="850"  stroke="#eeeeee"/>
+      <line x1="0" y1="900"  x2="1500" y2="900"  stroke="#cccccc"/>
+      <line x1="0" y1="950"  x2="1500" y2="950"  stroke="#eeeeee"/>
+      <line x1="0" y1="1000" x2="1500" y2="1000" stroke="#cccccc"/>
+      <line x1="0" y1="1050" x2="1500" y2="1050" stroke="#eeeeee"/>
+      <line x1="0" y1="1100" x2="1500" y2="1100" stroke="#cccccc"/>
+      <line x1="0" y1="1150" x2="1500" y2="1150" stroke="#eeeeee"/>
+      <line x1="0" y1="1200" x2="1500" y2="1200" stroke="#cccccc"/>
+      <line x1="0" y1="1250" x2="1500" y2="1250" stroke="#eeeeee"/>
+      <line x1="0" y1="1300" x2="1500" y2="1300" stroke="#cccccc"/>
+      <line x1="0" y1="1350" x2="1500" y2="1350" stroke="#eeeeee"/>
+      <line x1="0" y1="1400" x2="1500" y2="1400" stroke="#cccccc"/>
+      <line x1="0" y1="1450" x2="1500" y2="1450" stroke="#eeeeee"/>
+      <line x1="0" y1="1500" x2="1500" y2="1500" stroke="#cccccc"/>
+      <text y="100" x="5">100</text>
+      <text y="200" x="5">200</text>
+      <text y="300" x="5">300</text>
+      <text y="400" x="5">400</text>
+      <text y="500" x="5">500</text>
+      <text y="600" x="5">600</text>
+      <text y="700" x="5">700</text>
+      <text y="800" x="5">800</text>
+      <text y="900" x="5">900</text>
+      <text y="1000" x="5">1000</text>
+      <text y="1100" x="5">1100</text>
+      <text y="1200" x="5">1200</text>
+      <text y="1300" x="5">1300</text>
+      <text y="1400" x="5">1400</text>
+      <text y="1500" x="5">1500</text>
+
+      <text y="100" x="650">100</text>
+      <text y="200" x="650">200</text>
+      <text y="300" x="650">300</text>
+      <text y="400" x="650">400</text>
+      <text y="500" x="650">500</text>
+      <text y="600" x="650">600</text>
+      <text y="700" x="650">700</text>
+      <text y="800" x="650">800</text>
+      <text y="900" x="650">900</text>
+      <text y="1000" x="650">1000</text>
+      <text y="1100" x="650">1100</text>
+      <text y="1200" x="650">1200</text>
+      <text y="1300" x="650">1300</text>
+      <text y="1400" x="650">1400</text>
+      <text y="1500" x="650">1500</text>
+
+      <text y="100" x="1455">100</text>
+      <text y="200" x="1455">200</text>
+      <text y="300" x="1455">300</text>
+      <text y="400" x="1455">400</text>
+      <text y="500" x="1455">500</text>
+      <text y="600" x="1455">600</text>
+      <text y="700" x="1455">700</text>
+      <text y="800" x="1455">800</text>
+      <text y="900" x="1455">900</text>
+      <text y="1000" x="1455">1000</text>
+      <text y="1100" x="1455">1100</text>
+      <text y="1200" x="1455">1200</text>
+      <text y="1300" x="1455">1300</text>
+      <text y="1400" x="1455">1400</text>
+      <text y="1500" x="1455">1500</text>
+    </g>
+  </g>
+  </svg>
+  <svg id="mandrill" viewBox="0 0 1280 876" width="1280" height="876">
   <defs id="gradients">
     <filter id="blur">
       <feGaussianBlur in="SourceGraphic" stdDeviation="11"/>
@@ -972,6 +2028,7 @@
       <stop offset="1" stop-color="rgb(22, 45, 86)" stop-opacity="1"/>
     </linearGradient>
   </defs>
+
   <g id="colour_blocks">
     <path id="shape_001" d="M 0 0 L 37 0 65 30 0 116 Z" fill="url(#shape_001_fill)"/>
     <path id="shape_002" d="M 5 150 L 60 200 80 180 21 131 Z" fill="rgb(27, 63, 58)"/>
@@ -1169,22 +2226,59 @@
     <line id="shape_190m" x1="560" y1="286" x2="584" y2="258" stroke-width="4" stroke-linecap="round" stroke="rgb(21, 109, 99)"/>
     <path id="shape_193m" d="M 529 206 Q 525 210 530 214 L 543 211 Q 547 212 546 216 Q 541 219 532 232 Q 590 223 634 250 C 646 236 660 212 651 205 Q 629 196 610 197 Q 585 183 553 197 Q 544 207 529 206" fill="url(#shape_193m_fill)"/>
   </g>
-</svg>
 
-<!-- 
-Masks: 
-white - fully visible
-black - fully invisible
-gray - semi-transparent
-<circle r="245" cx="400" cy="400"/>
-A rx ry rotation large-arc-flag sweep-flag x y
-Horizontal gradients:   y1 & y2 equal   and  x1 & x2 differ
-Vertical   gradients:   x1 & x2 equal   and  y1 & y2 differ
-Angular    gradients:   x1 & x2 differ  and  y1 & y2 differ
--->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.6.1/randomColor.min.js" integrity="sha512-vPeZ7JCboHcfpqSx5ZD+/jpEhS4JpXxfz9orSvAPPj0EKUVShU2tgy7XkU+oujBJKnWmu4hU7r9MMQNWPfXsYw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
-<!-- <script src="hammer.min.js"></script> -->
-<!-- <script src="coords.js"></script> -->
+
+/*
+shape 194m
+*/
+    <!-- 
+    Masks: 
+    white - fully visible
+    black - fully invisible
+    gray - semi-transparent
+    <circle r="245" cx="400" cy="400"/>
+    A rx ry rotation large-arc-flag sweep-flag x y
+    Horizontal gradients:   y1 & y2 equal   and  x1 & x2 differ
+    Vertical   gradients:   x1 & x2 equal   and  y1 & y2 differ
+    Angular    gradients:   x1 & x2 differ  and  y1 & y2 differ
+    -->
+  </svg>
+
+</main>
+
+<div>
+  <!-- <img src="imgs/marc.png" alt="Franz Marc - Reh im Klostergarten 1912"> -->
+  <!-- <img id="mandrill_img" src="imgs/Mandrill-1913.png" alt="Franz Marc - Mandrill 1913"> -->
+</div>
+
+<div id="menu">
+  <div id="buttons">
+    <input type="radio" id="original" name="buttons" value="original" checked />
+    <label for="original">Original</label>
+
+    <input type="radio" id="paint" name="buttons" value="paint" />
+    <label for="paint">Paint</label>
+
+    <input type="radio" id="solids" name="buttons" value="solids" />
+    <label for="solids">Solids</label>
+
+    <input type="radio" id="gradientsR" name="buttons" value="gradients" />
+    <label for="gradientsR">Gradients</label>
+
+    <input type="radio" id="automatic" name="buttons" value="automatic" />
+    <label for="automatic">Automatic</label>
+
+    <input id="auto_range" type="range" min="10" max="100" value="55">
+    <label for="auto_range">Speed</label>
+
+    <input id="col_picker" type="color" name="buttons" value="#fffa02" />
+    <label for="col_picker">Colours</label>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.6.1/randomColor.min.js" integrity="sha512-vPeZ7JCboHcfpqSx5ZD+/jpEhS4JpXxfz9orSvAPPj0EKUVShU2tgy7XkU+oujBJKnWmu4hU7r9MMQNWPfXsYw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="hammer.min.js"></script>
+<script src="scripts.js"></script>
 <script src="mandrill.js"></script>
 
 </body>

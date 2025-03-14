@@ -2,12 +2,12 @@
 
 // let bodyCont = document.getElementsByTagName('body')[0];
 const mandrill_svg = document.getElementById('mandrill');
-const [...blocks] = document.getElementById('colour_blocks').children;
-const [...gradients] = document.getElementById('gradients').children;
+const [...blocks2] = document.getElementById('colour_blocks2').children;
+const [...gradients2] = document.getElementById('gradients2').children;
 
 // const urlParams = new URLSearchParams(window.location.search);
-console.log(`There are a total of ${blocks.length} colour blocks.`);
-console.log(`And there are ${gradients.length} unique gradients.`);
+console.log(`There are a total of ${blocks2.length} colour blocks.`);
+console.log(`And there are ${gradients2.length} unique gradients.`);
 
 
 
@@ -20,13 +20,13 @@ mandrill_svg.addEventListener("click", async (ev) => {
   // console.dir(elem);
   console.log(`(${ev.offsetX}, ${ev.offsetY})`);
   await rotateElement(ev.target);
-  rotateAllElements();
+  // rotateAllElements();
 });
 
 
 
 // print block id on double click
-blocks.forEach(block => {
+blocks2.forEach(block => {
   block.addEventListener("dblclick", async (ev) => {
     console.log(block.id);
   });
@@ -35,48 +35,33 @@ blocks.forEach(block => {
 
 
 
-
-
-// rotate all elements at once
-// refresh happens in the svg itself
-rotateAllElements();
-
-
-
-function rotateAllElements() {
-  console.log('inside rotateAllElements');
-  blocks.forEach(block => {
-      rotateElement(block);
-  });
-}
+blocks2.forEach(block => {
+  rotateElement(block);
+});
 
 
 
 // rotate an element around its center
 async function rotateElement(elem) {
   // only works with the css version of transform origin and transform box
-  const speed = getColourSpeed(elem);
+  // let speed = getColourSpeed(elem);
+  // speed = (speed[elem.id].speed == 0) ? 1 : speed[elem.id].speed;
+  // console.log('speed',speed);
   elem.setAttribute('style', `transform-origin: 50% 50%; transform-box: fill-box;`);
   const item = document.createElementNS("http://www.w3.org/2000/svg", "animateTransform");
   item.setAttribute('xlink:href', `#${elem.id}`);
   item.setAttribute('id', `${elem.id}_anim`);
   item.setAttribute('attributeName', 'transform');
   item.setAttribute('type', 'rotate');
-  // item.setAttribute('dur', `40s`);
-  const relTime = percentage(speed[elem.id].speed, 40) * 10;
-  const remTime = 120 - relTime;
-  console.log('relTime, remTime', relTime, remTime);
-  item.setAttribute('dur', `${relTime * 10}`);
-  item.setAttribute('repeatCount', '4');
-  // item.setAttribute('repeatCount', 'indefinite');
-  // item.setAttribute('additive', 'sum');
-  // item.setAttribute('calcMode', 'linear');
+
+  item.setAttribute('dur', `40s`);
+  item.setAttribute('repeatCount', '1');
   item.setAttribute('calcMode', 'spline');
   item.setAttribute('keyTimes', `0;1`);
   item.setAttribute('values', '0;360');
   item.setAttribute('keySplines', `0.5 0 0.5 1`);
-  // item.setAttribute('begin', `0`);
-  item.setAttribute('begin', `0;${elem.id}_anim.begin+${remTime}`);
+
+  item.setAttribute('begin', `0;${elem.id}_anim.end+20`);
   item.setAttribute('fill', `freeze`);
   item.setAttribute('restart', `whenNotActive`);
 
@@ -88,31 +73,25 @@ async function rotateElement(elem) {
 }
 
 
-  // item.setAttribute('keyTimes', `0; 0.${speed[elem.id].speed}; 1`);
-  // item.setAttribute('values', '0; 0; 360');
-  // item.setAttribute('keyTimes', `0; ${perc0}; ${perc1}; ${perc2}; ${perc2}; 1`);
-  // item.setAttribute('keySplines', `0 0 1 1; 0 0 1 1; 0 0 1 1; 0 0 1 1; 0 0 1 1; 0 0 1 1`);
-  // item.setAttribute('values', `0; ${percA}; ${percC}; 360`);
-  // item.setAttribute('keyTimes', `0; ${perc2}; ${perc2}; 1`);
-  // item.setAttribute('keySplines', `0.5 0 0.5 1; 0.5 0 0.5 1; 0.5 0 0.5 1`);
-  // item.setAttribute('values', `0; ${percA * 10}; ${percB * 10}; ${percC * 10}; 360; 360`);
-  // item.setAttribute('keyTimes', `0; ${perc3}; 1`);
-  // item.setAttribute('values', `0; ${percD * 10}; 360`);
-  // item.setAttribute('values', '0; 90; 180; 270; 360; 360');
-  // const perc0 = percentage(speed[elem.id].speed, 0.25);
-  // const perc1 = percentage(speed[elem.id].speed, 0.50);
-  // const perc2 = percentage(speed[elem.id].speed, 0.75);
-  // const perc3 = percentage(speed[elem.id].speed, 1);
-  // const percA = percentage(speed[elem.id].speed, 90);
-  // const percB = percentage(speed[elem.id].speed, 180);
-  // const percC = percentage(speed[elem.id].speed, 270);
-  // const percD = percentage(speed[elem.id].speed, 360);
+
+
+document.addEventListener("keydown", event => {
+  if (event.key === "p") { 
+    if(!mandrill_svg.animationsPaused()) {
+      mandrill_svg.pauseAnimations();
+      console.log('Animations paused');
+    } else {
+      mandrill_svg.unpauseAnimations();
+      console.log('Animations unpaused');
+    }
+  }
+});
 
 
 
 function getColourSpeed(block) {
   const colours = {};
-  // blocks.forEach(block => {
+  // blocks2.forEach(block => {
     // rotateElement(block);
     // console.dir(block.attributes);
   let fillCol = '';
@@ -145,7 +124,7 @@ function getColourSpeed(block) {
     'speed': 0
   };
   // console.log(colours[block.id]);
-  // }); // loop through all blocks and rotate them
+  // }); // loop through all blocks2 and rotate them
 
 
   // digitalRoot(n)
