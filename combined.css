@@ -27,6 +27,10 @@ body#combined_page main {
   align-items: center;
 }
 
+body#combined_page main.outline * {
+  stroke: black;
+}
+
 body#combined_page #menu {
   display: none;
 }
@@ -77,12 +81,6 @@ img#mandrill_img {
   /* left: 0; */
 }
 
-/* #mandrill #colour_blocks path,
-#mandrill #colour_blocks line,
-#mandrill #colour_blocks circle,
-#mandrill #colour_blocks ellipse {
-
-} */
 #mandrill #coordinates {
   display: none;
 }

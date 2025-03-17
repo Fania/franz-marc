@@ -61,7 +61,7 @@ const defaults = {
   'brown_white_green_corner': 'fill: url(#brown_white_green_corner_fade)',
   'brown_white_green_corner_fade': ['stop-color: rgb(255, 255, 255)','stop-color: rgb(37, 88, 52)','stop-color: rgb(49, 40, 22)','stop-color: rgb(30, 45, 29)','stop-color: rgb(42, 49, 30)','stop-color: rgb(54, 55, 37)','stop-color: rgb(60, 59, 40)'],
   'dark_black_blue_center_block': 'fill: url(#dark_black_blue_center_block_fade)',
-  'dark_black_blue_center_block_fade': ['stop-color:rgb(4, 26, 37)','stop-color:rgb(8, 15, 13)'],
+  'dark_black_blue_center_block_fade': ['stop-color: rgb(4, 26, 37)','stop-color: rgb(8, 15, 13)'],
   'dark_black_blue_center_green_arc_top_block': 'fill: url(#dark_black_blue_center_green_arc_top_block_fade)',
   'dark_black_blue_center_green_arc_top_block_fade': ['stop-color: rgb(11, 102, 51)','stop-color: rgb(3, 73, 66)'],
   'dark_black_blue_center_sideblock': 'fill: rgb(7, 16, 13);',
@@ -281,7 +281,7 @@ const defaults = {
   'teal_brightteal_fade2': ['stop-color: rgb(8, 17, 34)','stop-color: rgb(9, 36, 49)','stop-color: rgb(1, 30, 82)','stop-color: rgb(2, 48, 81)','stop-color: rgb(7, 158, 146)'],
   'teal_fade': ['stop-color: rgb(7, 41, 61)','stop-color: rgb(21, 138, 166)'],
   'teal_lozenge': 'fill: url(#teal_lozenge_drop_fade)',
-  'teal_lozenge_drop_fade': ['stop-color:rgb(10, 28, 30)','stop-color: rgb(16, 44, 45)','stop-color: rgb(20, 62, 59)','st]op-color:rgb(26, 143, 120)'],
+  'teal_lozenge_drop_fade': ['stop-color: rgb(10, 28, 30)','stop-color: rgb(16, 44, 45)','stop-color: rgb(20, 62, 59)','st]op-color:rgb(26, 143, 120)'],
   'tiny_filler_black_block': 'fill: rgb(65, 46, 53)',
   'two_greens_fade': ['stop-color: rgb(7, 70, 31)','stop-color: rgb(22, 126, 32)'],
   'white_darkblue_fade': ['stop-color: rgb(100, 154, 192)','stop-color: rgb(13, 34, 92)','stop-color: rgb(12, 21, 35)'],
@@ -553,6 +553,7 @@ function updateColour(id, newColour) {
 loadColours();
 function loadColours() {
   let coloursJSON = getColours();
+  console.log(coloursJSON);
   blocks.forEach(block => {
     const bloID = block.id;
     const relID = relations[block.id] ? relations[block.id] : 'RGB';
@@ -562,12 +563,16 @@ function loadColours() {
       const newcolour = coloursJSON[relID];
       for(let n=0; n<toddlers.length; n++) {
         const currElem = toddlers[n];
-        currElem.attributes.style.value = `${newcolour[n]}`;
+        // console.log(currElem);
+        currElem.setAttribute('stop-color',`${newcolour[n]}`);
+        // currElem.attributes.style.value = `${newcolour[n]}`;
       }
-      block.attributes.style.value = `fill: url(#${relID})`;
+      block.setAttribute('fill',`url(#${relID})`);
+      // block.attributes.style.value = `fill: url(#${relID})`;
     } else {
       const rcolour = coloursJSON[bloID];
-      block.attributes.style.value = `${rcolour}`;
+      // block.attributes.style.value = `${rcolour}`;
+      block.setAttribute('fill',`${rcolour}`);
     }
   });
   if(coloursJSON['a_button_state'] == 'original') {
@@ -604,13 +609,20 @@ function clearCanvas() {
       let coloursList = [];
       for(let n=0; n<toddlers.length; n++) {
         const currElem = toddlers[n];
-        currElem.attributes.style.value = `stop-color:${hexTorgb('#FFFFFF')}`;
-        coloursList.push(`stop-color:${hexTorgb('#FFFFFF')}`);
+        // currElem.attributes.style.value = `stop-color:${hexTorgb('#FFFFFF')}`;
+        currElem.setAttribute('stop-color',`${hexTorgb('#FFFFFF')}`);
+        coloursList.push(`stop-color: ${hexTorgb('#FFFFFF')}`);
       }
-      block.attributes.style.value = `fill: url(#${relID});stroke:${hexTorgb('#000000')};stroke-width:2;`;
+      // block.attributes.style.value = `fill: url(#${relID});stroke:${hexTorgb('#000000')};stroke-width:2;`;
+      block.setAttribute('fill',`url(#${relID})`);
+      block.setAttribute('stroke',`${hexTorgb('#000000')}`);
+      block.setAttribute('stroke-width',`2`);
       updateColour(relID, coloursList);
     } else {
-      block.attributes.style.value = `fill:${hexTorgb('#FFFFFF')};stroke: ${hexTorgb('#000000')};stroke-width:2;`;
+      // block.attributes.style.value = `fill:${hexTorgb('#FFFFFF')};stroke: ${hexTorgb('#000000')};stroke-width:2;`;
+      block.setAttribute('fill',`${hexTorgb('#FFFFFF')}`);
+      block.setAttribute('stroke',`${hexTorgb('#000000')}`);
+      block.setAttribute('stroke-width',`2`);
       updateColour(bloID, `fill:${hexTorgb('#FFFFFF')};stroke:${hexTorgb('#000000')};stroke-width:2;`);
     }
   });
@@ -627,13 +639,16 @@ function handlePaint(block) {
     let coloursList = [];
     for(let n=0; n<toddlers.length; n++) {
       const currElem = toddlers[n];
-      currElem.attributes.style.value = `stop-color:${hexTorgb(currColour)}`;
-      coloursList.push(`stop-color:${hexTorgb(currColour)}`);
+      // currElem.attributes.style.value = `stop-color:${hexTorgb(currColour)}`;
+      currElem.setAttribute('stop-color',`${hexTorgb(currColour)}`);
+      coloursList.push(`stop-color: ${hexTorgb(currColour)}`);
     }
-    block.attributes.style.value = `fill: url(#${relID})`;
+    // block.attributes.style.value = `fill: url(#${relID})`;
+    block.setAttribute('fill',`url(#${relID})`);
     updateColour(relID, coloursList);
   } else {
-    block.attributes.style.value = `fill: ${hexTorgb(currColour)}`;
+    // block.attributes.style.value = `fill: ${hexTorgb(currColour)}`;
+    block.setAttribute('fill',`${hexTorgb(currColour)}`);
     updateColour(bloID, `fill: ${hexTorgb(currColour)}`);
   }
 }
@@ -650,7 +665,9 @@ function handleSolids(block) {
     luminosity: 'random', // bright, light, dark
     hue: 'random', // red, orange, yellow, green, blue, purple, pink, monochrome
   });
-  block.attributes.style.value = `fill: ${rcolour}`;
+  // block.attributes.style.value = `fill: ${rcolour}`;
+  // block.attributes.setAttribute('fill',`${rcolour}`);
+  block.setAttribute('fill',`${rcolour}`);
   updateColour(block.id, `fill: ${rcolour}`);
 }
 
@@ -696,7 +713,9 @@ function handleAutomatic(speed,iID) {
       luminosity: 'random', // bright, light, dark
       hue: 'random', // red, orange, yellow, green, blue, purple, pink, monochrome
     });
-    block.attributes.style.value = `fill: ${rcolour}`;
+    // block.attributes.style.value = `fill: ${rcolour}`;
+    // block.attributes.setAttribute('fill',`${rcolour}`);
+    block.setAttribute('fill',`${rcolour}`);
     // updateColour(block.id, `fill: ${rcolour}`);
   });
 }
@@ -730,10 +749,14 @@ function handleGradients(block) {
         luminosity: 'random', // bright, light, dark
         hue: 'random', // red, orange, yellow, green, blue, purple, pink, monochrome
       });
-      ch.attributes.style.value = `stop-color: ${newcolour}`;
+      // ch.attributes.style.value = `stop-color: ${newcolour}`;
+      // ch.attributes.setAttribute('stop-color',`${newcolour}`);
+      ch.setAttribute('stop-color',`${newcolour}`);
       coloursList.push(`stop-color: ${newcolour}`);
     })
-    block.attributes.style.value = `fill: url(#${relID})`;
+    // block.attributes.style.value = `fill: url(#${relID})`;
+    // block.attributes.setAttribute('fill',`url(#${relID})`);
+    block.setAttribute('fill',`url(#${relID})`);
     updateColour(relID, coloursList);
   } else {
   // hovering over a solid RGB colour, so no children exist
@@ -742,7 +765,9 @@ function handleGradients(block) {
       luminosity: 'random', // bright, light, dark
       hue: 'random', // red, orange, yellow, green, blue, purple, pink, monochrome
     });
-    block.attributes.style.value = `fill: ${rcolour}`;
+    // block.attributes.style.value = `fill: ${rcolour}`;
+    // block.attributes.setAttribute('fill',`${rcolour}`);
+    block.setAttribute('fill',`${rcolour}`);
     updateColour(block.id, `fill: ${rcolour}`);
   }
 }

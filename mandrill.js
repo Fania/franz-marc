@@ -2,12 +2,17 @@
 
 // let bodyCont = document.getElementsByTagName('body')[0];
 const mandrill_svg = document.getElementById('mandrill');
-const [...blocks2] = document.getElementById('colour_blocks').children;
-const [...gradients2] = document.getElementById('gradients').children;
+const reh_svg = document.getElementById('marc');
+const [...mandrillBlocks] = document.querySelector('#mandrill #colour_blocks').children;
+const [...mandrillGradients] = document.querySelector('#mandrill #gradients').children;
+const [...rehBlocks] = document.querySelector('#marc #colour_blocks').children;
+const [...rehGradients] = document.querySelector('#marc #gradients').children;
 
 // const urlParams = new URLSearchParams(window.location.search);
-console.log(`There are a total of ${blocks2.length} colour blocks.`);
-console.log(`And there are ${gradients2.length} unique gradients.`);
+console.log(`There are a total of ${mandrillBlocks.length} colour blocks in the Mandrill painting.`);
+console.log(`And there are ${mandrillGradients.length} unique gradients in the Mandrill painting.`);
+console.log(`There are a total of ${rehBlocks.length} colour blocks in the Reh painting.`);
+console.log(`And there are ${rehGradients.length} unique gradients in the Reh painting.`);
 
 
 
@@ -26,7 +31,7 @@ mandrill_svg.addEventListener("click", async (ev) => {
 
 
 // print block id on double click
-blocks2.forEach(block => {
+mandrillBlocks.forEach(block => {
   block.addEventListener("dblclick", async (ev) => {
     console.log(block.id);
   });
@@ -35,7 +40,10 @@ blocks2.forEach(block => {
 
 
 
-blocks2.forEach(block => {
+mandrillBlocks.forEach(block => {
+  rotateElement(block);
+});
+rehBlocks.forEach(block => {
   rotateElement(block);
 });
 
@@ -77,13 +85,20 @@ async function rotateElement(elem) {
 
 document.addEventListener("keydown", event => {
   if (event.key === "p") { 
-    if(!mandrill_svg.animationsPaused()) {
+    if(!mandrill_svg.animationsPaused() && !reh_svg.animationsPaused()) {
+      reh_svg.pauseAnimations();
       mandrill_svg.pauseAnimations();
       console.log('Animations paused');
     } else {
+      reh_svg.unpauseAnimations();
       mandrill_svg.unpauseAnimations();
       console.log('Animations unpaused');
     }
+  }
+  if (event.key === "h") { 
+    const mainElem = document.getElementsByTagName('main')[0];
+    console.log(mainElem);
+    mainElem.classList.toggle('outline');
   }
 });
 
