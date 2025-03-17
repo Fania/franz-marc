@@ -24,8 +24,12 @@ mandrill_svg.addEventListener("click", async (ev) => {
   // const elem = document.elementFromPoint(ev.offsetX, ev.offsetY);
   // console.dir(elem);
   console.log(`(${ev.offsetX}, ${ev.offsetY})`);
-  await rotateElement(ev.target);
+  // await rotateElement(ev.target);
   // rotateAllElements();
+});
+reh_svg.addEventListener("click", async (ev) => {
+  console.log(`(${ev.offsetX}, ${ev.offsetY})`);
+  // await rotateElement(ev.target);
 });
 
 
@@ -36,16 +40,21 @@ mandrillBlocks.forEach(block => {
     console.log(block.id);
   });
 });
-
-
-
-
-mandrillBlocks.forEach(block => {
-  rotateElement(block);
-});
 rehBlocks.forEach(block => {
-  rotateElement(block);
+  block.addEventListener("dblclick", async (ev) => {
+    console.log(block.id);
+  });
 });
+
+
+
+// automatically rotate all blocks
+// mandrillBlocks.forEach(block => {
+//   rotateElement(block);
+// });
+// rehBlocks.forEach(block => {
+//   rotateElement(block);
+// });
 
 
 
