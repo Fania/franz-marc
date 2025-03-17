@@ -158,10 +158,10 @@ for(let i=0; i < marc.clientWidth; i+=100) {
 
 
 const coordinates = document.querySelectorAll('.coordinates');
-console.log(coordinates);
+// console.log(coordinates);
 document.addEventListener("keydown", event => {
   if (event.key === "c") {
-    console.log('coordinates disabled');
+    // console.log('coordinates disabled');
     coordinates.forEach(c => {
       c.classList.toggle('hide');
     });

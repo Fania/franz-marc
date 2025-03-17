@@ -9,10 +9,10 @@ const [...rehBlocks] = document.querySelector('#marc #colour_blocks').children;
 const [...rehGradients] = document.querySelector('#marc #gradients').children;
 
 // const urlParams = new URLSearchParams(window.location.search);
-console.log(`There are a total of ${mandrillBlocks.length} colour blocks in the Mandrill painting.`);
-console.log(`And there are ${mandrillGradients.length} unique gradients in the Mandrill painting.`);
-console.log(`There are a total of ${rehBlocks.length} colour blocks in the Reh painting.`);
-console.log(`And there are ${rehGradients.length} unique gradients in the Reh painting.`);
+// console.log(`There are a total of ${mandrillBlocks.length} colour blocks in the Mandrill painting.`);
+// console.log(`And there are ${mandrillGradients.length} unique gradients in the Mandrill painting.`);
+// console.log(`There are a total of ${rehBlocks.length} colour blocks in the Reh painting.`);
+// console.log(`And there are ${rehGradients.length} unique gradients in the Reh painting.`);
 
 
 
