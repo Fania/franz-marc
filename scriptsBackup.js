@@ -1,7 +1,7 @@
 'use strict';
 
 let bodyCont = document.getElementsByTagName('body')[0];
-const reh_svg = document.getElementById('marc');
+const marc_svg = document.getElementById('marc');
 const [...blocks] = document.getElementById('colour_blocks').children;
 const [...gradients] = document.getElementById('gradients').children;
 const [...buttons] = document.getElementsByName('buttons');
@@ -13,7 +13,7 @@ const urlParams = new URLSearchParams(window.location.search);
 // console.log(`And there are ${gradients.length} unique gradients.`);
 
 
-const reh_defaults = {
+const defaults = {
   'a_button_state': 'original',
   'beige_arc_small': 'fill: rgb(191, 178, 127)',
   'beige_beam_diagonal': 'fill: rgb(247, 247, 219)',
@@ -336,7 +336,8 @@ const reh_defaults = {
   'yellow_vertical_block': 'fill: rgb(243, 202, 39)'
 };
 
-const reh_relations = {
+
+const relations = {
   "big_dark_blue_white_block": "white_darkblue_fade",
   "black_cone5": "black_transparent_fade",
   "black_front_triangle_right": "black_blue_fade",
@@ -457,11 +458,6 @@ const reh_relations = {
   "yellow_pink_triangle": "yellow_pink_fade"
 }
 
-const mandrill_defaults = {
-};
-
-
-
 
 
 
@@ -470,7 +466,7 @@ buttons.forEach(butt => {
     if(butt.id == 'original') {
       stopAutoColours();
       localStorage.clear();
-      saveColours(reh_defaults);
+      saveColours(defaults);
       location.reload(); 
     }
     if(butt.id == 'paint') {
@@ -519,7 +515,7 @@ function clickListeners(method) {
 
 
 
-// saveColours(reh_defaults);
+// saveColours(defaults);
 
 
 
@@ -528,7 +524,7 @@ function getColours() {
   const coloursString = localStorage.getItem("franzmarcColours");
   let coloursJSON = {};
   if (coloursString === null) {
-    coloursJSON = reh_defaults;
+    coloursJSON = defaults;
     saveColours(coloursJSON);
     console.log("first-time setup");
   } else {
@@ -547,7 +543,7 @@ function saveColours(coloursJSON) {
 
 function updateColour(id, newColour) {
   let coloursJSON = getColours();
-  const oldColour = reh_defaults[id];
+  const oldColour = defaults[id];
   coloursJSON[id] = newColour;
   // console.log(`updating ${id} from ${oldColour} to ${newColour}`);
   saveColours(coloursJSON);
@@ -560,7 +556,7 @@ function loadColours() {
   console.log(coloursJSON);
   blocks.forEach(block => {
     const bloID = block.id;
-    const relID = reh_relations[block.id] ? reh_relations[block.id] : 'RGB';
+    const relID = relations[block.id] ? relations[block.id] : 'RGB';
     if(relID !== 'RGB') {
       const grad = gradients.find((gr) => gr.id == relID);
       const [...toddlers] = grad.children;
@@ -606,7 +602,7 @@ function loadColours() {
 function clearCanvas() {
   blocks.forEach(block => {
     const bloID = block.id;
-    const relID = reh_relations[bloID] ? reh_relations[bloID] : 'RGB';
+    const relID = relations[bloID] ? relations[bloID] : 'RGB';
     if(relID !== 'RGB') {
       const grad = gradients.find((gr) => gr.id == relID);
       const [...toddlers] = grad.children;
@@ -636,7 +632,7 @@ function handlePaint(block) {
   // console.log(`COLOURING-IN '${block.id}''`);
   const currColour = picker.value;
   const bloID = block.id;
-  const relID = reh_relations[bloID] ? reh_relations[bloID] : 'RGB';
+  const relID = relations[bloID] ? relations[bloID] : 'RGB';
   if(relID !== 'RGB') {
     const grad = gradients.find((gr) => gr.id == relID);
     const [...toddlers] = grad.children;
@@ -737,7 +733,7 @@ rangeButt.addEventListener('change', () => {
 
 
 function handleGradients(block) {
-  const relID = reh_relations[block.id] ? reh_relations[block.id] : 'RGB';
+  const relID = relations[block.id] ? relations[block.id] : 'RGB';
   // console.log(`GRADIENT '${block.id}': '${relID}'`);
   if(relID !== 'RGB') {
     // hovering over a gradient, so children (i.e. stop-colours) exist
@@ -745,8 +741,8 @@ function handleGradients(block) {
     const [...toddlers] = grad.children;
     let coloursList = [];
     // reset gradient colours
-    const originalGradientColours = reh_defaults[relID];
-    updateColour(reh_relations[block.id], originalGradientColours);
+    const originalGradientColours = defaults[relID];
+    updateColour(relations[block.id], originalGradientColours);
     toddlers.forEach(ch => {
       const newcolour = randomColor({
         format: 'rgb',
@@ -780,7 +776,7 @@ function handleGradients(block) {
 
 
 // HAMMERTIME
-const mc = new Hammer.Manager(reh_svg);
+const mc = new Hammer.Manager(marc_svg);
 mc.add(new Hammer.Pan({ 
   direction: Hammer.DIRECTION_ALL, 
   threshold: 0 
@@ -858,7 +854,7 @@ function handleShowcase() {
       menu.classList.add('hide');
       const min1200 = window.matchMedia("(min-width: 1200px)").matches;
       if (min1200) {
-        reh_svg.attributes.style.value = 'height: unset';
+        marc_svg.attributes.style.value = 'height: unset';
       }
       const medScreenLandscape = window.matchMedia("(min-resolution: 2dppx) and (orientation:landscape)").matches;
       if (medScreenLandscape) {
@@ -890,7 +886,7 @@ document.addEventListener("keydown", event => {
     console.log('o pressed: reset to original');
     stopAutoColours();
     localStorage.clear();
-    saveColours(reh_defaults);
+    saveColours(defaults);
     location.reload();
     urlParams.set('showcase', false);
     window.location.search = urlParams;
@@ -931,7 +927,7 @@ document.addEventListener("keydown", event => {
     console.log('r pressed: reset to original');
     stopAutoColours();
     localStorage.clear();
-    saveColours(reh_defaults);
+    saveColours(defaults);
     location.reload();
     urlParams.set('showcase', false);
     window.location.search = urlParams;
@@ -940,7 +936,7 @@ document.addEventListener("keydown", event => {
     console.log('escape pressed: reset to original');
     stopAutoColours();
     localStorage.clear();
-    saveColours(reh_defaults);
+    saveColours(defaults);
     location.reload(); 
     urlParams.set('showcase', false);
     window.location.search = urlParams;

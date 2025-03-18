@@ -15,21 +15,16 @@ const [...rehGradients] = document.querySelector('#marc #gradients').children;
 // console.log(`And there are ${rehGradients.length} unique gradients in the Reh painting.`);
 
 
-
+const colours = {};
 
 
 // print coords of click
 // rotate element under click
 mandrill_svg.addEventListener("click", async (ev) => {
-  // const elem = document.elementFromPoint(ev.offsetX, ev.offsetY);
-  // console.dir(elem);
   console.log(`(${ev.offsetX}, ${ev.offsetY})`);
-  // await rotateElement(ev.target);
-  // rotateAllElements();
 });
 reh_svg.addEventListener("click", async (ev) => {
   console.log(`(${ev.offsetX}, ${ev.offsetY})`);
-  // await rotateElement(ev.target);
 });
 
 
@@ -51,9 +46,11 @@ rehBlocks.forEach(block => {
 // automatically rotate all blocks
 mandrillBlocks.forEach(block => {
   rotateElement(block);
+  printColour(block);
 });
 rehBlocks.forEach(block => {
   rotateElement(block);
+  printColour(block);
 });
 
 
@@ -106,10 +103,44 @@ document.addEventListener("keydown", event => {
   }
   if (event.key === "h") { 
     const mainElem = document.getElementsByTagName('main')[0];
-    console.log(mainElem);
     mainElem.classList.toggle('outline');
   }
 });
+
+
+
+
+function printColour(block) {
+
+  let fillCol = '';
+  let strokeCol = '';
+  let gradCols = [];
+  
+  const atts = Object.values(block.attributes);
+
+  atts.forEach(a => {
+    if(a.name === 'fill') {
+      if(block.attributes['fill'].value.startsWith('url')) {
+        const valIDpre = block.attributes['fill'].value;
+        const valID = valIDpre.slice(5, -1);
+        const elem = document.getElementById(valID);
+        const childrs = elem.children;
+        const len = childrs.length;
+        for(let i=0; i<len; i++) {
+          gradCols.push(`stop-color: ${elem.children[i].attributes[1].value}`);
+        }
+        colours[valID] = gradCols;
+      }
+      fillCol = `fill: ${block.attributes['fill'].value}`;
+      colours[block.id] = fillCol;
+    }
+    if(a.name === 'stroke') {
+      strokeCol = `fill: ${block.attributes['stroke'].value}`;
+      colours[block.id] = strokeCol;
+    }
+  });
+  console.log(colours);
+}
 
 
 
