@@ -49,12 +49,12 @@ rehBlocks.forEach(block => {
 
 
 // automatically rotate all blocks
-// mandrillBlocks.forEach(block => {
-//   rotateElement(block);
-// });
-// rehBlocks.forEach(block => {
-//   rotateElement(block);
-// });
+mandrillBlocks.forEach(block => {
+  rotateElement(block);
+});
+rehBlocks.forEach(block => {
+  rotateElement(block);
+});
 
 
 
