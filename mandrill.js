@@ -1,4 +1,4 @@
-'use strict';
+import { reh_defaults, mandrill_defaults } from "./defaults.js";
 
 // let bodyCont = document.getElementsByTagName('body')[0];
 const mandrill_svg = document.getElementById('mandrill');
@@ -14,8 +14,6 @@ const [...rehGradients] = document.querySelector('#marc #gradients').children;
 // console.log(`There are a total of ${rehBlocks.length} colour blocks in the Reh painting.`);
 // console.log(`And there are ${rehGradients.length} unique gradients in the Reh painting.`);
 
-
-const colours = {};
 
 
 // print coords of click
@@ -46,11 +44,11 @@ rehBlocks.forEach(block => {
 // automatically rotate all blocks
 mandrillBlocks.forEach(block => {
   rotateElement(block);
-  printColour(block);
+  printColour('mandrill',block);
 });
 rehBlocks.forEach(block => {
   rotateElement(block);
-  printColour(block);
+  printColour('reh',block);
 });
 
 
@@ -110,14 +108,11 @@ document.addEventListener("keydown", event => {
 
 
 
-function printColour(block) {
-
+function printColour(source,block) {
   let fillCol = '';
   let strokeCol = '';
   let gradCols = [];
-  
   const atts = Object.values(block.attributes);
-
   atts.forEach(a => {
     if(a.name === 'fill') {
       if(block.attributes['fill'].value.startsWith('url')) {
@@ -129,18 +124,148 @@ function printColour(block) {
         for(let i=0; i<len; i++) {
           gradCols.push(`stop-color: ${elem.children[i].attributes[1].value}`);
         }
-        colours[valID] = gradCols;
+        if(source === 'reh'){
+          reh_defaults[valID] = gradCols;
+        } else {
+          mandrill_defaults[valID] = gradCols;
+        }
+        // colours[valID] = gradCols;
       }
       fillCol = `fill: ${block.attributes['fill'].value}`;
-      colours[block.id] = fillCol;
+      if(source === 'reh'){
+        reh_defaults[block.id] = fillCol;
+      } else {
+        mandrill_defaults[block.id] = fillCol;
+      }
+      // colours[block.id] = fillCol;
     }
     if(a.name === 'stroke') {
       strokeCol = `fill: ${block.attributes['stroke'].value}`;
-      colours[block.id] = strokeCol;
+      if(source === 'reh'){
+        reh_defaults[block.id] = strokeCol;
+      } else {
+        mandrill_defaults[block.id] = strokeCol;
+      }
+      // colours[block.id] = strokeCol;
     }
   });
-  console.log(colours);
+  // if(source === 'reh'){
+  //   console.log(reh_defaults);
+  // } else {
+  //   console.log(mandrill_defaults);
+  // }
 }
+
+
+
+function getColours(source) {
+  console.log('getColours');
+  const coloursString = localStorage.getItem(`${source}Colours`);
+  let coloursJSON = {};
+  if (coloursString === null) {
+    coloursJSON = source === 'reh' ? reh_defaults : mandrill_defaults;
+    saveColours(coloursJSON);
+    console.log("first-time setup");
+  } else {
+    coloursJSON = JSON.parse(coloursString);
+  }
+  return coloursJSON;
+}
+
+
+
+
+
+saveColours(reh_defaults);
+saveColours(mandrill_defaults);
+function saveColours(coloursJSON) {
+  console.log('saveColours to localStorage');
+  const coloursString = JSON.stringify(coloursJSON);
+  if(coloursJSON === reh_defaults) {
+    localStorage.setItem("rehColours", coloursString);
+  } else {
+    localStorage.setItem("mandrillColours", coloursString);
+  }
+}
+
+
+function updateColour(source, id, newColour) {
+  if(source === 'reh') {
+    let coloursJSON = getColours('reh');
+    const oldColour = reh_defaults[id];
+    coloursJSON[id] = newColour;
+    console.log(`updating ${id} from ${oldColour} to ${newColour}`);
+    saveColours(coloursJSON);
+  } else {
+    let coloursJSON = getColours('mandrill');
+    const oldColour = mandrill_defaults[id];
+    coloursJSON[id] = newColour;
+    console.log(`updating ${id} from ${oldColour} to ${newColour}`);
+    saveColours(coloursJSON);
+  }
+}
+
+
+// loadColours();
+function loadColours(source) {
+  let coloursJSON = getColours(source);
+  console.log(coloursJSON);
+  if(source==='reh'){
+    rehBlocks.forEach(block => {
+      const bloID = block.id;
+      if(block.attributes['fill'].value.startsWith('url')) {
+        const valIDpre = block.attributes['fill'].value;
+        const valID = valIDpre.slice(5, -1);
+        const elem = document.getElementById(valID);
+        const childrs = elem.children;
+        const len = childrs.length;
+        for(let i=0; i<len; i++) {
+          const currElem = childrs[i];
+          currElem.setAttribute('stop-color',`${coloursJSON[valID]}`);
+        }
+        block.setAttribute('fill',`url(#${valID})`);
+      } else {
+        const rcolour = coloursJSON[bloID];
+        block.setAttribute('fill',`${rcolour}`);
+      }
+    });
+  } else {
+    mandrillBlocks.forEach(block => {
+      const bloID = block.id;
+      if(block.attributes['fill'].value.startsWith('url')) {
+        const valIDpre = block.attributes['fill'].value;
+        const valID = valIDpre.slice(5, -1);
+        const elem = document.getElementById(valID);
+        const childrs = elem.children;
+        const len = childrs.length;
+        for(let i=0; i<len; i++) {
+          const currElem = childrs[i];
+          currElem.setAttribute('stop-color',`${coloursJSON[valID]}`);
+        }
+        block.setAttribute('fill',`url(#${valID})`);
+      } else {
+        const rcolour = coloursJSON[bloID];
+        block.setAttribute('fill',`${rcolour}`);
+      }
+    });
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

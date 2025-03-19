@@ -8,18 +8,105 @@
 }
 body#combined_page {
   /* position: relative; */
-  background: rgb(94, 94, 60);
+  /* background: rgb(94, 94, 60); */
+  background: rgb(40, 48, 62);
   /* background: white; */
   height: 100vh;
   display: flex;
-  gap: 10px; 
+  gap: 20px; 
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
+  /* justify-content: space-between; */
   margin: 0;
   color: white;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
+
+body#combined_page header {
+  width: 100%;
+  background: rgba(63, 76, 98, 0.8);
+  /* box-shadow: 0 4px 5px rgb(0,0,0,0.3); */
+  /* padding: 1em; */
+}
+body#combined_page header nav {
+  display: flex;
+  justify-content: space-around;
+  box-shadow: 0 4px 5px rgb(0,0,0,0.3);
+  padding: 1em;
+}
+body#combined_page header nav a {
+  text-decoration: none;
+  color: rgb(251, 250, 233);
+}
+body#combined_page header nav a:hover {
+  text-decoration: underline;
+}
+
+
+/* Basic tab styles */
+a:link, a:visited {
+  color: inherit;
+}
+
+/* CSS tabs */
+.hideme,
+.tab_container section {
+  display: none;
+}
+
+/* set the first link's style and show its div on page load */
+.tabs a:first-child,
+.tab_container section:first-of-type {
+  opacity: 1;
+  box-shadow: none;
+}
+.tab_container section:first-of-type {
+  display: block;
+  width: 100%;
+}
+
+/* if not targeted, un-highlight first tab style… */
+:target ~ .tabs a:first-child {
+  opacity: .7;
+  box-shadow: inset 0px 2px 2px 0px rgba(10, 10, 10, 0.5);
+}
+/* …hide its div */
+:target ~ .tab_container section:nth-of-type(1) {
+  display: none;
+}
+/* and allow hover */
+:target ~ .tabs a:first-of-type:hover,
+:target ~ .tabs a:hover,
+.tabs a:hover {
+  opacity: 0.85;
+}
+
+/* Number of tabs set here.
+   Highlight the current link tab… */
+.hideme:nth-of-type(1):target ~ .tabs a:nth-of-type(1),
+.hideme:nth-of-type(2):target ~ .tabs a:nth-of-type(2),
+.hideme:nth-of-type(3):target ~ .tabs a:nth-of-type(3){
+  opacity: 1;
+  box-shadow: none;
+}
+/* …set targeted link div background, and show its div */
+.hideme:nth-of-type(1):target ~ .tab_container section:nth-of-type(1),
+.hideme:nth-of-type(2):target ~ .tab_container section:nth-of-type(2),
+.hideme:nth-of-type(3):target ~ .tab_container section:nth-of-type(3) {
+  background: inherit;
+  display: block;
+  width: 100%;
+}
+/* end CSS tabs */
+
+
+
+
+
+
+
+
+
 body#combined_page main {
   display: flex;
   gap: 10px; 
@@ -32,12 +119,6 @@ body#combined_page main.outline * {
   stroke: black;
 }
 
-body#combined_page #menu {
-  display: none;
-}
-#menu.hide {
-  display: none;
-}
 svg#marc {
   /* height: 1062px; */
   /* width: 1500px; */
@@ -84,6 +165,19 @@ img#mandrill_img {
   /* left: 0; */
 }
 
+
+body#combined_page main section.about img {
+  width: 30%;
+}
+
+
+
+
+
+
+
+
+
 #mandrill .coordinates {
   /* display: block; */
   display: none;
@@ -96,91 +190,7 @@ img#mandrill_img {
 #marc .coordinates.hide {
   display: none;
 }
-#menu {
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
-}
-#buttons {
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  width: 90%;
-  margin: 20px 0;
-  gap: 30px;
-}
-#buttons label {
-  background: rgba(0,0,0,0.2);
-  padding: 10px 15px 12px;
-  border-radius: 15px;
-}
-#buttons input[type='radio'] {
-  display: none;
-}
-#buttons input[type='radio'] + label  {
-  color: white;
-  font-variant: all-small-caps;
-}
-#buttons input:checked + label  {
-  background: rgba(255,255,255,0.2);
-}
-#buttons label:hover {
-  background: rgba(255,255,255,0.2);
-}
-#auto_range {
-  display: none;
-}
-#auto_range + label {
-  display: none;
-}
-#buttons input[id='automatic']:checked ~ #auto_range + label {
-  display: block;
-  position: absolute;
-  bottom: -100px;
-  left: calc((100vw - 450px) /2)px;
-  background: none;
-  font-variant: all-small-caps;
-}
-#auto_range + label:hover {
-  background: none;
-}
-#buttons input[id='automatic']:checked ~ #auto_range {
-  display: block;
-  position: absolute;
-  z-index: 99;
-  width: 90%;
-  bottom: -60px;
-  left: calc((100vw - 450px) /2)px;
-}
 
-#col_picker {
-  display: none;
-}
-#col_picker + label {
-  display: none;
-}
-#buttons input[id='paint']:checked ~ #col_picker + label {
-  display: block;
-  position: absolute;
-  bottom: -130px;
-  left: calc((100vw - 450px) /2)px;
-  background: none;
-  font-variant: all-small-caps;
-}
-#buttons input[id='paint']:checked ~ #col_picker {
-  display: block;
-  position: absolute;
-  width: 60px;
-  height: 35px;
-  bottom: -80px;
-  left: calc((100vw - 450px) /2)px;
-}
 
 @media (min-width: 1200px) {
   svg#marc {
@@ -191,77 +201,13 @@ img#mandrill_img {
     padding: 10px;
   }
 }
+
 @media (min-width: 1700px) {
 
 
   svg#marc {
     /* height: 90vh; */
   }
-  #menu {
-    position: absolute;
-    left: 0;
-    top: calc((100vh - 450px) / 2);
-    width: 150px;
-  }
-  #buttons {
-    flex-direction: column;
-  }
-  #buttons input[id='automatic']:checked ~ #auto_range + label {
-    top: calc((115vh - 450px) / 2);
-    left: calc(100vw - 120px);
-  }
-  #buttons input[id='automatic']:checked ~ #auto_range {
-    transform: rotate(-90deg);
-    width: 450px;
-    height: 50px;
-    top: calc((65vh - 450px) / 2);
-    right: calc(-100vw);
-  }
-  #buttons input[id='paint']:checked ~ #col_picker + label {
-    top: calc(50vh / 2);
-    left: calc(100vw - 120px);
-  }
-  #buttons input[id='paint']:checked ~ #col_picker {
-    width: 80px;
-    height: 50px;
-    top: calc(40vh / 2);
-    left: calc(100vw - 120px);
-  }
+  
 }
 
-/* landscape mobiles */
-@media (min-resolution: 2dppx) and (orientation:landscape) {
-/* @media screen and (orientation:landscape) { */
-  body {
-    /* height: 95vh; */
-  }
-  #menu {
-    position: absolute;
-    left: -10px;
-    top: calc((100vh - 375px) / 2);
-    width: 150px;
-  }
-  #buttons input[id='automatic']:checked ~ #auto_range + label {
-    top: calc(40% + 5px);
-    left: calc(100vw - 110px);
-    height: 10px;
-  }
-  #buttons input[id='automatic']:checked ~ #auto_range {
-    transform: rotate(-90deg);
-    width: 300px;
-    height: 50px;
-    top: 40%;
-    right: calc(-96vw);
-  }
-  #buttons input[id='paint']:checked ~ #col_picker + label {
-    top: calc(40% + 50px);
-    left: calc(100vw - 120px);
-    height: 10px;
-  }
-  #buttons input[id='paint']:checked ~ #col_picker {
-    width: 80px;
-    height: 50px;
-    top: 40%;
-    left: calc(100vw - 120px);
-  }
-}
