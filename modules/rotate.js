@@ -1,4 +1,4 @@
-export { rotateAll, rotateElement, printColour, getColourSpeed };
+export { rotateAll, rotateElement, stopRotating, printColour, getColourSpeed };
 
 
 
@@ -54,6 +54,13 @@ async function rotateElement(elem) {
   }
 }
 
+
+
+
+async function stopRotating() {
+
+
+}
 
 
 
