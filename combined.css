@@ -1,4 +1,7 @@
 :root {
+  --light: rgb(251, 250, 233);
+  --medium: rgba(63, 76, 98, 0.8);
+  --dark: rgb(40, 48, 62);
   color-scheme: only light;
 }
 @media screen {
@@ -8,7 +11,7 @@
 }
 body#combined_page {
   /* background: rgb(94, 94, 60); */
-  background: rgb(40, 48, 62);
+  background: var(--dark);
   height: 100vh;
   display: flex;
   gap: 20px; 
@@ -21,7 +24,7 @@ body#combined_page {
 }
 
 body#combined_page nav {
-  background: rgba(63, 76, 98, 0.8);
+  background: var(--medium);
   box-shadow: 0 4px 5px rgb(0,0,0,0.3);
   padding: 1em;
   width: 100%;
@@ -63,23 +66,40 @@ body#combined_page nav.options #buttons {
 body#combined_page nav.options #buttons input {
   display: none;
 }
+body#combined_page nav.options #buttons input:checked + label {
+  text-decoration: underline;
+  text-decoration-thickness: 4px;
+  text-decoration-color: var(--light);
+  text-underline-offset: 4px;
+}
 body#combined_page nav.options #buttons label {
   padding: 0.5em 1em;
   cursor: pointer;
 }
 body#combined_page nav.subOptions {
   width: 100%;
-  display: flex;
+  display: none;
   justify-content: center;
-  gap: 10px;
+  align-items: center;
+  gap: 3em;
+  /* transition: all 0.4s; */
+}
+body#combined_page nav.subOptions.show {
+  display: flex;
+} 
+body#combined_page nav.subOptions div:nth-of-type(1),
+body#combined_page nav.subOptions div:nth-of-type(2) {
+  display: none;
+}
+body#combined_page nav.subOptions div:nth-of-type(1).show,
+body#combined_page nav.subOptions div:nth-of-type(2).show {
+  display: block;
 }
 body#combined_page nav.subOptions label {
   padding: 0.5em 1em;
   cursor: pointer;
 }
-.hide {
-  display: none;
-} 
+
 
 
 
@@ -154,7 +174,7 @@ body#combined_page main section.about img {
 /* Basic tab styles */
 .tabs a:link,
 .tabs a:visited {
-  color: rgb(251, 250, 233);
+  color: var(--light);
   text-decoration: none;
   transition: all 0.4s;
   padding: .5em 2em;
@@ -192,7 +212,7 @@ a:link, a:visited {
 .hideme:nth-of-type(3):target ~ .tabs a:nth-of-type(3)::before {
   margin-right: 15px;
   content: '⬤';
-  color: rgb(251, 250, 233);
+  color: var(--light);
   /* border: 1px solid;
   border-image-slice: 1;
   border-width: 3px;
@@ -220,6 +240,9 @@ a:link, a:visited {
 
 
 
+
+
+
 #mandrill .coordinates {
   /* display: block; */
   display: none;
@@ -235,9 +258,7 @@ a:link, a:visited {
 
 
 @media (min-width: 1200px) {
-  svg#marc {
-    /* height: 70vh; */
-  }
+
   body#combined_page main {
     flex-direction: row;
     padding: 10px;
@@ -247,9 +268,6 @@ a:link, a:visited {
 @media (min-width: 1700px) {
 
 
-  svg#marc {
-    /* height: 90vh; */
-  }
   
 }
 
