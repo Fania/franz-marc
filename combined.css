@@ -88,16 +88,36 @@ body#combined_page nav.subOptions.show {
   display: flex;
 } 
 body#combined_page nav.subOptions div:nth-of-type(1),
-body#combined_page nav.subOptions div:nth-of-type(2) {
+body#combined_page nav.subOptions div:nth-of-type(2), 
+body#combined_page nav.subOptions div:nth-of-type(3), 
+body#combined_page nav.subOptions div:nth-of-type(3) div 
+{
   display: none;
 }
 body#combined_page nav.subOptions div:nth-of-type(1).show,
-body#combined_page nav.subOptions div:nth-of-type(2).show {
-  display: block;
+body#combined_page nav.subOptions div:nth-of-type(2).show, 
+body#combined_page nav.subOptions div:nth-of-type(3).show
+{
+  display: flex;
+  align-items: center;
+}
+body#combined_page nav.subOptions div:nth-of-type(3).show
+{
+  gap: 2em;
+}
+body#combined_page nav.subOptions div:nth-of-type(3).show div
+{
+  display: flex;
+  align-items: center;
 }
 body#combined_page nav.subOptions label {
   padding: 0.5em 1em;
   cursor: pointer;
+}
+body#combined_page nav.subOptions input[type='checkbox'] {
+  display: flex;
+  width: 20px;
+  height: 20px;
 }
 
 
@@ -120,7 +140,7 @@ body#combined_page main.outline * {
   stroke: black;
 }
 
-svg#marc {
+svg#reh_svg {
   /* height: 1062px; */
   /* width: 1500px; */
   height: auto;
@@ -131,7 +151,7 @@ svg#marc {
   object-position: center;
   overflow: hidden;
 }
-svg#mandrill {
+svg#mandrill_svg {
   /* height: 876px; */
   /* width: 1280px; */
   width: 100%;
@@ -243,16 +263,16 @@ a:link, a:visited {
 
 
 
-#mandrill .coordinates {
+#mandrill_svg .coordinates {
   /* display: block; */
   display: none;
 }
-#marc .coordinates {
+#reh_svg .coordinates {
   /* display: block; */
   display: none;
 }
-#mandrill .coordinates.hide,
-#marc .coordinates.hide {
+#mandrill_svg .coordinates.hide,
+#reh_svg .coordinates.hide {
   display: none;
 }
 

@@ -1,7 +1,7 @@
 'use strict';
 
 let bodyCont = document.getElementsByTagName('body')[0];
-const reh_svg = document.getElementById('marc');
+const reh_svg = document.getElementById('reh_svg');
 const [...blocks] = document.getElementById('colour_blocks').children;
 const [...gradients] = document.getElementById('gradients').children;
 const [...buttons] = document.getElementsByName('buttons');

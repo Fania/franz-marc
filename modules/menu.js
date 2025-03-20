@@ -32,24 +32,31 @@ function getCurrentPage() {
 buttons.forEach(butt => {
   butt.addEventListener('change', () => {
 
-    const current = document.querySelector('[name="buttons"]:checked').value;
+    console.log(butt.value);
+    // const current = document.querySelector('[name="buttons"]:checked').value;
     const currentElem = document.querySelector('[name="buttons"]:checked');
-    console.log(current);
+    // console.log(current);
 
     const currentPage = getCurrentPage();
     // console.log(currentPage);
 
     if(butt.id == 'original') {
-      console.log('original');
+      // console.log('original');
       subOptsNav.classList.remove('show');
+      stopRotating();
       // stopAutoColours();
       // localStorage.clear();
       // saveColours(reh_defaults);
       // location.reload(); 
     }
     if(butt.id == 'rotate') {
-      console.log('rotate');
-      subOptsNav.classList.remove('show');
+      // console.log('rotate');
+      if(butt.value === 'rotate') {
+        subOptsNav.classList.add('show');
+        subOpts[0].classList.add('show');
+        subOpts[1].classList.remove('show');
+        subOpts[2].classList.remove('show');
+      }
       rotateAll(currentPage);
 
       // stopAutoColours();
@@ -58,37 +65,36 @@ buttons.forEach(butt => {
       // location.reload(); 
     }
     if(butt.id == 'paint') {
-      console.log('paint');
-
-      if(current === 'paint') {
+      // console.log('paint');
+      stopRotating();
+      if(butt.value === 'paint') {
         subOptsNav.classList.add('show');
-        subOpts[0].classList.add('show');
-        subOpts[1].classList.remove('show');
+        subOpts[0].classList.remove('show');
+        subOpts[1].classList.add('show');
+        subOpts[2].classList.remove('show');
       }
       // stopAutoColours();
       // clearCanvas();
       // clickListeners(handlePaint);
       // updateColour('a_button_state', 'paint');
     }
-    if(butt.id == 'solids') {
-      console.log('solids');
-      subOptsNav.classList.remove('show');
+    if(butt.id == 'hover') {
+      // console.log('solids');
+      stopRotating();
+      if(butt.value === 'hover') {
+        subOptsNav.classList.add('show');
+        subOpts[0].classList.remove('show');
+        subOpts[1].classList.remove('show');
+        subOpts[2].classList.add('show');
+      }
       // stopAutoColours();
       // mouseOverListeners(handleSolids);
       // updateColour('a_button_state', 'solids');
     }
-    if(butt.id == 'gradientsR') {
-      console.log('gradientsR');
+    if(butt.id == 'camera') {
+      // console.log('automatic');
+      stopRotating();
       subOptsNav.classList.remove('show');
-      // stopAutoColours();
-      // mouseOverListeners(handleGradients);
-      // updateColour('a_button_state', 'gradientsR');
-    }
-    if(butt.id == 'automatic') {
-      console.log('automatic');
-      subOptsNav.classList.add('show');
-      subOpts[0].classList.remove('show');
-      subOpts[1].classList.add('show');
       // startAutoColours();
       // updateColour('a_button_state', 'automatic');
     }

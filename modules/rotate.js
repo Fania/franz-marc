@@ -1,14 +1,17 @@
-export { rotateAll, rotateElement, stopRotating, printColour, getColourSpeed };
+export { rotateAll, rotateElement, pauseRotating, stopRotating, printColour, getColourSpeed };
 
 
+const mandrill_svg = document.getElementById('mandrill_svg');
+const reh_svg = document.getElementById('reh_svg');
+const [...mandrillBlocks] = document.querySelector('#mandrill_svg #colour_blocks').children;
+const [...rehBlocks] = document.querySelector('#reh_svg #colour_blocks').children;
 
-const [...mandrillBlocks] = document.querySelector('#mandrill #colour_blocks').children;
-const [...rehBlocks] = document.querySelector('#marc #colour_blocks').children;
 
 
 
 
 async function rotateAll(source) {
+  console.log('rotateAll',source);
   if(source === 'reh') {
     rehBlocks.forEach(block => {
       rotateElement(block);
@@ -18,6 +21,13 @@ async function rotateAll(source) {
       rotateElement(block);
     });
   }
+
+  if(mandrill_svg.animationsPaused() && 
+     reh_svg.animationsPaused()) {
+    mandrill_svg.unpauseAnimations();
+    reh_svg.unpauseAnimations();
+  }
+
 }
 
 
@@ -57,11 +67,22 @@ async function rotateElement(elem) {
 
 
 
-async function stopRotating() {
-
-
+async function pauseRotating() {
+  console.log('pauseRotating');
+  if(!mandrill_svg.animationsPaused() && 
+     !reh_svg.animationsPaused()) {
+    mandrill_svg.pauseAnimations();
+    reh_svg.pauseAnimations();
+  }
 }
 
+async function stopRotating() {
+  console.log('stopRotating');
+  const [...animationBlocks] = document.getElementsByTagNameNS('http://www.w3.org/2000/svg', 'animateTransform');
+  animationBlocks.forEach(ab => {
+    ab.remove();
+  });
+}
 
 
 

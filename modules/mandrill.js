@@ -2,12 +2,12 @@ import { reh_defaults, mandrill_defaults } from "./defaults.js";
 import { getColours, saveColours, updateColour, loadColours } from "./localStorage.js";
 
 // let bodyCont = document.getElementsByTagName('body')[0];
-const mandrill_svg = document.getElementById('mandrill');
-const reh_svg = document.getElementById('marc');
-const [...mandrillBlocks] = document.querySelector('#mandrill #colour_blocks').children;
-const [...mandrillGradients] = document.querySelector('#mandrill #gradients').children;
-const [...rehBlocks] = document.querySelector('#marc #colour_blocks').children;
-const [...rehGradients] = document.querySelector('#marc #gradients').children;
+const mandrill_svg = document.getElementById('mandrill_svg');
+const reh_svg = document.getElementById('reh_svg');
+const [...mandrillBlocks] = document.querySelector('#mandrill_svg #colour_blocks').children;
+const [...mandrillGradients] = document.querySelector('#mandrill_svg #gradients').children;
+const [...rehBlocks] = document.querySelector('#reh_svg #colour_blocks').children;
+const [...rehGradients] = document.querySelector('#reh_svg #gradients').children;
 
 // const urlParams = new URLSearchParams(window.location.search);
 // console.log(`There are a total of ${mandrillBlocks.length} colour blocks in the Mandrill painting.`);

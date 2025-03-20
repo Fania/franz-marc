@@ -31,12 +31,12 @@
 </head>
 <body id="combined_page">
   
-<span id="reh" class="hideme"></span>
+<span id="fawn" class="hideme"></span>
 <span id="mandrill" class="hideme"></span>
 <span id="about" class="hideme"></span>
 
 <nav class="tabs" aria-label="page tabs">
-  <a href="#reh"><img src="imgs/favicons/maskable_icon.png" alt="">REH</a>
+  <a href="#fawn"><img src="imgs/favicons/maskable_icon.png" alt="">FAWN</a>
   <a href="#mandrill"><img src="imgs/favicons/maskable_icon_mandrill.png" alt="">MANDRILL</a>
   <a href="#about"><img src="imgs/fania.jpeg" alt="">ABOUT</a>
 </nav>
@@ -51,30 +51,37 @@
     <input type="radio" id="paint" name="buttons" value="paint" />
     <label for="paint">Paint</label>
 
-    <input type="radio" id="solids" name="buttons" value="solids" />
-    <label for="solids">Solids</label>
+    <input type="radio" id="hover" name="buttons" value="hover" />
+    <label for="hover">Hover</label>
 
-    <input type="radio" id="gradientsR" name="buttons" value="gradients" />
-    <label for="gradientsR">Gradients</label>
-
-    <input type="radio" id="automatic" name="buttons" value="automatic" />
-    <label for="automatic">Automatic</label>
+    <input type="radio" id="camera" name="buttons" value="camera" />
+    <label for="camera">Camera</label>
   </div>
 </nav>
 <nav class="subOptions">
+  <div>
+    <input id="rotationPause" type="checkbox" name="rotationPause"/>
+    <label for="rotationPause">Pause</label>
+  </div>
   <div>
     <input id="col_picker" type="color" name="buttons" value="#fffa02" />
     <label for="col_picker">Colours</label>
   </div>
   <div>
-    <input id="auto_range" type="range" min="10" max="100" value="55">
-    <label for="auto_range">Speed</label>
+    <div>
+      <input id="enableAuto" type="checkbox" name="enableAuto"/>
+      <label for="enableAuto">Auto</label>
+    </div>
+    <div>
+      <input id="auto_range" type="range" min="10" max="100" value="55">
+      <label for="auto_range">Speed</label>
+    </div>
   </div>
 </nav>
 
 <main class="tab_container">
   <section>
-    <svg id="marc" viewBox="0 0 1500 1062" width="1500" height="1062" preserveAspectRatio="xMidYMid meet" overflow="hidden">
+    <svg id="reh_svg" viewBox="0 0 1500 1062" width="1500" height="1062" preserveAspectRatio="xMidYMid meet" overflow="hidden">
     <!-- <svg id="marc" viewBox="0 0 1500 1062" width="1280" height="876"> -->
       <defs id="gradients"> <!-- gradients -->
         <linearGradient id="two_greens_fade">
@@ -974,7 +981,7 @@
     </svg>
   </section>
   <section>
-    <svg id="mandrill" viewBox="0 0 1280 876" width="1280" height="876" preserveAspectRatio="xMidYMid meet" overflow="hidden">
+    <svg id="mandrill_svg" viewBox="0 0 1280 876" width="1280" height="876" preserveAspectRatio="xMidYMid meet" overflow="hidden">
       <defs id="gradients">
         <filter id="blur">
           <feGaussianBlur in="SourceGraphic" stdDeviation="11"/>
