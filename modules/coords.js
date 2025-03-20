@@ -1,4 +1,4 @@
-'use strict';
+
 
 const mandrill = document.getElementById('mandrill');
 const marc = document.getElementById('marc');

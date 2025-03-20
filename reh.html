@@ -25,8 +25,9 @@
   <meta name="twitter:image" content="https://raw.githubusercontent.com/Fania/blaue-reiter/main/franz-marc.jpeg">
 
   <link rel="stylesheet" href="combined.css"></link>
-  <script type="module" src="defaults.js"></script>
-  <script type="module" src="mandrill.js"></script>
+  <script type="module" src="modules/defaults.js"></script>
+  <script type="module" src="modules/mandrill.js"></script>
+  <script type="module" src="modules/menu.js"></script>
 </head>
 <body id="combined_page">
   
@@ -34,37 +35,39 @@
 <span id="mandrill" class="hideme"></span>
 <span id="about" class="hideme"></span>
 
-<!-- <header> -->
-  <nav class="tabs" aria-label="page tabs">
-    <a href="#reh">Reh</a>
-    <a href="#mandrill">Mandrill</a>
-    <a href="#about">About</a>
-  </nav>
-  <nav class="options">
-    <div id="buttons">
-      <input type="radio" id="original" name="buttons" value="original" checked />
-      <label for="original">Original</label>
+<nav class="tabs" aria-label="page tabs">
+  <a href="#reh"><img src="imgs/favicons/maskable_icon.png" alt="">REH</a>
+  <a href="#mandrill"><img src="imgs/favicons/maskable_icon_mandrill.png" alt="">MANDRILL</a>
+  <a href="#about"><img src="imgs/fania.jpeg" alt="">ABOUT</a>
+</nav>
+<nav class="options">
+  <div id="buttons">
+    <input type="radio" id="original" name="buttons" value="original" checked />
+    <label for="original">Original</label>
 
-      <input type="radio" id="paint" name="buttons" value="paint" />
-      <label for="paint">Paint</label>
+    <input type="radio" id="rotate" name="buttons" value="rotate" />
+    <label for="rotate">Rotate</label>
 
-      <input type="radio" id="solids" name="buttons" value="solids" />
-      <label for="solids">Solids</label>
+    <input type="radio" id="paint" name="buttons" value="paint" />
+    <label for="paint">Paint</label>
 
-      <input type="radio" id="gradientsR" name="buttons" value="gradients" />
-      <label for="gradientsR">Gradients</label>
+    <input type="radio" id="solids" name="buttons" value="solids" />
+    <label for="solids">Solids</label>
 
-      <input type="radio" id="automatic" name="buttons" value="automatic" />
-      <label for="automatic">Automatic</label>
+    <input type="radio" id="gradientsR" name="buttons" value="gradients" />
+    <label for="gradientsR">Gradients</label>
 
-      <input id="auto_range" type="range" min="10" max="100" value="55">
-      <label for="auto_range">Speed</label>
+    <input type="radio" id="automatic" name="buttons" value="automatic" />
+    <label for="automatic">Automatic</label>
+  </div>
+</nav>
+<nav class="subOptions">
+  <input id="auto_range" type="range" min="10" max="100" value="55">
+  <label for="auto_range">Speed</label>
 
-      <input id="col_picker" type="color" name="buttons" value="#fffa02" />
-      <label for="col_picker">Colours</label>
-    </div>
-  </nav>
-<!-- </header> -->
+  <input id="col_picker" type="color" name="buttons" value="#fffa02" />
+  <label for="col_picker">Colours</label>
+</nav>
 
 <main class="tab_container">
   <section>
@@ -2139,8 +2142,8 @@
     Angular    gradients:   x1 & x2 differ  and  y1 & y2 differ
     -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.6.1/randomColor.min.js" integrity="sha512-vPeZ7JCboHcfpqSx5ZD+/jpEhS4JpXxfz9orSvAPPj0EKUVShU2tgy7XkU+oujBJKnWmu4hU7r9MMQNWPfXsYw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="hammer.min.js"></script>
-<script src="coords.js"></script>
+<script src="modules/hammer.min.js"></script>
+<script src="modules/coords.js"></script>
 
 </body>
 </html>
