@@ -1,6 +1,7 @@
-import { rotateElement, printColour, getColourSpeed } from "./rotate.js";
+import { rotateAll, rotateElement, printColour, getColourSpeed } from "./rotate.js";
 
 
+const [...navItems] = document.querySelectorAll('.tabs a');
 const opts = document.querySelector('.options #buttons').children;
 const subOpts = document.querySelector('.subOptions').children;
 const subOptsNav = document.querySelector('.subOptions');
@@ -8,12 +9,18 @@ const [...buttons] = document.getElementsByName('buttons');
 
 
 
-
+// make sure main nav items have 'current' class on it
+navItems.forEach(ni => {
+  ni.addEventListener('click', () => {
+    navItems.map(n => n.classList.remove('current'));
+    ni.classList.add('current');
+  });
+});
 
 
 
 buttons.forEach(butt => {
-  butt.addEventListener('change', (event) => {
+  butt.addEventListener('change', () => {
 
     const current = document.querySelector('[name="buttons"]:checked').value;
     const currentElem = document.querySelector('[name="buttons"]:checked');
@@ -30,6 +37,10 @@ buttons.forEach(butt => {
     if(butt.id == 'rotate') {
       console.log('rotate');
       subOptsNav.classList.remove('show');
+
+      // rotateAll('');
+
+
       // stopAutoColours();
       // localStorage.clear();
       // saveColours(reh_defaults);
