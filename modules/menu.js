@@ -1,6 +1,6 @@
 import { rotateAll, rotateElement, stopRotating, printColour, getColourSpeed } from "./rotate.js";
 import { getColours, saveColours, updateColour, loadColours } from "./localStorage.js";
-import { clearCanvas } from "./paint.js";
+import { clearCanvas, resetCanvas } from "./paint.js";
 
 
 export { getCurrentPage };
@@ -39,24 +39,22 @@ buttons.forEach(butt => {
       // console.log('original');
       subOptsNav.classList.remove('show');
       stopRotating();
+      resetCanvas();
       // stopAutoColours();
       // localStorage.clear();
-      // saveColours(reh_defaults);
+      // saveColours(fawn_defaults);
       // location.reload(); 
     }
     if(butt.id == 'rotate') {
       // console.log('rotate');
-      if(butt.value === 'rotate') {
-        subOptsNav.classList.add('show');
-        subOpts[0].classList.add('show');
-        subOpts[1].classList.remove('show');
-        subOpts[2].classList.remove('show');
-      }
       rotateAll(currentPage);
-
+      subOptsNav.classList.add('show');
+      subOpts[0].classList.add('show');
+      subOpts[1].classList.remove('show');
+      subOpts[2].classList.remove('show');
       // stopAutoColours();
       // localStorage.clear();
-      // saveColours(reh_defaults);
+      // saveColours(fawn_defaults);
       // location.reload(); 
     }
     if(butt.id == 'paint') {
@@ -67,7 +65,6 @@ buttons.forEach(butt => {
       subOpts[0].classList.remove('show');
       subOpts[1].classList.add('show');
       subOpts[2].classList.remove('show');
-
       // stopAutoColours();
       // clearCanvas();
       // clickListeners(handlePaint);
@@ -76,12 +73,10 @@ buttons.forEach(butt => {
     if(butt.id == 'hover') {
       // console.log('solids');
       stopRotating();
-      if(butt.value === 'hover') {
-        subOptsNav.classList.add('show');
-        subOpts[0].classList.remove('show');
-        subOpts[1].classList.remove('show');
-        subOpts[2].classList.add('show');
-      }
+      subOptsNav.classList.add('show');
+      subOpts[0].classList.remove('show');
+      subOpts[1].classList.remove('show');
+      subOpts[2].classList.add('show');
       // stopAutoColours();
       // mouseOverListeners(handleSolids);
       // updateColour('a_button_state', 'solids');

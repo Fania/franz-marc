@@ -1,13 +1,14 @@
-export { clearCanvas, replaceColour };
+export { clearCanvas, replaceColour, resetCanvas };
 
 import { getCurrentPage } from "./menu.js";
 import { getColours, saveColours, updateColour, loadColours } from "./localStorage.js";
+import { fawn_defaults, mandrill_defaults } from "./defaults.js";
 
 
-const [...rehBlocks] = document.querySelector('#reh_svg #reh_colour_blocks').children;
+const [...fawnBlocks] = document.querySelector('#fawn_svg #fawn_colour_blocks').children;
 const [...mandrillBlocks] = document.querySelector('#mandrill_svg #mandrill_colour_blocks').children;
 
-const [...rGradients] = document.getElementById('reh_gradients').children;
+const [...rGradients] = document.getElementById('fawn_gradients').children;
 const [...mGradients] = document.getElementById('mandrill_gradients').children;
 // console.log(rGradients);
 // console.log(mGradients);
@@ -18,8 +19,8 @@ const [...mGradients] = document.getElementById('mandrill_gradients').children;
 function clearCanvas() {
   console.log('clearing canvas');
   const currentPage = getCurrentPage();
-  if(currentPage==='reh') {
-    rehBlocks.forEach(block => {
+  if(currentPage==='fawn') {
+    fawnBlocks.forEach(block => {
       replaceColour(block, 'clear');
     });
   } else {
@@ -32,19 +33,40 @@ function clearCanvas() {
 
 
 
+function resetCanvas() {
+  console.log('resetting canvas');
+  const currentPage = getCurrentPage();
+  if(currentPage==='fawn') {
+    fawnBlocks.forEach(block => {
+      replaceColour(block, 'reset');
+    });
+  } else {
+    mandrillBlocks.forEach(block => {
+      replaceColour(block, 'reset');
+    });
+  }
+}
+
+
+
+
+
+
 function replaceColour(block, type) {
   const currentPage = getCurrentPage();
-  const gradients = currentPage == 'reh' ? rGradients : mGradients;
-  // console.log(gradients);
-  // console.log(block);
+  const gradients = currentPage==='fawn' ? rGradients : mGradients;
+  console.log(gradients);
+  console.log(block);
+  console.log(currentPage);
   if(type === 'clear') {
     const bloID = block.id;
-    // console.log(block.attributes['fill'].value);
+    console.log(block.attributes['fill'].value);
     if(block.attributes['fill'].value.startsWith('url')) {
       const valIDpre = block.attributes['fill'].value;
       const valID = valIDpre.slice(5, -1);
+      console.log(valID);
       const grad = gradients.find((gr) => gr.id == valID);
-      // console.log(grad);
+      console.log(grad);
       const [...toddlers] = grad.children;
       let coloursList = [];
       for(let n=0; n<toddlers.length; n++) {
@@ -63,6 +85,7 @@ function replaceColour(block, type) {
       updateColour(bloID, 'fill:rgb(255,255,255);stroke:rgb(0,0,0);stroke-width:2;');
     }
   } else {
+    let coloursJSON = currentPage == 'fawn' ? fawn_defaults : mandrill_defaults;
     const bloID = block.id;
     if(block.attributes['fill'].value.startsWith('url')) {
       const valIDpre = block.attributes['fill'].value;
@@ -73,6 +96,7 @@ function replaceColour(block, type) {
       for(let i=0; i<len; i++) {
         const currElem = childrs[i];
         currElem.setAttribute('stop-color',`${coloursJSON[valID]}`);
+        // updateColour(valID, coloursList);
       }
       block.setAttribute('fill',`url(#${valID})`);
     } else {

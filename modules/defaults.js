@@ -1104,7 +1104,7 @@ export const mandrill_defaults = {
 };
 
 
-export const reh_defaults = {
+export const fawn_defaults = {
     "black_green_white_fade": [
         "stop-color: rgb(182, 185, 179)",
         "stop-color: rgb(94, 126, 128)",

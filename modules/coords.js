@@ -1,7 +1,7 @@
 
 
 const mandrill = document.getElementById('mandrill_svg');
-const marc = document.getElementById('reh_svg');
+const marc = document.getElementById('fawn_svg');
 
 
 // console.dir(mandrill);

@@ -2,9 +2,9 @@ export { rotateAll, rotateElement, pauseRotating, stopRotating, printColour, get
 
 
 const mandrill_svg = document.getElementById('mandrill_svg');
-const reh_svg = document.getElementById('reh_svg');
+const fawn_svg = document.getElementById('fawn_svg');
 const [...mandrillBlocks] = document.querySelector('#mandrill_svg #mandrill_colour_blocks').children;
-const [...rehBlocks] = document.querySelector('#reh_svg #reh_colour_blocks').children;
+const [...fawnBlocks] = document.querySelector('#fawn_svg #fawn_colour_blocks').children;
 
 
 
@@ -12,8 +12,8 @@ const [...rehBlocks] = document.querySelector('#reh_svg #reh_colour_blocks').chi
 
 async function rotateAll(source) {
   console.log('rotateAll',source);
-  if(source === 'reh') {
-    rehBlocks.forEach(block => {
+  if(source === 'fawn') {
+    fawnBlocks.forEach(block => {
       rotateElement(block);
     });
   } else {
@@ -23,9 +23,9 @@ async function rotateAll(source) {
   }
 
   if(mandrill_svg.animationsPaused() && 
-     reh_svg.animationsPaused()) {
+     fawn_svg.animationsPaused()) {
     mandrill_svg.unpauseAnimations();
-    reh_svg.unpauseAnimations();
+    fawn_svg.unpauseAnimations();
   }
 
 }
@@ -70,9 +70,9 @@ async function rotateElement(elem) {
 async function pauseRotating() {
   console.log('pauseRotating');
   if(!mandrill_svg.animationsPaused() && 
-     !reh_svg.animationsPaused()) {
+     !fawn_svg.animationsPaused()) {
     mandrill_svg.pauseAnimations();
-    reh_svg.pauseAnimations();
+    fawn_svg.pauseAnimations();
   }
 }
 
@@ -104,16 +104,16 @@ function printColour(source,block) {
         for(let i=0; i<len; i++) {
           gradCols.push(`stop-color: ${elem.children[i].attributes[1].value}`);
         }
-        if(source === 'reh'){
-          reh_defaults[valID] = gradCols;
+        if(source === 'fawn'){
+          fawn_defaults[valID] = gradCols;
         } else {
           mandrill_defaults[valID] = gradCols;
         }
         // colours[valID] = gradCols;
       }
       fillCol = `fill: ${block.attributes['fill'].value}`;
-      if(source === 'reh'){
-        reh_defaults[block.id] = fillCol;
+      if(source === 'fawn'){
+        fawn_defaults[block.id] = fillCol;
       } else {
         mandrill_defaults[block.id] = fillCol;
       }
@@ -121,16 +121,16 @@ function printColour(source,block) {
     }
     if(a.name === 'stroke') {
       strokeCol = `fill: ${block.attributes['stroke'].value}`;
-      if(source === 'reh'){
-        reh_defaults[block.id] = strokeCol;
+      if(source === 'fawn'){
+        fawn_defaults[block.id] = strokeCol;
       } else {
         mandrill_defaults[block.id] = strokeCol;
       }
       // colours[block.id] = strokeCol;
     }
   });
-  // if(source === 'reh'){
-  //   console.log(reh_defaults);
+  // if(source === 'fawn'){
+  //   console.log(fawn_defaults);
   // } else {
   //   console.log(mandrill_defaults);
   // }

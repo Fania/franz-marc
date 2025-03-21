@@ -1,19 +1,19 @@
-import { reh_defaults, mandrill_defaults } from "./defaults.js";
+import { fawn_defaults, mandrill_defaults } from "./defaults.js";
 import { getColours, saveColours, updateColour, loadColours } from "./localStorage.js";
 
 // let bodyCont = document.getElementsByTagName('body')[0];
 const mandrill_svg = document.getElementById('mandrill_svg');
-const reh_svg = document.getElementById('reh_svg');
+const fawn_svg = document.getElementById('fawn_svg');
 const [...mandrillBlocks] = document.querySelector('#mandrill_svg #mandrill_colour_blocks').children;
 const [...mandrillGradients] = document.querySelector('#mandrill_svg #mandrill_gradients').children;
-const [...rehBlocks] = document.querySelector('#reh_svg #reh_colour_blocks').children;
-const [...rehGradients] = document.querySelector('#reh_svg #reh_gradients').children;
+const [...fawnBlocks] = document.querySelector('#fawn_svg #fawn_colour_blocks').children;
+const [...fawnGradients] = document.querySelector('#fawn_svg #fawn_gradients').children;
 
 // const urlParams = new URLSearchParams(window.location.search);
 // console.log(`There are a total of ${mandrillBlocks.length} colour blocks in the Mandrill painting.`);
 // console.log(`And there are ${mandrillGradients.length} unique gradients in the Mandrill painting.`);
-// console.log(`There are a total of ${rehBlocks.length} colour blocks in the Reh painting.`);
-// console.log(`And there are ${rehGradients.length} unique gradients in the Reh painting.`);
+// console.log(`There are a total of ${fawnBlocks.length} colour blocks in the Fawn painting.`);
+// console.log(`And there are ${fawnGradients.length} unique gradients in the Fawn painting.`);
 
 
 
@@ -22,7 +22,7 @@ const [...rehGradients] = document.querySelector('#reh_svg #reh_gradients').chil
 mandrill_svg.addEventListener("click", async (ev) => {
   console.log(`(${ev.offsetX}, ${ev.offsetY})`);
 });
-reh_svg.addEventListener("click", async (ev) => {
+fawn_svg.addEventListener("click", async (ev) => {
   console.log(`(${ev.offsetX}, ${ev.offsetY})`);
 });
 
@@ -34,7 +34,7 @@ mandrillBlocks.forEach(block => {
     console.log(block.id);
   });
 });
-rehBlocks.forEach(block => {
+fawnBlocks.forEach(block => {
   block.addEventListener("dblclick", async (ev) => {
     console.log(block.id);
   });
@@ -47,9 +47,9 @@ mandrillBlocks.forEach(block => {
   rotateElement(block);
   printColour('mandrill',block);
 });
-rehBlocks.forEach(block => {
+fawnBlocks.forEach(block => {
   rotateElement(block);
-  printColour('reh',block);
+  printColour('fawn',block);
 });
 
 
@@ -90,12 +90,12 @@ async function rotateElement(elem) {
 
 document.addEventListener("keydown", event => {
   if (event.key === "p") { 
-    if(!mandrill_svg.animationsPaused() && !reh_svg.animationsPaused()) {
-      reh_svg.pauseAnimations();
+    if(!mandrill_svg.animationsPaused() && !fawn_svg.animationsPaused()) {
+      fawn_svg.pauseAnimations();
       mandrill_svg.pauseAnimations();
       console.log('Animations paused');
     } else {
-      reh_svg.unpauseAnimations();
+      fawn_svg.unpauseAnimations();
       mandrill_svg.unpauseAnimations();
       console.log('Animations unpaused');
     }
@@ -125,16 +125,16 @@ function printColour(source,block) {
         for(let i=0; i<len; i++) {
           gradCols.push(`stop-color: ${elem.children[i].attributes[1].value}`);
         }
-        if(source === 'reh'){
-          reh_defaults[valID] = gradCols;
+        if(source === 'fawn'){
+          fawn_defaults[valID] = gradCols;
         } else {
           mandrill_defaults[valID] = gradCols;
         }
         // colours[valID] = gradCols;
       }
       fillCol = `fill: ${block.attributes['fill'].value}`;
-      if(source === 'reh'){
-        reh_defaults[block.id] = fillCol;
+      if(source === 'fawn'){
+        fawn_defaults[block.id] = fillCol;
       } else {
         mandrill_defaults[block.id] = fillCol;
       }
@@ -142,16 +142,16 @@ function printColour(source,block) {
     }
     if(a.name === 'stroke') {
       strokeCol = `fill: ${block.attributes['stroke'].value}`;
-      if(source === 'reh'){
-        reh_defaults[block.id] = strokeCol;
+      if(source === 'fawn'){
+        fawn_defaults[block.id] = strokeCol;
       } else {
         mandrill_defaults[block.id] = strokeCol;
       }
       // colours[block.id] = strokeCol;
     }
   });
-  // if(source === 'reh'){
-  //   console.log(reh_defaults);
+  // if(source === 'fawn'){
+  //   console.log(fawn_defaults);
   // } else {
   //   console.log(mandrill_defaults);
   // }

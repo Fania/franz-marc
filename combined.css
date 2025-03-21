@@ -146,7 +146,7 @@ body#combined_page main.outline * {
   stroke: black;
 }
 
-svg#reh_svg {
+svg#fawn_svg {
   /* height: 1062px; */
   /* width: 1500px; */
   height: auto;
@@ -263,7 +263,7 @@ a:link, a:visited {
 
 section.about {
   padding: 2em;
-  
+
 }
 
 
@@ -285,12 +285,12 @@ section.about {
   /* display: block; */
   display: none;
 }
-#reh_svg .coordinates {
+#fawn_svg .coordinates {
   /* display: block; */
   display: none;
 }
 #mandrill_svg .coordinates.hide,
-#reh_svg .coordinates.hide {
+#fawn_svg .coordinates.hide {
   display: none;
 }
 

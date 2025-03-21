@@ -1,5 +1,5 @@
 export { getColours, saveColours, updateColour, loadColours };
-import { reh_defaults, mandrill_defaults } from "./defaults.js";
+import { fawn_defaults, mandrill_defaults } from "./defaults.js";
 import { getCurrentPage } from "./menu.js";
 
 
@@ -10,7 +10,7 @@ function getColours(source) {
   const coloursString = localStorage.getItem(`${source}Colours`);
   let coloursJSON = {};
   if (coloursString === null) {
-    coloursJSON = source === 'reh' ? reh_defaults : mandrill_defaults;
+    coloursJSON = source==='fawn' ? fawn_defaults : mandrill_defaults;
     saveColours(coloursJSON);
     console.log("first-time setup");
   } else {
@@ -23,14 +23,14 @@ function getColours(source) {
 
 
 
-saveColours(reh_defaults);
+saveColours(fawn_defaults);
 saveColours(mandrill_defaults);
 // save coloursJSON to localStorage
 function saveColours(coloursJSON) {
   // console.trace('saveColours to localStorage');
   const coloursString = JSON.stringify(coloursJSON);
-  if(coloursJSON === reh_defaults) {
-    localStorage.setItem("rehColours", coloursString);
+  if(coloursJSON === fawn_defaults) {
+    localStorage.setItem("fawnColours", coloursString);
   } else {
     localStorage.setItem("mandrillColours", coloursString);
   }
@@ -41,9 +41,9 @@ function saveColours(coloursJSON) {
 // update colour of individual block for source
 function updateColour(id, newColour) {
   const currentPage = getCurrentPage();
-  if(currentPage === 'reh') {
-    let coloursJSON = getColours('reh');
-    const oldColour = reh_defaults[id];
+  if(currentPage === 'fawn') {
+    let coloursJSON = getColours('fawn');
+    const oldColour = fawn_defaults[id];
     coloursJSON[id] = newColour;
     // console.log(`updating ${id} from ${oldColour} to ${newColour}`);
     saveColours(coloursJSON);
@@ -62,7 +62,7 @@ function updateColour(id, newColour) {
 function loadColours(source) {
   let coloursJSON = getColours(source);
   // console.log(coloursJSON);
-  const blocks = source==='reh' ? rehBlocks : mandrillBlocks;
+  const blocks = source==='fawn' ? fawnBlocks : mandrillBlocks;
   blocks.forEach(block => {
     const bloID = block.id;
     if(block.attributes['fill'].value.startsWith('url')) {
