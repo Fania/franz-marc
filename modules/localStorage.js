@@ -11,7 +11,7 @@ function getColours(source) {
   let coloursJSON = {};
   if (coloursString === null) {
     coloursJSON = source==='fawn' ? fawn_defaults : mandrill_defaults;
-    saveColours(coloursJSON);
+    saveColours(source, coloursJSON);
     console.log("first-time setup");
   } else {
     coloursJSON = JSON.parse(coloursString);
@@ -23,13 +23,13 @@ function getColours(source) {
 
 
 
-saveColours(fawn_defaults);
-saveColours(mandrill_defaults);
+saveColours('fawn', fawn_defaults);
+saveColours('mandrill', mandrill_defaults);
 // save coloursJSON to localStorage
-function saveColours(coloursJSON) {
+function saveColours(source, coloursJSON) {
   // console.trace('saveColours to localStorage');
   const coloursString = JSON.stringify(coloursJSON);
-  if(coloursJSON === fawn_defaults) {
+  if(source === 'fawn') {
     localStorage.setItem("fawnColours", coloursString);
   } else {
     localStorage.setItem("mandrillColours", coloursString);
@@ -41,18 +41,18 @@ function saveColours(coloursJSON) {
 // update colour of individual block for source
 function updateColour(id, newColour) {
   const currentPage = getCurrentPage();
-  if(currentPage === 'fawn') {
+  if(currentPage==='fawn') {
     let coloursJSON = getColours('fawn');
-    const oldColour = fawn_defaults[id];
+    // const oldColour = fawn_defaults[id];
     coloursJSON[id] = newColour;
     // console.log(`updating ${id} from ${oldColour} to ${newColour}`);
-    saveColours(coloursJSON);
+    saveColours('fawn', coloursJSON);
   } else {
     let coloursJSON = getColours('mandrill');
-    const oldColour = mandrill_defaults[id];
+    // const oldColour = mandrill_defaults[id];
     coloursJSON[id] = newColour;
     // console.log(`updating ${id} from ${oldColour} to ${newColour}`);
-    saveColours(coloursJSON);
+    saveColours('mandrill', coloursJSON);
   }
 }
 
