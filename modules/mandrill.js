@@ -4,10 +4,10 @@ import { getColours, saveColours, updateColour, loadColours } from "./localStora
 // let bodyCont = document.getElementsByTagName('body')[0];
 const mandrill_svg = document.getElementById('mandrill_svg');
 const reh_svg = document.getElementById('reh_svg');
-const [...mandrillBlocks] = document.querySelector('#mandrill_svg #colour_blocks').children;
-const [...mandrillGradients] = document.querySelector('#mandrill_svg #gradients').children;
-const [...rehBlocks] = document.querySelector('#reh_svg #colour_blocks').children;
-const [...rehGradients] = document.querySelector('#reh_svg #gradients').children;
+const [...mandrillBlocks] = document.querySelector('#mandrill_svg #mandrill_colour_blocks').children;
+const [...mandrillGradients] = document.querySelector('#mandrill_svg #mandrill_gradients').children;
+const [...rehBlocks] = document.querySelector('#reh_svg #reh_colour_blocks').children;
+const [...rehGradients] = document.querySelector('#reh_svg #reh_gradients').children;
 
 // const urlParams = new URLSearchParams(window.location.search);
 // console.log(`There are a total of ${mandrillBlocks.length} colour blocks in the Mandrill painting.`);

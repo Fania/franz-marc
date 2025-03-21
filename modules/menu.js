@@ -1,5 +1,9 @@
 import { rotateAll, rotateElement, stopRotating, printColour, getColourSpeed } from "./rotate.js";
+import { getColours, saveColours, updateColour, loadColours } from "./localStorage.js";
+import { clearCanvas } from "./paint.js";
 
+
+export { getCurrentPage };
 
 const [...navItems] = document.querySelectorAll('.tabs a');
 const opts = document.querySelector('.options #buttons').children;
@@ -7,15 +11,6 @@ const subOpts = document.querySelector('.subOptions').children;
 const subOptsNav = document.querySelector('.subOptions');
 const [...buttons] = document.getElementsByName('buttons');
 
-
-
-// make sure main nav items have 'current' class on it
-// navItems.forEach(ni => {
-//   ni.addEventListener('click', () => {
-//     navItems.map(n => n.classList.remove('current'));
-//     ni.classList.add('current');
-//   });
-// });
 
 
 
@@ -67,12 +62,12 @@ buttons.forEach(butt => {
     if(butt.id == 'paint') {
       // console.log('paint');
       stopRotating();
-      if(butt.value === 'paint') {
-        subOptsNav.classList.add('show');
-        subOpts[0].classList.remove('show');
-        subOpts[1].classList.add('show');
-        subOpts[2].classList.remove('show');
-      }
+      clearCanvas();
+      subOptsNav.classList.add('show');
+      subOpts[0].classList.remove('show');
+      subOpts[1].classList.add('show');
+      subOpts[2].classList.remove('show');
+
       // stopAutoColours();
       // clearCanvas();
       // clickListeners(handlePaint);

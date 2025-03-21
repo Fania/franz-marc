@@ -4,6 +4,9 @@
   --dark: rgb(40, 48, 62);
   color-scheme: only light;
 }
+* {
+  box-sizing: border-box;
+}
 @media screen {
   :root {
     color-scheme: only light;
@@ -49,6 +52,9 @@ body#combined_page nav.tabs a img {
   object-fit: cover;
   border-radius: 50%;
   margin-right: 15px;
+}
+body#combined_page nav.tabs a:nth-of-type(3) img {
+  transform: scaleX(-1);
 }
 nav.tabs a::before {
   margin-right: 15px;
@@ -252,6 +258,18 @@ a:link, a:visited {
   display: block;
   width: 100%;
 }
+
+
+
+section.about {
+  padding: 2em;
+  
+}
+
+
+
+
+
 
 
 

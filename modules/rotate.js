@@ -3,8 +3,8 @@ export { rotateAll, rotateElement, pauseRotating, stopRotating, printColour, get
 
 const mandrill_svg = document.getElementById('mandrill_svg');
 const reh_svg = document.getElementById('reh_svg');
-const [...mandrillBlocks] = document.querySelector('#mandrill_svg #colour_blocks').children;
-const [...rehBlocks] = document.querySelector('#reh_svg #colour_blocks').children;
+const [...mandrillBlocks] = document.querySelector('#mandrill_svg #mandrill_colour_blocks').children;
+const [...rehBlocks] = document.querySelector('#reh_svg #reh_colour_blocks').children;
 
 
 
