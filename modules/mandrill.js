@@ -1,4 +1,4 @@
-import { fawn_defaults, mandrill_defaults } from "./defaultsOLD.js";
+import { fawn_defaults, mandrill_defaults } from "./defaults.js";
 import { getColours, saveColours, updateColour, loadColours } from "./localStorage.js";
 
 // let bodyCont = document.getElementsByTagName('body')[0];

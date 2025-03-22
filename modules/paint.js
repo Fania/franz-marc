@@ -2,7 +2,7 @@ export { clearCanvas, resetCanvas, whiteOutBlock, resetBlock };
 
 import { getCurrentPage } from "./menu.js";
 import { getColours, saveColours, updateColour, loadColours } from "./localStorage.js";
-import { fawn_defaults, mandrill_defaults } from "./defaultsOLD.js";
+import { fawn_defaults, mandrill_defaults } from "./defaults.js";
 
 
 const [...fawnBlocks] = document.querySelector('#fawn_svg #fawn_colour_blocks').children;
@@ -68,7 +68,8 @@ function resetBlock(block) {
   console.log(`resetting block ${bloID} and ${valID}`);
     let coloursList = [];
     coloursList = coloursJSON[valID];
-    updateColour(valID, coloursList);
+    updateColour(bloID, coloursJSON[valID]);
+    // updateColour(valID, 'stop-color', coloursList);
     updateColour(bloID, `url(#${valID})`);
   } else {
   console.log(`resetting block ${bloID}`);
@@ -77,39 +78,96 @@ function resetBlock(block) {
   }
 }
 
-
+// "shape_001": {
+//     "fill": "url(#shape_001_fill)",
+//     "stroke": "",
+//     "stroke-width": "",
+//     "stroke-linecap": "",
+//     "stop-color": [
+//         "rgb(42, 154, 147)",
+//         "rgb(21, 57, 63)"
+//     ]
+// },
 
 
 
 function whiteOutBlock(block) {
   const currentPage = getCurrentPage();
   const gradients = currentPage==='fawn' ? rGradients : mGradients;
-  // console.log(gradients);
-  // console.log(block);
-  console.log(currentPage);
-  const bloID = block.id;
-  // console.log(block.attributes['fill'].value);
-  if(block.attributes['fill'].value.startsWith('url')) {
-    const valIDpre = block.attributes['fill'].value;
-    const valID = valIDpre.slice(5, -1);
-    // console.log(valID);
-    const grad = gradients.find((gr) => gr.id == valID);
-    // console.log(grad);
-    const [...toddlers] = grad.children;
-    let coloursList = [];
-    for(let n=0; n<toddlers.length; n++) {
-      const currElem = toddlers[n];
-      currElem.setAttribute('stop-color','rgb(255,255,255)');
-      coloursList.push(`rgb(255,255,255)`);
-    }
-    block.setAttribute('fill',`url(#${valID})`);
-    block.setAttribute('stroke','rgb(0,0,0)');
-    block.setAttribute('stroke-width',`2`);
-    updateColour(valID, coloursList);
-  } else {
-    block.setAttribute('fill','rgb(255,255,255)');
-    block.setAttribute('stroke','rgb(0,0,0)');
-    block.setAttribute('stroke-width',`2`);
-    updateColour(bloID, 'rgb(255,255,255)');
-  }
+  const blocks = currentPage==='fawn' ? fawnBlocks : mandrillBlocks;
+  let fawnObject = {};
+  let mandrillObject = {};
+  blocks.forEach(block => {
+    const bloID = block.id;
+    let fillCol = '';
+    let strokeCol = '';
+    let strokeWidth = '';
+    let strokeLineCap = '';
+    let gradCols = [];
+    let entry = {
+      'fill': '',
+      'stroke': '',
+      'stroke-width': '',
+      'stroke-linecap': '',
+      'stop-color': []
+    };
+    fawnObject[bloID] = entry;
+    mandrillObject[bloID] = entry;
+    const atts = Object.values(block.attributes);
+    atts.forEach(a => {
+      if(a.name === 'fill') {
+        if(block.attributes['fill'].value.startsWith('url')) {
+          const valIDpre = block.attributes['fill'].value;
+          const valID = valIDpre.slice(5, -1);
+          const grad = gradients.find((gr) => gr.id == valID);
+          const [...toddlers] = grad.children;
+          fawnObject[valID] = entry;
+          mandrillObject[valID] = entry;
+          for(let n=0; n<toddlers.length; n++) {
+            const currElem = toddlers[n];
+            currElem.setAttribute('stop-color','rgb(255,255,255)');
+            gradCols.push(`rgb(255,255,255)`);
+          }
+          if(currentPage==='fawn') {
+            fawnObject[valID]['stop-color'] = gradCols;
+          } else {
+            mandrillObject[valID]['stop-color'] = gradCols;
+          }
+          fillCol = `${block.attributes['fill'].value}`;
+          if(currentPage==='fawn'){
+            fawnObject[bloID]['fill'] = fillCol;
+          } else {
+            mandrillObject[bloID]['fill'] = fillCol;
+          }
+          block.setAttribute('fill',`url(#${valID})`);
+          block.setAttribute('stroke','rgb(0,0,0)');
+          block.setAttribute('stroke-width',`2`);
+          // updateColour(valID, 'fill', `url(#${valID})`);
+          // updateColour(valID, 'stroke', 'rgb(0,0,0)');
+          // updateColour(valID, 'stroke-width', '2');
+          // updateColour(valID, 'stop-color', gradCols);
+        } else {
+          block.setAttribute('fill','rgb(255,255,255)');
+          block.setAttribute('stroke','rgb(0,0,0)');
+          block.setAttribute('stroke-width',`2`);
+          // updateColour(bloID, 'fill', 'rgb(255,255,255)');
+          // updateColour(bloID, 'stroke', 'rgb(0,0,0)');
+          // updateColour(bloID, 'stroke-width', '2');
+          // updateColour(bloID, 'stop-color', gradCols);
+        }
+      }
+      if(a.name === 'stroke') {
+        strokeCol = `${block.attributes['stroke'].value}`;
+        // updateColour(bloID, 'stroke', strokeCol);
+      }
+      if(a.name === 'stroke-width') {
+        strokeWidth = `${block.attributes['stroke-width'].value}`;
+        // updateColour(bloID, 'stroke-width', strokeWidth);
+      }
+      if(a.name === 'stroke-linecap') {
+        strokeLineCap = `${block.attributes['stroke-linecap'].value}`;
+        // updateColour(bloID, 'stroke-linecap', strokeLineCap);
+      }
+    });
+  }); // end of blocks loop
 }

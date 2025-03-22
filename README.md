@@ -29,10 +29,18 @@ This runs the automatic mode on slow only. Turn on fullscreen (check your browse
 
 ## Todos
 
-- [ ] make original default
-- [ ] pause animation button needs doing
+CONTINUE: whiteOutBlock / updateColours
+
+- [ ] paint
+- [ ] hover and auto
+- [ ] motiontracking
+- [ ] responsiveness
+- [ ] update about page
+- [ ] updateColour needs to be more efficient?
 - [ ] solid shapes are not resetting
-- [ ] localStorage is caching weirdly
+- [ ] pause animation button needs doing
+- [x] make original default
+- [x] localStorage is caching weirdly
 - [x] fine tune blocks and get rid of "background" areas
 - [x] put explanation into readme
 - [x] gallery mode

@@ -1,5 +1,5 @@
 export { getColours, saveColours, updateColour, loadColours };
-import { fawn_defaults, mandrill_defaults } from "./defaultsOLD.js";
+import { fawn_defaults, mandrill_defaults } from "./defaults.js";
 import { getCurrentPage } from "./menu.js";
 
 
@@ -46,19 +46,20 @@ function saveColours(source, coloursJSON) {
 
 
 // update colour of individual block for source
-function updateColour(id, newColour) {
+function updateColour(id, property, newColour) {
   const currentPage = getCurrentPage();
+  console.log('property',property);
   if(currentPage==='fawn') {
     let coloursJSON = getColours('fawn');
-    // const oldColour = fawn_defaults[id];
-    coloursJSON[id] = newColour;
-    // console.log(`updating ${id} from ${oldColour} to ${newColour}`);
+    const oldColour = fawn_defaults[id][property];
+    coloursJSON[id][property] = newColour;
+    console.log(`updating ${id} from ${oldColour} to ${newColour}`);
     saveColours('fawn', coloursJSON);
   } else {
     let coloursJSON = getColours('mandrill');
-    // const oldColour = mandrill_defaults[id];
-    coloursJSON[id] = newColour;
-    // console.log(`updating ${id} from ${oldColour} to ${newColour}`);
+    const oldColour = mandrill_defaults[id][property];
+    coloursJSON[id][property] = newColour;
+    console.log(`updating ${id} from ${oldColour} to ${newColour}`);
     saveColours('mandrill', coloursJSON);
   }
 }
@@ -80,7 +81,7 @@ function loadColours(source) {
       const elem = document.getElementById(valID);
       const childrs = elem.children;
       const len = childrs.length;
-      console.log('coloursJSON[valID]',coloursJSON[valID],len);
+      // console.log('coloursJSON[valID]',coloursJSON[valID],len);
       for(let i=0; i<len; i++) {
         const currElem = childrs[i];
         currElem.setAttribute('stop-color',`${coloursJSON[valID][i].slice(11)}`);
@@ -88,7 +89,7 @@ function loadColours(source) {
       block.setAttribute('fill',`url(#${valID})`);
     } else {
       const rcolour = coloursJSON[bloID];
-      console.log('coloursJSON[bloID]',coloursJSON[bloID]);
+      // console.log('coloursJSON[bloID]',coloursJSON[bloID]);
       block.setAttribute('fill',`${rcolour}`);
     }
   });
@@ -101,18 +102,8 @@ function loadColours(source) {
 
 
 
-// print defaults to JSON
-
-
-// "shape_001_fill": {
-//       'fill': 'none',
-//       'stroke': 'none',
-//       'stroke-width': 'none',
-//       'stroke-linecap': 'round',
-//       'stop-color': [ "rgb(42, 154, 147)",
-//                       "rgb(21, 57, 63)" ],
-// },     
-printColour();
+// print defaults to JSON 
+// printColour();
 function printColour() {
   const currentPage = getCurrentPage();
   const blocks = currentPage==='fawn' ? fawnBlocks : mandrillBlocks;
@@ -132,8 +123,6 @@ function printColour() {
       'stroke-linecap': '',
       'stop-color': []
     };
-
-
     fawnObject[bloID] = entry;
     mandrillObject[bloID] = entry;
     const atts = Object.values(block.attributes);
@@ -151,9 +140,6 @@ function printColour() {
             gradCols.push(`${elem.children[i].attributes[1].value}`);
           }
           if(currentPage==='fawn') {
-            console.log(gradCols);
-            console.log(fawnObject[valID]);
-            // console.log(fawnObject[valID]?.["stop-color"]);
             fawnObject[valID]['stop-color'] = gradCols;
           } else {
             mandrillObject[valID]['stop-color'] = gradCols;
@@ -194,15 +180,11 @@ function printColour() {
       }
     });
   });
-
-
-
-
-  if(currentPage === 'fawn'){
-    console.log(fawnObject);
-  } else {
-    console.log(mandrillObject);
-  }
+  // if(currentPage === 'fawn'){
+  //   // console.log(fawnObject);
+  // } else {
+  //   // console.log(mandrillObject);
+  // }
 }
 
 

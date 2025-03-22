@@ -20,7 +20,10 @@ function getCurrentPage() {
 }
 
 
-
+// stop rotating on first load for default original page
+window.onload = () => {
+  stopRotating();
+};
 
 
 
@@ -33,7 +36,7 @@ buttons.forEach(butt => {
     // console.log(current);
 
     const currentPage = getCurrentPage();
-    // console.log(currentPage);
+    console.log(currentPage);
 
     if(butt.id == 'original') {
       // console.log('original');
