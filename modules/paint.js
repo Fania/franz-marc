@@ -2,7 +2,7 @@ export { clearCanvas, resetCanvas, whiteOutBlock, resetBlock };
 
 import { getCurrentPage } from "./menu.js";
 import { getColours, saveColours, updateColour, loadColours } from "./localStorage.js";
-import { fawn_defaults, mandrill_defaults } from "./defaults.js";
+import { fawn_defaults, mandrill_defaults } from "./defaultsOLD.js";
 
 
 const [...fawnBlocks] = document.querySelector('#fawn_svg #fawn_colour_blocks').children;
@@ -36,6 +36,7 @@ function clearCanvas() {
 function resetCanvas() {
   console.log('resetting canvas');
   const currentPage = getCurrentPage();
+  localStorage.clear();
   if(currentPage==='fawn') {
     fawnBlocks.forEach(block => {
       // replaceColour(block, 'reset');
@@ -47,6 +48,8 @@ function resetCanvas() {
       resetBlock(block);
     });
   }
+  loadColours('fawn');
+  loadColours('mandrill');
 }
 
 
@@ -97,7 +100,7 @@ function whiteOutBlock(block) {
     for(let n=0; n<toddlers.length; n++) {
       const currElem = toddlers[n];
       currElem.setAttribute('stop-color','rgb(255,255,255)');
-      coloursList.push(`stop-color: rgb(255,255,255)`);
+      coloursList.push(`rgb(255,255,255)`);
     }
     block.setAttribute('fill',`url(#${valID})`);
     block.setAttribute('stroke','rgb(0,0,0)');

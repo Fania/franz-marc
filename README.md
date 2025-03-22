@@ -29,7 +29,11 @@ This runs the automatic mode on slow only. Turn on fullscreen (check your browse
 
 ## Todos
 
-- [ ] fine tune blocks and get rid of "background" areas
+- [ ] make original default
+- [ ] pause animation button needs doing
+- [ ] solid shapes are not resetting
+- [ ] localStorage is caching weirdly
+- [x] fine tune blocks and get rid of "background" areas
 - [x] put explanation into readme
 - [x] gallery mode
 - [x] menu options add flex wrap for mobile

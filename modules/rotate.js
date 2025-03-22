@@ -129,11 +129,6 @@ function printColour(source,block) {
       // colours[block.id] = strokeCol;
     }
   });
-  // if(source === 'fawn'){
-  //   console.log(fawn_defaults);
-  // } else {
-  //   console.log(mandrill_defaults);
-  // }
 }
 
 
