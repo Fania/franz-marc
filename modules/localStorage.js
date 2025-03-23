@@ -75,6 +75,8 @@ function loadColours(source) {
   const blocks = source==='fawn' ? fawnBlocks : mandrillBlocks;
   blocks.forEach(block => {
     const bloID = block.id;
+    // console.dir(block);
+    // console.log(block.nodeName);
     if(block.attributes['fill'].value.startsWith('url')) {
       const valIDpre = block.attributes['fill'].value;
       const valID = valIDpre.slice(5, -1);
@@ -88,9 +90,13 @@ function loadColours(source) {
       }
       block.setAttribute('fill',`url(#${valID})`);
     } else {
-      const rcolour = coloursJSON[bloID];
+      const rcolour = coloursJSON[bloID].slice(6);
+      // console.log(coloursJSON[bloID]);
       // console.log('coloursJSON[bloID]',coloursJSON[bloID]);
       block.setAttribute('fill',`${rcolour}`);
+    }
+    if(block.nodeName === 'path') {
+      block.setAttribute('stroke',`none`);
     }
   });
 }

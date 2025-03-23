@@ -1,4 +1,4 @@
-export { clearCanvas, resetCanvas, whiteOutBlock, resetBlock };
+export { clearCanvas, resetCanvas, whiteOutBlock };
 
 import { getCurrentPage } from "./menu.js";
 import { getColours, saveColours, updateColour, loadColours } from "./localStorage.js";
@@ -38,15 +38,9 @@ function resetCanvas() {
   const currentPage = getCurrentPage();
   localStorage.clear();
   if(currentPage==='fawn') {
-    fawnBlocks.forEach(block => {
-      // replaceColour(block, 'reset');
-      resetBlock(block);
-    });
+    saveColours('fawn', fawn_defaults);
   } else {
-    mandrillBlocks.forEach(block => {
-      // replaceColour(block, 'reset');
-      resetBlock(block);
-    });
+    saveColours('mandrill', mandrill_defaults);
   }
   loadColours('fawn');
   loadColours('mandrill');
@@ -57,26 +51,26 @@ function resetCanvas() {
 
 
 
-function resetBlock(block) {
-  const currentPage = getCurrentPage();
-  const gradients = currentPage==='fawn' ? rGradients : mGradients;
-  let coloursJSON = currentPage==='fawn' ? fawn_defaults : mandrill_defaults;
-  const bloID = block.id;
-  if(block.attributes['fill'].value.startsWith('url')) {
-    const valIDpre = block.attributes['fill'].value;
-    const valID = valIDpre.slice(5, -1);
-  console.log(`resetting block ${bloID} and ${valID}`);
-    let coloursList = [];
-    coloursList = coloursJSON[valID];
-    updateColour(bloID, coloursJSON[valID]);
-    // updateColour(valID, 'stop-color', coloursList);
-    updateColour(bloID, `url(#${valID})`);
-  } else {
-  console.log(`resetting block ${bloID}`);
-    const rcolour = coloursJSON[bloID];
-    updateColour(bloID, `${rcolour}`);
-  }
-}
+// function resetBlock(block) {
+//   const currentPage = getCurrentPage();
+//   const gradients = currentPage==='fawn' ? rGradients : mGradients;
+//   let coloursJSON = currentPage==='fawn' ? fawn_defaults : mandrill_defaults;
+//   const bloID = block.id;
+//   if(block.attributes['fill'].value.startsWith('url')) {
+//     const valIDpre = block.attributes['fill'].value;
+//     const valID = valIDpre.slice(5, -1);
+//   console.log(`resetting block ${bloID} and ${valID}`);
+//     let coloursList = [];
+//     coloursList = coloursJSON[valID];
+//     updateColour(bloID, coloursJSON[valID]);
+//     // updateColour(valID, 'stop-color', coloursList);
+//     updateColour(bloID, `url(#${valID})`);
+//   } else {
+//   console.log(`resetting block ${bloID}`);
+//     const rcolour = coloursJSON[bloID];
+//     updateColour(bloID, `${rcolour}`);
+//   }
+// }
 
 // "shape_001": {
 //     "fill": "url(#shape_001_fill)",

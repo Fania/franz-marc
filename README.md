@@ -37,8 +37,8 @@ CONTINUE: whiteOutBlock / updateColours
 - [ ] responsiveness
 - [ ] update about page
 - [ ] updateColour needs to be more efficient?
-- [ ] solid shapes are not resetting
 - [ ] pause animation button needs doing
+- [x] solid shapes are not resetting
 - [x] make original default
 - [x] localStorage is caching weirdly
 - [x] fine tune blocks and get rid of "background" areas
