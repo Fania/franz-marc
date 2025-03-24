@@ -5,7 +5,7 @@ const mandrill_svg = document.getElementById('mandrill_svg');
 const fawn_svg = document.getElementById('fawn_svg');
 const [...mandrillBlocks] = document.querySelector('#mandrill_svg #mandrill_colour_blocks').children;
 const [...fawnBlocks] = document.querySelector('#fawn_svg #fawn_colour_blocks').children;
-
+const pauseButton = document.getElementById('rotationPause');
 
 
 
@@ -67,6 +67,14 @@ async function rotateElement(elem) {
 
 
 
+async function unpauseRotating() {
+  console.log('unpauseRotating');
+  if(mandrill_svg.animationsPaused() && 
+     fawn_svg.animationsPaused()) {
+    mandrill_svg.unpauseAnimations();
+    fawn_svg.unpauseAnimations();
+  }
+}
 async function pauseRotating() {
   console.log('pauseRotating');
   if(!mandrill_svg.animationsPaused() && 
@@ -75,6 +83,18 @@ async function pauseRotating() {
     fawn_svg.pauseAnimations();
   }
 }
+
+pauseButton.addEventListener('change', ()=> {
+  if(pauseButton.checked){
+    pauseRotating();
+  } else {
+    unpauseRotating();
+  }
+});
+
+
+
+
 
 async function stopRotating() {
   console.log('stopRotating');

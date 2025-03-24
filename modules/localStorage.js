@@ -71,7 +71,7 @@ function updateColour(id, property, newColour) {
 // load colours from localStorage for source
 function loadColours(source) {
   let coloursJSON = getColours(source);
-  console.log(coloursJSON);
+  // console.log(coloursJSON);
   const blocks = source==='fawn' ? fawnBlocks : mandrillBlocks;
   blocks.forEach(block => {
     const bloID = block.id;
