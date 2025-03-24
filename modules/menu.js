@@ -1,6 +1,6 @@
 import { rotateAll, rotateElement, stopRotating, printColour, getColourSpeed } from "./rotate.js";
 import { getColours, saveColours, updateColour, loadColours } from "./localStorage.js";
-import { clearCanvas, resetCanvas } from "./paint.js";
+import { clearCanvas, resetCanvas, colourBlock } from "./paint.js";
 
 
 export { getCurrentPage };
@@ -10,6 +10,9 @@ const opts = document.querySelector('.options #buttons').children;
 const subOpts = document.querySelector('.subOptions').children;
 const subOptsNav = document.querySelector('.subOptions');
 const [...buttons] = document.getElementsByName('buttons');
+const [...mandrillBlocks] = document.querySelector('#mandrill_svg #mandrill_colour_blocks').children;
+const [...fawnBlocks] = document.querySelector('#fawn_svg #fawn_colour_blocks').children;
+
 
 
 
@@ -64,6 +67,16 @@ buttons.forEach(butt => {
       // console.log('paint');
       stopRotating();
       clearCanvas();
+
+      const colPicker = document.getElementById('col_picker');
+      const currentPage = getCurrentPage();
+      const blocks = currentPage==='fawn' ? fawnBlocks : mandrillBlocks;
+      blocks.forEach(block => {
+        block.addEventListener('click', () => {
+          colourBlock(block, colPicker.value);
+        });
+      });
+      
       subOptsNav.classList.add('show');
       subOpts[0].classList.remove('show');
       subOpts[1].classList.add('show');

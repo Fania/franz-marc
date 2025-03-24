@@ -1,4 +1,4 @@
-export { rotateAll, rotateElement, pauseRotating, stopRotating, printColour, getColourSpeed };
+export { rotateAll, rotateElement, pauseRotating, stopRotating, printColour, getColourSpeed, hexTorgb };
 
 
 const mandrill_svg = document.getElementById('mandrill_svg');
@@ -230,6 +230,10 @@ function rgbToDigitalRoot(rgb) {
 }
 
 
+
+function hexTorgb(hex) {
+  return `rgb(${'0x' + hex[1] + hex[2] | 0}, ${'0x' + hex[3] + hex[4] | 0}, ${'0x' + hex[5] + hex[6] | 0})`;
+}
 
 
 

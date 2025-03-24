@@ -31,13 +31,14 @@ This runs the automatic mode on slow only. Turn on fullscreen (check your browse
 
 CONTINUE: whiteOutBlock / updateColours
 
-- [ ] paint
+- [ ] paint works but reset to original now broken again ?
 - [ ] hover and auto
 - [ ] motiontracking
 - [ ] responsiveness
 - [ ] update about page
-- [ ] updateColour needs to be more efficient?
-- [ ] pause animation button needs doing
+- [x] paint
+- [x] updateColour needs to be more efficient?
+- [x] pause animation button needs doing
 - [x] solid shapes are not resetting
 - [x] make original default
 - [x] localStorage is caching weirdly
