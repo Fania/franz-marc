@@ -86,13 +86,11 @@ function loadColours(source) {
       // console.log('coloursJSON[valID]',coloursJSON[valID],len);
       for(let i=0; i<len; i++) {
         const currElem = childrs[i];
-        currElem.setAttribute('stop-color',`${coloursJSON[valID][i].slice(11)}`);
+        currElem.setAttribute('stop-color',`${coloursJSON[valID]['stop-color'][i]}`);
       }
       block.setAttribute('fill',`url(#${valID})`);
     } else {
-      const rcolour = coloursJSON[bloID].slice(6);
-      // console.log(coloursJSON[bloID]);
-      // console.log('coloursJSON[bloID]',coloursJSON[bloID]);
+      const rcolour = coloursJSON[bloID]['fill'];
       block.setAttribute('fill',`${rcolour}`);
     }
     if(block.nodeName === 'path') {

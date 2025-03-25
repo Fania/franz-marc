@@ -31,11 +31,12 @@ This runs the automatic mode on slow only. Turn on fullscreen (check your browse
 
 CONTINUE: whiteOutBlock / updateColours
 
-- [ ] paint works but reset to original now broken again ?
+- [ ] make sure colours are saved to localstorage properly?!
 - [ ] hover and auto
 - [ ] motiontracking
 - [ ] responsiveness
 - [ ] update about page
+- [x] paint works but reset to original now broken again ?
 - [x] paint
 - [x] updateColour needs to be more efficient?
 - [x] pause animation button needs doing

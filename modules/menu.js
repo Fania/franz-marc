@@ -67,7 +67,6 @@ buttons.forEach(butt => {
       // console.log('paint');
       stopRotating();
       clearCanvas();
-
       const colPicker = document.getElementById('col_picker');
       const currentPage = getCurrentPage();
       const blocks = currentPage==='fawn' ? fawnBlocks : mandrillBlocks;
@@ -76,7 +75,6 @@ buttons.forEach(butt => {
           colourBlock(block, colPicker.value);
         });
       });
-      
       subOptsNav.classList.add('show');
       subOpts[0].classList.remove('show');
       subOpts[1].classList.add('show');
