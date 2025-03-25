@@ -31,7 +31,8 @@ This runs the automatic mode on slow only. Turn on fullscreen (check your browse
 
 CONTINUE: whiteOutBlock / updateColours
 
-- [ ] make sure colours are saved to localstorage properly?!
+- [ ] fix white out and localstorage loading
+- [ ] make sure colours are saved/loaded to localstorage properly?!
 - [ ] hover and auto
 - [ ] motiontracking
 - [ ] responsiveness
