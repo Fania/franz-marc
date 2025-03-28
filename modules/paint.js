@@ -12,8 +12,6 @@ const [...mandrillBlocks] = document.querySelector('#mandrill_svg #mandrill_colo
 
 const [...rGradients] = document.getElementById('fawn_gradients').children;
 const [...mGradients] = document.getElementById('mandrill_gradients').children;
-// console.log(rGradients);
-// console.log(mGradients);
 
 
 
@@ -27,6 +25,7 @@ function clearCanvas() {
   } else {
     saveColours('mandrill', mandrill_whites);
   }
+  
   loadColours('fawn');
   loadColours('mandrill');
 }

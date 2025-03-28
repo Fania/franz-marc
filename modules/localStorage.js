@@ -7,6 +7,9 @@ import { getCurrentPage } from "./menu.js";
 const [...fawnBlocks] = document.querySelector('#fawn_svg #fawn_colour_blocks').children;
 const [...mandrillBlocks] = document.querySelector('#mandrill_svg #mandrill_colour_blocks').children;
 
+const [...rGradients] = document.getElementById('fawn_gradients').children;
+const [...mGradients] = document.getElementById('mandrill_gradients').children;
+
 
 
 
@@ -69,104 +72,74 @@ function updateColour(id, property, newColour) {
 
 // loadColours();
 // load colours from localStorage for source
+
+
+// function loadColours(source) {
+//   let coloursJSON = getColours(source);
+//   const blocks = source==='fawn' ? fawnBlocks : mandrillBlocks;
+//   blocks.forEach(block => {
+//     const bloID = block.id;
+//     if(block.attributes['fill'].value.startsWith('url')) {
+//       const valIDpre = block.attributes['fill'].value;
+//       const valID = valIDpre.slice(5, -1);
+//       const elem = document.getElementById(valID);
+//       const childrs = elem.children;
+//       const len = childrs.length;
+//       for(let i=0; i<len; i++) {
+//         const currElem = childrs[i];
+//         currElem.setAttribute('stop-color',`${coloursJSON[valID]['stop-color'][i]}`);
+//       }
+//       block.setAttribute('fill',`url(#${valID})`);
+//     } else {
+//       const rcolour = coloursJSON[bloID]['fill'];
+//       block.setAttribute('fill',`${rcolour}`);
+//     }
+//     if(block.nodeName === 'path') {
+//       block.setAttribute('stroke',`none`);
+//     }
+//   });
+// }
+
+
+
+
+
 function loadColours(source) {
   let coloursJSON = getColours(source);
   // console.log(coloursJSON);
+  const currentPage = getCurrentPage();
+  const gradients = currentPage==='fawn' ? rGradients : mGradients;
   const blocks = source==='fawn' ? fawnBlocks : mandrillBlocks;
   blocks.forEach(block => {
     const bloID = block.id;
-    // console.dir(block);
-    // console.log(block.nodeName);
-    if(block.attributes['fill'].value.startsWith('url')) {
-      const valIDpre = block.attributes['fill'].value;
-      const valID = valIDpre.slice(5, -1);
-      const elem = document.getElementById(valID);
-      const childrs = elem.children;
-      const len = childrs.length;
-      // console.log('coloursJSON[valID]',coloursJSON[valID],len);
-      for(let i=0; i<len; i++) {
-        const currElem = childrs[i];
-        currElem.setAttribute('stop-color',`${coloursJSON[valID]['stop-color'][i]}`);
-      }
-      block.setAttribute('fill',`url(#${valID})`);
-    } else {
-      const rcolour = coloursJSON[bloID]['fill'];
-      block.setAttribute('fill',`${rcolour}`);
-    }
-    if(block.nodeName === 'path') {
-      block.setAttribute('stroke',`none`);
-    }
-  });
-}
-
-
-
-
-
-
-function loadColoursNEW(source) {
-  let coloursJSON = getColours(source);
-  // console.log(coloursJSON);
-  const blocks = source==='fawn' ? fawnBlocks : mandrillBlocks;
-  blocks.forEach(block => {
-    const atts = Object.values(block.attributes);
-    atts.forEach(a => {
-      if(a.name === 'fill') {
-        if(block.attributes['fill'].value.startsWith('url')) {
-          const valIDpre = block.attributes['fill'].value;
-          const valID = valIDpre.slice(5, -1);
-          const grad = gradients.find((gr) => gr.id == valID);
-          const [...toddlers] = grad.children;
-          fawnObject[valID] = entry;
-          mandrillObject[valID] = entry;
-          for(let n=0; n<toddlers.length; n++) {
-            const currElem = toddlers[n];
-            currElem.setAttribute('stop-color','rgb(255,255,255)');
-            gradCols.push(`rgb(255,255,255)`);
-          }
-          if(currentPage==='fawn') {
-            fawnObject[valID]['stop-color'] = gradCols;
+    for (const [key, value] of Object.entries(coloursJSON[bloID])) {
+      if(key === 'stop-color') {
+        const valIDpre = coloursJSON[bloID]['fill'];
+        const valID = valIDpre.slice(5, -1);
+        if(valIDpre.startsWith('url')) {
+          const grad = gradients.find((gr) => {
+            if(gr.id === valID) {
+              // console.log(gr.children);
+              return gr.children
+            };
+          })
+          if(grad) {
+            // console.log(typeof grad);
+            const [...toddlers] = grad.children;
+            toddlers.forEach((n, i) => {
+              const currElem = toddlers[i];
+              currElem.setAttribute('stop-color', coloursJSON[valID]['stop-color'][i]);
+            })
           } else {
-            mandrillObject[valID]['stop-color'] = gradCols;
+            console.log('not found');
           }
-          fillCol = `${block.attributes['fill'].value}`;
-          if(currentPage==='fawn'){
-            fawnObject[bloID]['fill'] = fillCol;
-            // updateColour(bloID, 'fill', fillCol);
-          } else {
-            mandrillObject[bloID]['fill'] = fillCol;
-            // updateColour(bloID, 'fill', fillCol);
-          }
-          block.setAttribute('fill',`url(#${valID})`);
-          block.setAttribute('stroke','rgb(0,0,0)');
-          block.setAttribute('stroke-width',`2`);
-          updateColour(valID, 'fill', `url(#${valID})`);
-          updateColour(valID, 'stroke', 'rgb(0,0,0)');
-          updateColour(valID, 'stroke-width', '2');
-          updateColour(valID, 'stop-color', gradCols);
         } else {
-          block.setAttribute('fill','rgb(255,255,255)');
-          block.setAttribute('stroke','rgb(0,0,0)');
-          block.setAttribute('stroke-width',`2`);
-          updateColour(bloID, 'fill', 'rgb(255,255,255)');
-          updateColour(bloID, 'stroke', 'rgb(0,0,0)');
-          updateColour(bloID, 'stroke-width', '2');
-          updateColour(bloID, 'stop-color', gradCols);
+          console.log('not url start');
         }
+      } else {
+        block.setAttribute(key, coloursJSON[bloID][key]);
       }
-      if(a.name === 'stroke') {
-        strokeCol = `${block.attributes['stroke'].value}`;
-        updateColour(bloID, 'stroke', strokeCol);
-      }
-      if(a.name === 'stroke-width') {
-        strokeWidth = `${block.attributes['stroke-width'].value}`;
-        updateColour(bloID, 'stroke-width', strokeWidth);
-      }
-      if(a.name === 'stroke-linecap') {
-        strokeLineCap = `${block.attributes['stroke-linecap'].value}`;
-        updateColour(bloID, 'stroke-linecap', strokeLineCap);
-      }
-    }); // end atts
+    } // end for loop
   }); // end blocks
 }
 

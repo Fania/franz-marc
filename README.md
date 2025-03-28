@@ -31,12 +31,13 @@ This runs the automatic mode on slow only. Turn on fullscreen (check your browse
 
 CONTINUE: whiteOutBlock / updateColours
 
-- [ ] fix white out and localstorage loading
-- [ ] make sure colours are saved/loaded to localstorage properly?!
+- [ ] fix mandrill rotate
 - [ ] hover and auto
 - [ ] motiontracking
 - [ ] responsiveness
 - [ ] update about page
+- [x] fix white out and localstorage loading
+- [x] make sure colours are saved/loaded to localstorage properly?!
 - [x] paint works but reset to original now broken again ?
 - [x] paint
 - [x] updateColour needs to be more efficient?
