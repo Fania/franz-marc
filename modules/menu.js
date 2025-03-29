@@ -1,7 +1,7 @@
 import { rotateAll, rotateElement, stopRotating, printColour, getColourSpeed } from "./rotate.js";
 import { getColours, saveColours, updateColour, loadColours } from "./localStorage.js";
 import { clearCanvas, resetCanvas, colourBlock } from "./paint.js";
-import { mouseOverListeners, startAutoColours, stopAutoColours, handleAutomatic, handleSolids, handleGradients } from "./hover.js";
+import { mouseOverListeners, startAutoColours, stopAutoColours, handleColourReplacement } from "./hover.js";
 
 
 export { getCurrentPage };
@@ -46,28 +46,23 @@ buttons.forEach(butt => {
       // console.log('original');
       subOptsNav.classList.remove('show');
       stopRotating();
+      stopAutoColours();
       resetCanvas();
-      // stopAutoColours();
-      // localStorage.clear();
-      // saveColours(fawn_defaults);
-      // location.reload(); 
     }
     if(butt.id == 'rotate') {
       // console.log('rotate');
       resetCanvas();
+      stopAutoColours();
       rotateAll(currentPage);
       subOptsNav.classList.add('show');
       subOpts[0].classList.add('show');
       subOpts[1].classList.remove('show');
       subOpts[2].classList.remove('show');
-      // stopAutoColours();
-      // localStorage.clear();
-      // saveColours(fawn_defaults);
-      // location.reload(); 
     }
     if(butt.id == 'paint') {
       // console.log('paint');
       stopRotating();
+      stopAutoColours();
       clearCanvas();
       const colPicker = document.getElementById('col_picker');
       const currentPage = getCurrentPage();
@@ -81,27 +76,22 @@ buttons.forEach(butt => {
       subOpts[0].classList.remove('show');
       subOpts[1].classList.add('show');
       subOpts[2].classList.remove('show');
-      // stopAutoColours();
-      // clearCanvas();
-      // clickListeners(handlePaint);
-      // updateColour('a_button_state', 'paint');
     }
     if(butt.id == 'hover') {
       // console.log('solids');
       stopRotating();
       resetCanvas();
-      mouseOverListeners(handleSolids);
+      mouseOverListeners(handleColourReplacement);
       subOptsNav.classList.add('show');
       subOpts[0].classList.remove('show');
       subOpts[1].classList.remove('show');
       subOpts[2].classList.add('show');
-      // stopAutoColours();
-      // mouseOverListeners(handleSolids);
-      // updateColour('a_button_state', 'solids');
     }
     if(butt.id == 'camera') {
       // console.log('automatic');
+      resetCanvas();
       stopRotating();
+      stopAutoColours();
       subOptsNav.classList.remove('show');
       // startAutoColours();
       // updateColour('a_button_state', 'automatic');

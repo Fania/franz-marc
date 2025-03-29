@@ -68,6 +68,9 @@ function updateColour(id, property, newColour) {
 }
 
 
+
+const currentPage = getCurrentPage();
+loadColours(currentPage);
 // load colours from localStorage for source
 function loadColours(source) {
   let coloursJSON = getColours(source);

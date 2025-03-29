@@ -31,11 +31,12 @@ This runs the automatic mode on slow only. Turn on fullscreen (check your browse
 
 CONTINUE: whiteOutBlock / updateColours
 
-- [ ] hover: implement buttons (auto and speed slider)
-- [ ] hover: merge solids and gradients
+- [ ] is writing to localSTorage working properly?
 - [ ] motiontracking
 - [ ] responsiveness
 - [ ] update about page
+- [x] hover: implement buttons (auto and speed slider)
+- [x] hover: merge solids and gradients
 - [x] basic hover working
 - [x] fix mandrill rotate
 - [x] fix white out and localstorage loading
