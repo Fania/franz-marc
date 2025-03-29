@@ -31,6 +31,7 @@ This runs the automatic mode on slow only. Turn on fullscreen (check your browse
 
 CONTINUE: whiteOutBlock / updateColours
 
+- [ ] hover: remove event listeners so one can't draw on other pages
 - [ ] finetune motionTracking again as slightly off from finger
 - [ ] is writing to localSTorage working properly?
 - [ ] responsiveness

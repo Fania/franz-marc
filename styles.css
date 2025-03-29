@@ -1,5 +1,11 @@
 :root {
+  --light: rgb(251, 250, 233);
+  --medium: rgba(63, 76, 98, 0.8);
+  --dark: rgb(40, 48, 62);
   color-scheme: only light;
+}
+* {
+  box-sizing: border-box;
 }
 @media screen {
   :root {
@@ -7,253 +13,336 @@
   }
 }
 body#combined_page {
-  /* position: relative; */
-  background: rgb(94, 94, 60);
-  height: 98vh;
-  display: flex;
-  gap: 10px; 
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  /* background: rgb(94, 94, 60); */
+  background: var(--dark);
+  height: 100vh;
+  gap: 20px; 
   margin: 0;
   color: white;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-body#marc_page {
-  /* position: relative; */
-  background: rgb(94, 94, 60);
-  height: 98vh;
-  display: flex;
-  gap: 10px; 
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
-  color: white;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-body#mandrill_page {
-  /* position: relative; */
-  background: rgb(94, 94, 60);
-  height: 98vh;
-  display: flex;
-  gap: 10px; 
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
-  color: white;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-body#combined_page #menu {
-  display: none;
-}
-#menu.hide {
-  display: none;
-}
-svg#marc {
-  height: auto;
-  width: 95%;
-  overflow: hidden;
-}
-svg#mandrill {
-  /* height: 876px; */
-  /* width: 1280px; */
+
+body#combined_page nav {
+  background: var(--medium);
+  box-shadow: 0 4px 5px rgb(0,0,0,0.3);
+  padding: 1em;
   width: 100%;
+  margin: 0;
+}
+body#combined_page nav.tabs {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+body#combined_page nav.options {
+  box-shadow: inset 0 4px 5px rgb(0,0,0,0.3);
+}
+body#combined_page nav.subOptions {
+  box-shadow: inset 0 4px 5px rgb(0,0,0,0.3);
+}
+body#combined_page nav.tabs a img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+body#combined_page nav.tabs a:nth-of-type(3) img {
+  transform: scaleX(-1);
+}
+nav.tabs a::before {
+  margin-right: 15px;
+  content: '⬤';
+  color: rgb(63, 76, 98, 0);
+}
+
+
+body#combined_page nav.options #buttons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+body#combined_page nav.options #buttons input {
+  display: none;
+}
+body#combined_page nav.options #buttons input:checked + label {
+  text-decoration: underline;
+  text-decoration-thickness: 4px;
+  text-decoration-color: var(--light);
+  text-underline-offset: 4px;
+}
+body#combined_page nav.options #buttons label {
+  padding: 0.5em 1em;
+  cursor: pointer;
+}
+body#combined_page nav.subOptions {
+  width: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  gap: 3em;
+  /* transition: all 0.4s; */
+}
+body#combined_page nav.subOptions.show {
+  display: flex;
+} 
+body#combined_page nav.subOptions div:nth-of-type(1),
+body#combined_page nav.subOptions div:nth-of-type(2), 
+body#combined_page nav.subOptions div:nth-of-type(3), 
+body#combined_page nav.subOptions div:nth-of-type(3) div 
+{
+  display: none;
+}
+body#combined_page nav.subOptions div:nth-of-type(1).show,
+body#combined_page nav.subOptions div:nth-of-type(2).show, 
+body#combined_page nav.subOptions div:nth-of-type(3).show
+{
+  display: flex;
+  align-items: center;
+}
+body#combined_page nav.subOptions div:nth-of-type(3).show
+{
+  gap: 2em;
+}
+body#combined_page nav.subOptions div:nth-of-type(3).show div
+{
+  display: flex;
+  align-items: center;
+}
+body#combined_page nav.subOptions label {
+  padding: 0.5em 1em;
+  cursor: pointer;
+}
+body#combined_page nav.subOptions input[type='checkbox'] {
+  display: flex;
+  width: 20px;
+  height: 20px;
+}
+
+
+
+
+
+
+
+
+
+body#combined_page main {
+  display: flex;
+  gap: 10px; 
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+body#combined_page main.outline * {
+  stroke: black;
+}
+
+body#combined_page main section {
+  position: relative;
+  top: 0; bottom: 0; left: 0; right: 0;
+  margin: auto auto;
+  max-width: 100vw;
+  max-height: 100vh;
+}
+body#combined_page main section.fawn_section {
+  aspect-ratio: 1500 / 1062;
+}
+body#combined_page main section.mandrill_section {
+  aspect-ratio: 1280 / 876;
+}
+
+#fawn_stream,
+#mandrill_stream {
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
   height: auto;
+  width: 100%;
+  transform: scaleX(-1);
+  /* visibility: hidden; */
+  margin: auto auto;
+}
+
+#fawn_canvas,
+#mandrill_canvas {
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
+  /* height: 100%; */
+  height: auto;
+  width: 100%;
+  transform: scaleX(-1);
+  visibility: hidden;
+  margin: auto auto;
+}
+
+svg#fawn_svg {
+  /* height: 1062px; */
+  /* width: 1500px; */
+  /* 1103 × 782 */
+  height: auto;
+  width: 100%;
+  /* aspect-ratio: 1.41/1; */
+  object-fit: cover;
+  object-position: center;
   overflow: hidden;
   position: absolute;
-  /* display: none; */
+  top: 0; bottom: 0; left: 0; right: 0;
+  opacity: 0.9;
 }
+svg#mandrill_svg {
+  /* height: 876px; */
+  /* width: 1280px; */
+  /* 1103 × 782 */
+  width: 100%;
+  height: auto;
+  /* aspect-ratio: 1.41/1; */
+  object-fit: cover;
+  object-position: center;
+  overflow: hidden;
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
+  opacity: 0.9;
+}
+
+
+
+
 svg text {
   fill: white;
 }
 
 img#mandrill_img {
-  /* width: 1280px;  */
   /* height: 876px; */
+  /* width: 1280px;  */
   width: 100%;
   height: auto;
-  position: absolute;
-  /* display: none; */
+  aspect-ratio: 1.4/1;
+  /* 1103 × 782 */
+  object-fit: cover;
+  object-position: center;
+  overflow: hidden;
+  /* position: absolute; */
+  display: none;
+  /* bottom: 0; */
+  /* left: 0; */
 }
 
-/* #mandrill #colour_blocks path,
-#mandrill #colour_blocks line,
-#mandrill #colour_blocks circle,
-#mandrill #colour_blocks ellipse {
 
-} */
-#mandrill #coordinates {
-  display: none;
+body#combined_page main section.about img {
+  width: 30%;
 }
-#marc #coordinates {
-  display: none;
-}
-#mandrill #coordinates.hide,
-#marc #coordinates.hide {
-  display: none;
-}
-#menu {
-  position: relative;
+
+/* Basic tab styles */
+.tabs a:link,
+.tabs a:visited {
+  color: var(--light);
+  text-decoration: none;
+  transition: all 0.4s;
+  padding: .5em 2em;
+  width: 30%;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   align-items: center;
-  flex-direction: column;
+  justify-content: center;
+}
+a:link, a:visited {
+  color: inherit;
+}
+
+/* CSS tabs */
+.hideme,
+.tab_container section {
+  display: none;
+}
+
+.tab_container section:first-of-type {
+  display: block;
   width: 100%;
 }
-#buttons {
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  width: 90%;
-  margin: 20px 0;
-  gap: 30px;
-}
-#buttons label {
-  background: rgba(0,0,0,0.2);
-  padding: 10px 15px 12px;
-  border-radius: 15px;
-}
-#buttons input[type='radio'] {
+
+/* …hide its div */
+:target ~ .tab_container section:nth-of-type(1) {
   display: none;
-}
-#buttons input[type='radio'] + label  {
-  color: white;
-  font-variant: all-small-caps;
-}
-#buttons input:checked + label  {
-  background: rgba(255,255,255,0.2);
-}
-#buttons label:hover {
-  background: rgba(255,255,255,0.2);
-}
-#auto_range {
-  display: none;
-}
-#auto_range + label {
-  display: none;
-}
-#buttons input[id='automatic']:checked ~ #auto_range + label {
-  display: block;
-  position: absolute;
-  bottom: -100px;
-  left: calc((100vw - 450px) /2)px;
-  background: none;
-  font-variant: all-small-caps;
-}
-#auto_range + label:hover {
-  background: none;
-}
-#buttons input[id='automatic']:checked ~ #auto_range {
-  display: block;
-  position: absolute;
-  z-index: 99;
-  width: 90%;
-  bottom: -60px;
-  left: calc((100vw - 450px) /2)px;
 }
 
-#col_picker {
+/* Number of tabs set here.
+   Highlight the current link tab… */
+/* body#combined_page nav.tabs a:nth-child(3)::before */
+
+.hideme:nth-of-type(1):target ~ .tabs a:nth-of-type(1)::before,
+.hideme:nth-of-type(2):target ~ .tabs a:nth-of-type(2)::before,
+.hideme:nth-of-type(3):target ~ .tabs a:nth-of-type(3)::before {
+  margin-right: 15px;
+  content: '⬤';
+  color: var(--light);
+  /* border: 1px solid;
+  border-image-slice: 1;
+  border-width: 3px;
+  border-image-source: linear-gradient(to bottom right, 
+                                      rgb(251, 250, 233, 0), 
+                                      rgb(251, 250, 233, 0), 
+                                      rgb(162, 229, 253, 0.5));
+    border-left: 0;
+    border-top: 0; */
+  transition: all 0.4s;
+}
+/* …set targeted link div background, and show its div */
+.hideme:nth-of-type(1):target ~ .tab_container section:nth-of-type(1),
+.hideme:nth-of-type(2):target ~ .tab_container section:nth-of-type(2),
+.hideme:nth-of-type(3):target ~ .tab_container section:nth-of-type(3) {
+  background: inherit;
+  display: block;
+  width: 100%;
+}
+
+
+
+section.about {
+  padding: 2em;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#mandrill_svg .coordinates {
+  /* display: block; */
   display: none;
 }
-#col_picker + label {
+#fawn_svg .coordinates {
+  /* display: block; */
   display: none;
 }
-#buttons input[id='paint']:checked ~ #col_picker + label {
-  display: block;
-  position: absolute;
-  bottom: -130px;
-  left: calc((100vw - 450px) /2)px;
-  background: none;
-  font-variant: all-small-caps;
+#mandrill_svg .coordinates.hide,
+#fawn_svg .coordinates.hide {
+  display: none;
 }
-#buttons input[id='paint']:checked ~ #col_picker {
-  display: block;
-  position: absolute;
-  width: 60px;
-  height: 35px;
-  bottom: -80px;
-  left: calc((100vw - 450px) /2)px;
-}
+
 
 @media (min-width: 1200px) {
-  svg#marc {
-    height: 70vh;
-  }
-}
-@media (min-width: 1700px) {
-  svg#marc {
-    height: 90vh;
-  }
-  #menu {
-    position: absolute;
-    left: 0;
-    top: calc((100vh - 450px) / 2);
-    width: 150px;
-  }
-  #buttons {
-    flex-direction: column;
-  }
-  #buttons input[id='automatic']:checked ~ #auto_range + label {
-    top: calc((115vh - 450px) / 2);
-    left: calc(100vw - 120px);
-  }
-  #buttons input[id='automatic']:checked ~ #auto_range {
-    transform: rotate(-90deg);
-    width: 450px;
-    height: 50px;
-    top: calc((65vh - 450px) / 2);
-    right: calc(-100vw);
-  }
-  #buttons input[id='paint']:checked ~ #col_picker + label {
-    top: calc(50vh / 2);
-    left: calc(100vw - 120px);
-  }
-  #buttons input[id='paint']:checked ~ #col_picker {
-    width: 80px;
-    height: 50px;
-    top: calc(40vh / 2);
-    left: calc(100vw - 120px);
+
+  body#combined_page main {
+    flex-direction: row;
+    padding: 10px;
   }
 }
 
-/* landscape mobiles */
-@media (min-resolution: 2dppx) and (orientation:landscape) {
-/* @media screen and (orientation:landscape) { */
-  body {
-    height: 95vh;
-  }
-  #menu {
-    position: absolute;
-    left: -10px;
-    top: calc((100vh - 375px) / 2);
-    width: 150px;
-  }
-  #buttons input[id='automatic']:checked ~ #auto_range + label {
-    top: calc(40% + 5px);
-    left: calc(100vw - 110px);
-    height: 10px;
-  }
-  #buttons input[id='automatic']:checked ~ #auto_range {
-    transform: rotate(-90deg);
-    width: 300px;
-    height: 50px;
-    top: 40%;
-    right: calc(-96vw);
-  }
-  #buttons input[id='paint']:checked ~ #col_picker + label {
-    top: calc(40% + 50px);
-    left: calc(100vw - 120px);
-    height: 10px;
-  }
-  #buttons input[id='paint']:checked ~ #col_picker {
-    width: 80px;
-    height: 50px;
-    top: 40%;
-    left: calc(100vw - 120px);
-  }
+@media (min-width: 1700px) {
+
+
+  
 }
+

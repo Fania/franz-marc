@@ -4,7 +4,7 @@ import { fawn_defaults, mandrill_defaults } from "./defaults.js";
 import { getCurrentPage } from "./menu.js";
 import { hexTorgb } from "./rotate.js";
 
-export { mouseOverListeners, startAutoColours, stopAutoColours, handleColourReplacement };
+export { addMouseOverListeners, removeMouseOverListeners, startAutoColours, stopAutoColours, handleColourReplacement };
 
 
 
@@ -28,15 +28,29 @@ const enableAutoButt = document.getElementById('enableAuto');
 // mouseOverListeners(handleSolids);
 
 
-function mouseOverListeners(method) {
-  const buttState = document.querySelector('#buttons input:checked').value;
+function addMouseOverListeners(method) {
   const currentPage = getCurrentPage();
+  console.log('adding mouseover listeners for', currentPage);
   const blocks = currentPage==='fawn' ? fawnBlocks : mandrillBlocks;
   blocks.forEach(block => {
+    console.log('tadaaaaaa and added');
     block.addEventListener('mouseover', () => {
       method(block);
-    });
+    }, true);
   });
+}
+function removeMouseOverListeners(method) {
+  const currentPage = getCurrentPage();
+  console.log('removing mouseover listeners for', currentPage);
+  const blocks = currentPage==='fawn' ? fawnBlocks : mandrillBlocks;
+  blocks.forEach(block => {
+    block.removeEventListener('mouseover', method, false);
+  });
+
+  // this removes the event handler but doesn't allow adding it back on?!
+  // window.addEventListener('mouseover', (event) => {
+  //   event.stopImmediatePropagation();
+  // }, true);
 }
 
 
