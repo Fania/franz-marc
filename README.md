@@ -31,11 +31,13 @@ This runs the automatic mode on slow only. Turn on fullscreen (check your browse
 
 CONTINUE: whiteOutBlock / updateColours
 
-- [ ] fix mandrill rotate
-- [ ] hover and auto
+- [ ] hover: implement buttons (auto and speed slider)
+- [ ] hover: merge solids and gradients
 - [ ] motiontracking
 - [ ] responsiveness
 - [ ] update about page
+- [x] basic hover working
+- [x] fix mandrill rotate
 - [x] fix white out and localstorage loading
 - [x] make sure colours are saved/loaded to localstorage properly?!
 - [x] paint works but reset to original now broken again ?
