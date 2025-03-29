@@ -68,42 +68,7 @@ function updateColour(id, property, newColour) {
 }
 
 
-
-
-// loadColours();
 // load colours from localStorage for source
-
-
-// function loadColours(source) {
-//   let coloursJSON = getColours(source);
-//   const blocks = source==='fawn' ? fawnBlocks : mandrillBlocks;
-//   blocks.forEach(block => {
-//     const bloID = block.id;
-//     if(block.attributes['fill'].value.startsWith('url')) {
-//       const valIDpre = block.attributes['fill'].value;
-//       const valID = valIDpre.slice(5, -1);
-//       const elem = document.getElementById(valID);
-//       const childrs = elem.children;
-//       const len = childrs.length;
-//       for(let i=0; i<len; i++) {
-//         const currElem = childrs[i];
-//         currElem.setAttribute('stop-color',`${coloursJSON[valID]['stop-color'][i]}`);
-//       }
-//       block.setAttribute('fill',`url(#${valID})`);
-//     } else {
-//       const rcolour = coloursJSON[bloID]['fill'];
-//       block.setAttribute('fill',`${rcolour}`);
-//     }
-//     if(block.nodeName === 'path') {
-//       block.setAttribute('stroke',`none`);
-//     }
-//   });
-// }
-
-
-
-
-
 function loadColours(source) {
   let coloursJSON = getColours(source);
   // console.log(coloursJSON);
@@ -119,7 +84,6 @@ function loadColours(source) {
         if(valIDpre.startsWith('url')) {
           const grad = gradients.find((gr) => {
             if(gr.id === valID) {
-              // console.log(gr.children);
               return gr.children
             };
           })
@@ -131,10 +95,10 @@ function loadColours(source) {
               currElem.setAttribute('stop-color', coloursJSON[valID]['stop-color'][i]);
             })
           } else {
-            console.log('not found');
+            // console.log('no grad found');
           }
         } else {
-          console.log('not url start');
+          // console.log('no url start');
         }
       } else {
         block.setAttribute(key, coloursJSON[bloID][key]);

@@ -1,6 +1,7 @@
 import { rotateAll, rotateElement, stopRotating, printColour, getColourSpeed } from "./rotate.js";
 import { getColours, saveColours, updateColour, loadColours } from "./localStorage.js";
 import { clearCanvas, resetCanvas, colourBlock } from "./paint.js";
+import { mouseOverListeners, startAutoColours, stopAutoColours, handleAutomatic, handleSolids, handleGradients } from "./hover.js";
 
 
 export { getCurrentPage };
@@ -53,6 +54,7 @@ buttons.forEach(butt => {
     }
     if(butt.id == 'rotate') {
       // console.log('rotate');
+      resetCanvas();
       rotateAll(currentPage);
       subOptsNav.classList.add('show');
       subOpts[0].classList.add('show');
@@ -87,6 +89,8 @@ buttons.forEach(butt => {
     if(butt.id == 'hover') {
       // console.log('solids');
       stopRotating();
+      resetCanvas();
+      mouseOverListeners(handleSolids);
       subOptsNav.classList.add('show');
       subOpts[0].classList.remove('show');
       subOpts[1].classList.remove('show');
