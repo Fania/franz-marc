@@ -28,6 +28,12 @@
   <!-- <script type="module" src="modules/defaults.js"></script> -->
   <!-- <script type="module" src="modules/coords.js"></script> -->
   <script type="module" src="modules/menu.js"></script>
+  <script type="module" src="modules/motion.js"></script>
+  <!-- <script defer>
+    // window.addEventListener("DOMContentLoaded", (event) => {
+    // window.onload = setTimeout(()=> {startMotion()}, 1000);
+    window.onload = startMotion();
+  </script> -->
 </head>
 <body id="combined_page">
   
@@ -80,7 +86,9 @@
 </nav>
 
 <main class="tab_container">
-  <section>
+  <section class="fawn_section">
+    <video id="fawn_stream"></video>
+    <canvas id="fawn_canvas"></canvas>
     <svg id="fawn_svg" viewBox="0 0 1500 1062" width="1500" height="1062" preserveAspectRatio="xMidYMid meet" overflow="hidden">
     <!-- <svg id="marc" viewBox="0 0 1500 1062" width="1280" height="876"> -->
       <defs id="fawn_gradients"> <!-- gradients -->
@@ -912,7 +920,9 @@
       </g>
     </svg>
   </section>
-  <section>
+  <section class="mandrill_section">
+    <video id="mandrill_stream"></video>
+    <canvas id="mandrill_canvas"></canvas>
     <svg id="mandrill_svg" viewBox="0 0 1280 876" width="1280" height="876" preserveAspectRatio="xMidYMid meet" overflow="hidden">
       <defs id="mandrill_gradients">
         <filter id="blur">
@@ -2084,5 +2094,22 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.6.1/randomColor.min.js" integrity="sha512-vPeZ7JCboHcfpqSx5ZD+/jpEhS4JpXxfz9orSvAPPj0EKUVShU2tgy7XkU+oujBJKnWmu4hU7r9MMQNWPfXsYw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="modules/hammer.min.js"></script>
 
+
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/12.3.0/math.js" integrity="sha512-TaKu3GlWLNU3fyPcvsSHSh44vX/Z43ePJDRTJr7IuUKVlUHHsHm7ODYNt5xffy75M6MOXsh7p+VyXCk5icuoxQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+
+
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+
+<!-- <script src="js/hammer.min.js"></script> -->
+<!-- <script src="js/motion.js"></script>
+<script src="js/scripts.js"></script> -->
+
+  <!-- <script defer>
+    // window.addEventListener("DOMContentLoaded", (event) => {
+    // window.onload = setTimeout(()=> {startMotion()}, 1000);
+    window.onload = startMotion();
+  </script> -->
 </body>
 </html>

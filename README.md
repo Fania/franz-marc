@@ -31,10 +31,11 @@ This runs the automatic mode on slow only. Turn on fullscreen (check your browse
 
 CONTINUE: whiteOutBlock / updateColours
 
+- [ ] finetune motionTracking again as slightly off from finger
 - [ ] is writing to localSTorage working properly?
-- [ ] motiontracking
 - [ ] responsiveness
 - [ ] update about page
+- [x] motiontracking
 - [x] hover: implement buttons (auto and speed slider)
 - [x] hover: merge solids and gradients
 - [x] basic hover working

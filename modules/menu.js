@@ -2,7 +2,7 @@ import { rotateAll, rotateElement, stopRotating, printColour, getColourSpeed } f
 import { getColours, saveColours, updateColour, loadColours } from "./localStorage.js";
 import { clearCanvas, resetCanvas, colourBlock } from "./paint.js";
 import { mouseOverListeners, startAutoColours, stopAutoColours, handleColourReplacement } from "./hover.js";
-
+import { startMotion, stopMotion } from "./motion.js";
 
 export { getCurrentPage };
 
@@ -47,12 +47,14 @@ buttons.forEach(butt => {
       subOptsNav.classList.remove('show');
       stopRotating();
       stopAutoColours();
+      stopMotion();
       resetCanvas();
     }
     if(butt.id == 'rotate') {
       // console.log('rotate');
       resetCanvas();
       stopAutoColours();
+      stopMotion();
       rotateAll(currentPage);
       subOptsNav.classList.add('show');
       subOpts[0].classList.add('show');
@@ -63,6 +65,7 @@ buttons.forEach(butt => {
       // console.log('paint');
       stopRotating();
       stopAutoColours();
+      stopMotion();
       clearCanvas();
       const colPicker = document.getElementById('col_picker');
       const currentPage = getCurrentPage();
@@ -80,6 +83,7 @@ buttons.forEach(butt => {
     if(butt.id == 'hover') {
       // console.log('solids');
       stopRotating();
+      stopMotion();
       resetCanvas();
       mouseOverListeners(handleColourReplacement);
       subOptsNav.classList.add('show');
@@ -92,9 +96,9 @@ buttons.forEach(butt => {
       resetCanvas();
       stopRotating();
       stopAutoColours();
+      startMotion();
       subOptsNav.classList.remove('show');
-      // startAutoColours();
-      // updateColour('a_button_state', 'automatic');
     }
   });
 });
+

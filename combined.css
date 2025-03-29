@@ -16,11 +16,7 @@ body#combined_page {
   /* background: rgb(94, 94, 60); */
   background: var(--dark);
   height: 100vh;
-  display: flex;
   gap: 20px; 
-  flex-direction: column;
-  align-items: center;
-  /* justify-content: space-between; */
   margin: 0;
   color: white;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -39,11 +35,9 @@ body#combined_page nav.tabs {
   justify-content: space-around;
 }
 body#combined_page nav.options {
-  margin-top: -20px;
   box-shadow: inset 0 4px 5px rgb(0,0,0,0.3);
 }
 body#combined_page nav.subOptions {
-  margin-top: -20px;
   box-shadow: inset 0 4px 5px rgb(0,0,0,0.3);
 }
 body#combined_page nav.tabs a img {
@@ -146,31 +140,70 @@ body#combined_page main.outline * {
   stroke: black;
 }
 
+body#combined_page main section {
+  position: relative;
+  top: 0; bottom: 0; left: 0; right: 0;
+  margin: auto auto;
+  max-width: 100vw;
+  max-height: 100vh;
+}
+body#combined_page main section.fawn_section {
+  aspect-ratio: 1500 / 1062;
+}
+body#combined_page main section.mandrill_section {
+  aspect-ratio: 1280 / 876;
+}
+
+#fawn_stream,
+#mandrill_stream {
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
+  height: auto;
+  width: 100%;
+  transform: scaleX(-1);
+  /* visibility: hidden; */
+  margin: auto auto;
+}
+
+#fawn_canvas,
+#mandrill_canvas {
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
+  /* height: 100%; */
+  height: auto;
+  width: 100%;
+  transform: scaleX(-1);
+  visibility: hidden;
+  margin: auto auto;
+}
+
 svg#fawn_svg {
   /* height: 1062px; */
   /* width: 1500px; */
+  /* 1103 × 782 */
   height: auto;
   width: 100%;
-  aspect-ratio: 1.41/1;
-  /* 1103 × 782 */
+  /* aspect-ratio: 1.41/1; */
   object-fit: cover;
   object-position: center;
   overflow: hidden;
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
+  opacity: 0.9;
 }
 svg#mandrill_svg {
   /* height: 876px; */
   /* width: 1280px; */
+  /* 1103 × 782 */
   width: 100%;
   height: auto;
-  aspect-ratio: 1.41/1;
-  /* 1103 × 782 */
+  /* aspect-ratio: 1.41/1; */
   object-fit: cover;
   object-position: center;
   overflow: hidden;
-  /* position: absolute; */
-  /* display: none; */
-  /* bottom: 0; */
-  /* left: 0; */
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
+  opacity: 0.9;
 }
 
 
