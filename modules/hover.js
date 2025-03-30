@@ -24,39 +24,34 @@ const enableAutoButt = document.getElementById('enableAuto');
 
 
 
-// put that into menu option for hover option
-// mouseOverListeners(handleSolids);
 
+const mouseOverListeners = [];
 
 function addMouseOverListeners(method) {
   const currentPage = getCurrentPage();
-  console.log('adding mouseover listeners for', currentPage);
+  // console.log('adding mouseover listeners for', currentPage);
   const blocks = currentPage==='fawn' ? fawnBlocks : mandrillBlocks;
+  const eventHandler = (block) => {
+    method(block);
+  }
   blocks.forEach(block => {
-    console.log('tadaaaaaa and added');
-    block.addEventListener('mouseover', () => {
-      method(block);
-    }, true);
-  });
+    const handler = eventHandler.bind(block);
+    block.addEventListener('mouseover', handler);
+    mouseOverListeners.push([block, handler]);
+  }); 
 }
-function removeMouseOverListeners(method) {
-  const currentPage = getCurrentPage();
-  console.log('removing mouseover listeners for', currentPage);
-  const blocks = currentPage==='fawn' ? fawnBlocks : mandrillBlocks;
-  blocks.forEach(block => {
-    block.removeEventListener('mouseover', method, false);
-  });
 
-  // this removes the event handler but doesn't allow adding it back on?!
-  // window.addEventListener('mouseover', (event) => {
-  //   event.stopImmediatePropagation();
-  // }, true);
+
+function removeMouseOverListeners() {
+  // console.log('removing mouseover listeners for', currentPage);
+  mouseOverListeners.forEach(([block, handler]) => block.removeEventListener('mouseover', handler));
 }
 
 
 
 
-function handleColourReplacement(block) {
+function handleColourReplacement(event) {
+  const block = event.target;
   const currentPage = getCurrentPage();
   const gradients = currentPage==='fawn' ? rGradients : mGradients;
   let fawnObject = {};
