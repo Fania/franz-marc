@@ -82,6 +82,7 @@ function drawHandPositions(handData) {
       if(currHandElem && currHandElem !== null) {
         if(currHandElem.tagName === 'path') {
           // handleSolids(currHandElem);
+          // console.log(currHandElem);
           handleColourReplacement(currHandElem);
         }
       }

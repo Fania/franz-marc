@@ -32,7 +32,7 @@ function addMouseOverListeners(method) {
   // console.log('adding mouseover listeners for', currentPage);
   const blocks = currentPage==='fawn' ? fawnBlocks : mandrillBlocks;
   const eventHandler = (block) => {
-    method(block);
+    method(block.target);
   }
   blocks.forEach(block => {
     const handler = eventHandler.bind(block);
@@ -50,8 +50,7 @@ function removeMouseOverListeners() {
 
 
 
-function handleColourReplacement(event) {
-  const block = event.target;
+function handleColourReplacement(block) {
   const currentPage = getCurrentPage();
   const gradients = currentPage==='fawn' ? rGradients : mGradients;
   let fawnObject = {};
