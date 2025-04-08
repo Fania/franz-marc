@@ -260,6 +260,21 @@ a:link, a:visited {
   display: none;
 }
 
+/* make first menu item default */
+.tabs a:first-child::before {
+  margin-right: 15px;
+  content: '⬤';
+  color: var(--light);
+  transition: all 0.4s;
+}
+/* if not targeted, un-highlight first tab style… */
+:target ~ .tabs a:first-child::before {
+  margin-right: 15px;
+  content: '⬤';
+  color: rgb(63, 76, 98, 0);
+  transition: all 0.4s;
+}
+
 /* Number of tabs set here.
    Highlight the current link tab… */
 /* body#combined_page nav.tabs a:nth-child(3)::before */
@@ -270,15 +285,6 @@ a:link, a:visited {
   margin-right: 15px;
   content: '⬤';
   color: var(--light);
-  /* border: 1px solid;
-  border-image-slice: 1;
-  border-width: 3px;
-  border-image-source: linear-gradient(to bottom right, 
-                                      rgb(251, 250, 233, 0), 
-                                      rgb(251, 250, 233, 0), 
-                                      rgb(162, 229, 253, 0.5));
-    border-left: 0;
-    border-top: 0; */
   transition: all 0.4s;
 }
 /* …set targeted link div background, and show its div */
@@ -347,6 +353,7 @@ section.about {
   }
   body#combined_page nav.options {
     max-width: 100px;
+    box-shadow: inset 4px 0 5px rgb(0,0,0,0.3);
   }
   body#combined_page nav.options #buttons {
     flex-direction: column;
@@ -357,6 +364,7 @@ section.about {
   body#combined_page nav.subOptions {
     flex-direction: column;
     max-width: 100px;
+    box-shadow: inset 4px 0 5px rgb(0,0,0,0.3);
   }
   body#combined_page nav.subOptions div {
     flex-direction: column;
