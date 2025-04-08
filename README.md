@@ -33,7 +33,7 @@ This runs the automatic mode on slow only. Turn on fullscreen (check your browse
 
 - [ ] finetune motionTracking again as slightly off from finger
 - [ ] is writing to localSTorage working properly?
-- [ ] update about page
+- [x] update about page
 - [x] responsiveness
 - [x] hover: remove event listeners so one can't draw on other pages
 - [x] motiontracking
