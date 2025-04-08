@@ -224,9 +224,30 @@ svg text {
 
 
 
-body#combined_page main section.about img {
-  width: 30%;
+
+body#combined_page main section.about .imgs {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
 }
+body#combined_page main section.about .imgs figure {
+  margin: 1em;
+}
+body#combined_page main section.about .imgs div {
+  display: flex;
+  flex-direction: column;
+}
+body#combined_page main section.about .imgs img {
+  width: 300px;
+  max-height: 474px;
+  object-fit: contain;
+}
+
+
+
+
+
 
 /* Basic tab styles */
 .tabs a:link,
@@ -374,4 +395,17 @@ section.about {
     margin: 4em;
   }
 
+  body#combined_page main section.about .imgs {
+    flex-direction: row;
+  }
+
+
+}
+
+
+
+@media (min-width: 1200px) {
+  body#combined_page main section.about .imgs {
+    justify-content: space-around;
+  }
 }
