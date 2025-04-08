@@ -1,7 +1,7 @@
 import { rotateAll, rotateElement, stopRotating, printColour, getColourSpeed } from "./rotate.js";
 import { getColours, saveColours, updateColour, loadColours } from "./localStorage.js";
 import { clearCanvas, resetCanvas, colourBlock } from "./paint.js";
-import { addMouseOverListeners, removeMouseOverListeners, startAutoColours, stopAutoColours, handleColourReplacement } from "./hover.js";
+import { addMouseOverListeners, removeMouseOverListeners, addFingerListeners, removeFingerListeners, startAutoColours, stopAutoColours, handleColourReplacement } from "./hover.js";
 import { startMotion, stopMotion } from "./motion.js";
 
 export { getCurrentPage };
@@ -49,6 +49,7 @@ buttons.forEach(butt => {
       stopAutoColours();
       stopMotion();
       removeMouseOverListeners();
+      removeFingerListeners();
       resetCanvas();
     }
     if(butt.id == 'rotate') {
@@ -57,6 +58,7 @@ buttons.forEach(butt => {
       stopAutoColours();
       stopMotion();
       removeMouseOverListeners();
+      removeFingerListeners();
       rotateAll(currentPage);
       subOptsNav.classList.add('show');
       subOpts[0].classList.add('show');
@@ -69,6 +71,7 @@ buttons.forEach(butt => {
       stopAutoColours();
       stopMotion();
       removeMouseOverListeners();
+      removeFingerListeners();
       clearCanvas();
       const colPicker = document.getElementById('col_picker');
       const currentPage = getCurrentPage();
@@ -89,6 +92,7 @@ buttons.forEach(butt => {
       stopMotion();
       resetCanvas();
       addMouseOverListeners(handleColourReplacement);
+      addFingerListeners(handleColourReplacement);
       subOptsNav.classList.add('show');
       subOpts[0].classList.remove('show');
       subOpts[1].classList.remove('show');
@@ -100,6 +104,7 @@ buttons.forEach(butt => {
       stopRotating();
       stopAutoColours();
       removeMouseOverListeners();
+      removeFingerListeners();
       startMotion();
       subOptsNav.classList.remove('show');
     }

@@ -4,7 +4,7 @@ import { fawn_defaults, mandrill_defaults } from "./defaults.js";
 import { getCurrentPage } from "./menu.js";
 import { hexTorgb } from "./rotate.js";
 
-export { addMouseOverListeners, removeMouseOverListeners, startAutoColours, stopAutoColours, handleColourReplacement };
+export { addMouseOverListeners, removeMouseOverListeners, addFingerListeners, removeFingerListeners, startAutoColours, stopAutoColours, handleColourReplacement };
 
 
 
@@ -23,10 +23,25 @@ const enableAutoButt = document.getElementById('enableAuto');
 
 const fmc = new Hammer.Manager(fawn_svg);
 const mmc = new Hammer.Manager(mandrill_svg);
+fmc.add(new Hammer.Pan({ 
+  direction: Hammer.DIRECTION_ALL, 
+  threshold: 0 
+}));
+fmc.add(new Hammer.Tap({ 
+  event: 'singletap', 
+  taps: 1
+}));
+mmc.add(new Hammer.Pan({ 
+  direction: Hammer.DIRECTION_ALL, 
+  threshold: 0 
+}));
+mmc.add(new Hammer.Tap({ 
+  event: 'singletap', 
+  taps: 1
+}));
 
 
-
-const mouseOverListeners = [];
+const listeners = [];
 
 function addMouseOverListeners(method) {
   const currentPage = getCurrentPage();
@@ -38,40 +53,48 @@ function addMouseOverListeners(method) {
   blocks.forEach(block => {
     const handler = eventHandler.bind(block);
     block.addEventListener('mouseover', handler);
-    mouseOverListeners.push([block, handler]);
-    fmc.add(new Hammer.Pan({ 
-      direction: Hammer.DIRECTION_ALL, 
-      threshold: 0 
-    }));
-    fmc.add(new Hammer.Tap({ 
-      event: 'singletap', 
-      taps: 1
-    }));
-    mmc.add(new Hammer.Pan({ 
-      direction: Hammer.DIRECTION_ALL, 
-      threshold: 0 
-    }));
-    mmc.add(new Hammer.Tap({ 
-      event: 'singletap', 
-      taps: 1
-    }));
-    fmc.on("pan", handleDrag);
-    fmc.on("singletap", handleTap);
-    mmc.on("pan", handleDrag);
-    mmc.on("singletap", handleTap);
+    listeners.push([block, handler]);
   }); 
 }
 
 
 function removeMouseOverListeners() {
   // console.log('removing mouseover listeners for', currentPage);
-  mouseOverListeners.forEach(([block, handler]) => {
+  listeners.forEach(([block, handler]) => {
     block.removeEventListener('mouseover', handler);
     fmc.destroy();
     mmc.destroy();
   });
 }
 
+
+
+
+function addFingerListeners(method) {
+  const currentPage = getCurrentPage();
+  // console.log('adding mouseover listeners for', currentPage);
+  const blocks = currentPage==='fawn' ? fawnBlocks : mandrillBlocks;
+  const eventHandler = (block) => {
+    method(block.target);
+  }
+  blocks.forEach(block => {
+    const handler = eventHandler.bind(block);
+    listeners.push([block, handler]);
+    fmc.on("pan", handleDrag);
+    fmc.on("singletap", handleTap);
+    mmc.on("pan", handleDrag);
+    mmc.on("singletap", handleTap);
+  }); 
+}
+function removeFingerListeners() {
+  listeners.forEach(([block, handler]) => {
+    // block.removeEventListener('mouseover', handler);
+    fmc.off("pan", handleDrag);
+    fmc.off("singletap", handleTap);
+    mmc.off("pan", handleDrag);
+    mmc.off("singletap", handleTap);
+  });
+}
 
 
 
@@ -224,6 +247,10 @@ enableAutoButt.addEventListener('change', () => {
 
 
 // HAMMERTIME
+
+
+
+
 // const fmc = new Hammer.Manager(fawn_svg);
 // const mmc = new Hammer.Manager(mandrill_svg);
 // fmc.add(new Hammer.Pan({ 
