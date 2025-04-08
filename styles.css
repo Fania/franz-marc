@@ -318,6 +318,12 @@ a:link, a:visited {
 }
 
 
+.hideme:nth-of-type(3):target ~ nav.options,
+.hideme:nth-of-type(3):target ~ nav.subOptions {
+  display: none !important;
+}
+
+
 
 section.about {
   padding: 2em;
