@@ -418,10 +418,7 @@ section.about {
   .tabs a:first-child {
     transition: all 0.4s;
     text-decoration: none;
-  }
-  .tabs a:first-child {
     content: '';
-    text-decoration: none;
   }
   /* if not targeted, un-highlight first tab style… */
   :target ~ .tabs a:first-child {
