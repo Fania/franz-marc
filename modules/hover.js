@@ -21,7 +21,8 @@ const [...mGradients] = document.getElementById('mandrill_gradients').children;
 const rangeButt = document.getElementById('auto_range');
 const enableAutoButt = document.getElementById('enableAuto');
 
-
+const fmc = new Hammer.Manager(fawn_svg);
+const mmc = new Hammer.Manager(mandrill_svg);
 
 
 
@@ -38,13 +39,37 @@ function addMouseOverListeners(method) {
     const handler = eventHandler.bind(block);
     block.addEventListener('mouseover', handler);
     mouseOverListeners.push([block, handler]);
+    fmc.add(new Hammer.Pan({ 
+      direction: Hammer.DIRECTION_ALL, 
+      threshold: 0 
+    }));
+    fmc.add(new Hammer.Tap({ 
+      event: 'singletap', 
+      taps: 1
+    }));
+    mmc.add(new Hammer.Pan({ 
+      direction: Hammer.DIRECTION_ALL, 
+      threshold: 0 
+    }));
+    mmc.add(new Hammer.Tap({ 
+      event: 'singletap', 
+      taps: 1
+    }));
+    fmc.on("pan", handleDrag);
+    fmc.on("singletap", handleTap);
+    mmc.on("pan", handleDrag);
+    mmc.on("singletap", handleTap);
   }); 
 }
 
 
 function removeMouseOverListeners() {
   // console.log('removing mouseover listeners for', currentPage);
-  mouseOverListeners.forEach(([block, handler]) => block.removeEventListener('mouseover', handler));
+  mouseOverListeners.forEach(([block, handler]) => {
+    block.removeEventListener('mouseover', handler);
+    fmc.destroy();
+    mmc.destroy();
+  });
 }
 
 
@@ -199,24 +224,36 @@ enableAutoButt.addEventListener('change', () => {
 
 
 // HAMMERTIME
-const mc = new Hammer.Manager(fawn_svg);
-mc.add(new Hammer.Pan({ 
-  direction: Hammer.DIRECTION_ALL, 
-  threshold: 0 
-})); 
-mc.add(new Hammer.Tap({ 
-  event: 'singletap', 
-  taps: 1
-})); 
-mc.on("pan", handleDrag);
-mc.on("singletap", handleTap);
+// const fmc = new Hammer.Manager(fawn_svg);
+// const mmc = new Hammer.Manager(mandrill_svg);
+// fmc.add(new Hammer.Pan({ 
+//   direction: Hammer.DIRECTION_ALL, 
+//   threshold: 0 
+// })); 
+// fmc.add(new Hammer.Tap({ 
+//   event: 'singletap', 
+//   taps: 1
+// })); 
+// fmc.on("pan", handleDrag);
+// fmc.on("singletap", handleTap);
+
+// mmc.add(new Hammer.Pan({ 
+//   direction: Hammer.DIRECTION_ALL, 
+//   threshold: 0 
+// })); 
+// mmc.add(new Hammer.Tap({ 
+//   event: 'singletap', 
+//   taps: 1
+// })); 
+// mmc.on("pan", handleDrag);
+// mmc.on("singletap", handleTap);
 
 let lastPosX = 0;
 let lastPosY = 0;
 let isDragging = false;
 
 function handleDrag(ev) {
-  console.log('drag',ev);
+  // console.log('drag',ev);
   let currElem;
   isDragging = true;
   if ( isDragging ) {
@@ -235,7 +272,7 @@ function handleDrag(ev) {
 }
 
 function handleTap(ev) {
-  console.log('tap',ev);
+  // console.log('tap',ev);
   let currElem;
   if (ev.isFinal) {
     lastPosX = ev.center['x'];
