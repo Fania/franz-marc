@@ -26,7 +26,7 @@ body#combined_page {
 body#combined_page nav {
   background: var(--medium);
   box-shadow: 0 4px 5px rgb(0,0,0,0.3);
-  padding: 1em;
+  padding: 1em 0;
   width: 100%;
   margin: 0;
 }
@@ -54,6 +54,9 @@ body#combined_page nav.tabs a:nth-of-type(3) img {
 }
 nav.tabs a::before {
   content: '';
+}
+nav.tabs a {
+  text-decoration: none;
 }
 
 
@@ -361,7 +364,13 @@ section.about {
 
 
 
+@media (min-width: 420px) {
 
+  body#combined_page nav {
+    padding: 1em;
+  }
+
+}
 
 /* @media (min-width: 1200px) { */
 
@@ -407,35 +416,9 @@ section.about {
 
 
 
-
   body#combined_page nav.tabs a img {
     margin-right: 0;
   }
-  nav.tabs a {
-    text-decoration: none;
-  }
-  /* make first menu item default */
-  .tabs a:first-child {
-    transition: all 0.4s;
-    text-decoration: none;
-    content: '';
-  }
-  /* if not targeted, un-highlight first tab style… */
-  :target ~ .tabs a:first-child {
-    transition: all 0.4s;
-    text-decoration: none;
-  }
-
-  /* Number of tabs set here.
-    Highlight the current link tab… */
-  /* body#combined_page nav.tabs a:nth-child(3)::before */
-  .hideme:nth-of-type(1):target ~ .tabs a:nth-of-type(1)::before,
-  .hideme:nth-of-type(2):target ~ .tabs a:nth-of-type(2)::before,
-  .hideme:nth-of-type(3):target ~ .tabs a:nth-of-type(3)::before {
-    transition: all 0.4s;
-    text-decoration: none;
-  }
-
 
 
 

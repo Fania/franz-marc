@@ -216,7 +216,7 @@ let lastPosY = 0;
 let isDragging = false;
 
 function handleDrag(ev) {
-  // console.log('drag',ev);
+  console.log('drag',ev);
   let currElem;
   isDragging = true;
   if ( isDragging ) {
@@ -235,7 +235,7 @@ function handleDrag(ev) {
 }
 
 function handleTap(ev) {
-  // console.log('tap',ev);
+  console.log('tap',ev);
   let currElem;
   if (ev.isFinal) {
     lastPosX = ev.center['x'];
