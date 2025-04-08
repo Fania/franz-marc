@@ -53,10 +53,9 @@ body#combined_page nav.tabs a:nth-of-type(3) img {
   transform: scaleX(-1);
 }
 nav.tabs a::before {
-  margin-right: 15px;
-  content: '⬤';
-  color: rgb(63, 76, 98, 0);
+  content: '';
 }
+
 
 
 body#combined_page nav.options #buttons {
@@ -281,33 +280,33 @@ a:link, a:visited {
   display: none;
 }
 
+
+
 /* make first menu item default */
-.tabs a:first-child::before {
-  margin-right: 15px;
-  content: '⬤';
-  color: var(--light);
-  transition: all 0.4s;
+.tabs a:first-child {
+  text-decoration: underline;
+  text-decoration-thickness: 4px;
+  text-decoration-color: var(--light);
+  text-underline-offset: 4px;
 }
 /* if not targeted, un-highlight first tab style… */
-:target ~ .tabs a:first-child::before {
-  margin-right: 15px;
-  content: '⬤';
-  color: rgb(63, 76, 98, 0);
-  transition: all 0.4s;
+:target ~ .tabs a:first-child {
+  text-decoration: none;
 }
 
 /* Number of tabs set here.
-   Highlight the current link tab… */
+  Highlight the current link tab… */
 /* body#combined_page nav.tabs a:nth-child(3)::before */
 
-.hideme:nth-of-type(1):target ~ .tabs a:nth-of-type(1)::before,
-.hideme:nth-of-type(2):target ~ .tabs a:nth-of-type(2)::before,
-.hideme:nth-of-type(3):target ~ .tabs a:nth-of-type(3)::before {
-  margin-right: 15px;
-  content: '⬤';
-  color: var(--light);
-  transition: all 0.4s;
+.hideme:nth-of-type(1):target ~ .tabs a:nth-of-type(1),
+.hideme:nth-of-type(2):target ~ .tabs a:nth-of-type(2),
+.hideme:nth-of-type(3):target ~ .tabs a:nth-of-type(3) {
+  text-decoration: underline;
+  text-decoration-thickness: 4px;
+  text-decoration-color: var(--light);
+  text-underline-offset: 4px;
 }
+
 /* …set targeted link div background, and show its div */
 .hideme:nth-of-type(1):target ~ .tab_container section:nth-of-type(1),
 .hideme:nth-of-type(2):target ~ .tab_container section:nth-of-type(2),
@@ -317,7 +316,7 @@ a:link, a:visited {
   width: 100%;
 }
 
-
+/* hide submenu when on about page */
 .hideme:nth-of-type(3):target ~ nav.options,
 .hideme:nth-of-type(3):target ~ nav.subOptions {
   display: none !important;
@@ -371,6 +370,7 @@ section.about {
     flex-direction: row;
   }
   body#combined_page nav.tabs {
+    box-shadow: 4px 0 5px rgb(0,0,0,0.3);
     flex-direction: column;
     max-width: 100px;
   }
@@ -404,6 +404,44 @@ section.about {
   body#combined_page main section.about .imgs {
     flex-direction: row;
   }
+
+
+
+
+  body#combined_page nav.tabs a img {
+    margin-right: 0;
+  }
+  nav.tabs a {
+    text-decoration: none;
+  }
+  /* make first menu item default */
+  .tabs a:first-child {
+    transition: all 0.4s;
+    text-decoration: none;
+  }
+  .tabs a:first-child {
+    content: '';
+    text-decoration: none;
+  }
+  /* if not targeted, un-highlight first tab style… */
+  :target ~ .tabs a:first-child {
+    transition: all 0.4s;
+    text-decoration: none;
+  }
+
+  /* Number of tabs set here.
+    Highlight the current link tab… */
+  /* body#combined_page nav.tabs a:nth-child(3)::before */
+  .hideme:nth-of-type(1):target ~ .tabs a:nth-of-type(1)::before,
+  .hideme:nth-of-type(2):target ~ .tabs a:nth-of-type(2)::before,
+  .hideme:nth-of-type(3):target ~ .tabs a:nth-of-type(3)::before {
+    transition: all 0.4s;
+    text-decoration: none;
+  }
+
+
+
+
 
 
 }
