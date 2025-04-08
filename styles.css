@@ -12,7 +12,7 @@
     color-scheme: only light;
   }
 }
-body#combined_page {
+body {
   /* background: rgb(94, 94, 60); */
   background: var(--dark);
   height: 100vh;
@@ -23,33 +23,33 @@ body#combined_page {
   flex-direction: column;
 }
 
-body#combined_page nav {
+nav {
   background: var(--medium);
   box-shadow: 0 4px 5px rgb(0,0,0,0.3);
   padding: 1em 0;
   width: 100%;
   margin: 0;
 }
-body#combined_page nav.tabs {
+nav.tabs {
   display: flex;
   align-items: center;
   justify-content: space-around;
   flex-direction: row;
 }
-body#combined_page nav.options {
+nav.options {
   box-shadow: inset 0 4px 5px rgb(0,0,0,0.3);
 }
-body#combined_page nav.subOptions {
+nav.subOptions {
   box-shadow: inset 0 4px 5px rgb(0,0,0,0.3);
 }
-body#combined_page nav.tabs a img {
+nav.tabs a img {
   width: 40px;
   height: 40px;
   object-fit: cover;
   border-radius: 50%;
   margin-right: 15px;
 }
-body#combined_page nav.tabs a:nth-of-type(3) img {
+nav.tabs a:nth-of-type(3) img {
   transform: scaleX(-1);
 }
 nav.tabs a::before {
@@ -61,7 +61,7 @@ nav.tabs a {
 
 
 
-body#combined_page nav.options #buttons {
+nav.options #buttons {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -69,20 +69,20 @@ body#combined_page nav.options #buttons {
   flex-direction: row;
   gap: 10px;
 }
-body#combined_page nav.options #buttons input {
+nav.options #buttons input {
   display: none;
 }
-body#combined_page nav.options #buttons input:checked + label {
+nav.options #buttons input:checked + label {
   text-decoration: underline;
   text-decoration-thickness: 4px;
   text-decoration-color: var(--light);
   text-underline-offset: 4px;
 }
-body#combined_page nav.options #buttons label {
+nav.options #buttons label {
   padding: 0.5em 1em;
   cursor: pointer;
 }
-body#combined_page nav.subOptions {
+nav.subOptions {
   width: 100%;
   display: none;
   justify-content: center;
@@ -91,42 +91,42 @@ body#combined_page nav.subOptions {
   gap: 3em;
   /* transition: all 0.4s; */
 }
-body#combined_page nav.subOptions.show {
+nav.subOptions.show {
   display: flex;
 } 
-body#combined_page nav.subOptions div:nth-of-type(1),
-body#combined_page nav.subOptions div:nth-of-type(2), 
-body#combined_page nav.subOptions div:nth-of-type(3), 
-body#combined_page nav.subOptions div:nth-of-type(3) div 
+nav.subOptions div:nth-of-type(1),
+nav.subOptions div:nth-of-type(2), 
+nav.subOptions div:nth-of-type(3), 
+nav.subOptions div:nth-of-type(3) div 
 {
   display: none;
 }
-body#combined_page nav.subOptions div:nth-of-type(1).show,
-body#combined_page nav.subOptions div:nth-of-type(2).show, 
-body#combined_page nav.subOptions div:nth-of-type(3).show
+nav.subOptions div:nth-of-type(1).show,
+nav.subOptions div:nth-of-type(2).show, 
+nav.subOptions div:nth-of-type(3).show
 {
   display: flex;
   align-items: center;
 }
-body#combined_page nav.subOptions div:nth-of-type(3).show
+nav.subOptions div:nth-of-type(3).show
 {
   gap: 2em;
 }
-body#combined_page nav.subOptions div:nth-of-type(3).show div
+nav.subOptions div:nth-of-type(3).show div
 {
   display: flex;
   align-items: center;
 }
-body#combined_page nav.subOptions label {
+nav.subOptions label {
   padding: 0.5em 1em;
   cursor: pointer;
 }
-body#combined_page nav.subOptions input[type='checkbox'] {
+nav.subOptions input[type='checkbox'] {
   display: flex;
   width: 20px;
   height: 20px;
 }
-body#combined_page nav.subOptions div input[type='range'] {
+nav.subOptions div input[type='range'] {
   transform: rotate(0deg);
   margin: 0;
 }
@@ -138,36 +138,37 @@ body#combined_page nav.subOptions div input[type='range'] {
 
 
 
-body#combined_page main {
+main {
   display: block;
   width: 100%;
   align-content: center;
+  /* margin-left: 300px; */
 }
 
-body#combined_page main.outline * {
+main.outline * {
   stroke: black;
 }
 
-body#combined_page main section {
+main section {
   position: relative;
   top: 0; bottom: 0; left: 0; right: 0;
   margin: auto auto;
   max-width: 100vw;
   max-height: 100vh;
 }
-body#combined_page main section.fawn_section, 
-body#combined_page main section.fawn_section #fawn_stream, 
-body#combined_page main section.fawn_section #fawn_canvas, 
-body#combined_page main section.fawn_section #fawn_svg 
+main section.fawn_section, 
+main section.fawn_section #fawn_stream, 
+main section.fawn_section #fawn_canvas, 
+main section.fawn_section #fawn_svg 
 {
   aspect-ratio: 1500 / 1062;
   /* 250:177 */
   /* 1.41:1 */
 }
-body#combined_page main section.mandrill_section, 
-body#combined_page main section.mandrill_section #mandrill_stream, 
-body#combined_page main section.mandrill_section #mandrill_canvas, 
-body#combined_page main section.mandrill_section #mandrill_svg
+main section.mandrill_section, 
+main section.mandrill_section #mandrill_stream, 
+main section.mandrill_section #mandrill_canvas, 
+main section.mandrill_section #mandrill_svg
 {
   aspect-ratio: 1280 / 876;
   /* 1.46:1 */
@@ -227,23 +228,31 @@ svg text {
 
 
 
-body#combined_page main section.about .imgs {
+main section.about .imgs {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   align-items: center;
 }
-body#combined_page main section.about .imgs figure {
+main section.about .imgs figure {
   margin: 1em;
 }
-body#combined_page main section.about .imgs div {
+main section.about .imgs div {
   display: flex;
   flex-direction: column;
 }
-body#combined_page main section.about .imgs img {
+main section.about .imgs img {
   width: 300px;
   max-height: 474px;
   object-fit: contain;
+}
+main section.about h1 {
+  font-size: 2em;
+  margin-top: 0;
+}
+main section.about p {
+  max-width: 800px;
+  font-size: 1.2em;
 }
 
 
@@ -299,7 +308,7 @@ a:link, a:visited {
 
 /* Number of tabs set here.
   Highlight the current link tab… */
-/* body#combined_page nav.tabs a:nth-child(3)::before */
+/* nav.tabs a:nth-child(3)::before */
 
 .hideme:nth-of-type(1):target ~ .tabs a:nth-of-type(1),
 .hideme:nth-of-type(2):target ~ .tabs a:nth-of-type(2),
@@ -366,7 +375,7 @@ section.about {
 
 @media (min-width: 420px) {
 
-  body#combined_page nav {
+  nav {
     padding: 1em;
   }
 
@@ -375,61 +384,66 @@ section.about {
 /* @media (min-width: 1200px) { */
 
 @media (orientation: landscape) {
-  body#combined_page {
+  body {
     flex-direction: row;
   }
-  body#combined_page nav.tabs {
+  nav.tabs {
     box-shadow: 4px 0 5px rgb(0,0,0,0.3);
     flex-direction: column;
     max-width: 100px;
+    /* position: fixed; */
+    /* height: inherit; */
   }
-  body#combined_page nav.tabs a {
+  nav.tabs a {
     flex-direction: column;
     gap: 20px;
   }
-  body#combined_page nav.options {
+  nav.options {
     max-width: 100px;
-    box-shadow: inset 4px 0 5px rgb(0,0,0,0.3);
+    box-shadow: inset 4px 0 5px rgb(0,0,0,0.3),
+                4px 0 5px rgb(0,0 0,0.3);
+    /* position: fixed; */
+    /* left: 100px; */
+    /* height: inherit; */
   }
-  body#combined_page nav.options #buttons {
+  nav.options #buttons {
     flex-direction: column;
     justify-content: space-around;
     height: 100%;
     max-width: 100px;
   }
-  body#combined_page nav.subOptions {
+  nav.subOptions {
     flex-direction: column;
     max-width: 100px;
-    box-shadow: inset 4px 0 5px rgb(0,0,0,0.3);
+    box-shadow: inset 4px 0 5px rgb(0,0,0,0.3),
+                4px 0 5px rgb(0,0 0,0.3);
+    /* position: fixed; */
+    /* left: 200px; */
+    /* height: inherit; */
   }
-  body#combined_page nav.subOptions div {
+  nav.subOptions div {
     flex-direction: column;
   }
-  body#combined_page nav.subOptions div input[type='range'] {
+  nav.subOptions div input[type='range'] {
     transform: rotate(90deg);
     margin: 4em;
   }
-
-  body#combined_page main section.about .imgs {
+  main {
+    /* margin-left: 300px; */
+    overflow: auto;
+  }
+  main section.about .imgs {
     flex-direction: row;
   }
-
-
-
-  body#combined_page nav.tabs a img {
+  nav.tabs a img {
     margin-right: 0;
   }
-
-
-
-
-
 }
 
 
 
 @media (min-width: 1200px) {
-  body#combined_page main section.about .imgs {
+  main section.about .imgs {
     justify-content: space-around;
   }
 }
