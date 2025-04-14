@@ -12,27 +12,34 @@ This runs the automatic mode on slow only. Turn on fullscreen (check your browse
 
 [Franz Marc Sources](https://www.wikidata.org/wiki/Wikidata:WikiProject_sum_of_all_paintings/Creator/Franz_Marc)
 
+
+
 ## Keyboard Shortcuts
 
 | Shortcut  | Description          |
 |-----------|----------------------|
 | o         | Original             |
+| r         | Rotate               |
 | p         | Paint                |
-| s         | Solid                |
-| g         | Gradient             |
-| a         | Automatic / Showcase |
-| r         | Reset to Original    |
+| h         | Hover                |
+| m         | Motion / Camera      |
+| a         | Automatic            |
+| f         | Fullscreen           |
 | Escape    | Reset to Original    |
 | ArrowUp   | Speed up             |
 | ArrowDown | Slow down            |
 
 
+
+
 ## Todos
 
 
-
+- [ ] keyboard shortcuts
 - [ ] finetune motionTracking again as slightly off from finger
 - [ ] is writing to localSTorage working properly?
+- [ ] put menu into localStorage for loading from localStorage properly
+- [ ] fullscreen option / gallery mode
 - [x] update about page
 - [x] responsiveness
 - [x] hover: remove event listeners so one can't draw on other pages

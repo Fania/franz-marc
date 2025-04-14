@@ -69,15 +69,18 @@ function updateColour(id, property, newColour) {
 
 
 
-const currentPage = getCurrentPage();
-loadColours(currentPage);
+loadColours();
 // load colours from localStorage for source
-function loadColours(source) {
-  let coloursJSON = getColours(source);
-  // console.log(coloursJSON);
+function loadColours() {
   const currentPage = getCurrentPage();
+  let coloursJSON = getColours(currentPage);
+  // console.log(coloursJSON);
+  console.log(coloursJSON['menu'].tabs);
+  console.log(coloursJSON['menu'].options);
+  console.log(coloursJSON['menu'].subOptions);
+
   const gradients = currentPage==='fawn' ? rGradients : mGradients;
-  const blocks = source==='fawn' ? fawnBlocks : mandrillBlocks;
+  const blocks = currentPage==='fawn' ? fawnBlocks : mandrillBlocks;
   blocks.forEach(block => {
     const bloID = block.id;
     for (const [key, value] of Object.entries(coloursJSON[bloID])) {

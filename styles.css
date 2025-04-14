@@ -360,11 +360,11 @@ section.about {
 
 #mandrill_svg .coordinates {
   /* display: block; */
-  display: none;
+  /* display: none; */
 }
 #fawn_svg .coordinates {
   /* display: block; */
-  display: none;
+  /* display: none; */
 }
 #mandrill_svg .coordinates.hide,
 #fawn_svg .coordinates.hide {
