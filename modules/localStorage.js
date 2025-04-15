@@ -14,7 +14,6 @@ const [...mGradients] = document.getElementById('mandrill_gradients').children;
 
 
 
-
 function getColours(source) {
   // console.log('getColours');
   const coloursString = localStorage.getItem(`${source}Colours`);
@@ -51,33 +50,39 @@ function saveColours(source, coloursJSON) {
 // update colour of individual block for source
 function updateColour(id, property, newColour) {
   const currentPage = getCurrentPage();
-  console.log('property',property);
+  // console.log('property',property);
   if(currentPage==='fawn') {
     let coloursJSON = getColours('fawn');
     const oldColour = fawn_defaults[id][property];
     coloursJSON[id][property] = newColour;
-    console.log(`updating ${id} from ${oldColour} to ${newColour}`);
+    // console.log(`updating ${id} from ${oldColour} to ${newColour}`);
     saveColours('fawn', coloursJSON);
   } else {
     let coloursJSON = getColours('mandrill');
     const oldColour = mandrill_defaults[id][property];
     coloursJSON[id][property] = newColour;
-    console.log(`updating ${id} from ${oldColour} to ${newColour}`);
+    // console.log(`updating ${id} from ${oldColour} to ${newColour}`);
     saveColours('mandrill', coloursJSON);
   }
 }
 
 
 
-loadColours();
 // load colours from localStorage for source
 function loadColours() {
+  console.log('loading colours');
   const currentPage = getCurrentPage();
   let coloursJSON = getColours(currentPage);
   // console.log(coloursJSON);
-  console.log(coloursJSON['menu'].tabs);
-  console.log(coloursJSON['menu'].options);
-  console.log(coloursJSON['menu'].subOptions);
+  // console.log(coloursJSON['menu'].tabs);
+  // console.log(coloursJSON['menu'].options);
+  // console.log(coloursJSON['menu'].subOptions);
+
+// STORE MENU SEPARATELY !!!!!
+
+
+
+
 
   const gradients = currentPage==='fawn' ? rGradients : mGradients;
   const blocks = currentPage==='fawn' ? fawnBlocks : mandrillBlocks;
@@ -100,6 +105,8 @@ function loadColours() {
               const currElem = toddlers[i];
               currElem.setAttribute('stop-color', coloursJSON[valID]['stop-color'][i]);
             })
+            updateColour(bloID,'stop-color',coloursJSON[valID]['stop-color']);
+            // updateColour(valID,'stop-color',coloursJSON[valID]['stop-color']);
           } else {
             // console.log('no grad found');
           }
@@ -108,6 +115,7 @@ function loadColours() {
         }
       } else {
         block.setAttribute(key, coloursJSON[bloID][key]);
+        updateColour(bloID,key,coloursJSON[bloID][key]);
       }
     } // end for loop
   }); // end blocks

@@ -35,6 +35,7 @@ This runs the automatic mode on slow only. Turn on fullscreen (check your browse
 ## Todos
 
 
+- [ ] store menu separately in localStorage not in fawn/mandrill
 - [ ] keyboard shortcuts
 - [ ] finetune motionTracking again as slightly off from finger
 - [ ] is writing to localSTorage working properly?

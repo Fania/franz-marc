@@ -2,7 +2,7 @@ export const mandrill_whites = {
     "menu": {
       "tabs": "mandrill",
       "options": "paint",
-      "subOptions": "colours"
+      "subOptions": "show"
     },
     "shape_001": {
         "fill": "url(#shape_001_fill)",
@@ -3880,7 +3880,7 @@ export const fawn_whites = {
     "menu": {
       "tabs": "fawn",
       "options": "paint",
-      "subOptions": "colours"
+      "subOptions": "show"
     },
     "moon_blue_back_fillerA": {
         "fill": "url(#black_green_white_fade)",

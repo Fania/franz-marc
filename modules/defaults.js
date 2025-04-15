@@ -2,7 +2,7 @@ export const mandrill_defaults = {
     "menu": {
       "tabs": "mandrill",
       "options": "original",
-      "subOptions": "unset"
+      "subOptions": "hide"
     },
     "shape_001": {
         "fill": "url(#shape_001_fill)",
@@ -3880,7 +3880,7 @@ export const fawn_defaults = {
     "menu": {
       "tabs": "fawn",
       "options": "original",
-      "subOptions": "unset"
+      "subOptions": "hide"
     },
     "moon_blue_back_fillerA": {
         "fill": "url(#black_green_white_fade)",

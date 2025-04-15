@@ -1,5 +1,5 @@
 import { getColours, saveColours, updateColour, loadColours } from "./localStorage.js";
-import { clearCanvas, resetCanvas, colourBlock } from "./paint.js";
+import { colourBlock } from "./paint.js";
 import { fawn_defaults, mandrill_defaults } from "./defaults.js";
 import { getCurrentPage } from "./menu.js";
 import { hexTorgb } from "./rotate.js";

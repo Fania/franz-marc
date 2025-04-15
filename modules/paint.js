@@ -1,4 +1,4 @@
-export { clearCanvas, resetCanvas, colourBlock };
+export { blankCanvas, colourBlock };
 
 import { getCurrentPage } from "./menu.js";
 import { getColours, saveColours, updateColour, loadColours } from "./localStorage.js";
@@ -16,35 +16,21 @@ const [...mGradients] = document.getElementById('mandrill_gradients').children;
 
 
 
-function clearCanvas() {
-  console.log('clearing canvas');
+function blankCanvas(action) {
   const currentPage = getCurrentPage();
+  const whites = currentPage==='fawn' ? fawn_whites : mandrill_whites;
+  const defaults = currentPage==='fawn' ? fawn_defaults : mandrill_defaults;
   localStorage.clear();
-  if(currentPage==='fawn') {
-    saveColours('fawn', fawn_whites);
-  } else {
-    saveColours('mandrill', mandrill_whites);
+  if(action==='clear') {
+    console.log('clearing canvas');
+    saveColours(currentPage, whites);
   }
-  loadColours('fawn');
-  loadColours('mandrill');
-}
-
-
-
-
-function resetCanvas() {
-  console.log('resetting canvas');
-  const currentPage = getCurrentPage();
-  localStorage.clear();
-  if(currentPage==='fawn') {
-    saveColours('fawn', fawn_defaults);
-  } else {
-    saveColours('mandrill', mandrill_defaults);
+  if(action==='reset') {
+    console.log('resetting canvas');
+    saveColours(currentPage, defaults);
   }
-  loadColours('fawn');
-  loadColours('mandrill');
+  loadColours();
 }
-
 
 
 
@@ -86,8 +72,10 @@ function colourBlock(block, colour) {
         }
         if(currentPage==='fawn') {
           fawnObject[valID]['stop-color'] = gradCols;
+          updateColour(valID,'stop-color',gradCols);
         } else {
           mandrillObject[valID]['stop-color'] = gradCols;
+          updateColour(valID,'stop-color',gradCols);
         }
         fillCol = `${block.attributes['fill'].value}`;
         if(currentPage==='fawn'){
@@ -96,33 +84,23 @@ function colourBlock(block, colour) {
           mandrillObject[bloID]['fill'] = fillCol;
         }
         block.setAttribute('fill',`url(#${valID})`);
-        // block.setAttribute('stroke','rgb(0,0,0)');
-        // block.setAttribute('stroke-width',`2`);
-        // updateColour(valID, 'fill', `url(#${valID})`);
-        // updateColour(valID, 'stroke', 'rgb(0,0,0)');
-        // updateColour(valID, 'stroke-width', '2');
-        // updateColour(valID, 'stop-color', gradCols);
+        updateColour(bloID,'fill',`url(#${valID})`);
       } else {
         block.setAttribute('fill',`${hexTorgb(colour)}`);
-        // block.setAttribute('stroke','rgb(0,0,0)');
-        // block.setAttribute('stroke-width',`2`);
-        // updateColour(bloID, 'fill', 'rgb(255,255,255)');
-        // updateColour(bloID, 'stroke', 'rgb(0,0,0)');
-        // updateColour(bloID, 'stroke-width', '2');
-        // updateColour(bloID, 'stop-color', gradCols);
+        updateColour(bloID,'fill',`${hexTorgb(colour)}`);
       }
     }
     if(a.name === 'stroke') {
       strokeCol = `${block.attributes['stroke'].value}`;
-      // updateColour(bloID, 'stroke', strokeCol);
+      updateColour(bloID,'stroke',strokeCol);
     }
     if(a.name === 'stroke-width') {
       strokeWidth = `${block.attributes['stroke-width'].value}`;
-      // updateColour(bloID, 'stroke-width', strokeWidth);
+      updateColour(bloID,'stroke-width',strokeWidth);
     }
     if(a.name === 'stroke-linecap') {
       strokeLineCap = `${block.attributes['stroke-linecap'].value}`;
-      // updateColour(bloID, 'stroke-linecap', strokeLineCap);
+      updateColour(bloID,'stroke-linecap',strokeLineCap);
     }
   });
 }
