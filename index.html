@@ -25,27 +25,22 @@
   <meta name="twitter:image" content="https://raw.githubusercontent.com/Fania/blaue-reiter/main/franz-marc.jpeg">
 
   <link rel="stylesheet" href="styles.css"></link>
-  <!-- <script type="module" src="modules/defaults.js"></script> -->
-  <!-- <script type="module" src="modules/coords.js"></script> -->
   <script type="module" src="modules/menu.js"></script>
   <script type="module" src="modules/motion.js"></script>
-  <!-- <script defer>
-    // window.addEventListener("DOMContentLoaded", (event) => {
-    // window.onload = setTimeout(()=> {startMotion()}, 1000);
-    window.onload = startMotion();
-  </script> -->
 </head>
 <body id="combined_page">
   
-<span id="fawn" class="hideme"></span>
-<span id="mandrill" class="hideme"></span>
-<span id="about" class="hideme"></span>
+
+<input type="radio" id="fawn" name="tabs_radio" value="fawn" checked/>
+<input type="radio" id="mandrill" name="tabs_radio" value="mandrill"/>
+<input type="radio" id="about" name="tabs_radio" value="about"/>
 
 <nav class="tabs" aria-label="page tabs">
-  <a href="#fawn"><img src="imgs/favicons/maskable_icon.png" alt="">FAWN</a>
-  <a href="#mandrill"><img src="imgs/favicons/maskable_icon_mandrill.png" alt="">MANDRILL</a>
-  <a href="#about"><img src="imgs/franz-marc-portrait.jpg" alt="">ABOUT</a>
+  <a href="#fawn"><img src="imgs/favicons/maskable_icon.png" alt=""><label for="fawn">FAWN</label></a>
+  <a href="#mandrill"><img src="imgs/favicons/maskable_icon_mandrill.png" alt=""><label for="mandrill">MANDRILL</label></a>
+  <a href="#about"><img src="imgs/franz-marc-portrait.jpg" alt=""><label for="about">ABOUT</label></a>
 </nav>
+
 <nav class="options">
   <div id="buttons">
     <input type="radio" id="original" name="buttons" value="original" checked/>
@@ -64,6 +59,7 @@
     <label for="camera">Camera</label>
   </div>
 </nav>
+
 <nav class="subOptions">
   <div>
     <input id="rotationPause" type="checkbox" name="rotationPause"/>
@@ -2115,22 +2111,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.6.1/randomColor.min.js" integrity="sha512-vPeZ7JCboHcfpqSx5ZD+/jpEhS4JpXxfz9orSvAPPj0EKUVShU2tgy7XkU+oujBJKnWmu4hU7r9MMQNWPfXsYw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="modules/hammer.min.js"></script>
 
-
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/12.3.0/math.js" integrity="sha512-TaKu3GlWLNU3fyPcvsSHSh44vX/Z43ePJDRTJr7IuUKVlUHHsHm7ODYNt5xffy75M6MOXsh7p+VyXCk5icuoxQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
-
-
 <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
 
-<!-- <script src="js/hammer.min.js"></script> -->
-<!-- <script src="js/motion.js"></script>
-<script src="js/scripts.js"></script> -->
-
-  <!-- <script defer>
-    // window.addEventListener("DOMContentLoaded", (event) => {
-    // window.onload = setTimeout(()=> {startMotion()}, 1000);
-    window.onload = startMotion();
-  </script> -->
 </body>
 </html>
