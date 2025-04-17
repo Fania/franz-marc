@@ -41,28 +41,21 @@ function colourBlock(block, colour, mode) {
   const gradients = currentPage==='fawn' ? rGradients : mGradients;
   const bloID = block.id;
   let gradCols = [];
-  console.log('mode',mode);
+  // console.log('mode',mode);
   // console.log(colour);
   for (const [k, v] of Object.entries(colour)) {
     if(k==='fill') {
       // console.log('COLOURBLOCK: FILL');
       if(v.startsWith('url')) {
         // console.log('COLOURBLOCK: STOP-COLOR');
-        const valIDpre = block.attributes['fill'].value;
-        const valID = valIDpre.slice(5, -1);
+        const valID = v.slice(5, -1);
         const grad = gradients.find((gr) => gr.id == valID);
         const [...toddlers] = grad.children;
-        console.log(valID);
-        console.log(grad);
-        console.log(toddlers);
-        // const toddlers = colour['stop-color'];
         for(let n=0; n<toddlers.length; n++) {
           const currElem = toddlers[n];
-          // console.log(currElem);
           currElem.setAttribute('stop-color',`${colour['stop-color'][n]}`);
           gradCols.push(`${colour['stop-color'][n]}`);
         }
-        updateColour(bloID,'stop-color',gradCols);
         block.setAttribute('fill',`url(#${valID})`);
         updateColour(bloID,'fill',`url(#${valID})`);
       } else {
