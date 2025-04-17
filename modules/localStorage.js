@@ -1,7 +1,7 @@
 export { getColours, saveColours, updateColour, loadColours };
 import { fawn_defaults, mandrill_defaults } from "./defaults.js";
 import { getCurrentPage } from "./menu.js";
-
+import { blankCanvas, colourBlock } from "./paint.js";
 
 
 const [...fawnBlocks] = document.querySelector('#fawn_svg #fawn_colour_blocks').children;
@@ -14,13 +14,14 @@ const [...mGradients] = document.getElementById('mandrill_gradients').children;
 
 
 
-function getColours(source) {
+function getColours() {
   // console.log('getColours');
-  const coloursString = localStorage.getItem(`${source}Colours`);
+  const currentPage = getCurrentPage();
+  const coloursString = localStorage.getItem(`${currentPage}Colours`);
   let coloursJSON = {};
   if (coloursString === null) {
-    coloursJSON = source==='fawn' ? fawn_defaults : mandrill_defaults;
-    saveColours(source, coloursJSON);
+    coloursJSON = currentPage==='fawn' ? fawn_defaults : mandrill_defaults;
+    saveColours(currentPage, coloursJSON);
     console.log("first-time setup");
   } else {
     coloursJSON = JSON.parse(coloursString);
@@ -32,17 +33,45 @@ function getColours(source) {
 
 
 
+
+function updateTabs() {
+  // console.log('updateTabs');
+  const currentPage = getCurrentPage();
+  const currentOpt = document.querySelector('[name="buttons"]:checked').value;
+  let subOptsStatus = 'hide';
+  if(currentOpt==='rotate' || currentOpt==='paint' || currentOpt==='hover') {
+    subOptsStatus = 'show'
+  } else {
+    subOptsStatus = 'hide'
+  }
+  let menuJSON = {
+    "tabs": currentPage,
+    "options": currentOpt,
+    "subOptions": subOptsStatus
+  };
+  const menuString = JSON.stringify(menuJSON);
+  // localStorage.removeItem("franzMarcMenu");
+  localStorage.setItem("franzMarcMenu", menuString);
+}
+
+
+
+
+
 saveColours('fawn', fawn_defaults);
 saveColours('mandrill', mandrill_defaults);
 // save coloursJSON to localStorage
-function saveColours(source, coloursJSON) {
+function saveColours(source, coloursJSON, mode) {
   // console.trace('saveColours to localStorage');
   const coloursString = JSON.stringify(coloursJSON);
   if(source === 'fawn') {
+    // localStorage.removeItem("fawnColours");
     localStorage.setItem("fawnColours", coloursString);
   } else {
+    // localStorage.removeItem("mandrillColours");
     localStorage.setItem("mandrillColours", coloursString);
   }
+  updateTabs();
 }
 
 
@@ -52,13 +81,13 @@ function updateColour(id, property, newColour) {
   const currentPage = getCurrentPage();
   // console.log('property',property);
   if(currentPage==='fawn') {
-    let coloursJSON = getColours('fawn');
+    let coloursJSON = getColours();
     const oldColour = fawn_defaults[id][property];
     coloursJSON[id][property] = newColour;
     // console.log(`updating ${id} from ${oldColour} to ${newColour}`);
     saveColours('fawn', coloursJSON);
   } else {
-    let coloursJSON = getColours('mandrill');
+    let coloursJSON = getColours();
     const oldColour = mandrill_defaults[id][property];
     coloursJSON[id][property] = newColour;
     // console.log(`updating ${id} from ${oldColour} to ${newColour}`);
@@ -69,55 +98,50 @@ function updateColour(id, property, newColour) {
 
 
 // load colours from localStorage for source
-function loadColours() {
+function loadColours(mode='none') {
   console.log('loading colours');
   const currentPage = getCurrentPage();
-  let coloursJSON = getColours(currentPage);
+  let coloursJSON = getColours();
   // console.log(coloursJSON);
-  // console.log(coloursJSON['menu'].tabs);
-  // console.log(coloursJSON['menu'].options);
-  // console.log(coloursJSON['menu'].subOptions);
-
-// STORE MENU SEPARATELY !!!!!
-
-
-
-
-
   const gradients = currentPage==='fawn' ? rGradients : mGradients;
   const blocks = currentPage==='fawn' ? fawnBlocks : mandrillBlocks;
-  blocks.forEach(block => {
+  blocks.forEach((block,i) => {
     const bloID = block.id;
-    for (const [key, value] of Object.entries(coloursJSON[bloID])) {
-      if(key === 'stop-color') {
-        const valIDpre = coloursJSON[bloID]['fill'];
-        const valID = valIDpre.slice(5, -1);
-        if(valIDpre.startsWith('url')) {
-          const grad = gradients.find((gr) => {
-            if(gr.id === valID) {
-              return gr.children
-            };
-          })
-          if(grad) {
-            // console.log(typeof grad);
-            const [...toddlers] = grad.children;
-            toddlers.forEach((n, i) => {
-              const currElem = toddlers[i];
-              currElem.setAttribute('stop-color', coloursJSON[valID]['stop-color'][i]);
-            })
-            updateColour(bloID,'stop-color',coloursJSON[valID]['stop-color']);
-            // updateColour(valID,'stop-color',coloursJSON[valID]['stop-color']);
-          } else {
-            // console.log('no grad found');
-          }
-        } else {
-          // console.log('no url start');
-        }
-      } else {
-        block.setAttribute(key, coloursJSON[bloID][key]);
-        updateColour(bloID,key,coloursJSON[bloID][key]);
-      }
-    } // end for loop
+    // console.log(bloID);
+    let entry = {};
+    entry = coloursJSON[bloID];
+    // console.log(entry);
+    colourBlock(block, entry, mode);
+    // for (const [key, value] of Object.entries(coloursJSON[bloID])) {
+    //   if(key === 'stop-color') {
+    //     const valIDpre = coloursJSON[bloID]['fill'];
+    //     const valID = valIDpre.slice(5, -1);
+    //     if(valIDpre.startsWith('url')) {
+    //       const grad = gradients.find((gr) => {
+    //         if(gr.id === valID) {
+    //           return gr.children
+    //         };
+    //       })
+    //       if(grad) {
+    //         // console.log(typeof grad);
+    //         const [...toddlers] = grad.children;
+    //         toddlers.forEach((n, i) => {
+    //           const currElem = toddlers[i];
+    //           currElem.setAttribute('stop-color', coloursJSON[valID]['stop-color'][i]);
+    //         })
+    //         updateColour(bloID,'stop-color',coloursJSON[valID]['stop-color']);
+    //         // updateColour(valID,'stop-color',coloursJSON[valID]['stop-color']);
+    //       } else {
+    //         // console.log('no grad found');
+    //       }
+    //     } else {
+    //       // console.log('no url start');
+    //     }
+    //   } else {
+    //     block.setAttribute(key, coloursJSON[bloID][key]);
+    //     updateColour(bloID,key,coloursJSON[bloID][key]);
+    //   }
+    // } // end for loop
   }); // end blocks
 }
 
@@ -135,6 +159,7 @@ function printColour() {
   let fawnObject = {};
   let mandrillObject = {};
   blocks.forEach(block => {
+    console.log(block.id);
     const bloID = block.id;
     let fillCol = '';
     let strokeCol = '';
@@ -156,8 +181,8 @@ function printColour() {
         if(block.attributes['fill'].value.startsWith('url')) {
           const valIDpre = block.attributes['fill'].value;
           const valID = valIDpre.slice(5, -1);
-          fawnObject[valID] = entry;
-          mandrillObject[valID] = entry;
+          // fawnObject[valID] = entry;
+          // mandrillObject[valID] = entry;
           const elem = document.getElementById(valID);
           const childrs = elem.children;
           const len = childrs.length;
@@ -165,9 +190,11 @@ function printColour() {
             gradCols.push(`${elem.children[i].attributes[1].value}`);
           }
           if(currentPage==='fawn') {
-            fawnObject[valID]['stop-color'] = gradCols;
+            // fawnObject[valID]['stop-color'] = gradCols;
+            fawnObject[bloID]['stop-color'] = gradCols;
           } else {
-            mandrillObject[valID]['stop-color'] = gradCols;
+            // mandrillObject[valID]['stop-color'] = gradCols;
+            mandrillObject[bloID]['stop-color'] = gradCols;
           }
         }
         fillCol = `${block.attributes['fill'].value}`;
@@ -205,11 +232,11 @@ function printColour() {
       }
     });
   });
-  // if(currentPage === 'fawn'){
-  //   // console.log(fawnObject);
-  // } else {
-  //   // console.log(mandrillObject);
-  // }
+  if(currentPage === 'fawn'){
+    console.log(fawnObject);
+  } else {
+    console.log(mandrillObject);
+  }
 }
 
 
