@@ -1,11 +1,11 @@
 import { rotateAll, rotateElement, stopRotating, printColour, getColourSpeed } from "./rotate.js";
-import { getColours, saveColours, updateColour, loadColours } from "./localStorage.js";
+import { getColours, saveColours, updateColour, loadColours, updateMenu, loadMenu } from "./localStorage.js";
 import { blankCanvas, colourBlock } from "./paint.js";
 import { addMouseOverListeners, removeMouseOverListeners, addFingerListeners, removeFingerListeners, startAutoColours, stopAutoColours, handleColourReplacement } from "./hover.js";
 import { startMotion, stopMotion } from "./motion.js";
 import { hexTorgb } from "./rotate.js";
 
-export { getCurrentPage };
+export { getCurrentPage, getCurrentMenu };
 
 const [...navItems] = document.querySelectorAll('.tabs a');
 const opts = document.querySelector('.options #buttons').children;
@@ -25,6 +25,10 @@ const subOpt_auto_range = document.getElementById('auto_range');
 
 function getCurrentPage() {
   return location.hash.slice(1);
+}
+
+function getCurrentMenu() {
+  return document.querySelector('[name="buttons"]:checked').value;
 }
 
 
@@ -53,6 +57,7 @@ buttons.forEach(butt => {
       removeMouseOverListeners();
       removeFingerListeners();
       blankCanvas('reset');
+      updateMenu();
     }
     if(butt.id == 'rotate') {
       // console.log('rotate');
@@ -66,6 +71,7 @@ buttons.forEach(butt => {
       subOpts[0].classList.add('show');
       subOpts[1].classList.remove('show');
       subOpts[2].classList.remove('show');
+      updateMenu();
     }
     if(butt.id == 'paint') {
       // console.log('paint');
@@ -94,6 +100,7 @@ buttons.forEach(butt => {
       subOpts[0].classList.remove('show');
       subOpts[1].classList.add('show');
       subOpts[2].classList.remove('show');
+      updateMenu();
     }
     if(butt.id == 'hover') {
       // console.log('solids');
@@ -106,6 +113,7 @@ buttons.forEach(butt => {
       subOpts[0].classList.remove('show');
       subOpts[1].classList.remove('show');
       subOpts[2].classList.add('show');
+      updateMenu();
     }
     if(butt.id == 'camera') {
       // console.log('automatic');
@@ -117,6 +125,7 @@ buttons.forEach(butt => {
       startMotion();
       subOptsNav.classList.remove('show');
     }
+    updateMenu();
   });
 });
 

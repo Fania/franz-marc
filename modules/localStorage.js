@@ -1,6 +1,6 @@
-export { getColours, saveColours, updateColour, loadColours };
+export { getColours, saveColours, updateColour, loadColours, updateMenu, loadMenu };
 import { fawn_defaults, mandrill_defaults } from "./defaults.js";
-import { getCurrentPage } from "./menu.js";
+import { getCurrentPage, getCurrentMenu } from "./menu.js";
 import { blankCanvas, colourBlock } from "./paint.js";
 
 
@@ -22,6 +22,7 @@ function getColours() {
   if (coloursString === null) {
     coloursJSON = currentPage==='fawn' ? fawn_defaults : mandrill_defaults;
     saveColours(currentPage, coloursJSON);
+    updateMenu();
     console.log("first-time setup");
   } else {
     coloursJSON = JSON.parse(coloursString);
@@ -31,11 +32,17 @@ function getColours() {
 
 
 
+function getStoredMenu() {
+  const menuString = localStorage.getItem('franzMarcMenu');
+  const menuJSON = JSON.parse(menuString);
+  return menuJSON;
+}
 
 
 
-function updateTabs() {
-  // console.log('updateTabs');
+// update localStorage after change on Page
+function updateMenu() {
+  // console.log('updateMenu');
   const currentPage = getCurrentPage();
   const currentOpt = document.querySelector('[name="buttons"]:checked').value;
   let subOptsStatus = 'hide';
@@ -57,6 +64,27 @@ function updateTabs() {
 
 
 
+// update Menu options on Page from localStorage
+function loadMenu() {
+  const storedMenu = getStoredMenu();
+  console.log(storedMenu.tabs);
+
+  // if(storedMenu.tabs === 'fawn') {
+  //   const firstItem = document.querySelector('.hideme:nth-of-type(1)');
+  //   const targetSelector = getComputedStyle(firstItem, ":target");
+  //   console.log(targetSelector);
+  //   console.dir(targetSelector);
+  //   // firstItem.target = true;
+  // }
+  // options
+  document.getElementById(`${storedMenu.options}`).checked = true;
+}
+
+
+
+
+
+
 
 saveColours('fawn', fawn_defaults);
 saveColours('mandrill', mandrill_defaults);
@@ -71,7 +99,7 @@ function saveColours(source, coloursJSON, mode) {
     // localStorage.removeItem("mandrillColours");
     localStorage.setItem("mandrillColours", coloursString);
   }
-  updateTabs();
+  updateMenu();
 }
 
 
@@ -97,13 +125,13 @@ function updateColour(id, property, newColour) {
 
 
 
+
 // load colours from localStorage for source
 function loadColours(mode='none') {
   console.log('loading colours');
   const currentPage = getCurrentPage();
   let coloursJSON = getColours();
-  // console.log(coloursJSON);
-  const gradients = currentPage==='fawn' ? rGradients : mGradients;
+  // const gradients = currentPage==='fawn' ? rGradients : mGradients;
   const blocks = currentPage==='fawn' ? fawnBlocks : mandrillBlocks;
   blocks.forEach((block,i) => {
     const bloID = block.id;
@@ -112,37 +140,8 @@ function loadColours(mode='none') {
     entry = coloursJSON[bloID];
     // console.log(entry);
     colourBlock(block, entry, mode);
-    // for (const [key, value] of Object.entries(coloursJSON[bloID])) {
-    //   if(key === 'stop-color') {
-    //     const valIDpre = coloursJSON[bloID]['fill'];
-    //     const valID = valIDpre.slice(5, -1);
-    //     if(valIDpre.startsWith('url')) {
-    //       const grad = gradients.find((gr) => {
-    //         if(gr.id === valID) {
-    //           return gr.children
-    //         };
-    //       })
-    //       if(grad) {
-    //         // console.log(typeof grad);
-    //         const [...toddlers] = grad.children;
-    //         toddlers.forEach((n, i) => {
-    //           const currElem = toddlers[i];
-    //           currElem.setAttribute('stop-color', coloursJSON[valID]['stop-color'][i]);
-    //         })
-    //         updateColour(bloID,'stop-color',coloursJSON[valID]['stop-color']);
-    //         // updateColour(valID,'stop-color',coloursJSON[valID]['stop-color']);
-    //       } else {
-    //         // console.log('no grad found');
-    //       }
-    //     } else {
-    //       // console.log('no url start');
-    //     }
-    //   } else {
-    //     block.setAttribute(key, coloursJSON[bloID][key]);
-    //     updateColour(bloID,key,coloursJSON[bloID][key]);
-    //   }
-    // } // end for loop
   }); // end blocks
+  loadMenu();
 }
 
 
