@@ -29,12 +29,12 @@ This runs the automatic mode on slow only. Turn on fullscreen (check your browse
 ## Todos
 
 - [ ] add short info about me to about plus contact?
-- [ ] add details of keyboard shortcuts to about page
 - [ ] create gallery "slideshow" that cycles through different options
 - [ ] re-enable motion.js in html!!!!
 - [ ] remove tap/drag listeners
 - [ ] finetune motionTracking again as slightly off from finger
 - [ ] is writing to localSTorage working properly?
+- [x] add details of keyboard shortcuts to about page
 - [x] writing menu to localstorage works
 - [x] keyboard shortcuts
 - [x] fullscreen option / gallery mode

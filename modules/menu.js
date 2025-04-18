@@ -33,7 +33,7 @@ function getCurrentMenu() {
 // stop rotating on first load for default original page
 window.onload = () => {
   stopRotating();
-  loadColours('none');
+  loadColours('fromScratch');
 };
 
 
@@ -151,3 +151,19 @@ function toggleInterface() {
   options.classList.toggle('hide');
   subOptsNav.classList.toggle('hide');
 }
+
+
+
+
+
+
+// function slideshow() {
+
+//   setTimeout(()=> {
+//     console.log('test');
+//   }, 1000);
+
+//   clearInterval(rID);
+//   rID = setInterval(() => {handleRandomSlideshow()}, 40000);
+
+// }
