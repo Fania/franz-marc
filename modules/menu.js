@@ -2,7 +2,7 @@ export { getCurrentPage, getCurrentMenu };
 
 import { rotateAll, stopRotating } from "./rotate.js";
 import { loadColours, updateMenu } from "./localStorage.js";
-import { blankCanvas, colourBlock } from "./paint.js";
+import { blankCanvas, colourBlock, addClickListeners, removeClickListeners } from "./paint.js";
 import { addMouseOverListeners, removeMouseOverListeners, addFingerListeners, removeFingerListeners, stopAutoColours, handleColourReplacement } from "./hover.js";
 import { startMotion, stopMotion } from "./motion.js";
 import { hexTorgb } from "./rotate.js";
@@ -61,6 +61,7 @@ buttons.forEach(butt => {
       stopMotion();
       removeMouseOverListeners();
       removeFingerListeners();
+      removeClickListeners();
       blankCanvas('reset');
       updateMenu();
     }
@@ -71,6 +72,7 @@ buttons.forEach(butt => {
       stopMotion();
       removeMouseOverListeners();
       removeFingerListeners();
+      removeClickListeners();
       rotateAll(currentPage);
       subOptsNav.classList.add('show');
       subOpts[0].classList.add('show');
@@ -86,21 +88,7 @@ buttons.forEach(butt => {
       removeMouseOverListeners();
       removeFingerListeners();
       blankCanvas('clear');
-      const colPicker = document.getElementById('col_picker');
-      const currentPage = getCurrentPage();
-      const blocks = currentPage==='fawn' ? fawnBlocks : mandrillBlocks;
-      blocks.forEach(block => {
-        block.addEventListener('click', () => {
-          const entry = {
-            'fill': hexTorgb(colPicker.value),
-            'stroke': 'rgb(0, 0, 0)',
-            'stroke-width': '2',
-            'stroke-linecap': 'round',
-            'stop-color': []
-          };
-          colourBlock(block, entry);
-        });
-      });
+      addClickListeners(colourBlock);
       subOptsNav.classList.add('show');
       subOpts[0].classList.remove('show');
       subOpts[1].classList.add('show');
@@ -114,6 +102,7 @@ buttons.forEach(butt => {
       blankCanvas('reset');
       addMouseOverListeners(handleColourReplacement);
       addFingerListeners(handleColourReplacement);
+      removeClickListeners();
       subOptsNav.classList.add('show');
       subOpts[0].classList.remove('show');
       subOpts[1].classList.remove('show');
@@ -127,6 +116,7 @@ buttons.forEach(butt => {
       stopAutoColours();
       removeMouseOverListeners();
       removeFingerListeners();
+      removeClickListeners();
       startMotion();
       subOptsNav.classList.remove('show');
       updateMenu();

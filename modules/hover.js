@@ -55,7 +55,8 @@ function addMouseOverListeners(method) {
 
 
 function removeMouseOverListeners() {
-  // console.log('removing mouseover listeners for', currentPage);
+  const currentPage = getCurrentPage();
+  console.log('removing mouseover listeners for', currentPage);
   listeners.forEach(([block, handler]) => {
     block.removeEventListener('mouseover', handler);
     fmc.destroy();
@@ -83,7 +84,9 @@ function addFingerListeners(method) {
   }); 
 }
 function removeFingerListeners() {
+  const currentPage = getCurrentPage();
   listeners.forEach(([block, handler]) => {
+    console.log('removing pan and tap listeners for', currentPage);
     // block.removeEventListener('mouseover', handler);
     fmc.off("pan", handleDrag);
     fmc.off("singletap", handleTap);
@@ -95,6 +98,9 @@ function removeFingerListeners() {
 
 
 function handleColourReplacement(block) {
+
+  // colourBlock(block, colour, mode);
+
   const currentPage = getCurrentPage();
   const gradients = currentPage==='fawn' ? rGradients : mGradients;
   let fawnObject = {};
@@ -169,6 +175,12 @@ function handleColourReplacement(block) {
     }
   });
 }
+
+
+
+
+
+
 
 
 

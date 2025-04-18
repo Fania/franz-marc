@@ -1,13 +1,16 @@
-export { blankCanvas, colourBlock };
+export { blankCanvas, colourBlock, addClickListeners, removeClickListeners };
 
 import { getCurrentPage } from "./menu.js";
 import { saveColours, updateColour, loadColours } from "./localStorage.js";
 import { fawn_defaults, mandrill_defaults } from "./defaults.js";
 import { fawn_whites, mandrill_whites } from "./whites.js";
+import { hexTorgb } from "./rotate.js";
+
 
 const [...rGradients] = document.getElementById('fawn_gradients').children;
 const [...mGradients] = document.getElementById('mandrill_gradients').children;
-
+const [...mandrillBlocks] = document.querySelector('#mandrill_svg #mandrill_colour_blocks').children;
+const [...fawnBlocks] = document.querySelector('#fawn_svg #fawn_colour_blocks').children;
 
 
 
@@ -30,7 +33,53 @@ function blankCanvas(action) {
 
 
 
+let listeners = [];
 
+function addClickListeners(method) {
+  const currentPage = getCurrentPage();
+  console.log('adding click listeners for', currentPage);
+  const colPicker = document.getElementById('col_picker');
+  const blocks = currentPage==='fawn' ? fawnBlocks : mandrillBlocks;
+  const eventHandler = (block) => {
+    const entry = {
+      'fill': hexTorgb(colPicker.value),
+      'stroke': 'rgb(0, 0, 0)',
+      'stroke-width': '2',
+      'stroke-linecap': 'round',
+      'stop-color': []
+    };
+    method(block,entry,'none');
+  }
+  blocks.forEach(block => {
+    const handler = eventHandler.bind(block);
+    block.addEventListener('click', () => {
+      handler(block);
+    });
+    listeners.push([block, handler]);
+  });
+  // console.log(listeners);
+}
+
+function removeClickListeners() {
+  const currentPage = getCurrentPage();
+  console.log('removing click listeners for', currentPage);
+  listeners.forEach(([block, handler]) => {
+    block.removeEventListener('click', handler);
+  });
+  // listeners = [];
+  // console.log(listeners);
+}
+
+
+
+
+// colour = {
+//   'fill': '',
+//   'stroke': '',
+//   'stroke-width': '',
+//   'stroke-linecap': '',
+//   'stop-color': []
+// };
 function colourBlock(block, colour, mode) {
   const currentPage = getCurrentPage();
   const gradients = currentPage==='fawn' ? rGradients : mGradients;
