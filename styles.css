@@ -45,21 +45,15 @@ nav.options {
 nav.subOptions {
   box-shadow: inset 0 4px 5px rgb(0,0,0,0.3);
 }
-nav.tabs a img {
+nav.tabs label img {
   width: 40px;
   height: 40px;
   object-fit: cover;
   border-radius: 50%;
   margin-right: 15px;
 }
-nav.tabs a:nth-of-type(3) img {
+nav.tabs label:nth-of-type(3) img {
   transform: scaleX(-1);
-}
-nav.tabs a::before {
-  content: '';
-}
-nav.tabs a {
-  text-decoration: none;
 }
 nav.tabs label {
   cursor: pointer;
@@ -160,7 +154,7 @@ main section {
   top: 0; bottom: 0; left: 0; right: 0;
   margin: auto auto;
   max-width: 100vw;
-  max-height: 100vh;
+  /* max-height: 100vh; */
 }
 main section.fawn_section, 
 main section.fawn_section #fawn_stream, 
@@ -269,31 +263,25 @@ main section.about p {
 
 
 /* Basic tab styles */
-.tabs a:link,
-.tabs a:visited {
+.tabs label {
   color: var(--light);
-  text-decoration: none;
   transition: all 0.4s;
   padding: .5em 2em;
   width: 30%;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-a:link, a:visited {
-  color: inherit;
+  text-decoration: none;
 }
 
 /* CSS tabs */
 .tab_container section {
   display: none;
 }
-.tabs a {
-  text-decoration: none;
-}
-input#fawn[name="tabs_radio"]:checked ~ .tabs a:nth-of-type(1),
-input#mandrill[name="tabs_radio"]:checked ~ .tabs a:nth-of-type(2),
-input#about[name="tabs_radio"]:checked ~ .tabs a:nth-of-type(3) {
+
+input#fawn[name="tabs_radio"]:checked ~ .tabs label:nth-of-type(1),
+input#mandrill[name="tabs_radio"]:checked ~ .tabs label:nth-of-type(2),
+input#about[name="tabs_radio"]:checked ~ .tabs label:nth-of-type(3) {
   text-decoration: underline;
   text-decoration-thickness: 4px;
   text-decoration-color: var(--light);
@@ -351,11 +339,9 @@ nav.subOptions.hide {
 
 
 @media (min-width: 420px) {
-
   nav {
     padding: 1em;
   }
-
 }
 
 /* @media (min-width: 1200px) { */
@@ -369,11 +355,11 @@ nav.subOptions.hide {
     flex-direction: column;
     max-width: 100px;
   }
-  nav.tabs a {
+  nav.tabs label {
     flex-direction: column;
     gap: 20px;
   }
-  nav.tabs a:nth-of-type(3) img {
+  nav.tabs label:nth-of-type(3) img {
     transform: scaleX(1);
   }
   nav.options {
@@ -413,7 +399,7 @@ nav.subOptions.hide {
   main section.about .imgs {
     flex-direction: row;
   }
-  nav.tabs a img {
+  nav.tabs label img {
     margin-right: 0;
   }
 }
