@@ -140,7 +140,7 @@ buttons.forEach(butt => {
 // | F11       | Fullscreen (Win)     |
 
 document.addEventListener("keydown", event => {
-  if (event.key === "f") {
+  if (event.key === "i") {
     toggleInterface();
   }
 });
