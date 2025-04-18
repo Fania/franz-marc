@@ -24,7 +24,8 @@ const subOpt_auto_range = document.getElementById('auto_range');
 
 
 function getCurrentPage() {
-  return location.hash.slice(1);
+  // return location.hash.slice(1);
+  return document.querySelector('[name="tabs_radio"]:checked').value;
 }
 
 function getCurrentMenu() {

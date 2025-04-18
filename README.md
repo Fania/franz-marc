@@ -35,12 +35,13 @@ This runs the automatic mode on slow only. Turn on fullscreen (check your browse
 ## Todos
 
 
-- [ ] store menu separately in localStorage not in fawn/mandrill
+- [ ] remove tap/drag listeners
 - [ ] keyboard shortcuts
 - [ ] finetune motionTracking again as slightly off from finger
 - [ ] is writing to localSTorage working properly?
-- [ ] put menu into localStorage for loading from localStorage properly
 - [ ] fullscreen option / gallery mode
+- [x] put menu into localStorage for loading from localStorage properly
+- [x] store menu separately in localStorage not in fawn/mandrill
 - [x] update about page
 - [x] responsiveness
 - [x] hover: remove event listeners so one can't draw on other pages

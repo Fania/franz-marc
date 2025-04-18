@@ -44,7 +44,9 @@ function getStoredMenu() {
 function updateMenu() {
   // console.log('updateMenu');
   const currentPage = getCurrentPage();
-  const currentOpt = document.querySelector('[name="buttons"]:checked').value;
+  // console.log('currentPage',currentPage);
+  const currentOpt = getCurrentMenu();
+  // console.log('currentOpt',currentOpt);
   let subOptsStatus = 'hide';
   if(currentOpt==='rotate' || currentOpt==='paint' || currentOpt==='hover') {
     subOptsStatus = 'show'
@@ -67,16 +69,7 @@ function updateMenu() {
 // update Menu options on Page from localStorage
 function loadMenu() {
   const storedMenu = getStoredMenu();
-  console.log(storedMenu.tabs);
-
-  // if(storedMenu.tabs === 'fawn') {
-  //   const firstItem = document.querySelector('.hideme:nth-of-type(1)');
-  //   const targetSelector = getComputedStyle(firstItem, ":target");
-  //   console.log(targetSelector);
-  //   console.dir(targetSelector);
-  //   // firstItem.target = true;
-  // }
-  // options
+  document.getElementById(`${storedMenu.tabs}`).checked = true;
   document.getElementById(`${storedMenu.options}`).checked = true;
 }
 
