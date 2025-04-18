@@ -1,14 +1,13 @@
 export { getColours, saveColours, updateColour, loadColours, updateMenu, loadMenu };
+
 import { fawn_defaults, mandrill_defaults } from "./defaults.js";
 import { getCurrentPage, getCurrentMenu } from "./menu.js";
-import { blankCanvas, colourBlock } from "./paint.js";
+import { colourBlock } from "./paint.js";
 
 
 const [...fawnBlocks] = document.querySelector('#fawn_svg #fawn_colour_blocks').children;
 const [...mandrillBlocks] = document.querySelector('#mandrill_svg #mandrill_colour_blocks').children;
 
-const [...rGradients] = document.getElementById('fawn_gradients').children;
-const [...mGradients] = document.getElementById('mandrill_gradients').children;
 
 
 
@@ -103,13 +102,13 @@ function updateColour(id, property, newColour) {
   // console.log('property',property);
   if(currentPage==='fawn') {
     let coloursJSON = getColours();
-    const oldColour = fawn_defaults[id][property];
+    // const oldColour = fawn_defaults[id][property];
     coloursJSON[id][property] = newColour;
     // console.log(`updating ${id} from ${oldColour} to ${newColour}`);
     saveColours('fawn', coloursJSON);
   } else {
     let coloursJSON = getColours();
-    const oldColour = mandrill_defaults[id][property];
+    // const oldColour = mandrill_defaults[id][property];
     coloursJSON[id][property] = newColour;
     // console.log(`updating ${id} from ${oldColour} to ${newColour}`);
     saveColours('mandrill', coloursJSON);

@@ -1,10 +1,6 @@
-import { getColours, saveColours, updateColour, loadColours } from "./localStorage.js";
-import { colourBlock } from "./paint.js";
-import { fawn_defaults, mandrill_defaults } from "./defaults.js";
-import { getCurrentPage } from "./menu.js";
-import { hexTorgb } from "./rotate.js";
-
 export { addMouseOverListeners, removeMouseOverListeners, addFingerListeners, removeFingerListeners, startAutoColours, stopAutoColours, handleColourReplacement };
+
+import { getCurrentPage } from "./menu.js";
 
 
 
@@ -17,9 +13,9 @@ const [...mandrillBlocks] = document.querySelector('#mandrill_svg #mandrill_colo
 const [...rGradients] = document.getElementById('fawn_gradients').children;
 const [...mGradients] = document.getElementById('mandrill_gradients').children;
 
-
 const rangeButt = document.getElementById('auto_range');
 const enableAutoButt = document.getElementById('enableAuto');
+
 
 const fmc = new Hammer.Manager(fawn_svg);
 const mmc = new Hammer.Manager(mandrill_svg);

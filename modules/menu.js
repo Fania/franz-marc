@@ -1,27 +1,21 @@
-import { rotateAll, rotateElement, stopRotating, printColour, getColourSpeed } from "./rotate.js";
-import { getColours, saveColours, updateColour, loadColours, updateMenu, loadMenu } from "./localStorage.js";
+export { getCurrentPage, getCurrentMenu };
+
+import { rotateAll, stopRotating } from "./rotate.js";
+import { loadColours, updateMenu } from "./localStorage.js";
 import { blankCanvas, colourBlock } from "./paint.js";
-import { addMouseOverListeners, removeMouseOverListeners, addFingerListeners, removeFingerListeners, startAutoColours, stopAutoColours, handleColourReplacement } from "./hover.js";
+import { addMouseOverListeners, removeMouseOverListeners, addFingerListeners, removeFingerListeners, stopAutoColours, handleColourReplacement } from "./hover.js";
 import { startMotion, stopMotion } from "./motion.js";
 import { hexTorgb } from "./rotate.js";
 
-export { getCurrentPage, getCurrentMenu };
 
 const tabs = document.querySelector('.tabs');
 const [...tabsInputs] = document.querySelectorAll('[name="tabs_radio"]');
-const [...navItems] = document.querySelectorAll('.tabs a');
 const options = document.querySelector('.options');
-const opts = document.querySelector('.options #buttons').children;
 const subOpts = document.querySelector('.subOptions').children;
 const subOptsNav = document.querySelector('.subOptions');
 const [...buttons] = document.getElementsByName('buttons');
 const [...mandrillBlocks] = document.querySelector('#mandrill_svg #mandrill_colour_blocks').children;
 const [...fawnBlocks] = document.querySelector('#fawn_svg #fawn_colour_blocks').children;
-
-const subOpt_rotationPause = document.getElementById('rotationPause');
-const subOpt_col_picker = document.getElementById('col_picker');
-const subOpt_enableAuto = document.getElementById('enableAuto');
-const subOpt_auto_range = document.getElementById('auto_range');
 
 
 

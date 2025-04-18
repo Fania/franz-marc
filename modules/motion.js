@@ -1,4 +1,5 @@
 export { startMotion, stopMotion };
+
 import { handleColourReplacement } from "./hover.js";
 import { getCurrentPage } from "./menu.js";
 

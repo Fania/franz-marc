@@ -1,14 +1,9 @@
 export { blankCanvas, colourBlock };
 
 import { getCurrentPage } from "./menu.js";
-import { getColours, saveColours, updateColour, loadColours } from "./localStorage.js";
+import { saveColours, updateColour, loadColours } from "./localStorage.js";
 import { fawn_defaults, mandrill_defaults } from "./defaults.js";
 import { fawn_whites, mandrill_whites } from "./whites.js";
-import { hexTorgb } from "./rotate.js";
-
-
-const [...fawnBlocks] = document.querySelector('#fawn_svg #fawn_colour_blocks').children;
-const [...mandrillBlocks] = document.querySelector('#mandrill_svg #mandrill_colour_blocks').children;
 
 const [...rGradients] = document.getElementById('fawn_gradients').children;
 const [...mGradients] = document.getElementById('mandrill_gradients').children;

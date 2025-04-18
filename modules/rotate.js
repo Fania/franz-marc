@@ -1,4 +1,4 @@
-export { rotateAll, rotateElement, pauseRotating, stopRotating, printColour, getColourSpeed, hexTorgb };
+export { rotateAll, rotateElement, pauseRotating, stopRotating, getColourSpeed, hexTorgb };
 
 
 const mandrill_svg = document.getElementById('mandrill_svg');
@@ -108,48 +108,48 @@ async function stopRotating() {
 
 
 
-function printColour(source,block) {
-  let fillCol = '';
-  let strokeCol = '';
-  let gradCols = [];
-  const atts = Object.values(block.attributes);
-  atts.forEach(a => {
-    if(a.name === 'fill') {
-      if(block.attributes['fill'].value.startsWith('url')) {
-        const valIDpre = block.attributes['fill'].value;
-        const valID = valIDpre.slice(5, -1);
-        const elem = document.getElementById(valID);
-        const childrs = elem.children;
-        const len = childrs.length;
-        for(let i=0; i<len; i++) {
-          gradCols.push(`stop-color: ${elem.children[i].attributes[1].value}`);
-        }
-        if(source === 'fawn'){
-          fawn_defaults[valID] = gradCols;
-        } else {
-          mandrill_defaults[valID] = gradCols;
-        }
-        // colours[valID] = gradCols;
-      }
-      fillCol = `fill: ${block.attributes['fill'].value}`;
-      if(source === 'fawn'){
-        fawn_defaults[block.id] = fillCol;
-      } else {
-        mandrill_defaults[block.id] = fillCol;
-      }
-      // colours[block.id] = fillCol;
-    }
-    if(a.name === 'stroke') {
-      strokeCol = `fill: ${block.attributes['stroke'].value}`;
-      if(source === 'fawn'){
-        fawn_defaults[block.id] = strokeCol;
-      } else {
-        mandrill_defaults[block.id] = strokeCol;
-      }
-      // colours[block.id] = strokeCol;
-    }
-  });
-}
+// function printColour(source,block) {
+//   let fillCol = '';
+//   let strokeCol = '';
+//   let gradCols = [];
+//   const atts = Object.values(block.attributes);
+//   atts.forEach(a => {
+//     if(a.name === 'fill') {
+//       if(block.attributes['fill'].value.startsWith('url')) {
+//         const valIDpre = block.attributes['fill'].value;
+//         const valID = valIDpre.slice(5, -1);
+//         const elem = document.getElementById(valID);
+//         const childrs = elem.children;
+//         const len = childrs.length;
+//         for(let i=0; i<len; i++) {
+//           gradCols.push(`stop-color: ${elem.children[i].attributes[1].value}`);
+//         }
+//         if(source === 'fawn'){
+//           fawn_defaults[valID] = gradCols;
+//         } else {
+//           mandrill_defaults[valID] = gradCols;
+//         }
+//         // colours[valID] = gradCols;
+//       }
+//       fillCol = `fill: ${block.attributes['fill'].value}`;
+//       if(source === 'fawn'){
+//         fawn_defaults[block.id] = fillCol;
+//       } else {
+//         mandrill_defaults[block.id] = fillCol;
+//       }
+//       // colours[block.id] = fillCol;
+//     }
+//     if(a.name === 'stroke') {
+//       strokeCol = `fill: ${block.attributes['stroke'].value}`;
+//       if(source === 'fawn'){
+//         fawn_defaults[block.id] = strokeCol;
+//       } else {
+//         mandrill_defaults[block.id] = strokeCol;
+//       }
+//       // colours[block.id] = strokeCol;
+//     }
+//   });
+// }
 
 
 
