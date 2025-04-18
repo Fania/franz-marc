@@ -8,6 +8,7 @@ import { hexTorgb } from "./rotate.js";
 export { getCurrentPage, getCurrentMenu };
 
 const tabs = document.querySelector('.tabs');
+const [...tabsInputs] = document.querySelectorAll('[name="tabs_radio"]');
 const [...navItems] = document.querySelectorAll('.tabs a');
 const options = document.querySelector('.options');
 const opts = document.querySelector('.options #buttons').children;
@@ -40,6 +41,13 @@ window.onload = () => {
   stopRotating();
   loadColours('none');
 };
+
+
+tabsInputs.forEach(tab => {
+  tab.addEventListener('change', () => {
+    updateMenu();
+  });
+});
 
 
 
@@ -127,8 +135,8 @@ buttons.forEach(butt => {
       removeFingerListeners();
       startMotion();
       subOptsNav.classList.remove('show');
+      updateMenu();
     }
-    updateMenu();
   });
 });
 

@@ -368,12 +368,13 @@ nav.subOptions.hide {
     box-shadow: 4px 0 5px rgb(0,0,0,0.3);
     flex-direction: column;
     max-width: 100px;
-    /* position: fixed; */
-    /* height: inherit; */
   }
   nav.tabs a {
     flex-direction: column;
     gap: 20px;
+  }
+  nav.tabs a:nth-of-type(3) img {
+    transform: scaleX(1);
   }
   nav.options {
     max-width: 100px;

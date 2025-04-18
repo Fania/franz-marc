@@ -29,9 +29,11 @@ This runs the automatic mode on slow only. Turn on fullscreen (check your browse
 ## Todos
 
 
+- [ ] re-enable motion.js in html!!!!
 - [ ] remove tap/drag listeners
 - [ ] finetune motionTracking again as slightly off from finger
 - [ ] is writing to localSTorage working properly?
+- [x] writing menu to localstorage works
 - [x] keyboard shortcuts
 - [x] fullscreen option / gallery mode
 - [x] put menu into localStorage for loading from localStorage properly
