@@ -7,7 +7,9 @@ import { hexTorgb } from "./rotate.js";
 
 export { getCurrentPage, getCurrentMenu };
 
+const tabs = document.querySelector('.tabs');
 const [...navItems] = document.querySelectorAll('.tabs a');
+const options = document.querySelector('.options');
 const opts = document.querySelector('.options #buttons').children;
 const subOpts = document.querySelector('.subOptions').children;
 const subOptsNav = document.querySelector('.subOptions');
@@ -130,3 +132,30 @@ buttons.forEach(butt => {
   });
 });
 
+
+
+
+
+
+
+// FULLSCREEN OPTIONS
+// for live display screens
+
+// | Shortcut  | Description          |
+// |-----------|----------------------|
+// | F         | Hide Interface       |
+// | ^⌘F       | Fullscreen (Mac)     |
+// | F11       | Fullscreen (Win)     |
+
+document.addEventListener("keydown", event => {
+  if (event.key === "f") {
+    toggleInterface();
+  }
+});
+
+
+function toggleInterface() {
+  tabs.classList.toggle('hide');
+  options.classList.toggle('hide');
+  subOptsNav.classList.toggle('hide');
+}

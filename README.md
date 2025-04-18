@@ -18,16 +18,10 @@ This runs the automatic mode on slow only. Turn on fullscreen (check your browse
 
 | Shortcut  | Description          |
 |-----------|----------------------|
-| o         | Original             |
-| r         | Rotate               |
-| p         | Paint                |
-| h         | Hover                |
-| m         | Motion / Camera      |
-| a         | Automatic            |
-| f         | Fullscreen           |
-| Escape    | Reset to Original    |
-| ArrowUp   | Speed up             |
-| ArrowDown | Slow down            |
+| F         | Hide Interface       |
+| ^⌘F       | Fullscreen (Mac)     |
+| F11       | Fullscreen (Win)     |
+
 
 
 
@@ -36,10 +30,10 @@ This runs the automatic mode on slow only. Turn on fullscreen (check your browse
 
 
 - [ ] remove tap/drag listeners
-- [ ] keyboard shortcuts
 - [ ] finetune motionTracking again as slightly off from finger
 - [ ] is writing to localSTorage working properly?
-- [ ] fullscreen option / gallery mode
+- [x] keyboard shortcuts
+- [x] fullscreen option / gallery mode
 - [x] put menu into localStorage for loading from localStorage properly
 - [x] store menu separately in localStorage not in fawn/mandrill
 - [x] update about page

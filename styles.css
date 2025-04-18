@@ -317,11 +317,11 @@ section.about {
 
 }
 
-
-
-
-
-
+nav.tabs.hide,
+nav.options.hide,
+nav.subOptions.hide {
+  display: none;
+}
 
 
 
@@ -344,6 +344,7 @@ section.about {
 #fawn_svg .coordinates.hide {
   display: none;
 }
+
 
 
 
