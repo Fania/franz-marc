@@ -5,7 +5,7 @@ import { loadColours, updateMenu } from "./localStorage.js";
 import { blankCanvas, colourBlock, addClickListeners, removeClickListeners } from "./paint.js";
 import { addMouseOverListeners, removeMouseOverListeners, addFingerListeners, removeFingerListeners, stopAutoColours, handleColourReplacement } from "./hover.js";
 import { startMotion, stopMotion } from "./motion.js";
-import { hexTorgb } from "./rotate.js";
+// import { hexTorgb } from "./rotate.js";
 
 
 const tabs = document.querySelector('.tabs');
@@ -14,8 +14,8 @@ const options = document.querySelector('.options');
 const subOpts = document.querySelector('.subOptions').children;
 const subOptsNav = document.querySelector('.subOptions');
 const [...buttons] = document.getElementsByName('buttons');
-const [...mandrillBlocks] = document.querySelector('#mandrill_svg #mandrill_colour_blocks').children;
-const [...fawnBlocks] = document.querySelector('#fawn_svg #fawn_colour_blocks').children;
+// const [...mandrillBlocks] = document.querySelector('#mandrill_svg #mandrill_colour_blocks').children;
+// const [...fawnBlocks] = document.querySelector('#fawn_svg #fawn_colour_blocks').children;
 
 
 
@@ -33,12 +33,17 @@ function getCurrentMenu() {
 // stop rotating on first load for default original page
 window.onload = () => {
   stopRotating();
-  loadColours('fromScratch');
+  if (localStorage.getItem("franzMarcMenu")===null) {
+    loadColours('fromScratch');
+  } else {
+    loadColours('fromData');
+  }
 };
 
 
 tabsInputs.forEach(tab => {
   tab.addEventListener('change', () => {
+    // console.log(tab.id);
     updateMenu();
   });
 });
@@ -47,8 +52,8 @@ tabsInputs.forEach(tab => {
 
 buttons.forEach(butt => {
   butt.addEventListener('change', () => {
-    console.log(butt.value);
-    const currentElem = document.querySelector('[name="buttons"]:checked');
+    // console.log(butt.value);
+    // const currentElem = document.querySelector('[name="buttons"]:checked');
     // console.log(current);
     const currentPage = getCurrentPage();
     console.log(currentPage);
@@ -63,7 +68,8 @@ buttons.forEach(butt => {
       removeFingerListeners();
       removeClickListeners();
       blankCanvas('reset');
-      updateMenu();
+      updateMenu('original');
+      loadColours('fromData');
     }
     if(butt.id == 'rotate') {
       // console.log('rotate');
@@ -78,7 +84,8 @@ buttons.forEach(butt => {
       subOpts[0].classList.add('show');
       subOpts[1].classList.remove('show');
       subOpts[2].classList.remove('show');
-      updateMenu();
+      updateMenu('rotate');
+      loadColours('fromData');
     }
     if(butt.id == 'paint') {
       // console.log('paint');
@@ -93,7 +100,8 @@ buttons.forEach(butt => {
       subOpts[0].classList.remove('show');
       subOpts[1].classList.add('show');
       subOpts[2].classList.remove('show');
-      updateMenu();
+      updateMenu('paint');
+      loadColours('fromData');
     }
     if(butt.id == 'hover') {
       // console.log('solids');
@@ -107,7 +115,8 @@ buttons.forEach(butt => {
       subOpts[0].classList.remove('show');
       subOpts[1].classList.remove('show');
       subOpts[2].classList.add('show');
-      updateMenu();
+      updateMenu('hover');
+      loadColours('fromData');
     }
     if(butt.id == 'camera') {
       // console.log('automatic');
@@ -119,7 +128,8 @@ buttons.forEach(butt => {
       removeClickListeners();
       startMotion();
       subOptsNav.classList.remove('show');
-      updateMenu();
+      updateMenu('camera');
+      loadColours('fromData');
     }
   });
 });

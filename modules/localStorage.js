@@ -8,6 +8,9 @@ import { colourBlock } from "./paint.js";
 const [...fawnBlocks] = document.querySelector('#fawn_svg #fawn_colour_blocks').children;
 const [...mandrillBlocks] = document.querySelector('#mandrill_svg #mandrill_colour_blocks').children;
 
+const [...subOpts] = document.querySelectorAll('[name^="sub_"]');
+// console.log(subOpts);
+const subOptsNav = document.querySelector('.subOptions');
 
 
 
@@ -15,7 +18,7 @@ const [...mandrillBlocks] = document.querySelector('#mandrill_svg #mandrill_colo
 
 function getColours() {
   // console.log('getColours');
-  const currentPage = getCurrentPage();
+  const currentPage = getStoredMenu().tabs;
   const coloursString = localStorage.getItem(`${currentPage}Colours`);
   let coloursJSON = {};
   if (coloursString === null) {
@@ -40,11 +43,11 @@ function getStoredMenu() {
 
 
 // update localStorage after change on Page
-function updateMenu() {
+function updateMenu(currentOpt=getCurrentMenu()) {
   // console.log('updateMenu');
   const currentPage = getCurrentPage();
   // console.log('currentPage',currentPage);
-  const currentOpt = getCurrentMenu();
+  // const currentOpt = getCurrentMenu();
   // console.log('currentOpt',currentOpt);
   let subOptsStatus = 'hide';
   if(currentOpt==='rotate' || currentOpt==='paint' || currentOpt==='hover') {
@@ -70,6 +73,13 @@ function loadMenu() {
   const storedMenu = getStoredMenu();
   document.getElementById(`${storedMenu.tabs}`).checked = true;
   document.getElementById(`${storedMenu.options}`).checked = true;
+  if(storedMenu.subOptions==='show') {
+    subOptsNav.classList.add('show');
+    subOptsNav.classList.remove('hide');
+  } else {
+    subOptsNav.classList.remove('show');
+    subOptsNav.classList.add('hide');
+  }
 }
 
 
@@ -78,11 +88,11 @@ function loadMenu() {
 
 
 
-saveColours('fawn', fawn_defaults);
-saveColours('mandrill', mandrill_defaults);
+// saveColours('fawn', fawn_defaults);
+// saveColours('mandrill', mandrill_defaults);
 // save coloursJSON to localStorage
 function saveColours(source, coloursJSON, mode) {
-  // console.trace('saveColours to localStorage');
+  // console.log('saveColours to localStorage');
   const coloursString = JSON.stringify(coloursJSON);
   if(source === 'fawn') {
     // localStorage.removeItem("fawnColours");
@@ -98,6 +108,7 @@ function saveColours(source, coloursJSON, mode) {
 
 // update colour of individual block for source
 function updateColour(id, property, newColour) {
+  // console.log('updateColour');
   const currentPage = getCurrentPage();
   // console.log('property',property);
   if(currentPage==='fawn') {
@@ -120,20 +131,28 @@ function updateColour(id, property, newColour) {
 
 // load colours from localStorage for source
 function loadColours(mode='none') {
-  console.log('loading colours');
-  const currentPage = getCurrentPage();
-  let coloursJSON = getColours();
-  // const gradients = currentPage==='fawn' ? rGradients : mGradients;
-  const blocks = currentPage==='fawn' ? fawnBlocks : mandrillBlocks;
-  blocks.forEach((block,i) => {
-    const bloID = block.id;
-    // console.log(bloID);
-    let entry = {};
-    entry = coloursJSON[bloID];
-    // console.log(entry);
-    colourBlock(block, entry, mode);
-  }); // end blocks
-  loadMenu();
+  // console.log('loading colours', mode);
+  if(mode==='fromScratch') {
+    console.log('from inside fromScratch');
+    saveColours('fawn', fawn_defaults);
+    saveColours('mandrill', mandrill_defaults);
+    updateMenu();
+  }
+  if(mode==='fromData') {
+    console.log('from inside fromData');
+    const currentMenu = getStoredMenu();
+    const currentPage = currentMenu.tabs;
+    const currentOpt = currentMenu.options;
+    let coloursJSON = getColours();
+    const blocks = currentPage==='fawn' ? fawnBlocks : mandrillBlocks;
+    loadMenu();
+    blocks.forEach((block,i) => {
+      const bloID = block.id;
+      let entry = {};
+      entry = coloursJSON[bloID];
+      colourBlock(block, entry, mode);
+    }); // end blocks
+  }
 }
 
 
