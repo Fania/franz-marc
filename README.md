@@ -24,6 +24,7 @@ This runs the automatic mode on slow only. Turn on fullscreen (check your browse
 
 ## Todos
 
+- [ ] change handleColourReplacement to colourBlock ?
 - [ ] add short info about me to about plus contact?
 - [ ] create gallery "slideshow" that cycles through different options
 - [ ] re-enable motion.js in html!!!!

@@ -44,6 +44,7 @@ window.onload = () => {
 tabsInputs.forEach(tab => {
   tab.addEventListener('change', () => {
     // console.log(tab.id);
+    // menuLogic(butt);
     updateMenu();
   });
 });
@@ -52,88 +53,90 @@ tabsInputs.forEach(tab => {
 
 buttons.forEach(butt => {
   butt.addEventListener('change', () => {
-    // console.log(butt.value);
-    // const currentElem = document.querySelector('[name="buttons"]:checked');
-    // console.log(current);
-    const currentPage = getCurrentPage();
-    console.log(currentPage);
-
-    if(butt.id == 'original') {
-      // console.log('original');
-      subOptsNav.classList.remove('show');
-      stopRotating();
-      stopAutoColours();
-      stopMotion();
-      removeMouseOverListeners();
-      removeFingerListeners();
-      removeClickListeners();
-      blankCanvas('reset');
-      updateMenu('original');
-      loadColours('fromData');
-    }
-    if(butt.id == 'rotate') {
-      // console.log('rotate');
-      blankCanvas('reset');
-      stopAutoColours();
-      stopMotion();
-      removeMouseOverListeners();
-      removeFingerListeners();
-      removeClickListeners();
-      rotateAll(currentPage);
-      subOptsNav.classList.add('show');
-      subOpts[0].classList.add('show');
-      subOpts[1].classList.remove('show');
-      subOpts[2].classList.remove('show');
-      updateMenu('rotate');
-      loadColours('fromData');
-    }
-    if(butt.id == 'paint') {
-      // console.log('paint');
-      stopRotating();
-      stopAutoColours();
-      stopMotion();
-      removeMouseOverListeners();
-      removeFingerListeners();
-      blankCanvas('clear');
-      addClickListeners(colourBlock);
-      subOptsNav.classList.add('show');
-      subOpts[0].classList.remove('show');
-      subOpts[1].classList.add('show');
-      subOpts[2].classList.remove('show');
-      updateMenu('paint');
-      loadColours('fromData');
-    }
-    if(butt.id == 'hover') {
-      // console.log('solids');
-      stopRotating();
-      stopMotion();
-      blankCanvas('reset');
-      addMouseOverListeners(handleColourReplacement);
-      addFingerListeners(handleColourReplacement);
-      removeClickListeners();
-      subOptsNav.classList.add('show');
-      subOpts[0].classList.remove('show');
-      subOpts[1].classList.remove('show');
-      subOpts[2].classList.add('show');
-      updateMenu('hover');
-      loadColours('fromData');
-    }
-    if(butt.id == 'camera') {
-      // console.log('automatic');
-      blankCanvas('reset');
-      stopRotating();
-      stopAutoColours();
-      removeMouseOverListeners();
-      removeFingerListeners();
-      removeClickListeners();
-      startMotion();
-      subOptsNav.classList.remove('show');
-      updateMenu('camera');
-      loadColours('fromData');
-    }
+    menuLogic(butt);
   });
 });
 
+
+
+
+function menuLogic(butt) {
+  const currentPage = getCurrentPage();
+  console.log(currentPage);
+  if(butt.id == 'original') {
+    // console.log('original');
+    subOptsNav.classList.remove('show');
+    stopRotating();
+    stopAutoColours();
+    stopMotion();
+    removeMouseOverListeners();
+    removeFingerListeners();
+    removeClickListeners();
+    blankCanvas('reset');
+    updateMenu('original');
+    loadColours('fromData');
+  }
+  if(butt.id == 'rotate') {
+    // console.log('rotate');
+    blankCanvas('reset');
+    stopAutoColours();
+    stopMotion();
+    removeMouseOverListeners();
+    removeFingerListeners();
+    removeClickListeners();
+    rotateAll(currentPage);
+    subOptsNav.classList.add('show');
+    subOpts[0].classList.add('show');
+    subOpts[1].classList.remove('show');
+    subOpts[2].classList.remove('show');
+    updateMenu('rotate');
+    loadColours('fromData');
+  }
+  if(butt.id == 'paint') {
+    // console.log('paint');
+    stopRotating();
+    stopAutoColours();
+    stopMotion();
+    removeMouseOverListeners();
+    removeFingerListeners();
+    blankCanvas('clear');
+    addClickListeners(colourBlock);
+    subOptsNav.classList.add('show');
+    subOpts[0].classList.remove('show');
+    subOpts[1].classList.add('show');
+    subOpts[2].classList.remove('show');
+    updateMenu('paint');
+    loadColours('fromData');
+  }
+  if(butt.id == 'hover') {
+    // console.log('solids');
+    stopRotating();
+    stopMotion();
+    blankCanvas('reset');
+    addMouseOverListeners(handleColourReplacement);
+    addFingerListeners(handleColourReplacement);
+    removeClickListeners();
+    subOptsNav.classList.add('show');
+    subOpts[0].classList.remove('show');
+    subOpts[1].classList.remove('show');
+    subOpts[2].classList.add('show');
+    updateMenu('hover');
+    loadColours('fromData');
+  }
+  if(butt.id == 'camera') {
+    // console.log('automatic');
+    blankCanvas('reset');
+    stopRotating();
+    stopAutoColours();
+    removeMouseOverListeners();
+    removeFingerListeners();
+    removeClickListeners();
+    startMotion();
+    subOptsNav.classList.remove('show');
+    updateMenu('camera');
+    loadColours('fromData');
+  }
+}
 
 
 

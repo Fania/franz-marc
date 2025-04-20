@@ -11,6 +11,7 @@ const [...mandrillBlocks] = document.querySelector('#mandrill_svg #mandrill_colo
 const [...subOpts] = document.querySelectorAll('[name^="sub_"]');
 // console.log(subOpts);
 const subOptsNav = document.querySelector('.subOptions');
+const subOptsNavDivs = document.querySelector('.subOptions').children;
 
 
 
@@ -70,15 +71,30 @@ function updateMenu(currentOpt=getCurrentMenu()) {
 
 // update Menu options on Page from localStorage
 function loadMenu() {
+  console.log('loading menu');
   const storedMenu = getStoredMenu();
   document.getElementById(`${storedMenu.tabs}`).checked = true;
   document.getElementById(`${storedMenu.options}`).checked = true;
-  if(storedMenu.subOptions==='show') {
+  if(storedMenu.options==='rotate') {
     subOptsNav.classList.add('show');
     subOptsNav.classList.remove('hide');
-  } else {
-    subOptsNav.classList.remove('show');
-    subOptsNav.classList.add('hide');
+    subOptsNavDivs[0].classList.add('show');
+    subOptsNavDivs[1].classList.remove('show');
+    subOptsNavDivs[2].classList.remove('show');
+  }
+  if(storedMenu.options==='paint') {
+    subOptsNav.classList.add('show');
+    subOptsNav.classList.remove('hide');
+    subOptsNavDivs[0].classList.remove('show');
+    subOptsNavDivs[1].classList.add('show');
+    subOptsNavDivs[2].classList.remove('show');
+  }
+  if(storedMenu.options==='hover') {
+    subOptsNav.classList.add('show');
+    subOptsNav.classList.remove('hide');
+    subOptsNavDivs[0].classList.remove('show');
+    subOptsNavDivs[1].classList.remove('show');
+    subOptsNavDivs[2].classList.add('show');
   }
 }
 
@@ -124,6 +140,7 @@ function updateColour(id, property, newColour) {
     // console.log(`updating ${id} from ${oldColour} to ${newColour}`);
     saveColours('mandrill', coloursJSON);
   }
+  // loadColours('fromData');
 }
 
 
@@ -133,13 +150,13 @@ function updateColour(id, property, newColour) {
 function loadColours(mode='none') {
   // console.log('loading colours', mode);
   if(mode==='fromScratch') {
-    console.log('from inside fromScratch');
+    console.log('loading from inside fromScratch');
     saveColours('fawn', fawn_defaults);
     saveColours('mandrill', mandrill_defaults);
     updateMenu();
   }
   if(mode==='fromData') {
-    console.log('from inside fromData');
+    console.log('loading from inside fromData');
     const currentMenu = getStoredMenu();
     const currentPage = currentMenu.tabs;
     const currentOpt = currentMenu.options;
